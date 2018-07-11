@@ -15,15 +15,22 @@ class LoginVC: UIViewController {
     
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var email: UITextField!
+    
+    var requiredFields = [UITextField]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        requiredFields = [password, email]
+        password.delegate = self
+        email.delegate = self
     }
     
     @IBAction func loginBtnPress(_ sender: AnyObject){
+        guard !requiredFields.containsIncompleteField() else{
+            self.okAlert(title: "Error", message: "Please enter all required fields.")
+            return
+        }
         loginUser(email: email.text!, password: password.text!)
-        
-        
     }
     
     @IBAction func backBtnPress(_ sender: AnyObject){
@@ -31,26 +38,44 @@ class LoginVC: UIViewController {
     }
     
     func loginUser(email: String, password: String){
+        self.view.showBlurLoader()
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             
             guard error == nil else{
-                self.showError(error: error!)
-                print("Error logging in - ", error)
-                print("Error code localized description - ", error?.localizedDescription)
-                print("Error code debug description - ", error.debugDescription)
+                self.view.removeBluerLoader(completionHandler: {
+                    self.okAlert(title: "Error", message: error!.customAuthError(submitType: AuthSubmitType.login))
+                })
                 return
             }
-            
-            print("login success! user - ", user)
+
+            let storboardMain = UIStoryboard(name: "Main", bundle: nil)
+            if let vc = storboardMain.instantiateViewController(withIdentifier: "LandingVC") as? LandingVC{
+                self.present(vc, animated: true, completion: {
+                    self.view.removeBluerLoader(completionHandler: nil)
+                })
+            }
         }
-    }
-    
-    func showError(error: Error){
-        print("the error custom - ", error.customLoginError())
-        let alert = UIAlertController(title: "Error", message: error.customLoginError(), preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
     }
 
 
 }
+
+extension LoginVC: UITextFieldDelegate{
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.layer.borderWidth = 0
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

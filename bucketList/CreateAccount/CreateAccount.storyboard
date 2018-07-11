@@ -150,7 +150,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHN-bd-dgT">
-                                <rect key="frame" x="30" y="218.5" width="315" height="55"/>
+                                <rect key="frame" x="30" y="268.5" width="315" height="55"/>
                                 <color key="backgroundColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="K2u-v0-Xn3"/>
@@ -171,6 +171,13 @@
                                     <action selector="backBtnPress:" destination="Lgt-DW-AiZ" eventType="touchUpInside" id="Qu5-NP-TgJ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ftK-Gp-ksJ">
+                                <rect key="frame" x="222" y="183.5" width="123" height="30"/>
+                                <state key="normal" title="Forgot Password?"/>
+                                <connections>
+                                    <segue destination="Auz-KX-J8a" kind="show" id="g80-XL-qoD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -182,8 +189,10 @@
                             <constraint firstItem="yHN-bd-dgT" firstAttribute="leading" secondItem="TNs-OX-13a" secondAttribute="leading" id="iJm-Nm-DGc"/>
                             <constraint firstItem="uaz-Nd-Tlk" firstAttribute="top" secondItem="wCW-yL-lc2" secondAttribute="top" constant="25" id="izB-RH-v9r"/>
                             <constraint firstItem="dpY-zT-jXn" firstAttribute="top" secondItem="wCW-yL-lc2" secondAttribute="top" id="oJY-1G-Ps5"/>
-                            <constraint firstItem="yHN-bd-dgT" firstAttribute="top" secondItem="TNs-OX-13a" secondAttribute="bottom" constant="50" id="r5d-A4-LBY"/>
+                            <constraint firstItem="yHN-bd-dgT" firstAttribute="top" secondItem="TNs-OX-13a" secondAttribute="bottom" constant="100" id="r5d-A4-LBY"/>
                             <constraint firstItem="yHN-bd-dgT" firstAttribute="trailing" secondItem="TNs-OX-13a" secondAttribute="trailing" id="t5s-Fw-AKI"/>
+                            <constraint firstItem="ftK-Gp-ksJ" firstAttribute="trailing" secondItem="TNs-OX-13a" secondAttribute="trailing" id="vp2-jI-2Tz"/>
+                            <constraint firstItem="ftK-Gp-ksJ" firstAttribute="top" secondItem="TNs-OX-13a" secondAttribute="bottom" constant="15" id="xa2-oq-zgm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wCW-yL-lc2"/>
                     </view>
@@ -195,6 +204,74 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ihg-sn-DFg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="926" y="135"/>
+        </scene>
+        <!--Password ResetVC-->
+        <scene sceneID="yOQ-Qs-t99">
+            <objects>
+                <viewController id="Auz-KX-J8a" customClass="PasswordResetVC" customModule="bucketList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5RZ-XC-jo0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTE-Ks-4Jy">
+                                <rect key="frame" x="124.5" y="45" width="127" height="23.5"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AP7-IV-WTR">
+                                <rect key="frame" x="30" y="153.5" width="315" height="55"/>
+                                <color key="backgroundColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="bwk-fu-JHc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="25"/>
+                                <state key="normal" title="Password Reset">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="passwordReset:" destination="Auz-KX-J8a" eventType="touchUpInside" id="2bV-Sp-jNO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pcF-9K-vD1">
+                                <rect key="frame" x="321" y="20" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backBtnPress:" destination="Auz-KX-J8a" eventType="touchUpInside" id="8eY-C7-61a"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k7V-fS-cCw">
+                                <rect key="frame" x="30" y="88.5" width="315" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="uSb-ib-xI8"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="AP7-IV-WTR" firstAttribute="leading" secondItem="k7V-fS-cCw" secondAttribute="leading" id="3na-mC-kVq"/>
+                            <constraint firstItem="jTE-Ks-4Jy" firstAttribute="centerX" secondItem="5RZ-XC-jo0" secondAttribute="centerX" id="Ipf-s5-mtP"/>
+                            <constraint firstItem="jTE-Ks-4Jy" firstAttribute="top" secondItem="GsJ-1z-4SB" secondAttribute="top" constant="25" id="Wa5-ve-ArQ"/>
+                            <constraint firstItem="AP7-IV-WTR" firstAttribute="top" secondItem="k7V-fS-cCw" secondAttribute="bottom" constant="30" id="YUA-Af-Xci"/>
+                            <constraint firstItem="pcF-9K-vD1" firstAttribute="top" secondItem="GsJ-1z-4SB" secondAttribute="top" id="ktm-jL-Ebg"/>
+                            <constraint firstItem="GsJ-1z-4SB" firstAttribute="trailing" secondItem="pcF-9K-vD1" secondAttribute="trailing" constant="20" id="oed-xd-Dhw"/>
+                            <constraint firstItem="GsJ-1z-4SB" firstAttribute="trailing" secondItem="k7V-fS-cCw" secondAttribute="trailing" constant="30" id="rZT-z9-Je7"/>
+                            <constraint firstItem="k7V-fS-cCw" firstAttribute="leading" secondItem="GsJ-1z-4SB" secondAttribute="leading" constant="30" id="tEy-CY-clQ"/>
+                            <constraint firstItem="k7V-fS-cCw" firstAttribute="top" secondItem="jTE-Ks-4Jy" secondAttribute="bottom" constant="20" id="tQp-gD-7Eb"/>
+                            <constraint firstItem="AP7-IV-WTR" firstAttribute="trailing" secondItem="k7V-fS-cCw" secondAttribute="trailing" id="xpE-TY-SL5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GsJ-1z-4SB"/>
+                    </view>
+                    <connections>
+                        <outlet property="tfEmail" destination="k7V-fS-cCw" id="FLx-Zw-Sdc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TyW-2D-4HS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1666" y="134"/>
         </scene>
     </scenes>
 </document>

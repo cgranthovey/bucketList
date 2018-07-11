@@ -1,5 +1,5 @@
 //
-//  TextInput.swift
+//  TextField.swift
 //  bucketList
 //
 //  Created by Christopher Hovey on 7/9/18.
@@ -22,7 +22,6 @@ extension UITextField{
 }
 
 extension Array where Element: UITextField {
-    typealias Completion = (_ error: Bool) -> Void
     func containsIncompleteField() -> Bool{
         var isIncomplete = false
         for item in self{

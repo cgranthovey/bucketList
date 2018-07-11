@@ -10,26 +10,33 @@ import UIKit
 
 class OnboardingImgVC: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    @IBOutlet weak var imgView: UIImageView!
+    @IBOutlet weak var lbl: UILabel!
+    
+    var img: UIImage?{
+        didSet{
+            if let img = img{
+                imgView?.image = img
+            }
+        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    var text: String?{
+        didSet{
+            if let text = text{
+                lbl?.text = text
+            }
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if let img = img{
+            imgView.image = img
+        }
+        if let text = text{
+            lbl.text = text
+        }
     }
-    */
+
 
 }

@@ -7,29 +7,66 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class PasswordResetVC: UIViewController {
 
+    @IBOutlet weak var tfEmail: UITextField!
+    var requiredFields: [UITextField]!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        requiredFields = [tfEmail]
+        tfEmail.delegate = self
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func passwordReset(_ sender: AnyObject){
+        checkRequiredFields()
     }
-    */
+    
+    func checkRequiredFields(){
+        guard !requiredFields.containsIncompleteField() else{
+            self.okAlert(title: "Error", message: "Please enter an email address")
+            return
+        }
+        signInUser()
+    }
+    
+    func signInUser(){
+        self.view.showBlurLoader()
+        Auth.auth().sendPasswordReset(withEmail: tfEmail.text!) { (error) in
+            self.view.removeBluerLoader(completionHandler: {
+                guard error == nil else{
+                    self.okAlert(title: "Error", message: error!.customAuthError(submitType: AuthSubmitType.forgotPassword))
+                    return
+                }
+                let alert = UIAlertController(title: "Email Sent", message: "Check your email address to reset password.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                alert.addAction(UIAlertAction(title: "Return to Login", style: .default, handler: { (action) in
+                    self.dismiss(animated: true, completion: nil)
+                }))
+                self.present(alert, animated: true, completion: nil)
+            })
+        }
+    }
+    
+    @IBAction func backBtnPress(_ sender: AnyObject){
+        self.dismiss(animated: true, completion: nil)
+    }
 
 }
+
+extension PasswordResetVC: UITextFieldDelegate{
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.layer.borderWidth = 0
+    }
+}
+
+
+
+
+
+
+
+
+
