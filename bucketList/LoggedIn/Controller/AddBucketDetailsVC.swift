@@ -28,12 +28,14 @@ class AddBucketDetailsVC: UIViewController {
         DataService.instance.bucketListRef.addDocument(data: NewBucketItem.instance.item.allItems()) { (error) in
             if let error = error{
                 print("error when submitting -", error)
+            } else{
+                self.performSegue(withIdentifier: "AddBucketDetailsVC", sender: nil)
             }
         }
     }
     
     @IBAction func backBtnPress(_ sender: AnyObject){
-        dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

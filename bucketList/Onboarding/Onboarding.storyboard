@@ -58,10 +58,10 @@
             </objects>
             <point key="canvasLocation" x="3916" y="162.3688155922039"/>
         </scene>
-        <!--View Controller-->
+        <!--Check AuthVC-->
         <scene sceneID="w6G-8W-6aF">
             <objects>
-                <viewController id="XNX-l6-rwy" sceneMemberID="viewController">
+                <viewController id="XNX-l6-rwy" customClass="CheckAuthVC" customModule="bucketList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lif-ML-t3H">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

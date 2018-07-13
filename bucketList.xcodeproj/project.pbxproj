@@ -14,6 +14,7 @@
 		1507CA2320F6EC5E00704426 /* AddBucketLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1507CA2220F6EC5E00704426 /* AddBucketLocationVC.swift */; };
 		1507CA2520F6ED1E00704426 /* AddBucketDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1507CA2420F6ED1E00704426 /* AddBucketDetailsVC.swift */; };
 		1507CA2720F6F9E000704426 /* CheckAuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1507CA2620F6F9E000704426 /* CheckAuthVC.swift */; };
+		1507CA2920F824D100704426 /* AddBucketSuccessfulVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1507CA2820F824D100704426 /* AddBucketSuccessfulVC.swift */; };
 		1508579D20EEFEB8009372A0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1508579C20EEFEB8009372A0 /* GoogleService-Info.plist */; };
 		1522B0BD20F04EB400C5CF9C /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1522B0BC20F04EB400C5CF9C /* Error.swift */; };
 		1522B0C420F056A300C5CF9C /* LandingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1522B0C320F056A300C5CF9C /* LandingVC.swift */; };
@@ -68,6 +69,7 @@
 		1507CA2220F6EC5E00704426 /* AddBucketLocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBucketLocationVC.swift; sourceTree = "<group>"; };
 		1507CA2420F6ED1E00704426 /* AddBucketDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBucketDetailsVC.swift; sourceTree = "<group>"; };
 		1507CA2620F6F9E000704426 /* CheckAuthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAuthVC.swift; sourceTree = "<group>"; };
+		1507CA2820F824D100704426 /* AddBucketSuccessfulVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBucketSuccessfulVC.swift; sourceTree = "<group>"; };
 		1508579C20EEFEB8009372A0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1522B0BC20F04EB400C5CF9C /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		1522B0C320F056A300C5CF9C /* LandingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingVC.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 				1507CA1B20F6E58700704426 /* AddBucketMapVC.swift */,
 				1507CA2220F6EC5E00704426 /* AddBucketLocationVC.swift */,
 				1507CA2420F6ED1E00704426 /* AddBucketDetailsVC.swift */,
+				1507CA2820F824D100704426 /* AddBucketSuccessfulVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -545,6 +548,7 @@
 				1507CA1C20F6E58700704426 /* AddBucketMapVC.swift in Sources */,
 				1507CA1E20F6E93900704426 /* NewBucketItem.swift in Sources */,
 				15BCDB4520E5C6DD00E1B6A9 /* OnboardingVC.swift in Sources */,
+				1507CA2920F824D100704426 /* AddBucketSuccessfulVC.swift in Sources */,
 				15BCDB4F20E9938400E1B6A9 /* CreateAccountVC.swift in Sources */,
 				15BAA8AE20EF0FB500289C7A /* View.swift in Sources */,
 				1507CA2320F6EC5E00704426 /* AddBucketLocationVC.swift in Sources */,

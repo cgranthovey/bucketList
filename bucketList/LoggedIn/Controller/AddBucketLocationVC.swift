@@ -26,7 +26,7 @@ class AddBucketLocationVC: UIViewController {
     }
     
     @IBAction func backBtnPress(_ sender: AnyObject){
-        dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

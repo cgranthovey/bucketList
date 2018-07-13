@@ -15,11 +15,14 @@ class CheckAuthVC: UIViewController {
         super.viewDidLoad()
         
         if Auth.auth().currentUser != nil{
+            print("check1")
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             if let vc = storyboard.instantiateViewController(withIdentifier: "LandingVC") as? LandingVC{
+                print("check2")
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         } else{
+            print("check3")
             performSegue(withIdentifier: "OnBoardingVC", sender: nil)
         }
         
