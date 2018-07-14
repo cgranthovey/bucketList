@@ -18,6 +18,9 @@
 		1508579D20EEFEB8009372A0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1508579C20EEFEB8009372A0 /* GoogleService-Info.plist */; };
 		1522B0BD20F04EB400C5CF9C /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1522B0BC20F04EB400C5CF9C /* Error.swift */; };
 		1522B0C420F056A300C5CF9C /* LandingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1522B0C320F056A300C5CF9C /* LandingVC.swift */; };
+		1576E40520F96A020067341D /* LocationSearchTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1576E40420F96A020067341D /* LocationSearchTableVC.swift */; };
+		1576E40720F96E220067341D /* MKPlacemark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1576E40620F96E220067341D /* MKPlacemark.swift */; };
+		1576E40A20F9CE5C0067341D /* SearchTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1576E40920F9CE5C0067341D /* SearchTblCell.swift */; };
 		15BAA8AE20EF0FB500289C7A /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BAA8AD20EF0FB500289C7A /* View.swift */; };
 		15BCDB0A20E47B9A00E1B6A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BCDB0920E47B9A00E1B6A9 /* AppDelegate.swift */; };
 		15BCDB0C20E47B9A00E1B6A9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BCDB0B20E47B9A00E1B6A9 /* ViewController.swift */; };
@@ -73,6 +76,9 @@
 		1508579C20EEFEB8009372A0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1522B0BC20F04EB400C5CF9C /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		1522B0C320F056A300C5CF9C /* LandingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingVC.swift; sourceTree = "<group>"; };
+		1576E40420F96A020067341D /* LocationSearchTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableVC.swift; sourceTree = "<group>"; };
+		1576E40620F96E220067341D /* MKPlacemark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKPlacemark.swift; sourceTree = "<group>"; };
+		1576E40920F9CE5C0067341D /* SearchTblCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTblCell.swift; sourceTree = "<group>"; };
 		15BAA8AD20EF0FB500289C7A /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		15BCDB0620E47B9A00E1B6A9 /* bucketList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bucketList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15BCDB0920E47B9A00E1B6A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -163,6 +169,14 @@
 			path = LoggedIn;
 			sourceTree = "<group>";
 		};
+		1576E40820F9CE110067341D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1576E40920F9CE5C0067341D /* SearchTblCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		15BCDAFD20E47B9A00E1B6A9 = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +202,7 @@
 		15BCDB0820E47B9A00E1B6A9 /* bucketList */ = {
 			isa = PBXGroup;
 			children = (
+				1576E40820F9CE110067341D /* View */,
 				1507CA1F20F6E99C00704426 /* Model */,
 				1507CA1820F6D8A900704426 /* Service */,
 				1522B0BE20F054C600C5CF9C /* LoggedIn */,
@@ -269,6 +284,7 @@
 				1522B0BC20F04EB400C5CF9C /* Error.swift */,
 				15C6633320F18D6B00C7DF5E /* VC.swift */,
 				15C6633720F44BB800C7DF5E /* TextField.swift */,
+				1576E40620F96E220067341D /* MKPlacemark.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -279,6 +295,7 @@
 				1522B0C320F056A300C5CF9C /* LandingVC.swift */,
 				15ECED7520F6D61400BF42FD /* AddBucketTitleVC.swift */,
 				1507CA1B20F6E58700704426 /* AddBucketMapVC.swift */,
+				1576E40420F96A020067341D /* LocationSearchTableVC.swift */,
 				1507CA2220F6EC5E00704426 /* AddBucketLocationVC.swift */,
 				1507CA2420F6ED1E00704426 /* AddBucketDetailsVC.swift */,
 				1507CA2820F824D100704426 /* AddBucketSuccessfulVC.swift */,
@@ -445,7 +462,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		3AB041075E495F3EACC72107 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -541,12 +558,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				15BCDB4120E482E200E1B6A9 /* OnboardingPageVC.swift in Sources */,
+				1576E40720F96E220067341D /* MKPlacemark.swift in Sources */,
 				15BCDB4320E5BF9500E1B6A9 /* OnboardingImgVC.swift in Sources */,
 				15BCDB4D20E728BA00E1B6A9 /* LoginVC.swift in Sources */,
 				1507CA2520F6ED1E00704426 /* AddBucketDetailsVC.swift in Sources */,
 				15ECED7620F6D61400BF42FD /* AddBucketTitleVC.swift in Sources */,
 				1507CA1C20F6E58700704426 /* AddBucketMapVC.swift in Sources */,
 				1507CA1E20F6E93900704426 /* NewBucketItem.swift in Sources */,
+				1576E40A20F9CE5C0067341D /* SearchTblCell.swift in Sources */,
 				15BCDB4520E5C6DD00E1B6A9 /* OnboardingVC.swift in Sources */,
 				1507CA2920F824D100704426 /* AddBucketSuccessfulVC.swift in Sources */,
 				15BCDB4F20E9938400E1B6A9 /* CreateAccountVC.swift in Sources */,
@@ -562,6 +581,7 @@
 				1522B0BD20F04EB400C5CF9C /* Error.swift in Sources */,
 				15BCDB0A20E47B9A00E1B6A9 /* AppDelegate.swift in Sources */,
 				1522B0C420F056A300C5CF9C /* LandingVC.swift in Sources */,
+				1576E40520F96A020067341D /* LocationSearchTableVC.swift in Sources */,
 				15C6633820F44BB800C7DF5E /* TextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

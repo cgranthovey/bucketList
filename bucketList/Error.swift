@@ -17,7 +17,6 @@ enum AuthSubmitType{
 extension Error{
     
     func customAuthError(submitType: AuthSubmitType) -> String{
-        print("custom create error - ", self.localizedDescription)
 
         switch self.localizedDescription {
         case "The email address is badly formatted.":

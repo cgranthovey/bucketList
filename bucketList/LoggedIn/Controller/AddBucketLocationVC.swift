@@ -32,7 +32,6 @@ class AddBucketLocationVC: UIViewController {
 
 extension AddBucketLocationVC: UITextFieldDelegate{
     func textFieldDidEndEditing(_ textField: UITextField) {
-        print("location textFieldDidEndEditing")
         tfLocation.delegate = self
         if textField == tfLocation{
             NewBucketItem.instance.item.location = tfLocation.text!
