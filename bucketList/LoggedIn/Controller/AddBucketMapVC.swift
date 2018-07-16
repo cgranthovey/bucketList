@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 
 protocol SearchResultDelegate{
-    func zoomInAt(placemark: MKPlacemark, address: String)
+    func zoomInAt(region: MKCoordinateRegion, address: String)
 }
 
 class AddBucketMapVC: UIViewController {
@@ -118,8 +118,17 @@ extension AddBucketMapVC: MKMapViewDelegate{
 }
 
 extension AddBucketMapVC: SearchResultDelegate{
-    func zoomInAt(placemark: MKPlacemark, address: String) {
+    func zoomInAt(region: MKCoordinateRegion, address: String) {
         searchBar.text = address
+        print("zoom in at - ", region.center)
+        
+        let annotation = MKPointAnnotation()
+        annotation.title = address
+        annotation.coordinate = region.center
+        self.mapView.addAnnotation(annotation)
+        
+        
+        mapView.setRegion(region, animated: true)
     }
 }
 
