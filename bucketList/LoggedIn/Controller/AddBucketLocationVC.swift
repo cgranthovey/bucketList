@@ -9,16 +9,18 @@
 import UIKit
 
 class AddBucketLocationVC: UIViewController {
-    
-    @IBOutlet weak var tfLocation: UITextField!
 
+    @IBOutlet weak var lblAddressPrimary: UILabel!
+    @IBOutlet weak var lblAddressSecondary: UILabel!
+    @IBOutlet weak var btnAddLocation: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tfLocation.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        tfLocation.text = NewBucketItem.instance.item.location
+        self.navigationController?.isNavigationBarHidden = true
+        setUpUI()
     }
 
     @IBAction func nextBtnPress(_ sender: AnyObject){
@@ -28,13 +30,25 @@ class AddBucketLocationVC: UIViewController {
     @IBAction func backBtnPress(_ sender: AnyObject){
         self.navigationController?.popViewController(animated: true)
     }
+    
+    func setUpUI(){
+        
+        if let primary = NewBucketItem.instance.item.addressPrimary{
+            btnAddLocation.setTitleWithoutAnimation(title: "Edit Location")
+            lblAddressPrimary.text = primary
+            lblAddressPrimary.isHidden = false
+        } else{
+            lblAddressPrimary.isHidden = true
+        }
+        if let secondary = NewBucketItem.instance.item.addressSeconary{
+            lblAddressSecondary.text = secondary
+            lblAddressSecondary.isHidden = false
+        } else{
+            lblAddressSecondary.isHidden = true
+        }
+    }
 }
 
 extension AddBucketLocationVC: UITextFieldDelegate{
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        tfLocation.delegate = self
-        if textField == tfLocation{
-            NewBucketItem.instance.item.location = tfLocation.text!
-        }
-    }
+
 }

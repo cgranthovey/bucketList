@@ -8,17 +8,22 @@
 
 import UIKit
 import Firebase
+import Geofirestore
+
 
 class AddBucketTitleVC: UIViewController {
     
     @IBOutlet weak var tfTitle: UITextField!
     @IBOutlet weak var tfPrice: UITextField!
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
         tfTitle.delegate = self
         tfPrice.delegate = self
+        
     }
     
     @IBAction func nextBtnPress(_ sender: AnyObject){

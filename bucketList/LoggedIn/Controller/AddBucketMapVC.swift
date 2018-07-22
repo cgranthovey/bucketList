@@ -8,21 +8,35 @@
 
 import UIKit
 import MapKit
+import FirebaseFirestore
 
 protocol SearchResultDelegate{
-    func zoomInAt(region: MKCoordinateRegion, address: String)
+    func zoomInAt(region: MKCoordinateRegion, addressPrimary: String, addressSecondary: String)
 }
 
 class AddBucketMapVC: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var pinIV: UIImageView!
+    @IBOutlet weak var clearBtn: UIButton!
+    @IBOutlet weak var approveBtn: UIButton!
+    
+    
     let locationManager = CLLocationManager()
     var currentLocation: CLLocation!
     var resultSearchController: UISearchController?
     var searchBar = UISearchBar()
+    
+    var addressPrimary: String?
+    var addressSecondary: String?
+    var pinLat: String?
+    var pinLong: String?
+    var showingSearchedPin = false
+    var showSearchText = false
+    
     var generalSpan: MKCoordinateSpan{
         get {
-            return MKCoordinateSpanMake(0.15, 0.15)
+            return MKCoordinateSpanMake(0.01, 0.01)
         }
     }
     
@@ -34,6 +48,44 @@ class AddBucketMapVC: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.hidesBackButton = true
         self.navigationItem.titleView = resultSearchController?.searchBar
+    }
+    
+    @IBAction func approvePinBtnPress(_ sender: AnyObject){
+        if let primary = addressPrimary, let lat = pinLat, let long = pinLong{
+            NewBucketItem.instance.item.addressPrimary = primary
+            if let secondary = addressSecondary{
+                NewBucketItem.instance.item.addressSeconary = secondary
+            }
+            
+            print("lat---", lat)
+            print("long--- ", long)
+            NewBucketItem.instance.item.pinLat = lat
+            NewBucketItem.instance.item.pinLong = long
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    @IBAction func clearPinBtnPress(_ sender: AnyObject){
+        clearAnnotations()
+        showingSearchedPin = false
+        NewBucketItem.instance.item.clearAddress()
+        searchBar.text = ""
+        self.pinIV.isHidden = false
+        self.pinIV.transform = CGAffineTransform(translationX: 0, y: self.view.frame.height)
+        UIView.animate(withDuration: 0.5, delay: 0.1, usingSpringWithDamping: 1, initialSpringVelocity: 2, options: .curveEaseInOut, animations: {
+            self.pinIV.transform = .identity
+        }) { (success) in
+            
+        }
+    }
+    
+    @IBAction func backBtnPress(_ sender: AnyObject){
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func clearAnnotations(){
+        let annotations = self.mapView.annotations
+        self.mapView.removeAnnotations(annotations)
     }
     
     func setUpSearchTable(){
@@ -56,7 +108,29 @@ class AddBucketMapVC: UIViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        let addressFull = NewBucketItem.instance.item.addressFull()
+            print("setUpMap3", addressFull)
+            searchBar.text = addressFull
+        
+    }
+    
     func setUpMap(){
+        
+        if let coordinate2D = NewBucketItem.instance.item.coordinate2D(), let primary = NewBucketItem.instance.item.addressPrimary{
+            pinIV.isHidden = true
+            let region = MKCoordinateRegion(center: coordinate2D, span: generalSpan)
+            mapView.setRegion(region, animated: true)
+            showingSearchedPin = true
+            addAnnotations(coord: coordinate2D, addressPrimary: primary)
+            print("setUpMap1")
+            if let addressFull = NewBucketItem.instance.item.addressFull(){
+                print("setUpMap2", addressFull)
+                searchBar.text = addressFull
+            }
+        }
+
+        
         self.mapView.showsUserLocation = true
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
@@ -86,16 +160,17 @@ extension AddBucketMapVC: MKMapViewDelegate{
         geocoder.reverseGeocodeLocation(loc) { (placemarks, error) in
             if let error = error{
                 print("geocoder error -", error)
+                
             }
             if let places = placemarks{
                 let pm = places[0]
                 var addressString : String = ""
-                print("country", pm.country)
-                print("locality", pm.locality)
-                print("subLocality", pm.subLocality)
-                print("thoroughfare", pm.thoroughfare)
-                print("postalCode", pm.postalCode)
-                print("subThoroughfare", pm.subThoroughfare)
+//                print("country", pm.country)
+//                print("locality", pm.locality)
+//                print("subLocality", pm.subLocality)
+//                print("thoroughfare", pm.thoroughfare)
+//                print("postalCode", pm.postalCode)
+//                print("subThoroughfare", pm.subThoroughfare)
                 if pm.subThoroughfare != nil {
                     addressString = addressString + pm.subThoroughfare! + " "
                 }
@@ -111,24 +186,50 @@ extension AddBucketMapVC: MKMapViewDelegate{
                 if pm.postalCode != nil {
                     addressString = addressString + pm.postalCode! + " "
                 }
-                print("current address - ", addressString)
+                
+                
+
+                if self.showingSearchedPin == false && self.showSearchText{
+                    self.searchBar.text = addressString
+                    self.pinLat = "\(loc.coordinate.latitude)"
+                    self.pinLong = "\(loc.coordinate.longitude)"
+                    self.addressPrimary = addressString
+//                    addressPrimary =
+                }
+                self.showSearchText = true
+                
             }
         }
     }
 }
 
 extension AddBucketMapVC: SearchResultDelegate{
-    func zoomInAt(region: MKCoordinateRegion, address: String) {
-        searchBar.text = address
-        print("zoom in at - ", region.center)
+    func zoomInAt(region: MKCoordinateRegion, addressPrimary: String, addressSecondary: String) {
+        searchBar.text = addressPrimary + ", " + addressSecondary
+        
+        addAnnotations(coord: region.center, addressPrimary: addressPrimary)
+        
+        self.addressPrimary = addressPrimary
+        self.addressSecondary = addressSecondary
+        self.pinLat = "\(region.center.latitude)"
+        self.pinLong = "\(region.center.longitude)"
+        showingSearchedPin = true
+        self.pinIV.isHidden = true
+        print("my region1 - ", region)
+        
+        let regionNewSpan = MKCoordinateRegion(center: region.center, span: generalSpan)
+        
+        mapView.setRegion(regionNewSpan, animated: true)
+    }
+    
+    func addAnnotations(coord: CLLocationCoordinate2D, addressPrimary: String){
+        let annotations = self.mapView.annotations
+        self.mapView.removeAnnotations(annotations)
         
         let annotation = MKPointAnnotation()
-        annotation.title = address
-        annotation.coordinate = region.center
+        annotation.title = addressPrimary
+        annotation.coordinate = coord
         self.mapView.addAnnotation(annotation)
-        
-        
-        mapView.setRegion(region, animated: true)
     }
 }
 
@@ -140,7 +241,7 @@ extension AddBucketMapVC: CLLocationManagerDelegate{
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        if let location = locations.first{
+        if let location = locations.first, NewBucketItem.instance.item.coordinate2D() == nil{
             currentLocation = location
             let region = MKCoordinateRegion(center: location.coordinate, span: generalSpan)
             mapView.setRegion(region, animated: true)

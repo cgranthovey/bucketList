@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import Geofirestore
 
 class DataService{
     
@@ -19,6 +20,13 @@ class DataService{
     var bucketListRef: CollectionReference{
         return Firestore.firestore().collection("BucketList")
     }
-
     
+    var geoFirestore: GeoFirestore{
+        var geo = Firestore.firestore().collection("GeoHash")
+        var geoFirestore = GeoFirestore(collectionRef: geo)
+        return geoFirestore
+    }
+    
+    
+
 }

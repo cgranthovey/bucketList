@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import FirebaseCore
+import Geofirestore
 
 class AddBucketDetailsVC: UIViewController {
 
@@ -23,15 +25,28 @@ class AddBucketDetailsVC: UIViewController {
     }
     
     @IBAction func submit(_ sender: AnyObject){
-        
         self.view.endEditing(true)
-        DataService.instance.bucketListRef.addDocument(data: NewBucketItem.instance.item.allItems()) { (error) in
-            if let error = error{
-                print("error when submitting -", error)
-            } else{
-                self.performSegue(withIdentifier: "AddBucketDetailsVC", sender: nil)
+
+        let ref = DataService.instance.bucketListRef.document()
+        
+        ref.setData(NewBucketItem.instance.item.itemsToPost()){ error in
+            guard error == nil else{
+                print("errror on submit ", error!)
+                return
+            }
+            
+            if let geoPoint = NewBucketItem.instance.item.getGeoPoint(){
+                DataService.instance.geoFirestore.setLocation(geopoint: geoPoint, forDocumentWithID: ref.documentID, completion: { (error) in
+                    guard error == nil else{
+                        print("geoPoint error set ", error!)
+                        return
+                    }
+                    self.performSegue(withIdentifier: "AddBucketDetailsVC", sender: nil)
+
+                })
             }
         }
+
     }
     
     @IBAction func backBtnPress(_ sender: AnyObject){

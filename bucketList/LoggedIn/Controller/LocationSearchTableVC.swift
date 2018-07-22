@@ -47,6 +47,8 @@ class LocationSearchTableVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedItem = searchResults[indexPath.row].title + ", " + searchResults[indexPath.row].subtitle
+        let title = searchResults[indexPath.row].title
+        let desc = searchResults[indexPath.row].subtitle
         let searchRequest = MKLocalSearchRequest(completion: searchResults[indexPath.row])
         let activeSearch = MKLocalSearch(request: searchRequest)
         
@@ -57,7 +59,7 @@ class LocationSearchTableVC: UITableViewController {
             }
             
             if let response = response, let delegate = self.delegate{
-                delegate.zoomInAt(region: response.boundingRegion, address: selectedItem)
+                delegate.zoomInAt(region: response.boundingRegion, addressPrimary: title, addressSecondary: desc)
             }
         }
 

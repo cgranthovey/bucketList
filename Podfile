@@ -10,7 +10,10 @@ target 'bucketList' do
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
 pod 'Firebase/Firestore'
-pod 'Firebase'
+pod 'Firebase', '~> 5.4'
+pod 'Geofirestore'
+
+
 
   target 'bucketListTests' do
     inherit! :search_paths

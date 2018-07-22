@@ -16,6 +16,9 @@
 		1507CA2720F6F9E000704426 /* CheckAuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1507CA2620F6F9E000704426 /* CheckAuthVC.swift */; };
 		1507CA2920F824D100704426 /* AddBucketSuccessfulVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1507CA2820F824D100704426 /* AddBucketSuccessfulVC.swift */; };
 		1508579D20EEFEB8009372A0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1508579C20EEFEB8009372A0 /* GoogleService-Info.plist */; };
+		1510B7EA21015AC0009FBCEC /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1510B7E921015AC0009FBCEC /* Button.swift */; };
+		1510B7ED210162C3009FBCEC /* BucketListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1510B7EC210162C3009FBCEC /* BucketListCell.swift */; };
+		1510B7EF2101670F009FBCEC /* GetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1510B7EE2101670F009FBCEC /* GetData.swift */; };
 		1522B0BD20F04EB400C5CF9C /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1522B0BC20F04EB400C5CF9C /* Error.swift */; };
 		1522B0C420F056A300C5CF9C /* LandingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1522B0C320F056A300C5CF9C /* LandingVC.swift */; };
 		1576E40520F96A020067341D /* LocationSearchTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1576E40420F96A020067341D /* LocationSearchTableVC.swift */; };
@@ -37,6 +40,7 @@
 		15BCDB4D20E728BA00E1B6A9 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BCDB4C20E728BA00E1B6A9 /* LoginVC.swift */; };
 		15BCDB4F20E9938400E1B6A9 /* CreateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BCDB4E20E9938400E1B6A9 /* CreateAccountVC.swift */; };
 		15BCDB5220E994DA00E1B6A9 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BCDB5120E994DA00E1B6A9 /* String.swift */; };
+		15C37E872103F78700ED0503 /* MapItemsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C37E862103F78700ED0503 /* MapItemsVC.swift */; };
 		15C6633420F18D6B00C7DF5E /* VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C6633320F18D6B00C7DF5E /* VC.swift */; };
 		15C6633620F19CA300C7DF5E /* PasswordResetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C6633520F19CA300C7DF5E /* PasswordResetVC.swift */; };
 		15C6633820F44BB800C7DF5E /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C6633720F44BB800C7DF5E /* TextField.swift */; };
@@ -74,6 +78,9 @@
 		1507CA2620F6F9E000704426 /* CheckAuthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAuthVC.swift; sourceTree = "<group>"; };
 		1507CA2820F824D100704426 /* AddBucketSuccessfulVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBucketSuccessfulVC.swift; sourceTree = "<group>"; };
 		1508579C20EEFEB8009372A0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1510B7E921015AC0009FBCEC /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		1510B7EC210162C3009FBCEC /* BucketListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketListCell.swift; sourceTree = "<group>"; };
+		1510B7EE2101670F009FBCEC /* GetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetData.swift; sourceTree = "<group>"; };
 		1522B0BC20F04EB400C5CF9C /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		1522B0C320F056A300C5CF9C /* LandingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingVC.swift; sourceTree = "<group>"; };
 		1576E40420F96A020067341D /* LocationSearchTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableVC.swift; sourceTree = "<group>"; };
@@ -101,6 +108,7 @@
 		15BCDB4C20E728BA00E1B6A9 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		15BCDB4E20E9938400E1B6A9 /* CreateAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountVC.swift; sourceTree = "<group>"; };
 		15BCDB5120E994DA00E1B6A9 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		15C37E862103F78700ED0503 /* MapItemsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapItemsVC.swift; sourceTree = "<group>"; };
 		15C6633320F18D6B00C7DF5E /* VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.swift; sourceTree = "<group>"; };
 		15C6633520F19CA300C7DF5E /* PasswordResetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetVC.swift; sourceTree = "<group>"; };
 		15C6633720F44BB800C7DF5E /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
@@ -148,6 +156,7 @@
 			children = (
 				1507CA1920F6D8BF00704426 /* DataService.swift */,
 				1507CA1D20F6E93900704426 /* NewBucketItem.swift */,
+				1510B7EE2101670F009FBCEC /* GetData.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -160,9 +169,18 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		1510B7EB21016273009FBCEC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1510B7EC210162C3009FBCEC /* BucketListCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		1522B0BE20F054C600C5CF9C /* LoggedIn */ = {
 			isa = PBXGroup;
 			children = (
+				1510B7EB21016273009FBCEC /* View */,
 				15C6633920F473A400C7DF5E /* Controller */,
 				15BCDB0D20E47B9A00E1B6A9 /* Main.storyboard */,
 			);
@@ -285,6 +303,7 @@
 				15C6633320F18D6B00C7DF5E /* VC.swift */,
 				15C6633720F44BB800C7DF5E /* TextField.swift */,
 				1576E40620F96E220067341D /* MKPlacemark.swift */,
+				1510B7E921015AC0009FBCEC /* Button.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -294,11 +313,12 @@
 			children = (
 				1522B0C320F056A300C5CF9C /* LandingVC.swift */,
 				15ECED7520F6D61400BF42FD /* AddBucketTitleVC.swift */,
-				1507CA1B20F6E58700704426 /* AddBucketMapVC.swift */,
 				1576E40420F96A020067341D /* LocationSearchTableVC.swift */,
 				1507CA2220F6EC5E00704426 /* AddBucketLocationVC.swift */,
 				1507CA2420F6ED1E00704426 /* AddBucketDetailsVC.swift */,
 				1507CA2820F824D100704426 /* AddBucketSuccessfulVC.swift */,
+				1507CA1B20F6E58700704426 /* AddBucketMapVC.swift */,
+				15C37E862103F78700ED0503 /* MapItemsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -562,6 +582,7 @@
 				15BCDB4320E5BF9500E1B6A9 /* OnboardingImgVC.swift in Sources */,
 				15BCDB4D20E728BA00E1B6A9 /* LoginVC.swift in Sources */,
 				1507CA2520F6ED1E00704426 /* AddBucketDetailsVC.swift in Sources */,
+				1510B7ED210162C3009FBCEC /* BucketListCell.swift in Sources */,
 				15ECED7620F6D61400BF42FD /* AddBucketTitleVC.swift in Sources */,
 				1507CA1C20F6E58700704426 /* AddBucketMapVC.swift in Sources */,
 				1507CA1E20F6E93900704426 /* NewBucketItem.swift in Sources */,
@@ -573,12 +594,15 @@
 				1507CA2320F6EC5E00704426 /* AddBucketLocationVC.swift in Sources */,
 				1507CA1A20F6D8BF00704426 /* DataService.swift in Sources */,
 				15BCDB0C20E47B9A00E1B6A9 /* ViewController.swift in Sources */,
+				1510B7EA21015AC0009FBCEC /* Button.swift in Sources */,
+				1510B7EF2101670F009FBCEC /* GetData.swift in Sources */,
 				1507CA2720F6F9E000704426 /* CheckAuthVC.swift in Sources */,
 				15BCDB5220E994DA00E1B6A9 /* String.swift in Sources */,
 				15C6633420F18D6B00C7DF5E /* VC.swift in Sources */,
 				15C6633620F19CA300C7DF5E /* PasswordResetVC.swift in Sources */,
 				1507CA2120F6E9C800704426 /* BucketItem.swift in Sources */,
 				1522B0BD20F04EB400C5CF9C /* Error.swift in Sources */,
+				15C37E872103F78700ED0503 /* MapItemsVC.swift in Sources */,
 				15BCDB0A20E47B9A00E1B6A9 /* AppDelegate.swift in Sources */,
 				1522B0C420F056A300C5CF9C /* LandingVC.swift in Sources */,
 				1576E40520F96A020067341D /* LocationSearchTableVC.swift in Sources */,
