@@ -16,11 +16,11 @@ class CheckAuthVC: UIViewController {
         
         if Auth.auth().currentUser != nil{
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            if let vc = storyboard.instantiateViewController(withIdentifier: "LandingVC") as? LandingVC{
+            if let vc = storyboard.instantiateViewController(withIdentifier: "UITabBarController") as? UITabBarController{
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         } else{
-            performSegue(withIdentifier: "OnBoardingVC", sender: nil)
+            performSegue(withIdentifier: "UITabBarController", sender: nil)
         }
         
     }

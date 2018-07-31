@@ -12,7 +12,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Bucket-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="LandingVC" id="BYZ-38-t0r" customClass="LandingVC" customModule="bucketList" customModuleProvider="target" sceneMemberID="viewController">
@@ -20,16 +20,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tMn-LJ-K9i">
-                                <rect key="frame" x="310" y="50" width="35" height="31"/>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
-                                <state key="normal" title="New"/>
-                                <connections>
-                                    <segue destination="aRZ-QF-CPk" kind="show" id="AYW-Xn-ZjN"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Czq-s9-pLc">
-                                <rect key="frame" x="0.0" y="100" width="375" height="518"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="122" id="L90-gQ-OTF" customClass="BucketListCell" customModule="bucketList" customModuleProvider="target">
@@ -89,48 +81,24 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LY7-9S-SYq">
-                                <rect key="frame" x="16" y="50" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="J0G-Bv-5Ee"/>
-                                    <constraint firstAttribute="width" constant="46" id="Qdx-Yj-3nB"/>
-                                </constraints>
-                                <state key="normal" title="Map"/>
-                                <connections>
-                                    <segue destination="YP1-qZ-eq8" kind="show" id="fz8-Gc-mOG"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJD-S5-u5s">
-                                <rect key="frame" x="108" y="50" width="95" height="30"/>
-                                <state key="normal" title="Friend Search"/>
-                                <connections>
-                                    <segue destination="2sH-U5-6h2" kind="show" id="8ab-hZ-V1X"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="fJD-S5-u5s" firstAttribute="leading" secondItem="LY7-9S-SYq" secondAttribute="trailing" constant="46" id="28m-jJ-bcf"/>
                             <constraint firstItem="Czq-s9-pLc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7qE-VD-QFl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Czq-s9-pLc" secondAttribute="trailing" id="FMH-pS-VVY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Czq-s9-pLc" secondAttribute="bottom" id="GJt-sN-TAp"/>
-                            <constraint firstItem="tMn-LJ-K9i" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="Soo-Yh-qcg"/>
-                            <constraint firstItem="LY7-9S-SYq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Uww-KP-2PW"/>
-                            <constraint firstItem="Czq-s9-pLc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="bvc-ae-sLG"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tMn-LJ-K9i" secondAttribute="trailing" constant="30" id="gYE-QL-TLy"/>
-                            <constraint firstItem="fJD-S5-u5s" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="zXH-oF-9z1"/>
-                            <constraint firstItem="LY7-9S-SYq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="zrn-Pe-wWq"/>
+                            <constraint firstItem="Czq-s9-pLc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="bvc-ae-sLG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="19q-7V-gZu"/>
+                    <tabBarItem key="tabBarItem" title="Bucket" image="bucket" id="19q-7V-gZu"/>
                     <connections>
                         <outlet property="table" destination="Czq-s9-pLc" id="mq3-Kc-NTt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="314" y="95"/>
+            <point key="canvasLocation" x="335" y="-270"/>
         </scene>
         <!--Friends-->
         <scene sceneID="Cn4-we-UlX">
@@ -158,7 +126,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RV9-xE-UXQ">
-                                <rect key="frame" x="20" y="220" width="335" height="427"/>
+                                <rect key="frame" x="20" y="220" width="335" height="378"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellRequest" rowHeight="80" id="n9p-PS-hft" customClass="FriendSearchTblCell" customModule="bucketList" customModuleProvider="target">
@@ -233,7 +201,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WB6-bB-cCK"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Friends" id="qWm-50-kqy"/>
+                    <tabBarItem key="tabBarItem" title="Friends" image="friends" id="qWm-50-kqy"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="Nc7-lO-3i1" id="myx-UW-Xb4"/>
                         <outlet property="tableView" destination="RV9-xE-UXQ" id="waJ-1i-GM3"/>
@@ -250,7 +218,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="-306.39999999999998" y="969.26536731634189"/>
+            <point key="canvasLocation" x="282" y="1395"/>
         </scene>
         <!--Map-->
         <scene sceneID="0oJ-pB-E6R">
@@ -261,7 +229,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rgv-20-uem">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mxo-cN-Eet">
                                 <rect key="frame" x="16" y="20" width="34" height="30"/>
@@ -282,7 +250,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YOO-VC-xmh"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" id="0dA-0J-lZW"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="map" id="0dA-0J-lZW"/>
                     <connections>
                         <outlet property="btnBack" destination="mxo-cN-Eet" id="0z6-eQ-6pK"/>
                         <outlet property="mapView" destination="rgv-20-uem" id="K3I-4p-CqQ"/>
@@ -290,9 +258,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q27-R4-ArE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="766" y="885"/>
+            <point key="canvasLocation" x="334" y="485"/>
         </scene>
-        <!--Add Bucket TitleVC-->
+        <!--Add-->
         <scene sceneID="KAN-fx-u4V">
             <objects>
                 <viewController id="aRZ-QF-CPk" customClass="AddBucketTitleVC" customModule="bucketList" customModuleProvider="target" sceneMemberID="viewController">
@@ -361,7 +329,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AzU-2e-v9e"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="mostRecent" id="Ad3-Vh-iLZ"/>
+                    <tabBarItem key="tabBarItem" title="Add" image="shovel" id="Ad3-Vh-iLZ"/>
                     <connections>
                         <outlet property="tfPrice" destination="LWn-R5-lks" id="6Uh-po-SB2"/>
                         <outlet property="tfTitle" destination="luu-zk-iwr" id="nSn-50-CG8"/>
@@ -369,7 +337,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vwd-o7-mKr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1752.8" y="-276.61169415292358"/>
+            <point key="canvasLocation" x="-306" y="-958"/>
         </scene>
         <!--Add Bucket MapVC-->
         <scene sceneID="Xwp-NH-D0r">
@@ -445,7 +413,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="89w-2o-Ej3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1537" y="-998"/>
+            <point key="canvasLocation" x="1354" y="-1766"/>
         </scene>
         <!--Location Search TableVC-->
         <scene sceneID="qmx-og-mAv">
@@ -500,7 +468,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zi8-0l-nb9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2485.5999999999999" y="-1002.5487256371815"/>
+            <point key="canvasLocation" x="2210" y="-1766"/>
         </scene>
         <!--Add Bucket LocationVC-->
         <scene sceneID="xWh-0U-6yB">
@@ -597,7 +565,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BfB-vf-Vot" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2476" y="-277.51124437781112"/>
+            <point key="canvasLocation" x="647" y="-958"/>
         </scene>
         <!--Add Bucket DetailsVC-->
         <scene sceneID="exK-Lv-Ubc">
@@ -666,7 +634,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c1T-J6-sqY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3368.8000000000002" y="-278.41079460269867"/>
+            <point key="canvasLocation" x="1639" y="-958"/>
         </scene>
         <!--Add Bucket SuccessfulVC-->
         <scene sceneID="4ey-qq-S5I">
@@ -717,14 +685,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1lO-RI-IbV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4264.8000000000002" y="-278.41079460269867"/>
+            <point key="canvasLocation" x="2551" y="-958"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="h6g-zo-jiK">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="yLh-az-cI6" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="UITabBarController" automaticallyAdjustsScrollViewInsets="NO" id="yLh-az-cI6" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Hq2-C1-Qnx">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -741,12 +710,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bucket" width="25" height="25"/>
         <image name="checked" width="512" height="512"/>
+        <image name="friends" width="25" height="25"/>
+        <image name="map" width="25" height="25"/>
         <image name="pin" width="128" height="128"/>
+        <image name="shovel" width="25" height="25"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="AYW-Xn-ZjN"/>
-        <segue reference="fz8-Gc-mOG"/>
-        <segue reference="8ab-hZ-V1X"/>
-    </inferredMetricsTieBreakers>
 </document>
