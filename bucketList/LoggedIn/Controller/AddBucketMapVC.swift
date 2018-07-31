@@ -156,6 +156,11 @@ extension AddBucketMapVC: MKMapViewDelegate{
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
 
         let geocoder = CLGeocoder()
+        
+        guard mapView.region.isRegionValid() else{
+           return
+        }
+        
         let loc = CLLocation(latitude: mapView.region.center.latitude, longitude: mapView.region.center.longitude)
         geocoder.reverseGeocodeLocation(loc) { (placemarks, error) in
             if let error = error{
@@ -186,8 +191,6 @@ extension AddBucketMapVC: MKMapViewDelegate{
                 if pm.postalCode != nil {
                     addressString = addressString + pm.postalCode! + " "
                 }
-                
-                
 
                 if self.showingSearchedPin == false && self.showSearchText{
                     self.searchBar.text = addressString

@@ -66,8 +66,8 @@ class CreateAccountVC: UIViewController {
                 return
             }
 
-            let db = Firestore.firestore()
-            var _ = db.collection("users").addDocument(data: [
+            let usersRef = DataService.instance.usersRef
+            var _ = usersRef.addDocument(data: [
                 "email": email,
                 "fname": name,
                 "created": FieldValue.serverTimestamp()

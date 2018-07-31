@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import FirebaseFirestore
 import Geofirestore
 
 class DataService{
@@ -25,6 +26,14 @@ class DataService{
         var geo = Firestore.firestore().collection("GeoHash")
         var geoFirestore = GeoFirestore(collectionRef: geo)
         return geoFirestore
+    }
+    
+    var usersRef: CollectionReference{
+        return Firestore.firestore().collection("users")
+    }
+    
+    var currentUserDoc: DocumentReference{
+        return Firestore.firestore().collection("users").document(CurrentUser.instance.user.uid)
     }
     
     

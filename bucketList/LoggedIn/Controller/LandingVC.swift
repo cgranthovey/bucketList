@@ -22,6 +22,9 @@ class LandingVC: UIViewController {
         table.rowHeight = UITableViewAutomaticDimension
         table.estimatedRowHeight = 150
         
+        CurrentUser.instance.getCurrentUserData { (success) in
+        }
+        
         GetData.instance.retrieve { (bucketItems) in
             self.bucketItems = bucketItems
             self.table.reloadData()
@@ -29,7 +32,7 @@ class LandingVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-
+        print("LandingVC viewWillAppear")
     }
     
 

@@ -20,11 +20,18 @@ class MapItemsVC: UIViewController {
     var locationManager = CLLocationManager()
     var hasUpdatedUserLocation = true
     var span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+    var geoQuery: GFSRegionQuery?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUpMap()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+//        if let query = geoQuery{
+//            query.removeAllObservers()
+//        }
     }
     
     @IBAction func backBtnPress(_ sender: AnyObject){
@@ -44,19 +51,60 @@ class MapItemsVC: UIViewController {
         locationManager.requestLocation()
     }
     
-    func getGeoHash(region: MKCoordinateRegion){
 
-        let geoQuery = DataService.instance.geoFirestore.query(inRegion: region)
-        let geoQueryEnterHandle = geoQuery.observe(.documentEntered) { (key, location) in
-            if let key = key, let location = location{
-                let newPin = MKPointAnnotation()
-                newPin.coordinate = location.coordinate
-                newPin.title = key
-                self.mapView.addAnnotation(newPin)
-                print("got key - ")
+
+    
+    func getGeoHash(region: MKCoordinateRegion){
+        geoQuery = DataService.instance.geoFirestore.query(inRegion: region)
+        if let query = geoQuery{
+            let geoQueryEnterHandle = query.observe(.documentEntered) { (key, location) in
+                if let key = key, let location = location{
+
+                }
             }
         }
+//        let geoQueryExit = DataService.instance.geoFirestore.query(inRegion: region)
+//        let geoQueryExitHandle = geoQueryExit.observe(.documentExited) { (key, location) in
+//            if let key = key, let location = location{
+//
+//                let annotations = self.mapView.annotations
+//
+//                for annotation in annotations{
+//                    if annotation.title == key{
+//                        self.mapView.removeAnnotation(annotation)
+//                        print("remove annotation")
+//                    }
+//                }
+//            }
+//        }
         
+    }
+    
+    func getBucketItem(key: String, location: CLLocation){
+        DataService.instance.bucketListRef.document(key).getDocument(completion: { (snapshot, error) in
+            guard error == nil else{
+                print("error getting document", error)
+                return
+            }
+            if let snapshot = snapshot, let data = snapshot.data(){
+                self.makeAnnotation(data: data, location: location)
+            }
+        })
+    }
+    
+    func makeAnnotation(data: [String: Any], location: CLLocation ){
+        let newPin = BucketMKPointAnnotation()
+        let bucketItem = BucketItem.init(dict: data)
+        newPin.bucketItem = bucketItem
+        
+        newPin.coordinate = location.coordinate
+        if let title = bucketItem.title{
+            newPin.title = title
+        }
+        if let subtitle = bucketItem.addressPrimary{
+            newPin.subtitle = subtitle
+        }
+        self.mapView.addAnnotation(newPin)
         
     }
 }
@@ -67,20 +115,53 @@ extension MapItemsVC: MKMapViewDelegate{
         if annotation is MKUserLocation{
             return nil
         }
-        let reusePin = "Pin"
-        let pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reusePin) as? MKPinAnnotationView
-        pinView?.pinTintColor = UIColor.orange
-        return pinView
+        let reusePin = "pin"
+        
+        let pinView: MKMarkerAnnotationView!
+        if let pin = mapView.dequeueReusableAnnotationView(withIdentifier: reusePin) as? MKMarkerAnnotationView{
+            pinView = pin
+        } else{
+            pinView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: reusePin)
+        }
+        
+        pinView?.markerTintColor = UIColor.green
+        pinView?.canShowCallout = true
+        
+        let smallSquare = CGSize(width: 30, height: 30)
+        let button = UIButton(frame: CGRect(origin: CGPoint.zero, size: smallSquare))
+        button.setImage(#imageLiteral(resourceName: "diver"), for: .normal)
+        //button.addTarget(self, action: #selector(AnnotationMapVC.annotationBtnTapped(_:)), for: .touchUpInside)
+        button.imageView?.contentMode = .scaleAspectFit
+        button.tag = 1//currentBtnTag
+        pinView?.tag = 2// currentBtnTag
+        
+        //self.dictEnterTagForEventKey[currentBtnTag] = myEvent!.key
+        //currentBtnTag = currentBtnTag + 1
+        let yellowView = UIView(frame: CGRect.init(x: 0, y: 0, width: 30, height: 30))
+        view.backgroundColor = UIColor.yellow
+        pinView?.detailCalloutAccessoryView = yellowView
+        pinView?.leftCalloutAccessoryView = button
+        
+        print("left callout0 - ")
+
+        if let pin = pinView{
+            
+            return pin
+        }
+        return nil
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        getGeoHash(region: mapView.region)
-        
+        if mapView.region.isRegionValid(){
+            getGeoHash(region: mapView.region)
+        }
     }
     
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-        userLocation.coordinate
+        
     }
+    
+    
 }
 
 extension MapItemsVC: CLLocationManagerDelegate{
