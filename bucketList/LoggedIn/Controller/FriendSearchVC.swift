@@ -24,12 +24,69 @@ class FriendSearchVC: UIViewController {
     @IBOutlet weak var tfSearch: UITextField!
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var searchView: UIView!
+    
     var users = [User]()
+    var lastDoc: DocumentSnapshot?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        findFriends()
+        searchView.isHidden = true
+    }
+    
+    @IBAction func friendsBtnPress(_ sender: AnyObject){
+        searchView.isHidden = true
+    }
+    
+    @IBAction func findFriendsBtnPress(_ sender: AnyObject){
+        searchView.isHidden = false
+    }
+    
+    @IBAction func friendRequestBtnPress(_ sender: AnyObject){
+        searchView.isHidden = true
+    }
+    
+    func findFriends(){
+        print("find friends1")
+        let query = DataService.instance.currentUserFriends.whereField("status", isEqualTo: "friends")
+        query.addSnapshotListener { (snapshot, error) in
+            print("find friends2")
+            guard error == nil else{
+                print("error finding friends", error)
+                return
+            }
+            print("find friends3")
+            GetData.instance.retrieve(collection: DataService.instance.currentUserFriends, lastDoc: self.lastDoc, onComplete: { (items, lastDoc) in
+                self.lastDoc = lastDoc
+                print("find friends4", items)
+                for item in items{
+                    print("the items", item)
+                    if let dict = item as? Dictionary<String, AnyObject>{
+                        if let uid = dict["uid"] as? String{
+                            let user = User(data: dict, uid: uid)
+                            self.users.append(user)
+                        }
+                    }
+                }
+                self.tableView.reloadData()
+            })
+
+            
+//            GetData.instance.retrieve(collection: DataService.instance.currentUserFriends, onComplete: { (<#[BucketItem]#>) in
+//                <#code#>
+//            })
+//            if let snapshot = snapshot{
+//                for snap in snapshot..
+//
+//                }
+//            }
+        }
     }
     
     @IBAction func searchBtnPress(_ sender: AnyObject){

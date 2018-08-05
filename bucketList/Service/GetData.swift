@@ -16,45 +16,46 @@ class GetData{
         return _instance
     }
     
-    var lastDoc: DocumentSnapshot?
+    
     var limit = 10
     
     
-    typealias Completion = (_ items: [BucketItem]) -> Void
-    func retrieve(onComplete: @escaping Completion){
+    typealias Completion = (_ items: [Any], _ lastDoc: DocumentSnapshot?) -> Void
+    func retrieve(collection: CollectionReference, lastDoc: DocumentSnapshot?, onComplete: @escaping Completion){
         if let doc = lastDoc{
-            Firestore.firestore().collection("BucketList").start(afterDocument: doc).limit(to: limit).getDocuments { (snapshot, error) in
+            collection.start(afterDocument: doc).limit(to: limit).getDocuments { (snapshot, error) in
                 guard error == nil else{
-                    print("retrieve snapshot error", error!)
+                    print("retrieve snapshot error1", error!)
                     return
                 }
-                let bucket = self.getBucket(snapshot: snapshot)
-                onComplete(bucket)
+                let bucketInfo = self.getBucket(snapshot: snapshot)
+                onComplete(bucketInfo.data, bucketInfo.lastDoc)
             }
             
         } else{
-            Firestore.firestore().collection("BucketList").limit(to: 10).getDocuments { (snapshot, error) in
+            collection.limit(to: 10).getDocuments { (snapshot, error) in
                 guard error == nil else{
-                    print("retrieve snapshot error", error!)
+                    print("retrieve snapshot error2", error!)
                     return
                 }
-                let bucket = self.getBucket(snapshot: snapshot)
-                onComplete(bucket)
+                let bucketInfo = self.getBucket(snapshot: snapshot)
+                onComplete(bucketInfo.data, bucketInfo.lastDoc)
             }
         }
     }
     
 
-    private func getBucket(snapshot: QuerySnapshot?)->[BucketItem]{
-        var bucketItems = [BucketItem]()
+    private func getBucket(snapshot: QuerySnapshot?)->(data: [Any], lastDoc: DocumentSnapshot?){
+        var bucketItems = [Any]()
+        var lastDoc: DocumentSnapshot?
         if let snapshot = snapshot{
             for item in snapshot.documents{
-                let bucketItem = BucketItem(dict: item.data())
-                bucketItems.append(bucketItem)
-                self.lastDoc = item
+                //let bucketItem = BucketItem(dict: item.data())
+                bucketItems.append(item.data())
+                lastDoc = item
             }
         }
-        return bucketItems
+        return (bucketItems, lastDoc)
     }
 
 }

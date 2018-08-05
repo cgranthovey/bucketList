@@ -8,6 +8,8 @@
 
 import UIKit
 import FirebaseAuth
+import SDWebImage
+
 
 protocol FriendSearchTblCellDelegate {
     func requestBtnPress(user: User)
@@ -29,8 +31,6 @@ class FriendSearchTblCell: UITableViewCell {
     }
     
     func configure(user: User){
-        print("users name!", user.fname)
-        print("users id!", user.uid)
         btnRequest.isHidden = false
         lblCurrentUser.isHidden = true
         if let currentUser = Auth.auth().currentUser, let selectedUserID = user.uid{
@@ -38,6 +38,11 @@ class FriendSearchTblCell: UITableViewCell {
                 btnRequest.isHidden = true
                 lblCurrentUser.isHidden = false
             }
+        }
+        
+        if let img = user.profileURL{
+            let url = URL(string: img)
+            imgProfile.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "profile"), options: [], completed: nil)
         }
         
         lblName.text = user.fullName
