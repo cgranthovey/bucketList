@@ -33,8 +33,6 @@ class DataService{
     }
     
     var currentUserDoc: DocumentReference{
-        print("currentUserDoc", CurrentUser.instance.user)
-        print("currentUserDoc2", CurrentUser.instance.user.uid)
         return Firestore.firestore().collection("users").document(CurrentUser.instance.user.uid)
     }
     var currentUserFriends: CollectionReference{

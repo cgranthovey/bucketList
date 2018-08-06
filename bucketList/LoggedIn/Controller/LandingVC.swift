@@ -42,7 +42,6 @@ class LandingVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("LandingVC viewWillAppear")
     }
     
 

@@ -50,7 +50,7 @@ class FriendSearchTblCell: UITableViewCell {
     }
     
     @IBAction func requestBtnPress(_ sender: AnyObject){
-        print("requestBtnPress1")
+
         if let user = user{
             delegate.requestBtnPress(user: user)
         }

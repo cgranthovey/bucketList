@@ -77,7 +77,7 @@ class CreateAccountVC: UIViewController {
                         return
                     }
                     let storboardMain = UIStoryboard(name: "Main", bundle: nil)
-                    if let vc = storboardMain.instantiateViewController(withIdentifier: "LandingVC") as? LandingVC{
+                    if let vc = storboardMain.instantiateViewController(withIdentifier: "UITabBarController") as? UITabBarController{
                         self.present(vc, animated: true, completion: {
                             self.view.removeBluerLoader(completionHandler: nil)
                         })

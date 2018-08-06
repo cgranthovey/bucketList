@@ -28,13 +28,10 @@ class CurrentUser{
                     onComplete(false)
                     return
                 }
-                print("why nothing? ", snapshot?.data())
                 if let snapshot = snapshot, let data = snapshot.data(){
                     self.user = User.init(data: data, uid: snapshot.documentID)
-                    print("the user is - ", self.user)
                     onComplete(true)
                 } else{
-                    print("the user is false - ", self.user)
                     onComplete(false)
                 }
             }

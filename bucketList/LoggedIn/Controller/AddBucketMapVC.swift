@@ -57,8 +57,6 @@ class AddBucketMapVC: UIViewController {
                 NewBucketItem.instance.item.addressSeconary = secondary
             }
             
-            print("lat---", lat)
-            print("long--- ", long)
             NewBucketItem.instance.item.pinLat = lat
             NewBucketItem.instance.item.pinLong = long
             self.navigationController?.popViewController(animated: true)
@@ -110,7 +108,6 @@ class AddBucketMapVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         let addressFull = NewBucketItem.instance.item.addressFull()
-            print("setUpMap3", addressFull)
             searchBar.text = addressFull
         
     }
@@ -123,9 +120,7 @@ class AddBucketMapVC: UIViewController {
             mapView.setRegion(region, animated: true)
             showingSearchedPin = true
             addAnnotations(coord: coordinate2D, addressPrimary: primary)
-            print("setUpMap1")
             if let addressFull = NewBucketItem.instance.item.addressFull(){
-                print("setUpMap2", addressFull)
                 searchBar.text = addressFull
             }
         }

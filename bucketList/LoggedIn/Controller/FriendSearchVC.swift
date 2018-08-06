@@ -53,20 +53,15 @@ class FriendSearchVC: UIViewController {
     }
     
     func findFriends(){
-        print("find friends1")
         let query = DataService.instance.currentUserFriends.whereField("status", isEqualTo: "friends")
         query.addSnapshotListener { (snapshot, error) in
-            print("find friends2")
             guard error == nil else{
                 print("error finding friends", error)
                 return
             }
-            print("find friends3")
             GetData.instance.retrieve(collection: DataService.instance.currentUserFriends, lastDoc: self.lastDoc, onComplete: { (items, lastDoc) in
                 self.lastDoc = lastDoc
-                print("find friends4", items)
                 for item in items{
-                    print("the items", item)
                     if let dict = item as? Dictionary<String, AnyObject>{
                         if let uid = dict["uid"] as? String{
                             let user = User(data: dict, uid: uid)
@@ -140,24 +135,18 @@ extension FriendSearchVC: UITableViewDelegate, UITableViewDataSource{
 
 extension FriendSearchVC: FriendSearchTblCellDelegate {
     func requestBtnPress(user: User){
-        print("request Btn Press", user)
         
         var batch = Firestore.firestore().batch()
-        print("raq1")
         var currentUserRef = DataService.instance.currentUserDoc.collection("friends").document()
         var data = user.friendRequestInfo()
         data["created"] = FieldValue.serverTimestamp()
         data["status"] = FriendStatus.requestSent.rawValue
-        print("raq2")
         batch.setData(data, forDocument: currentUserRef)
-        print("raq3")
         var userRef = DataService.instance.usersRef.document(user.uid).collection("friends").document()
         var dataOtherUser = CurrentUser.instance.user.friendRequestInfo()
         dataOtherUser["created"] = FieldValue.serverTimestamp()
         dataOtherUser["status"] = FriendStatus.requestReceived.rawValue
-        print("raq4")
         batch.setData(dataOtherUser, forDocument: userRef)
-        print("raq5")
         batch.commit { (error) in
             guard error == nil else{
                 print("batch friend request error")

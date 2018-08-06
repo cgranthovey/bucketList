@@ -25,6 +25,10 @@ class LoginVC: UIViewController {
         email.delegate = self
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        self.view.removeBluerLoader(completionHandler: nil)
+    }
+    
     @IBAction func loginBtnPress(_ sender: AnyObject){
         guard !requiredFields.containsIncompleteField() else{
             self.okAlert(title: "Error", message: "Please enter all required fields.")
@@ -49,10 +53,10 @@ class LoginVC: UIViewController {
             }
 
             let storboardMain = UIStoryboard(name: "Main", bundle: nil)
-            if let vc = storboardMain.instantiateViewController(withIdentifier: "LandingVC") as? LandingVC{
-                self.present(vc, animated: true, completion: {
-                    self.view.removeBluerLoader(completionHandler: nil)
-                })
+            
+            if let vc = storboardMain.instantiateViewController(withIdentifier: "UITabBarController") as? UITabBarController{
+                self.navigationController?.pushViewController(vc, animated: true)
+
             }
         }
     }

@@ -141,8 +141,6 @@ extension MapItemsVC: MKMapViewDelegate{
         view.backgroundColor = UIColor.yellow
         pinView?.detailCalloutAccessoryView = yellowView
         pinView?.leftCalloutAccessoryView = button
-        
-        print("left callout0 - ")
 
         if let pin = pinView{
             
