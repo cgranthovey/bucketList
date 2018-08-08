@@ -40,5 +40,12 @@ class DataService{
     }
     
     
+    //var storageProfile:
+    let storage = Storage.storage()
+    func storageUserRef() -> StorageReference{
+        return storage.reference().child(CurrentUser.instance.user.uid)
+    }
+    
+
 
 }

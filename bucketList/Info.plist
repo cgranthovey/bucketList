@@ -45,5 +45,13 @@
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Location used to set and find items on your bucket list.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Camera needed to take images in app.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Needed to add images to your bucket list.</string>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Needed for bucket list.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Needed to add images to your bucket list.</string>
 </dict>
 </plist>

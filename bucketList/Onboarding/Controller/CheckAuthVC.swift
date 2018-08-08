@@ -19,7 +19,7 @@ class CheckAuthVC: UIViewController {
         super.viewDidLoad()
         if Auth.auth().currentUser != nil{
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            if let vc = storyboard.instantiateViewController(withIdentifier: "UITabBarController") as? UITabBarController{
+            if let vc = storyboard.instantiateViewController(withIdentifier: "UITabBarController") as? MainTBC{
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         } else{

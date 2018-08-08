@@ -10,6 +10,7 @@ target 'bucketList' do
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
 pod 'Firebase/Firestore'
+pod 'Firebase/Storage'
 pod 'Firebase', '~> 5.4'
 pod 'Geofirestore'
 pod 'SDWebImage', '~> 4.0'
