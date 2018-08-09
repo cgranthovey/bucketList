@@ -12,6 +12,8 @@ enum AuthSubmitType{
     case login
     case createAccount
     case forgotPassword
+    case updatingPassword
+    case updatingEmail
 }
 
 extension Error{
@@ -26,7 +28,12 @@ extension Error{
         case "There is no user record corresponding to this identifier. The user may have been deleted.":
             return "A user with this email could not be found."
         case "The password is invalid or the user does not have a password.":
-            return "Invalid password."
+            if submitType == .updatingPassword{
+                return "Current password is invalid."
+            } else{
+                return "Invalid password."
+            }
+            
             
         default:
             if submitType == .createAccount{
@@ -35,6 +42,8 @@ extension Error{
                 return "Error sending password reset."
             } else if submitType == .login{
                 return "Error logging in."
+            } else if submitType == .updatingPassword{
+                return "Error Resetting Password"
             }
             return "Error occurred."
         }

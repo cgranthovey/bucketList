@@ -36,6 +36,10 @@ class UpdateProfileVC: UIViewController {
         imgViewTapped()
     }
     
+    @IBAction func backBtnPress(_ sender: AnyObject){
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     func setUpUI(){
         imgView.layer.cornerRadius = imgView.frame.width / 2
         imgView.clipsToBounds = true

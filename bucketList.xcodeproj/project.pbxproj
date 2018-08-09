@@ -54,6 +54,8 @@
 		15C37E8F21050AE400ED0503 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C37E8E21050AE400ED0503 /* User.swift */; };
 		15C37E9121050C1B00ED0503 /* FriendSearchTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C37E9021050C1B00ED0503 /* FriendSearchTblCell.swift */; };
 		15C5664B211AA9BB001F5F6C /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C5664A211AA9BB001F5F6C /* Image.swift */; };
+		15C5664D211BDEF7001F5F6C /* UpdatePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C5664C211BDEF7001F5F6C /* UpdatePasswordVC.swift */; };
+		15C5664F211BFB46001F5F6C /* UpdateEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C5664E211BFB46001F5F6C /* UpdateEmailVC.swift */; };
 		15C6633420F18D6B00C7DF5E /* VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C6633320F18D6B00C7DF5E /* VC.swift */; };
 		15C6633620F19CA300C7DF5E /* PasswordResetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C6633520F19CA300C7DF5E /* PasswordResetVC.swift */; };
 		15C6633820F44BB800C7DF5E /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C6633720F44BB800C7DF5E /* TextField.swift */; };
@@ -135,6 +137,8 @@
 		15C37E8E21050AE400ED0503 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		15C37E9021050C1B00ED0503 /* FriendSearchTblCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSearchTblCell.swift; sourceTree = "<group>"; };
 		15C5664A211AA9BB001F5F6C /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		15C5664C211BDEF7001F5F6C /* UpdatePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordVC.swift; sourceTree = "<group>"; };
+		15C5664E211BFB46001F5F6C /* UpdateEmailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateEmailVC.swift; sourceTree = "<group>"; };
 		15C6633320F18D6B00C7DF5E /* VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.swift; sourceTree = "<group>"; };
 		15C6633520F19CA300C7DF5E /* PasswordResetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetVC.swift; sourceTree = "<group>"; };
 		15C6633720F44BB800C7DF5E /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
@@ -358,6 +362,8 @@
 				1529D4302117FADB00AC4829 /* SettingsTVC.swift */,
 				152C89FB211931600032A581 /* UpdateNameVC.swift */,
 				152C89FD211936880032A581 /* UpdateProfileVC.swift */,
+				15C5664C211BDEF7001F5F6C /* UpdatePasswordVC.swift */,
+				15C5664E211BFB46001F5F6C /* UpdateEmailVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -644,10 +650,12 @@
 				15BCDB0C20E47B9A00E1B6A9 /* ViewController.swift in Sources */,
 				1510B7EA21015AC0009FBCEC /* Button.swift in Sources */,
 				152C89FC211931600032A581 /* UpdateNameVC.swift in Sources */,
+				15C5664D211BDEF7001F5F6C /* UpdatePasswordVC.swift in Sources */,
 				1510B7EF2101670F009FBCEC /* GetData.swift in Sources */,
 				1507CA2720F6F9E000704426 /* CheckAuthVC.swift in Sources */,
 				15BCDB5220E994DA00E1B6A9 /* String.swift in Sources */,
 				15C6633420F18D6B00C7DF5E /* VC.swift in Sources */,
+				15C5664F211BFB46001F5F6C /* UpdateEmailVC.swift in Sources */,
 				15C37E8F21050AE400ED0503 /* User.swift in Sources */,
 				15C6633620F19CA300C7DF5E /* PasswordResetVC.swift in Sources */,
 				1507CA2120F6E9C800704426 /* BucketItem.swift in Sources */,

@@ -30,6 +30,10 @@ class UpdateNameVC: UIViewController {
         
     }
     
+    @IBAction func backBtnPress(_ sender: AnyObject){
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func updateInfoPress(_ sender: AnyObject){
         let tfs: [UITextField] = [tfFName, tfLName]
         guard !tfs.containsIncompleteField() else{

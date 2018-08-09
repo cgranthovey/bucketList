@@ -12,9 +12,8 @@ class MainTBC: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let settingsStoryboard = UIStoryboard(name: "Settings", bundle: nil)
-        if let vc = settingsStoryboard.instantiateViewController(withIdentifier: "SettingsNav") as? UINavigationController{
+        if let vc = settingsStoryboard.instantiateViewController(withIdentifier: "SettingsTVC") as? SettingsTVC{
             let profileItem = UITabBarItem(title: "Settings", image: #imageLiteral(resourceName: "settings"), selectedImage: #imageLiteral(resourceName: "settings"))
             vc.tabBarItem = profileItem
             self.viewControllers?.append(vc)
@@ -22,7 +21,9 @@ class MainTBC: UITabBarController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.isNavigationBarHidden = true
+        
+        
+
     }
 
 }
