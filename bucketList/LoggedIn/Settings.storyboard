@@ -49,7 +49,6 @@
                                                 <constraint firstItem="oat-h3-TB4" firstAttribute="centerY" secondItem="8Pr-S7-oBq" secondAttribute="centerY" id="fLH-wJ-RmX"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.14637122690000001" green="0.69176088280000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <segue destination="Lko-dS-IUd" kind="show" id="S5h-fY-9QF"/>
                                         </connections>
@@ -86,7 +85,7 @@
                                             <segue destination="hqd-5j-BhG" kind="show" id="jzw-QW-p2Q"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="UNQ-0t-j8m">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="logOut" id="UNQ-0t-j8m">
                                         <rect key="frame" x="0.0" y="128" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UNQ-0t-j8m" id="Clo-wE-fVs">
@@ -163,6 +162,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sqL-8b-mUD">
                                 <rect key="frame" x="146.5" y="319" width="81" height="30"/>
                                 <state key="normal" title="Update Info"/>
+                                <connections>
+                                    <action selector="updateInfoPress:" destination="Lko-dS-IUd" eventType="touchUpInside" id="RcP-8f-dtE"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -175,10 +177,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jJh-cW-68M"/>
                     </view>
+                    <connections>
+                        <outlet property="tfFName" destination="oXn-Do-zF4" id="erw-hF-dG4"/>
+                        <outlet property="tfLName" destination="asR-ee-26b" id="lCT-ZW-Bqs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b81-YZ-M6I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2276" y="2087.4062968515746"/>
+            <point key="canvasLocation" x="2276" y="1630"/>
         </scene>
         <!--Update Profile-->
         <scene sceneID="6YI-II-kB1">
@@ -198,6 +204,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aFc-DB-GnE">
                                 <rect key="frame" x="257" y="344" width="30" height="30"/>
                                 <state key="normal" title="Edit"/>
+                                <connections>
+                                    <action selector="editBtnPress:" destination="hqd-5j-BhG" eventType="touchUpInside" id="SBL-Rr-e5o"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -215,7 +224,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HV2-0g-OFL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2276" y="2779.1604197901052"/>
+            <point key="canvasLocation" x="2276" y="2300"/>
         </scene>
         <!--Settings-->
         <scene sceneID="0ZQ-hP-I5n">

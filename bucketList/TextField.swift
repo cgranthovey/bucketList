@@ -34,4 +34,9 @@ extension Array where Element: UITextField {
         }
         return isIncomplete
     }
+    func clearError(){
+        for item in self{
+            item.layer.borderWidth = 0
+        }
+    }
 }

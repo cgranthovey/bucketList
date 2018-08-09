@@ -39,13 +39,17 @@ class UpdateProfileVC: UIViewController {
     func setUpUI(){
         imgView.layer.cornerRadius = imgView.frame.width / 2
         imgView.clipsToBounds = true
-        
+        print("setUpUI0")
         if let profileUrl = CurrentUser.instance.user.profileURL{
-            let url = URL(string: profileUrl)
-
-            imgView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "profile"), options: .progressiveDownload) { (img, err, cache, url) in
-                
+            print("setUpUI1")
+            if let url = URL(string: profileUrl){
+                print("setUpUI2 \(url)")
+                imgView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "profile"), options: .progressiveDownload) { (img, err, cache, url) in
+                    print("setUpUI3")
+                    
+                }
             }
+
         }
         
         
@@ -113,7 +117,7 @@ class UpdateProfileVC: UIViewController {
     }
     
     func uploadImg(img: UIImage){
-        let userRef = DataService.instance.storageUserRef()
+        let userStorageRef = DataService.instance.storageUserRef()
         print("uploadImg1")
         
         let img = img.resized(toWidth: 600)
@@ -123,7 +127,9 @@ class UpdateProfileVC: UIViewController {
         
         if let data = UIImagePNGRepresentation(img!){
         print("uploadImg2")
-            let uploadTask = userRef.putData(data, metadata: nil) { (meta, error) in
+            let timeInterval = Date().timeIntervalSince1970
+            let profileRef = userStorageRef.child("profiles").child("profile_\(timeInterval).png")
+            let uploadTask = profileRef.putData(data, metadata: nil) { (meta, error) in
                 guard error == nil else{
                     print("error uploading image -", error)
                     return
@@ -135,10 +141,10 @@ class UpdateProfileVC: UIViewController {
                 }
                 
                 print("uploadImg5")
-                userRef.downloadURL(completion: { (url, error) in
-                    print("uploadImg6")
+                profileRef.downloadURL(completion: { (url, error) in
+                    print("uploadImg6 \(url)")
                     guard error == nil else{
-                        print("uploadImg7")
+                        print("uploadImg7 \(error)")
                         return
                     }
                     
@@ -147,7 +153,6 @@ class UpdateProfileVC: UIViewController {
                         DataService.instance.currentUserDoc.updateData(["profileURL":url.absoluteString])
                     }
                 })
-                
             }
             
             uploadTask.observe(.progress) { (snapshot) in
