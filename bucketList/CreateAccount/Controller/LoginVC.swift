@@ -38,7 +38,7 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func backBtnPress(_ sender: AnyObject){
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func loginUser(email: String, password: String){

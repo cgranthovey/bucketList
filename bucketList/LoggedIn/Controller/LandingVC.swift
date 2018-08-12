@@ -26,6 +26,7 @@ class LandingVC: UIViewController {
         
         
         CurrentUser.instance.getCurrentUserData { (success) in
+            
         }
         
         GetData.instance.retrieve(collection: DataService.instance.bucketListRef, lastDoc: lastDoc) { (items, lastDoc) in

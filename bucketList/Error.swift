@@ -14,6 +14,7 @@ enum AuthSubmitType{
     case forgotPassword
     case updatingPassword
     case updatingEmail
+    case validatingEmailPassword
 }
 
 extension Error{
@@ -26,7 +27,11 @@ extension Error{
         case "The email address is already in use by another account.":
             return "The email address is already in use by another account."
         case "There is no user record corresponding to this identifier. The user may have been deleted.":
-            return "A user with this email could not be found."
+            if submitType == .validatingEmailPassword{
+                return "The entered current email could not be found."
+            } else{
+                return "A user with this email could not be found."
+            }
         case "The password is invalid or the user does not have a password.":
             if submitType == .updatingPassword{
                 return "Current password is invalid."
@@ -43,7 +48,9 @@ extension Error{
             } else if submitType == .login{
                 return "Error logging in."
             } else if submitType == .updatingPassword{
-                return "Error Resetting Password"
+                return "Error resetting password"
+            } else if submitType == .validatingEmailPassword{
+                return "Error validating current info."
             }
             return "Error occurred."
         }

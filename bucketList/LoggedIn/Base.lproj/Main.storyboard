@@ -210,14 +210,23 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYL-ii-rpo">
                                                 <rect key="frame" x="0.0" y="0.0" width="125" height="55"/>
                                                 <state key="normal" title="Friends"/>
+                                                <connections>
+                                                    <action selector="friendsBtnPress:" destination="2sH-U5-6h2" eventType="touchUpInside" id="icq-qM-rC3"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrH-Z1-Zbf">
                                                 <rect key="frame" x="125" y="0.0" width="125" height="55"/>
                                                 <state key="normal" title="Find Friends"/>
+                                                <connections>
+                                                    <action selector="findFriendsBtnPress:" destination="2sH-U5-6h2" eventType="touchUpInside" id="VKb-K2-bas"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dW4-gg-cFP">
                                                 <rect key="frame" x="250" y="0.0" width="125" height="55"/>
                                                 <state key="normal" title="Requests"/>
+                                                <connections>
+                                                    <action selector="friendRequestBtnPress:" destination="2sH-U5-6h2" eventType="touchUpInside" id="8rV-26-Mza"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -241,7 +250,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wnz-zc-uwn">
                                         <rect key="frame" x="127.5" y="55" width="120" height="45"/>
@@ -344,6 +353,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Friends" image="friends" id="qWm-50-kqy"/>
                     <connections>
+                        <outlet property="btnFind" destination="hrH-Z1-Zbf" id="8Cd-Zk-M4N"/>
+                        <outlet property="btnFriends" destination="dYL-ii-rpo" id="xc5-6U-YbH"/>
+                        <outlet property="btnRequest" destination="dW4-gg-cFP" id="VHM-nw-Clo"/>
                         <outlet property="searchDisplayController" destination="Nc7-lO-3i1" id="myx-UW-Xb4"/>
                         <outlet property="searchView" destination="2ec-Iy-ALA" id="ePh-nJ-V3P"/>
                         <outlet property="tableView" destination="RV9-xE-UXQ" id="waJ-1i-GM3"/>

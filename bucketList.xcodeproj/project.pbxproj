@@ -59,6 +59,7 @@
 		15C6633420F18D6B00C7DF5E /* VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C6633320F18D6B00C7DF5E /* VC.swift */; };
 		15C6633620F19CA300C7DF5E /* PasswordResetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C6633520F19CA300C7DF5E /* PasswordResetVC.swift */; };
 		15C6633820F44BB800C7DF5E /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C6633720F44BB800C7DF5E /* TextField.swift */; };
+		15E41EC8211F998A003AC82F /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E41EC7211F998A003AC82F /* UIColor.swift */; };
 		15ECED7620F6D61400BF42FD /* AddBucketTitleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ECED7520F6D61400BF42FD /* AddBucketTitleVC.swift */; };
 		482BED12B0CAF167AFD22FE1 /* Pods_bucketList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF59627E3CB18DE61EB8A6A1 /* Pods_bucketList.framework */; };
 		C089EE37050654A3C79FACA1 /* Pods_bucketListTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94117F4274025BCBF82DFE4F /* Pods_bucketListTests.framework */; };
@@ -142,6 +143,7 @@
 		15C6633320F18D6B00C7DF5E /* VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.swift; sourceTree = "<group>"; };
 		15C6633520F19CA300C7DF5E /* PasswordResetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetVC.swift; sourceTree = "<group>"; };
 		15C6633720F44BB800C7DF5E /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		15E41EC7211F998A003AC82F /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		15ECED7520F6D61400BF42FD /* AddBucketTitleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBucketTitleVC.swift; sourceTree = "<group>"; };
 		3ABEB8F2F44D4253FA2D33DD /* Pods-bucketListUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bucketListUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-bucketListUITests/Pods-bucketListUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4202367AB43FB23AAD0A654D /* Pods-bucketListTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bucketListTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-bucketListTests/Pods-bucketListTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 				1510B7E921015AC0009FBCEC /* Button.swift */,
 				15C37E88210419F100ED0503 /* MKCoordinateRegion.swift */,
 				15C5664A211AA9BB001F5F6C /* Image.swift */,
+				15E41EC7211F998A003AC82F /* UIColor.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -629,6 +632,7 @@
 				15BCDB4120E482E200E1B6A9 /* OnboardingPageVC.swift in Sources */,
 				1529D42D2117CD8800AC4829 /* ProfileVC.swift in Sources */,
 				1576E40720F96E220067341D /* MKPlacemark.swift in Sources */,
+				15E41EC8211F998A003AC82F /* UIColor.swift in Sources */,
 				15BCDB4320E5BF9500E1B6A9 /* OnboardingImgVC.swift in Sources */,
 				15BCDB4D20E728BA00E1B6A9 /* LoginVC.swift in Sources */,
 				1507CA2520F6ED1E00704426 /* AddBucketDetailsVC.swift in Sources */,

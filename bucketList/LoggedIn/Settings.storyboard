@@ -325,7 +325,7 @@
                                             <constraint firstAttribute="height" constant="40" id="de1-kc-Pj5"/>
                                         </constraints>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qyZ-vZ-2X9">
@@ -334,8 +334,8 @@
                                             <constraint firstAttribute="height" constant="40" id="uEf-cl-X6K"/>
                                         </constraints>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Repeat New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XCV-T7-TGN">
                                         <rect key="frame" x="0.0" y="100" width="335" height="40"/>
@@ -343,8 +343,8 @@
                                             <constraint firstAttribute="height" constant="40" id="kgW-Jg-WLe"/>
                                         </constraints>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                 </subviews>
                             </stackView>
@@ -394,7 +394,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1sY-ah-UhS">
-                                <rect key="frame" x="142" y="150" width="91" height="30"/>
+                                <rect key="frame" x="142" y="245" width="91" height="30"/>
                                 <state key="normal" title="Update Email"/>
                                 <connections>
                                     <action selector="updatePasswordBtnPress:" destination="yCq-Ro-9mV" eventType="touchUpInside" id="pNN-kt-V41"/>
@@ -407,31 +407,56 @@
                                     <action selector="backBtnPress:" destination="yCq-Ro-9mV" eventType="touchUpInside" id="pgy-6e-G99"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wlV-9N-8l3">
-                                <rect key="frame" x="20" y="90" width="335" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="54v-pm-ffC"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ZQs-oa-o2N">
+                                <rect key="frame" x="20" y="85" width="335" height="140"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Current Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PdX-Yn-Ubo">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="JDi-3a-O1R"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Current Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j91-9f-XzU">
+                                        <rect key="frame" x="0.0" y="50" width="335" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="2B5-B0-rCq"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6IB-gn-gyk">
+                                        <rect key="frame" x="0.0" y="100" width="335" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="uZo-iW-OoI"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="1sY-ah-UhS" firstAttribute="centerX" secondItem="j0t-wJ-RDx" secondAttribute="centerX" id="6gW-sD-zNw"/>
-                            <constraint firstItem="nqj-E7-SyP" firstAttribute="trailing" secondItem="wlV-9N-8l3" secondAttribute="trailing" constant="20" id="974-Tm-R1t"/>
-                            <constraint firstItem="1sY-ah-UhS" firstAttribute="top" secondItem="wlV-9N-8l3" secondAttribute="bottom" constant="20" id="Loq-Yf-Pfl"/>
                             <constraint firstItem="9yx-7j-Vef" firstAttribute="leading" secondItem="nqj-E7-SyP" secondAttribute="leading" constant="20" id="M2U-Jh-Few"/>
                             <constraint firstItem="1sY-ah-UhS" firstAttribute="centerX" secondItem="j0t-wJ-RDx" secondAttribute="centerX" id="Ng9-id-jyE"/>
-                            <constraint firstItem="wlV-9N-8l3" firstAttribute="leading" secondItem="nqj-E7-SyP" secondAttribute="leading" constant="20" id="lam-hm-L1t"/>
-                            <constraint firstItem="wlV-9N-8l3" firstAttribute="top" secondItem="9yx-7j-Vef" secondAttribute="bottom" constant="20" id="mjf-Vw-aqa"/>
+                            <constraint firstItem="ZQs-oa-o2N" firstAttribute="top" secondItem="nqj-E7-SyP" secondAttribute="top" constant="65" id="kX6-ca-Dv8"/>
                             <constraint firstItem="9yx-7j-Vef" firstAttribute="top" secondItem="nqj-E7-SyP" secondAttribute="top" constant="20" id="peW-0D-Ag2"/>
+                            <constraint firstItem="1sY-ah-UhS" firstAttribute="top" secondItem="ZQs-oa-o2N" secondAttribute="bottom" constant="20" id="t8e-Cn-ELg"/>
+                            <constraint firstItem="ZQs-oa-o2N" firstAttribute="leading" secondItem="nqj-E7-SyP" secondAttribute="leading" constant="20" id="tlR-FA-di6"/>
+                            <constraint firstItem="nqj-E7-SyP" firstAttribute="trailing" secondItem="ZQs-oa-o2N" secondAttribute="trailing" constant="20" id="yvX-BT-P6e"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nqj-E7-SyP"/>
                     </view>
                     <connections>
-                        <outlet property="tfPassword" destination="wlV-9N-8l3" id="dhD-Wz-f7u"/>
+                        <outlet property="tfCurrentEmail" destination="PdX-Yn-Ubo" id="3GW-sN-A3m"/>
+                        <outlet property="tfCurrentPassword" destination="j91-9f-XzU" id="iQG-g7-DrG"/>
+                        <outlet property="tfNewEmail" destination="6IB-gn-gyk" id="a4N-Pg-wAm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tz0-DF-Trl" userLabel="First Responder" sceneMemberID="firstResponder"/>

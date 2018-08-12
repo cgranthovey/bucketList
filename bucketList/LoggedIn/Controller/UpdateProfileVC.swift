@@ -43,19 +43,12 @@ class UpdateProfileVC: UIViewController {
     func setUpUI(){
         imgView.layer.cornerRadius = imgView.frame.width / 2
         imgView.clipsToBounds = true
-        print("setUpUI0")
         if let profileUrl = CurrentUser.instance.user.profileURL{
-            print("setUpUI1")
             if let url = URL(string: profileUrl){
-                print("setUpUI2 \(url)")
                 imgView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "profile"), options: .progressiveDownload) { (img, err, cache, url) in
-                    print("setUpUI3")
-                    
                 }
             }
-
         }
-        
         
         checkPermission()
     }
@@ -122,38 +115,31 @@ class UpdateProfileVC: UIViewController {
     
     func uploadImg(img: UIImage){
         let userStorageRef = DataService.instance.storageUserRef()
-        print("uploadImg1")
-        
+        uploadThumb(img: img)
         let img = img.resized(toWidth: 600)
         guard img != nil else{
             return
         }
         
         if let data = UIImagePNGRepresentation(img!){
-        print("uploadImg2")
             let timeInterval = Date().timeIntervalSince1970
             let profileRef = userStorageRef.child("profiles").child("profile_\(timeInterval).png")
-            let uploadTask = profileRef.putData(data, metadata: nil) { (meta, error) in
+            let myMeta = StorageMetadata(dictionary: ["contentType": "image/"])
+            let uploadTask = profileRef.putData(data, metadata: myMeta) { (meta, error) in
                 guard error == nil else{
                     print("error uploading image -", error)
                     return
                 }
-                print("uploadImg3")
                 guard meta != nil else{
-                    print("uploadImg4")
                     return
                 }
-                
-                print("uploadImg5")
                 profileRef.downloadURL(completion: { (url, error) in
-                    print("uploadImg6 \(url)")
                     guard error == nil else{
                         print("uploadImg7 \(error)")
                         return
                     }
                     
                     if let url = url{
-                        print("uploadImg8")
                         DataService.instance.currentUserDoc.updateData(["profileURL":url.absoluteString])
                     }
                 })
@@ -174,8 +160,41 @@ class UpdateProfileVC: UIViewController {
                 print("upload complete!")
             }
         }
+    }
+    
+    func uploadThumb(img: UIImage){
+        let userStorageRef = DataService.instance.storageUserRef()
+
+        let img = img.resized(toWidth: 200)
+        guard img != nil else{
+            return
+        }
         
-        
+        if let data = UIImagePNGRepresentation(img!){
+            let timeInterval = Date().timeIntervalSince1970
+            let profileRef = userStorageRef.child("profiles").child("thumb_profile_\(timeInterval).png")
+            let myMeta = StorageMetadata(dictionary: ["contentType": "image/"])
+            
+            _ = profileRef.putData(data, metadata: myMeta) { (meta, error) in
+                guard error == nil else{
+                    print("error uploading image -", error!)
+                    return
+                }
+                guard meta != nil else{
+                    return
+                }
+                profileRef.downloadURL(completion: { (url, error) in
+                    guard error == nil else{
+                        print("uploadImg7 \(error)")
+                        return
+                    }
+                    
+                    if let url = url{
+                        DataService.instance.currentUserDoc.updateData(["thumbProfileURL":url.absoluteString])
+                    }
+                })
+            }
+        }
     }
 
 }

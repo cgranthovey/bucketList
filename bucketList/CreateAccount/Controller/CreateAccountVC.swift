@@ -58,8 +58,10 @@ class CreateAccountVC: UIViewController {
     
     func signUpUser(email: String, password: String, name: String){
         self.view.showBlurLoader()
+        print("signUpUser0")
         Auth.auth().createUser(withEmail: email, password: password) { (user, err) in
-            guard err == nil else{
+            guard err == nil && user != nil else{
+                print("signUpUser0.4",err)
                 self.view.removeBluerLoader(completionHandler: {
                     self.okAlert(title: "Error", message: err!.customAuthError(submitType: AuthSubmitType.createAccount))
                 })
@@ -67,7 +69,10 @@ class CreateAccountVC: UIViewController {
             }
 
             let usersRef = DataService.instance.usersRef
-            var _ = usersRef.addDocument(data: [
+            
+            print("signUpUser1", user!.user.uid)
+            
+            var _ = usersRef.document(user!.user.uid).setData([
                 "email": email,
                 "fname": name,
                 "created": FieldValue.serverTimestamp()
