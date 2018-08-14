@@ -39,15 +39,34 @@ class FriendSearchVC: UIViewController {
         
         btnFriends.backgroundColor = UIColor.orange
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(imgViewTapped(sender:)))
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(imgViewTapped(sender:)))
+//        
+//        self.view.isUserInteractionEnabled = true
+//        self.view.addGestureRecognizer(tap)
         
-        self.view.isUserInteractionEnabled = true
-        self.view.addGestureRecognizer(tap)
+        setUpMenuBar()
     }
 //    let tap = UITapGestureRecognizer(target: self, action: #selector(imgViewTapped(sender:)))
 
-    @objc func imgViewTapped(sender: UITapGestureRecognizer? = nil){
-        self.view.endEditing(true)
+//    @objc func imgViewTapped(sender: UITapGestureRecognizer? = nil){
+//        self.view.endEditing(true)
+//    }
+    
+    var menuBar: MenuBar = {
+        let mb = MenuBar()
+        return mb
+    }()
+    
+    private func setUpMenuBar(){
+
+        view.addSubview(menuBar)
+        menuBar.translatesAutoresizingMaskIntoConstraints = false
+        let constraint1 = NSLayoutConstraint(item: menuBar, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1, constant: 0)
+        let constraint2 = NSLayoutConstraint(item: menuBar, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1, constant: 0)
+        let topConstraint = NSLayoutConstraint(item: menuBar, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 0)
+        let heightConstraint = NSLayoutConstraint(item: menuBar, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 100)
+        view.addConstraints([constraint1, constraint2, topConstraint, heightConstraint])
+
     }
     
     
