@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class MenuBar: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     
@@ -25,7 +26,7 @@ class MenuBar: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UIC
     let cellId = "cellId"
     let images = [#imageLiteral(resourceName: "friendsWhite"), #imageLiteral(resourceName: "magnifier"), #imageLiteral(resourceName: "add-friend")]
     var leftLayoutConstraint: NSLayoutConstraint?
-    
+    var homeController: FriendSearchVC?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,11 +41,6 @@ class MenuBar: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UIC
         let topConstraint = NSLayoutConstraint(item: collectionView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0)
         let bottomConstraint = NSLayoutConstraint(item: collectionView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0)
         self.addConstraints([leadingConstraint, trailingConstraint, topConstraint, bottomConstraint])
-        
-        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (timer) in
-            let selectedRow = IndexPath(row: 0, section: 0)
-            self.collectionView.selectItem(at: selectedRow, animated: false, scrollPosition: .left)
-        }
         
         setupHorizontalBar()
     }
@@ -81,7 +77,6 @@ class MenuBar: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UIC
             cell.imageView.tintColor = UIColor.gray
             cell.isUserInteractionEnabled = true
             
-//            cell.configure(img: images[indexPath.row])
             return cell
         }
         return UICollectionViewCell()
@@ -97,28 +92,10 @@ class MenuBar: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("did select", indexPath)
         if let cell = collectionView.cellForItem(at: indexPath) as? MenuCell{
-            print("did select inside")
-            cell.imageView.tintColor = UIColor.white
-            
-            let xVal = CGFloat(indexPath.row) * frame.width / CGFloat(images.count)
-            self.leftLayoutConstraint?.constant = xVal
-
-            UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseIn, animations: {
-                self.layoutIfNeeded()
-            }) { (success) in
-            }
+            homeController?.slideCV(index: indexPath.row)
         }
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? MenuCell{
-            cell.imageView.tintColor = UIColor.gray
-        }
-    }
-    
-    
     
 
 }
@@ -131,29 +108,18 @@ class MenuCell: BaseCell {
     }()
     
     
+    override var isSelected: Bool {
+        didSet {
+            imageView.tintColor = isSelected ? UIColor.white : UIColor().rgb(red: 91, green: 14, blue: 13, alpha: 1)
+        }
+    }
     
-//    override var highlighted: Bool{
-//        print("highlighted called")
-//        didSet{
-//            imageView.tintColor = highlighted ? UIColor.brown : UIColor.gray
-//        }
-//    }
-//        override var selected: Bool{
-//            print("highlighted called")
-//            didSet{
-//                imageView.tintColor = highlighted ? UIColor.brown : UIColor.gray
-//            }
-//        }
+    override var isHighlighted: Bool{
+        didSet{
+            imageView.tintColor = isSelected ? UIColor.white : UIColor().rgb(red: 91, green: 14, blue: 13, alpha: 1)
+        }
+    }
     
-    
-    
-    
-//    func configure(img: UIImage){
-//        img.withRenderingMode(.alwaysTemplate)
-//        imageView.image = img
-//
-//        imageView.tintColor = UIColor.darkGray
-//    }
     
     override func setUpViews() {
         super.setUpViews()
