@@ -39,7 +39,7 @@ class FriendSearchVC: UIViewController {
     func setUpCV(){
         cvFriendsHorizontal.delegate = self
         cvFriendsHorizontal.dataSource = self
-        cvFriendsHorizontal.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseID)
+        cvFriendsHorizontal.register(FriendsCell.self, forCellWithReuseIdentifier: reuseID)
         
         cvFriendsHorizontal.isPagingEnabled = true
         
@@ -73,7 +73,7 @@ class FriendSearchVC: UIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
-        findFriends()
+//        findFriends()
 //        searchView.isHidden = true
     }
 
@@ -137,13 +137,15 @@ extension FriendSearchVC: UICollectionViewDelegate, UICollectionViewDataSource, 
         return 3
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let colors: [UIColor] = [UIColor.red, UIColor.purple, UIColor.yellow]
+       // let colors: [UIColor] = [UIColor.red, UIColor.purple, UIColor.yellow]
         
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseID, for: indexPath) as? UICollectionViewCell{
-            cell.backgroundColor = colors[indexPath.row]
-            
-            
-            
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseID, for: indexPath) as? FriendsCell{
+         //   cell.backgroundColor = colors[indexPath.row]
+            print("the friends cell")
+//            let dict = {"a "abc"}
+            let userA = User(data: ["fname":"Chris", "lname":"Hovey"], uid: "24321")
+            let userB = User(data: ["fname":"Tommy", "lname":"DoGood"], uid: "24321")
+            cell.configure(users: [userA, userB])
             return cell
         }
         

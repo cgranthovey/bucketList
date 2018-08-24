@@ -107,7 +107,6 @@ class MenuCell: BaseCell {
         return iv
     }()
     
-    
     override var isSelected: Bool {
         didSet {
             imageView.tintColor = isSelected ? UIColor.white : UIColor().rgb(red: 91, green: 14, blue: 13, alpha: 1)
@@ -120,12 +119,9 @@ class MenuCell: BaseCell {
         }
     }
     
-    
     override func setUpViews() {
         super.setUpViews()
-        
         addSubview(imageView)
-        
         imageView.translatesAutoresizingMaskIntoConstraints = false
         let xConstraint = NSLayoutConstraint(item: imageView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0)
         let yConstraint = NSLayoutConstraint(item: imageView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0)

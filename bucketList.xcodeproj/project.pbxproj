@@ -28,6 +28,8 @@
 		152C89FA21192ECD0032A581 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152C89F921192ECD0032A581 /* Settings.storyboard */; };
 		152C89FC211931600032A581 /* UpdateNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152C89FB211931600032A581 /* UpdateNameVC.swift */; };
 		152C89FE211936880032A581 /* UpdateProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152C89FD211936880032A581 /* UpdateProfileVC.swift */; };
+		1536DD4F2123A6AF0022A43F /* FriendsItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1536DD4E2123A6AF0022A43F /* FriendsItemCell.swift */; };
+		1555DDA1212274510064A798 /* FriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1555DDA0212274510064A798 /* FriendsCell.swift */; };
 		1576E40520F96A020067341D /* LocationSearchTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1576E40420F96A020067341D /* LocationSearchTableVC.swift */; };
 		1576E40720F96E220067341D /* MKPlacemark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1576E40620F96E220067341D /* MKPlacemark.swift */; };
 		1576E40A20F9CE5C0067341D /* SearchTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1576E40920F9CE5C0067341D /* SearchTblCell.swift */; };
@@ -107,6 +109,8 @@
 		152C89F921192ECD0032A581 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		152C89FB211931600032A581 /* UpdateNameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateNameVC.swift; sourceTree = "<group>"; };
 		152C89FD211936880032A581 /* UpdateProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileVC.swift; sourceTree = "<group>"; };
+		1536DD4E2123A6AF0022A43F /* FriendsItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsItemCell.swift; sourceTree = "<group>"; };
+		1555DDA0212274510064A798 /* FriendsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsCell.swift; sourceTree = "<group>"; };
 		1576E40420F96A020067341D /* LocationSearchTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableVC.swift; sourceTree = "<group>"; };
 		1576E40620F96E220067341D /* MKPlacemark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKPlacemark.swift; sourceTree = "<group>"; };
 		1576E40920F9CE5C0067341D /* SearchTblCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTblCell.swift; sourceTree = "<group>"; };
@@ -211,6 +215,8 @@
 			children = (
 				1510B7EC210162C3009FBCEC /* BucketListCell.swift */,
 				15E41EC921209399003AC82F /* MenuBar.swift */,
+				1555DDA0212274510064A798 /* FriendsCell.swift */,
+				1536DD4E2123A6AF0022A43F /* FriendsItemCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -648,6 +654,7 @@
 				1507CA1E20F6E93900704426 /* NewBucketItem.swift in Sources */,
 				1576E40A20F9CE5C0067341D /* SearchTblCell.swift in Sources */,
 				15BCDB4520E5C6DD00E1B6A9 /* OnboardingVC.swift in Sources */,
+				1555DDA1212274510064A798 /* FriendsCell.swift in Sources */,
 				1507CA2920F824D100704426 /* AddBucketSuccessfulVC.swift in Sources */,
 				15BCDB4F20E9938400E1B6A9 /* CreateAccountVC.swift in Sources */,
 				15BAA8AE20EF0FB500289C7A /* View.swift in Sources */,
@@ -656,6 +663,7 @@
 				15C37E8B2104283500ED0503 /* BucketMKPointAnnotation.swift in Sources */,
 				15E41ECA21209399003AC82F /* MenuBar.swift in Sources */,
 				15BCDB0C20E47B9A00E1B6A9 /* ViewController.swift in Sources */,
+				1536DD4F2123A6AF0022A43F /* FriendsItemCell.swift in Sources */,
 				1510B7EA21015AC0009FBCEC /* Button.swift in Sources */,
 				152C89FC211931600032A581 /* UpdateNameVC.swift in Sources */,
 				15C5664D211BDEF7001F5F6C /* UpdatePasswordVC.swift in Sources */,

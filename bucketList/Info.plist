@@ -22,10 +22,20 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Needed for bucket list.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Camera needed to take images in app.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Location used to set and find items on your bucket list.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Needed to add images to your bucket list.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Needed to add images to your bucket list.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
-	<string>Onboarding</string>
+	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -43,15 +53,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Location used to set and find items on your bucket list.</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Camera needed to take images in app.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Needed to add images to your bucket list.</string>
-	<key>NSAppleMusicUsageDescription</key>
-	<string>Needed for bucket list.</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Needed to add images to your bucket list.</string>
 </dict>
 </plist>
