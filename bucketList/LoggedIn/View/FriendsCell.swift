@@ -13,8 +13,9 @@ class FriendsCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegat
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        let cv = UICollectionView(frame: .init(x: 0, y: 40, width: self.frame.width, height: self.frame.height - 40), collectionViewLayout: layout)
+        let cv = UICollectionView(frame: .init(x: 0, y: 0, width: self.frame.width, height: self.frame.height), collectionViewLayout: layout)
         cv.backgroundColor = .white
+        cv.alwaysBounceVertical = true
         cv.dataSource = self
         cv.delegate = self
         return cv
@@ -24,11 +25,7 @@ class FriendsCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegat
 
     override func setUpViews() {
         super.setUpViews()
-        
-        backgroundColor = .purple
-        
         addSubview(collectionView)
-        
         collectionView.register(FriendsItemCell.self, forCellWithReuseIdentifier: cellId)
         collectionView.reloadData()
     }
@@ -46,7 +43,7 @@ class FriendsCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? FriendsItemCell{
-            cell.backgroundColor = .lightGray
+            cell.backgroundColor = UIColor().lightGrey
             cell.configure(user: users[indexPath.row])
             return cell
         }
@@ -56,7 +53,7 @@ class FriendsCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegat
     var interitemSpacing: CGFloat = 5
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let side = collectionView.frame.width/2 - interitemSpacing
+        let side = (collectionView.frame.width - interitemSpacing) / 2
         return CGSize(width: side, height: side)
     }
     
@@ -65,8 +62,10 @@ class FriendsCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
+        return interitemSpacing
     }
+    
+
 
     
 }

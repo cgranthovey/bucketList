@@ -92,12 +92,10 @@ class MenuBar: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? MenuCell{
+//        if let cell = collectionView.cellForItem(at: indexPath) as? MenuCell{
             homeController?.slideCV(index: indexPath.row)
-        }
+//        }
     }
-    
-
 }
 
 class MenuCell: BaseCell {
@@ -109,12 +107,14 @@ class MenuCell: BaseCell {
     
     override var isSelected: Bool {
         didSet {
+            print("is selected")
             imageView.tintColor = isSelected ? UIColor.white : UIColor().rgb(red: 91, green: 14, blue: 13, alpha: 1)
         }
     }
     
     override var isHighlighted: Bool{
         didSet{
+            print("is highlighted")
             imageView.tintColor = isSelected ? UIColor.white : UIColor().rgb(red: 91, green: 14, blue: 13, alpha: 1)
         }
     }

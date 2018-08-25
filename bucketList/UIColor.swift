@@ -13,5 +13,11 @@ extension UIColor{
     func rgb(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> UIColor{
         return UIColor(displayP3Red: red/255, green: green/255, blue: blue/255, alpha: 1.0)
     }
+    var lightGrey: UIColor{
+        return rgb(red: 238, green: 238, blue: 238, alpha: 1)
+    }
+    var mediumGrey: UIColor{
+        return rgb(red: 189, green: 189, blue: 189, alpha: 1)
+    }
     
 }

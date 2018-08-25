@@ -33,6 +33,10 @@
 		1576E40520F96A020067341D /* LocationSearchTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1576E40420F96A020067341D /* LocationSearchTableVC.swift */; };
 		1576E40720F96E220067341D /* MKPlacemark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1576E40620F96E220067341D /* MKPlacemark.swift */; };
 		1576E40A20F9CE5C0067341D /* SearchTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1576E40920F9CE5C0067341D /* SearchTblCell.swift */; };
+		158D1CE02130D3F300FD8BAD /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D1CDF2130D3F300FD8BAD /* UIFont.swift */; };
+		158D1CE22130F08D00FD8BAD /* SearchFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D1CE12130F08D00FD8BAD /* SearchFriendsCell.swift */; };
+		158D1CE421312FC400FD8BAD /* CustomTF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D1CE321312FC400FD8BAD /* CustomTF.swift */; };
+		158D1CE62131D50100FD8BAD /* SearchFriendsItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D1CE52131D50100FD8BAD /* SearchFriendsItemCell.swift */; };
 		15BAA8AE20EF0FB500289C7A /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BAA8AD20EF0FB500289C7A /* View.swift */; };
 		15BCDB0A20E47B9A00E1B6A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BCDB0920E47B9A00E1B6A9 /* AppDelegate.swift */; };
 		15BCDB0C20E47B9A00E1B6A9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BCDB0B20E47B9A00E1B6A9 /* ViewController.swift */; };
@@ -114,6 +118,10 @@
 		1576E40420F96A020067341D /* LocationSearchTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableVC.swift; sourceTree = "<group>"; };
 		1576E40620F96E220067341D /* MKPlacemark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKPlacemark.swift; sourceTree = "<group>"; };
 		1576E40920F9CE5C0067341D /* SearchTblCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTblCell.swift; sourceTree = "<group>"; };
+		158D1CDF2130D3F300FD8BAD /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		158D1CE12130F08D00FD8BAD /* SearchFriendsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendsCell.swift; sourceTree = "<group>"; };
+		158D1CE321312FC400FD8BAD /* CustomTF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTF.swift; sourceTree = "<group>"; };
+		158D1CE52131D50100FD8BAD /* SearchFriendsItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendsItemCell.swift; sourceTree = "<group>"; };
 		15BAA8AD20EF0FB500289C7A /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		15BCDB0620E47B9A00E1B6A9 /* bucketList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bucketList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15BCDB0920E47B9A00E1B6A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -217,6 +225,9 @@
 				15E41EC921209399003AC82F /* MenuBar.swift */,
 				1555DDA0212274510064A798 /* FriendsCell.swift */,
 				1536DD4E2123A6AF0022A43F /* FriendsItemCell.swift */,
+				158D1CE12130F08D00FD8BAD /* SearchFriendsCell.swift */,
+				158D1CE52131D50100FD8BAD /* SearchFriendsItemCell.swift */,
+				158D1CE321312FC400FD8BAD /* CustomTF.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -353,6 +364,7 @@
 				15C37E88210419F100ED0503 /* MKCoordinateRegion.swift */,
 				15C5664A211AA9BB001F5F6C /* Image.swift */,
 				15E41EC7211F998A003AC82F /* UIColor.swift */,
+				158D1CDF2130D3F300FD8BAD /* UIFont.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -647,6 +659,7 @@
 				1507CA2520F6ED1E00704426 /* AddBucketDetailsVC.swift in Sources */,
 				15C5664B211AA9BB001F5F6C /* Image.swift in Sources */,
 				1510B7ED210162C3009FBCEC /* BucketListCell.swift in Sources */,
+				158D1CE62131D50100FD8BAD /* SearchFriendsItemCell.swift in Sources */,
 				1529D42F2117F8B000AC4829 /* MainTBC.swift in Sources */,
 				15ECED7620F6D61400BF42FD /* AddBucketTitleVC.swift in Sources */,
 				150F97952106A33A00C4D3C7 /* CurrentUser.swift in Sources */,
@@ -661,7 +674,9 @@
 				1507CA2320F6EC5E00704426 /* AddBucketLocationVC.swift in Sources */,
 				1507CA1A20F6D8BF00704426 /* DataService.swift in Sources */,
 				15C37E8B2104283500ED0503 /* BucketMKPointAnnotation.swift in Sources */,
+				158D1CE02130D3F300FD8BAD /* UIFont.swift in Sources */,
 				15E41ECA21209399003AC82F /* MenuBar.swift in Sources */,
+				158D1CE421312FC400FD8BAD /* CustomTF.swift in Sources */,
 				15BCDB0C20E47B9A00E1B6A9 /* ViewController.swift in Sources */,
 				1536DD4F2123A6AF0022A43F /* FriendsItemCell.swift in Sources */,
 				1510B7EA21015AC0009FBCEC /* Button.swift in Sources */,
@@ -669,6 +684,7 @@
 				15C5664D211BDEF7001F5F6C /* UpdatePasswordVC.swift in Sources */,
 				1510B7EF2101670F009FBCEC /* GetData.swift in Sources */,
 				1507CA2720F6F9E000704426 /* CheckAuthVC.swift in Sources */,
+				158D1CE22130F08D00FD8BAD /* SearchFriendsCell.swift in Sources */,
 				15BCDB5220E994DA00E1B6A9 /* String.swift in Sources */,
 				15C6633420F18D6B00C7DF5E /* VC.swift in Sources */,
 				15C5664F211BFB46001F5F6C /* UpdateEmailVC.swift in Sources */,
