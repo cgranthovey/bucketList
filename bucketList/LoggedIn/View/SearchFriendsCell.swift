@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class BtnSearch: UIButton{
     
@@ -61,7 +62,7 @@ class SearchFriendsCell: BaseCell {
     
     lazy var cvSearch: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        let cv = UICollectionView(frame: CGRect(x: 20, y: 130, width: self.frame.width - 40, height: self.frame.height), collectionViewLayout: layout)
+        let cv = UICollectionView(frame: CGRect(x: 0, y: 130, width: self.frame.width, height: self.frame.height), collectionViewLayout: layout)
         cv.contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
         cv.backgroundColor = UIColor.white
         cv.alwaysBounceVertical = true
@@ -120,6 +121,7 @@ extension SearchFriendsCell: UICollectionViewDelegate, UICollectionViewDataSourc
         if let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: reuseID, for:
             indexPath) as? SearchFriendsItemCell{
             print("search friends cell cellForItemAt2")
+            cell.delegate = self
             cell.configure(user: users[indexPath.row])
             return cell
         }
@@ -127,7 +129,7 @@ extension SearchFriendsCell: UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.frame.width, height: 130)
+        return CGSize(width: self.frame.width, height: 105)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -136,12 +138,40 @@ extension SearchFriendsCell: UICollectionViewDelegate, UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-    
-    
 }
 
 
+extension SearchFriendsCell: SearchFriendsItemCellDelegate{
+    func requestSent(user: User, cell: SearchFriendsItemCell) {
+        print("request sent", user.fullName)
+        print("request sent uid", user.uid)
+        let batch = Firestore.firestore().batch()
+        
+        
+        let requesteeDoc = DataService.instance.usersRef.document(user.uid).collection("friends").document()
+        var dict2 = CurrentUser.instance.user.friendRequestInfo()
+        dict2["status"] = FriendStatus.requestReceived.rawValue
 
+        batch.setData(dict2, forDocument: requesteeDoc)
+        
+        let requesterDoc = DataService.instance.currentUserFriends.document()
+        var dict = user.friendRequestInfo()
+        dict["status"] = FriendStatus.requestSent.rawValue
+        batch.setData(dict, forDocument: requesterDoc)
+        
+        print("request sent ")
+        batch.commit { (error) in
+            guard error == nil else{
+                print("error is nil ", error?.localizedDescription)
+                return
+            }
+            cell.btnRequest.setTitle("Request Sent", for: .normal)
+            cell.btnRequest.isUserInteractionEnabled = false
+        }
+    }
+    
+    
+}
 
 
 

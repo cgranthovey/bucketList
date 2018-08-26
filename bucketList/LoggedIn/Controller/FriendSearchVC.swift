@@ -13,7 +13,7 @@ import FirebaseFirestore
 
 
 enum FriendStatus: String{
-    case friend = "friend"
+    case friend = "Friend"
     case requestSent = "Request Sent"
     case requestReceived = "Request Received"
 }
@@ -25,6 +25,7 @@ class FriendSearchVC: UIViewController {
     var lastDoc: DocumentSnapshot?
     var reuseID = "cell"
     var reuseIDSearch = "searchCell"
+    var reuseFriendRequest = "friendRequestCell"
     var searchFriendsCell: SearchFriendsCell?
 
     @IBOutlet weak var cvFriendsHorizontal: UICollectionView!
@@ -41,6 +42,7 @@ class FriendSearchVC: UIViewController {
         cvFriendsHorizontal.dataSource = self
         cvFriendsHorizontal.register(FriendsCell.self, forCellWithReuseIdentifier: reuseID)
         cvFriendsHorizontal.register(SearchFriendsCell.self, forCellWithReuseIdentifier: reuseIDSearch)
+        cvFriendsHorizontal.register(RequestReceivedCell.self, forCellWithReuseIdentifier: reuseFriendRequest)
         cvFriendsHorizontal.isPagingEnabled = true
         
         if let flowLayout = cvFriendsHorizontal.collectionViewLayout as? UICollectionViewFlowLayout{
@@ -116,7 +118,7 @@ extension FriendSearchVC: UICollectionViewDelegate, UICollectionViewDataSource, 
         return 3
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.row == 0 || indexPath.row == 2{
+        if indexPath.row == 0{
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseID, for: indexPath) as? FriendsCell{
                 print("the friends cell")
                 let userA = User(data: ["fname":"Chris", "lname":"Hovey", "profileURL": "https://boygeniusreport.files.wordpress.com/2016/12/spider-man-homecoming.jpg?quality=98&strip=all"], uid: "24321")
@@ -130,6 +132,10 @@ extension FriendSearchVC: UICollectionViewDelegate, UICollectionViewDataSource, 
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIDSearch, for: indexPath) as? SearchFriendsCell{
                 cell.delegate = self
                 searchFriendsCell = cell
+                return cell
+            }
+        } else if indexPath.row == 2{
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseFriendRequest, for: indexPath) as? RequestReceivedCell{
                 return cell
             }
         }
@@ -170,14 +176,17 @@ extension FriendSearchVC: SearchFriendsCellDelegate{
         }
         
         let query = DataService.instance.usersRef.whereField("email", isEqualTo: tfEmail.text!)
+//        query.addSnapshotListener(includeMetadataChanges: true) { (snapshot, error) in
+//            print("query 1", snapshot?.metadata.)
+//        }
         query.addSnapshotListener { (snapshot, error) in
+            print("query 2")
             guard error == nil else{
                 print("error retrieving user with email")
                 return
             }
             print("the snapshot ", snapshot)
             guard snapshot != nil else{
-                
                 return
             }
             
