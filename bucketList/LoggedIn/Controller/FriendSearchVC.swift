@@ -207,7 +207,6 @@ extension FriendSearchVC: SearchFriendsCellDelegate{
                     print("item name - ", item.fullName)
                 }
                 cell.users = users
-                cell.cowsGoMoo()
                 cell.cvSearch.reloadData()
             }
         }

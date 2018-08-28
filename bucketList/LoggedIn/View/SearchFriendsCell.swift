@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseFirestore
+import FirebaseAuth
 
 class BtnSearch: UIButton{
     
@@ -93,14 +94,6 @@ class SearchFriendsCell: BaseCell {
         btnSearch.addTarget(self, action: #selector(btnSearchPress), for: .touchUpInside)
     }
     
-    func cowsGoMoo(){
-        for item in users{
-            print("the users email -", item.email)
-        }
-        cvSearch.reloadData()
-        print("Mooo")
-    }
-    
     @objc func btnSearchPress(){
         print("btn search press")
         delegate.searchPress(tfEmail: tfEmail)
@@ -148,15 +141,20 @@ extension SearchFriendsCell: SearchFriendsItemCellDelegate{
         let batch = Firestore.firestore().batch()
         
         
-        let requesteeDoc = DataService.instance.usersRef.document(user.uid).collection("friends").document()
+        let requesteeDoc = DataService.instance.usersRef.document(user.uid).collection("friends").document(CurrentUser.instance.user.uid)
+        let requesterDoc = DataService.instance.currentUserFriends.document(user.uid)
+
+        
         var dict2 = CurrentUser.instance.user.friendRequestInfo()
         dict2["status"] = FriendStatus.requestReceived.rawValue
+        dict2["created"] = FieldValue.serverTimestamp()
 
         batch.setData(dict2, forDocument: requesteeDoc)
         
-        let requesterDoc = DataService.instance.currentUserFriends.document()
+        //let requesterDoc = DataService.instance.currentUserFriends.document()
         var dict = user.friendRequestInfo()
         dict["status"] = FriendStatus.requestSent.rawValue
+        dict["created"] = FieldValue.serverTimestamp()
         batch.setData(dict, forDocument: requesterDoc)
         
         print("request sent ")

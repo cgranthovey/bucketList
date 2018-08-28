@@ -70,7 +70,7 @@ class SettingsTVC: UITableViewController {
                 print("log out pressed3")
                 self.navigationController?.popToRootViewController(animated: true)
                 print("log out pressed4")
-//                try Auth.auth().signOut()
+                try Auth.auth().signOut()
                 print("log out pressed5")
                 
                 

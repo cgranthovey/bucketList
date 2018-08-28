@@ -25,7 +25,6 @@ class User{
             "fname": fname as Any,
             "lname": lname as Any,
             "profileURL": profileURL as Any,
-            "uid": uid as Any
         ]
         return info
     }
