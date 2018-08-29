@@ -75,7 +75,7 @@ class SearchFriendsCell: BaseCell {
     override func setUpViews() {
         super.setUpViews()
         addSubview(cvSearch)
-        cvSearch.register(SearchFriendsItemCell.self, forCellWithReuseIdentifier: reuseID)
+        cvSearch.register(UserCell.self, forCellWithReuseIdentifier: reuseID)
         cvSearch.reloadData()
         
         self.addSubview(tfEmail)
@@ -106,16 +106,14 @@ extension SearchFriendsCell: UICollectionViewDelegate, UICollectionViewDataSourc
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("search friends cell count", users.count)
         return users.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("search friends cell cellForItemAt1")
         if let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: reuseID, for:
-            indexPath) as? SearchFriendsItemCell{
-            print("search friends cell cellForItemAt2")
+            indexPath) as? UserCell{
             cell.delegate = self
-            cell.configure(user: users[indexPath.row])
+            cell.configure(user: users[indexPath.row], isSearch: true)
+            
             return cell
         }
         return UICollectionViewCell()
@@ -133,42 +131,37 @@ extension SearchFriendsCell: UICollectionViewDelegate, UICollectionViewDataSourc
     }
 }
 
-
-extension SearchFriendsCell: SearchFriendsItemCellDelegate{
-    func requestSent(user: User, cell: SearchFriendsItemCell) {
-        print("request sent", user.fullName)
-        print("request sent uid", user.uid)
+extension SearchFriendsCell: UserCellDelegate{
+    
+    func primaryBtnPress(user: User){
         let batch = Firestore.firestore().batch()
-        
         
         let requesteeDoc = DataService.instance.usersRef.document(user.uid).collection("friends").document(CurrentUser.instance.user.uid)
         let requesterDoc = DataService.instance.currentUserFriends.document(user.uid)
-
         
         var dict2 = CurrentUser.instance.user.friendRequestInfo()
         dict2["status"] = FriendStatus.requestReceived.rawValue
         dict2["created"] = FieldValue.serverTimestamp()
-
         batch.setData(dict2, forDocument: requesteeDoc)
         
-        //let requesterDoc = DataService.instance.currentUserFriends.document()
         var dict = user.friendRequestInfo()
         dict["status"] = FriendStatus.requestSent.rawValue
         dict["created"] = FieldValue.serverTimestamp()
         batch.setData(dict, forDocument: requesterDoc)
         
-        print("request sent ")
         batch.commit { (error) in
             guard error == nil else{
                 print("error is nil ", error?.localizedDescription)
                 return
             }
-            cell.btnRequest.setTitle("Request Sent", for: .normal)
-            cell.btnRequest.isUserInteractionEnabled = false
+//            cell.btnRequest.setTitle("Request Sent", for: .normal)
+//            cell.btnRequest.isUserInteractionEnabled = false
         }
     }
     
-    
+    func secondaryBtnPress(user: User){
+        
+    }
 }
 
 

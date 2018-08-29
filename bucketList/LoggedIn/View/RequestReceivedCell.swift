@@ -11,12 +11,13 @@ import FirebaseFirestore
 
 class RequestReceivedCell: BaseCell {
     
-    var friendRequests: [Friend] = [Friend]()
+    var friendRequests: [User] = [User]()
     var reuseID = "reuseIDRequest"
     
     lazy var requestCollection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height), collectionViewLayout: layout)
+        cv.contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
         cv.alwaysBounceVertical = true
         cv.backgroundColor = UIColor.white
         cv.dataSource = self
@@ -26,7 +27,7 @@ class RequestReceivedCell: BaseCell {
 
     override func setUpViews() {
         addSubview(requestCollection)
-        requestCollection.register(RequestItemCell.self, forCellWithReuseIdentifier: reuseID)
+        requestCollection.register(UserCell.self, forCellWithReuseIdentifier: reuseID)
         backgroundColor = UIColor.cyan
         
         DataService.instance.currentUserFriends.order(by: "created", descending: false).whereField("status", isEqualTo: FriendStatus.requestReceived.rawValue).addSnapshotListener { (snapshot, error) in
@@ -35,9 +36,18 @@ class RequestReceivedCell: BaseCell {
             }
             if let snapshot = snapshot{
                 for doc in snapshot.documents{
-                    let friend: Friend = Friend(data: doc.data(), id: doc.documentID)
+                    let friend: User = User(data: doc.data(), uid: doc.documentID)
                     self.friendRequests.append(friend)
                 }
+            }
+            if self.friendRequests.count == 0{
+                let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+                backgroundView.backgroundColor = .white
+                let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 20))
+                label.text = "No Friend Requests"
+                label.font = UIFont().primary(size: 20)
+                label.textAlignment = .center
+                self.requestCollection.backgroundView = label
             }
             self.requestCollection.reloadData()
         }
@@ -54,9 +64,9 @@ extension RequestReceivedCell: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseID, for: indexPath) as? RequestItemCell{
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseID, for: indexPath) as? UserCell{
             cell.delegate = self
-            cell.configure(friend: friendRequests[indexPath.row])
+            cell.configure(user: friendRequests[indexPath.row])
             return cell
         }
         return UICollectionViewCell()
@@ -72,29 +82,44 @@ extension RequestReceivedCell: UICollectionViewDelegate, UICollectionViewDataSou
     }
 }
 
-extension RequestReceivedCell: RequestItemCellDelegate{
+extension RequestReceivedCell: UserCellDelegate{
     
-    func friendRequest(accepted: Bool, friend: Friend){
-        if accepted{
-
-        } else{
-            guard friend.id != nil else{
+    func primaryBtnPress(user: User){
+        guard user.uid != nil else{
+            return
+        }
+        let batch = Firestore.firestore().batch()
+        let currentUserRequestRef: DocumentReference = DataService.instance.currentUserFriends.document(user.uid!)
+        batch.updateData(["status": FriendStatus.friend.rawValue], forDocument: currentUserRequestRef)
+        
+        let otherUserRequestRef: DocumentReference = DataService.instance.usersRef.document(user.uid!).collection("friends").document(CurrentUser.instance.user.uid)
+        batch.updateData(["status": FriendStatus.friend.rawValue], forDocument: otherUserRequestRef)
+        batch.commit { (error) in
+            guard error == nil else{
+                print("error setting status as friends", error?.localizedDescription)
                 return
-            }
-            let batch = Firestore.firestore().batch()
-            let currentUserRequestRef: DocumentReference = DataService.instance.currentUserFriends.document(friend.id!)
-            batch.deleteDocument(currentUserRequestRef)
-            let otherUserRequestRef: DocumentReference = DataService.instance.usersRef.document(friend.id!).collection("friends").document(CurrentUser.instance.user.uid)
-            batch.deleteDocument(otherUserRequestRef)
-            
-            batch.commit { (error) in
-                guard error == nil else{
-                    print("error deleting request occured")
-                    return
-                }
             }
         }
     }
+    
+    func secondaryBtnPress(user: User){
+        guard user.uid != nil else{
+            return
+        }
+        let batch = Firestore.firestore().batch()
+        let currentUserRequestRef: DocumentReference = DataService.instance.currentUserFriends.document(user.uid!)
+        batch.deleteDocument(currentUserRequestRef)
+        let otherUserRequestRef: DocumentReference = DataService.instance.usersRef.document(user.uid!).collection("friends").document(CurrentUser.instance.user.uid)
+        batch.deleteDocument(otherUserRequestRef)
+        
+        batch.commit { (error) in
+            guard error == nil else{
+                print("error deleting request occured")
+                return
+            }
+        }
+    }
+
 }
 
 

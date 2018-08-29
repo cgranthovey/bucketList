@@ -59,6 +59,8 @@ class FriendsItemCell: BaseCell {
             let url = URL(string: urlStr)
             imgView.sd_setImage(with: url, placeholderImage: nil, options: .progressiveDownload) { (img, err, cache, url) in
             }
+        } else{
+            imgView.image = #imageLiteral(resourceName: "profile")
         }
         imgView.layer.cornerRadius = imgView.frame.width / 2
 //        lblName.backgroundColor = UIColor.orange

@@ -24,7 +24,7 @@ class MenuBar: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UIC
     }()
     
     let cellId = "cellId"
-    let images = [#imageLiteral(resourceName: "friendsWhite"), #imageLiteral(resourceName: "magnifier"), #imageLiteral(resourceName: "add-friend")]
+    let images = [#imageLiteral(resourceName: "friendsWhite"), #imageLiteral(resourceName: "magnifier"), #imageLiteral(resourceName: "contacts"),#imageLiteral(resourceName: "add-friend")]
     var leftLayoutConstraint: NSLayoutConstraint?
     var homeController: FriendSearchVC?
     
@@ -44,6 +44,8 @@ class MenuBar: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UIC
         
         setupHorizontalBar()
     }
+    
+    
     
     func setupHorizontalBar(){
         let horizontalBarView = UIView()
@@ -74,7 +76,10 @@ class MenuBar: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UIC
         print("cell for item called")
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? MenuCell{
             cell.imageView.image = images[indexPath.row].withRenderingMode(.alwaysTemplate)
-            cell.imageView.tintColor = UIColor.gray
+            cell.imageView.tintColor = UIColor().deactiveDark
+            if indexPath.row == 0{
+                collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .bottom)
+            }
             cell.isUserInteractionEnabled = true
             
             return cell
@@ -82,6 +87,7 @@ class MenuBar: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UIC
         return UICollectionViewCell()
         
     }
+
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: frame.width/CGFloat(images.count), height: frame.height)
@@ -108,14 +114,14 @@ class MenuCell: BaseCell {
     override var isSelected: Bool {
         didSet {
             print("is selected")
-            imageView.tintColor = isSelected ? UIColor.white : UIColor().rgb(red: 91, green: 14, blue: 13, alpha: 1)
+            imageView.tintColor = isSelected ? UIColor.white : UIColor().deactiveDark
         }
     }
     
     override var isHighlighted: Bool{
         didSet{
             print("is highlighted")
-            imageView.tintColor = isSelected ? UIColor.white : UIColor().rgb(red: 91, green: 14, blue: 13, alpha: 1)
+            imageView.tintColor = isSelected ? UIColor.white : UIColor().deactiveDark
         }
     }
     
@@ -128,6 +134,7 @@ class MenuCell: BaseCell {
         let heightConstraint = NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 28)
         let widthConstraint = NSLayoutConstraint(item: imageView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 28)
         self.addConstraints([heightConstraint, widthConstraint, xConstraint, yConstraint])
+        
         
         backgroundColor = UIColor.red
     }

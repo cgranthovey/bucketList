@@ -26,7 +26,9 @@ class FriendSearchVC: UIViewController {
     var reuseID = "cell"
     var reuseIDSearch = "searchCell"
     var reuseFriendRequest = "friendRequestCell"
+    var reuseContacts = "reuseContacts"
     var searchFriendsCell: SearchFriendsCell?
+    var numberOfItems: Int = 4
 
     @IBOutlet weak var cvFriendsHorizontal: UICollectionView!
     
@@ -43,6 +45,7 @@ class FriendSearchVC: UIViewController {
         cvFriendsHorizontal.register(FriendsCell.self, forCellWithReuseIdentifier: reuseID)
         cvFriendsHorizontal.register(SearchFriendsCell.self, forCellWithReuseIdentifier: reuseIDSearch)
         cvFriendsHorizontal.register(RequestReceivedCell.self, forCellWithReuseIdentifier: reuseFriendRequest)
+        cvFriendsHorizontal.register(ContactsCell.self, forCellWithReuseIdentifier: reuseContacts)
         cvFriendsHorizontal.isPagingEnabled = true
         
         if let flowLayout = cvFriendsHorizontal.collectionViewLayout as? UICollectionViewFlowLayout{
@@ -115,7 +118,7 @@ extension FriendSearchVC: UICollectionViewDelegate, UICollectionViewDataSource, 
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return numberOfItems
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row == 0{
@@ -135,6 +138,10 @@ extension FriendSearchVC: UICollectionViewDelegate, UICollectionViewDataSource, 
                 return cell
             }
         } else if indexPath.row == 2{
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseContacts, for: indexPath) as? ContactsCell{
+                return cell
+            }
+        } else if indexPath.row == 3{
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseFriendRequest, for: indexPath) as? RequestReceivedCell{
                 return cell
             }
@@ -150,7 +157,7 @@ extension FriendSearchVC: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        menuBar.leftLayoutConstraint?.constant = scrollView.contentOffset.x / 3
+        menuBar.leftLayoutConstraint?.constant = scrollView.contentOffset.x / CGFloat(numberOfItems)
         UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseIn, animations: {
             self.view.layoutIfNeeded()
         }) { (success) in
@@ -163,6 +170,8 @@ extension FriendSearchVC: UICollectionViewDelegate, UICollectionViewDataSource, 
         print("targetContentOffset \(targetContentOffset.move().x/self.view.frame.width)")
         let index = IndexPath(item: Int(targetContentOffset.move().x/self.view.frame.width), section: 0)
         menuBar.collectionView.selectItem(at: index, animated: true, scrollPosition: UICollectionViewScrollPosition.top)
+        
+        
     }
     
 }

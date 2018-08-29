@@ -1,5 +1,5 @@
 //
-//  RequestItemCell.swift
+//  UserCell
 //  bucketList
 //
 //  Created by Christopher Hovey on 8/26/18.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol RequestItemCellDelegate{
-    func friendRequest(accepted: Bool, friend: Friend)
+protocol UserCellDelegate{
+    func primaryBtnPress(user: User)
+    func secondaryBtnPress(user: User)
 }
 
-class RequestItemCell: BaseCell {
+class UserCell: BaseCell {
     
-
     lazy var imgView: UIImageView = {
         let iv = UIImageView(frame: .zero)
         iv.contentMode = .scaleAspectFill
@@ -39,9 +39,9 @@ class RequestItemCell: BaseCell {
         return view
     }()
     
-    lazy var btnAccept: UIButton = {
+    lazy var btnPrimary: UIButton = {
         let btn = UIButton(type: UIButtonType.system)
-        btn.addTarget(self, action: #selector(RequestItemCell.acceptBtnPress), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(UserCell.acceptBtnPress), for: .touchUpInside)
         btn.setTitle("Accept", for: .normal)
         btn.backgroundColor = .orange
         btn.titleLabel?.textColor = .white
@@ -50,9 +50,9 @@ class RequestItemCell: BaseCell {
         return btn
     }()
     
-    lazy var btnDecline: UIButton = {
+    lazy var btnSecondary: UIButton = {
         let btn = UIButton(type: UIButtonType.system)
-        btn.addTarget(self, action: #selector(RequestItemCell.declineBtnPress), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(UserCell.declineBtnPress), for: .touchUpInside)
         btn.setTitle("Decline", for: .normal)
         btn.backgroundColor = UIColor.darkGray
         btn.titleLabel?.textColor = .white
@@ -61,8 +61,9 @@ class RequestItemCell: BaseCell {
         return btn
     }()
     
-    var friend: Friend!
-    var delegate: RequestItemCellDelegate?
+    
+    var user: User!
+    var delegate: UserCellDelegate?
     var isRequestReceived: Bool = false
     
     override func setUpViews() {
@@ -92,47 +93,53 @@ class RequestItemCell: BaseCell {
         lblNameSecondary.leftAnchor.constraint(equalTo: lblName.rightAnchor, constant: 10).isActive = true
         lblNameSecondary.centerYAnchor.constraint(equalTo: lblName.centerYAnchor).isActive = true
         
-        holderView.addSubview(btnAccept)
-        btnAccept.translatesAutoresizingMaskIntoConstraints = false
-        btnAccept.bottomAnchor.constraint(equalTo: holderView.bottomAnchor, constant: -10).isActive = true
-        btnAccept.leftAnchor.constraint(equalTo: lblName.leftAnchor, constant: 0).isActive = true
-        btnAccept.widthAnchor.constraint(equalToConstant: 90).isActive = true
-        btnAccept.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        holderView.addSubview(btnPrimary)
+        btnPrimary.translatesAutoresizingMaskIntoConstraints = false
+        btnPrimary.bottomAnchor.constraint(equalTo: holderView.bottomAnchor, constant: -10).isActive = true
+        btnPrimary.leftAnchor.constraint(equalTo: lblName.leftAnchor, constant: 0).isActive = true
+//        btnPrimary.widthAnchor.constraint(equalToConstant: 90).isActive = true
+        btnPrimary.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 10)
+        btnPrimary.heightAnchor.constraint(greaterThanOrEqualToConstant: 40).isActive = true
         
-        holderView.addSubview(btnDecline)
-        btnDecline.translatesAutoresizingMaskIntoConstraints = false
-        btnDecline.centerYAnchor.constraint(equalTo: btnAccept.centerYAnchor).isActive = true
-        btnDecline.leftAnchor.constraint(equalTo: btnAccept.rightAnchor, constant: 20).isActive = true
-        btnDecline.widthAnchor.constraint(equalToConstant: 90).isActive = true
-        btnDecline.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
+        holderView.addSubview(btnSecondary)
+        btnSecondary.translatesAutoresizingMaskIntoConstraints = false
+        btnSecondary.centerYAnchor.constraint(equalTo: btnPrimary.centerYAnchor).isActive = true
+        btnSecondary.leftAnchor.constraint(equalTo: btnPrimary.rightAnchor, constant: 20).isActive = true
+        btnSecondary.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 10)
+//        btnSecondary.widthAnchor.constraint(greaterThanOrEqualToConstant: 90).isActive = true
+        btnSecondary.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
-    func configure(friend: Friend){
-        self.friend = friend
+    func configure(user: User, isSearch: Bool = false){
+        if isSearch{
+            btnPrimary.setTitleWithoutAnimation(title: "Send Request")
+            btnSecondary.isHidden = true
+        } else{
+            btnPrimary.setTitleWithoutAnimation(title: "Accept")
+            btnSecondary.isHidden = false
+        }
+        self.user = user
         
-        if let urlStr = friend.profileURL{
+        if let urlStr = user.profileURL{
             let url = URL(string: urlStr)
             imgView.sd_setImage(with: url, placeholderImage: nil, options: .progressiveDownload) { (img, error, cache, url) in
             }
         } else{
-            imgView.image = nil
+            imgView.image = #imageLiteral(resourceName: "profile")
         }
-        
-        lblName.text = friend.fullName
+        lblName.text = user.fullName
         lblNameSecondary.isHidden = true
-        btnAccept.isHidden = false
-        
+        btnPrimary.isHidden = false
     }
     
     @objc func acceptBtnPress(){
         if let del = delegate{
-            del.friendRequest(accepted: true, friend: friend)
+            del.primaryBtnPress(user: user)
         }
     }
     @objc func declineBtnPress(){
         if let del = delegate{
-            del.friendRequest(accepted: false, friend: friend)
+            del.secondaryBtnPress(user: user)
         }
     }
 }

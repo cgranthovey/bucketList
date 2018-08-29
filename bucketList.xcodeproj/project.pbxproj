@@ -36,10 +36,10 @@
 		158D1CE02130D3F300FD8BAD /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D1CDF2130D3F300FD8BAD /* UIFont.swift */; };
 		158D1CE22130F08D00FD8BAD /* SearchFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D1CE12130F08D00FD8BAD /* SearchFriendsCell.swift */; };
 		158D1CE421312FC400FD8BAD /* CustomTF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D1CE321312FC400FD8BAD /* CustomTF.swift */; };
-		158D1CE62131D50100FD8BAD /* SearchFriendsItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D1CE52131D50100FD8BAD /* SearchFriendsItemCell.swift */; };
 		158D1CE82132729900FD8BAD /* RequestReceivedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D1CE72132729800FD8BAD /* RequestReceivedCell.swift */; };
 		158D1CEA21337CA600FD8BAD /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D1CE921337CA600FD8BAD /* Friend.swift */; };
-		158D1CEC21337F6600FD8BAD /* RequestItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D1CEB21337F6600FD8BAD /* RequestItemCell.swift */; };
+		158D1CEC21337F6600FD8BAD /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D1CEB21337F6600FD8BAD /* UserCell.swift */; };
+		159CC7A22136169B00BEFAE3 /* ContactsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159CC7A12136169B00BEFAE3 /* ContactsCell.swift */; };
 		15BAA8AE20EF0FB500289C7A /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BAA8AD20EF0FB500289C7A /* View.swift */; };
 		15BCDB0A20E47B9A00E1B6A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BCDB0920E47B9A00E1B6A9 /* AppDelegate.swift */; };
 		15BCDB0C20E47B9A00E1B6A9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BCDB0B20E47B9A00E1B6A9 /* ViewController.swift */; };
@@ -124,10 +124,10 @@
 		158D1CDF2130D3F300FD8BAD /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		158D1CE12130F08D00FD8BAD /* SearchFriendsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendsCell.swift; sourceTree = "<group>"; };
 		158D1CE321312FC400FD8BAD /* CustomTF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTF.swift; sourceTree = "<group>"; };
-		158D1CE52131D50100FD8BAD /* SearchFriendsItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendsItemCell.swift; sourceTree = "<group>"; };
 		158D1CE72132729800FD8BAD /* RequestReceivedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestReceivedCell.swift; sourceTree = "<group>"; };
 		158D1CE921337CA600FD8BAD /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
-		158D1CEB21337F6600FD8BAD /* RequestItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestItemCell.swift; sourceTree = "<group>"; };
+		158D1CEB21337F6600FD8BAD /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		159CC7A12136169B00BEFAE3 /* ContactsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsCell.swift; sourceTree = "<group>"; };
 		15BAA8AD20EF0FB500289C7A /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		15BCDB0620E47B9A00E1B6A9 /* bucketList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bucketList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15BCDB0920E47B9A00E1B6A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -233,10 +233,10 @@
 				1555DDA0212274510064A798 /* FriendsCell.swift */,
 				1536DD4E2123A6AF0022A43F /* FriendsItemCell.swift */,
 				158D1CE12130F08D00FD8BAD /* SearchFriendsCell.swift */,
-				158D1CE52131D50100FD8BAD /* SearchFriendsItemCell.swift */,
-				158D1CE321312FC400FD8BAD /* CustomTF.swift */,
 				158D1CE72132729800FD8BAD /* RequestReceivedCell.swift */,
-				158D1CEB21337F6600FD8BAD /* RequestItemCell.swift */,
+				158D1CEB21337F6600FD8BAD /* UserCell.swift */,
+				159CC7A12136169B00BEFAE3 /* ContactsCell.swift */,
+				158D1CE321312FC400FD8BAD /* CustomTF.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -665,12 +665,11 @@
 				15E41EC8211F998A003AC82F /* UIColor.swift in Sources */,
 				15BCDB4320E5BF9500E1B6A9 /* OnboardingImgVC.swift in Sources */,
 				15BCDB4D20E728BA00E1B6A9 /* LoginVC.swift in Sources */,
-				158D1CEC21337F6600FD8BAD /* RequestItemCell.swift in Sources */,
+				158D1CEC21337F6600FD8BAD /* UserCell.swift in Sources */,
 				1507CA2520F6ED1E00704426 /* AddBucketDetailsVC.swift in Sources */,
 				158D1CE82132729900FD8BAD /* RequestReceivedCell.swift in Sources */,
 				15C5664B211AA9BB001F5F6C /* Image.swift in Sources */,
 				1510B7ED210162C3009FBCEC /* BucketListCell.swift in Sources */,
-				158D1CE62131D50100FD8BAD /* SearchFriendsItemCell.swift in Sources */,
 				1529D42F2117F8B000AC4829 /* MainTBC.swift in Sources */,
 				15ECED7620F6D61400BF42FD /* AddBucketTitleVC.swift in Sources */,
 				150F97952106A33A00C4D3C7 /* CurrentUser.swift in Sources */,
@@ -701,6 +700,7 @@
 				15C6633420F18D6B00C7DF5E /* VC.swift in Sources */,
 				15C5664F211BFB46001F5F6C /* UpdateEmailVC.swift in Sources */,
 				15C37E8F21050AE400ED0503 /* User.swift in Sources */,
+				159CC7A22136169B00BEFAE3 /* ContactsCell.swift in Sources */,
 				15C6633620F19CA300C7DF5E /* PasswordResetVC.swift in Sources */,
 				1507CA2120F6E9C800704426 /* BucketItem.swift in Sources */,
 				152C89FE211936880032A581 /* UpdateProfileVC.swift in Sources */,

@@ -13,7 +13,8 @@ class FriendsCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegat
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        let cv = UICollectionView(frame: .init(x: 0, y: 0, width: self.frame.width, height: self.frame.height), collectionViewLayout: layout)
+        let cv = UICollectionView(frame: .init(x: 0, y: 0, width: self.frame.width - 0, height: self.frame.height), collectionViewLayout: layout)
+        
         cv.backgroundColor = .white
         cv.alwaysBounceVertical = true
         cv.dataSource = self
@@ -28,6 +29,28 @@ class FriendsCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegat
         addSubview(collectionView)
         collectionView.register(FriendsItemCell.self, forCellWithReuseIdentifier: cellId)
         collectionView.reloadData()
+        print("setUpViews Again")
+        loadData()
+    }
+    
+    func loadData(){
+        let query = DataService.instance.currentUserFriends.order(by: "fname").whereField("status", isEqualTo: FriendStatus.friend.rawValue)
+        query.addSnapshotListener { (snapshot, error) in
+            print("who dat1")
+            self.users = []
+            guard error == nil && snapshot != nil else{
+                print("who dat2")
+                print("loading data error ", error)
+                return
+            }
+            for snap in snapshot!.documents{
+                print("who dat3")
+                let user = User(data: snap.data(), uid: snap.documentID)
+                self.users.append(user)
+            }
+            
+            self.collectionView.reloadData()
+        }
     }
     
     var users: [User] = []

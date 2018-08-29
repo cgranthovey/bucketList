@@ -19,5 +19,8 @@ extension UIColor{
     var mediumGrey: UIColor{
         return rgb(red: 189, green: 189, blue: 189, alpha: 1)
     }
+    var deactiveDark: UIColor{
+        return rgb(red: 91, green: 14, blue: 13, alpha: 1)
+    }
     
 }
