@@ -36,13 +36,12 @@ class AddBucketDetailsVC: UIViewController {
             }
             
             if let geoPoint = NewBucketItem.instance.item.getGeoPoint(){
-                DataService.instance.geoFirestore.setLocation(geopoint: geoPoint, forDocumentWithID: ref.documentID, completion: { (error) in
+                DataService.instance.currentUserGeoFirestore.setLocation(geopoint: geoPoint, forDocumentWithID: ref.documentID, completion: { (error) in
                     guard error == nil else{
                         print("geoPoint error set ", error!)
                         return
                     }
                     self.performSegue(withIdentifier: "AddBucketDetailsVC", sender: nil)
-
                 })
             }
         }

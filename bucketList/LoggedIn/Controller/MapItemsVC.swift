@@ -19,7 +19,7 @@ class MapItemsVC: UIViewController {
     
     var locationManager = CLLocationManager()
     var hasUpdatedUserLocation = true
-    var span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+    var span = MKCoordinateSpan(latitudeDelta: 1.5, longitudeDelta: 1.5)
     var geoQuery: GFSRegionQuery?
 
     override func viewDidLoad() {
@@ -52,32 +52,25 @@ class MapItemsVC: UIViewController {
     }
     
 
-
+    var keysOfAnnotations = [String]()
     
     func getGeoHash(region: MKCoordinateRegion){
-        geoQuery = DataService.instance.geoFirestore.query(inRegion: region)
+        geoQuery = DataService.instance.currentUserGeoFirestore.query(inRegion: region)
         if let query = geoQuery{
+            
             let geoQueryEnterHandle = query.observe(.documentEntered) { (key, location) in
+                guard key != nil else{
+                    return
+                }
+                guard !self.keysOfAnnotations.contains(key!) else{
+                    return
+                }
+                self.keysOfAnnotations.append(key!)
                 if let key = key, let location = location{
-
+                    self.getBucketItem(key: key, location: location)
                 }
             }
         }
-//        let geoQueryExit = DataService.instance.geoFirestore.query(inRegion: region)
-//        let geoQueryExitHandle = geoQueryExit.observe(.documentExited) { (key, location) in
-//            if let key = key, let location = location{
-//
-//                let annotations = self.mapView.annotations
-//
-//                for annotation in annotations{
-//                    if annotation.title == key{
-//                        self.mapView.removeAnnotation(annotation)
-//                        print("remove annotation")
-//                    }
-//                }
-//            }
-//        }
-        
     }
     
     func getBucketItem(key: String, location: CLLocation){
@@ -87,14 +80,21 @@ class MapItemsVC: UIViewController {
                 return
             }
             if let snapshot = snapshot, let data = snapshot.data(){
-                self.makeAnnotation(data: data, location: location)
+                self.makeAnnotation(data: data, location: location, id: snapshot.documentID)
             }
         })
     }
     
-    func makeAnnotation(data: [String: Any], location: CLLocation ){
+    func makeAnnotation(data: [String: Any], location: CLLocation, id: String){
+        
+        
         let newPin = BucketMKPointAnnotation()
-        let bucketItem = BucketItem.init(dict: data)
+        let bucketItem = BucketItem.init(dict: data, id: id)
+        
+//        if self.mapView.annotations.contains(where: { (<#MKAnnotation#>) -> Bool in
+//            <#code#>
+//        })
+        
         newPin.bucketItem = bucketItem
         
         newPin.coordinate = location.coordinate
@@ -106,6 +106,8 @@ class MapItemsVC: UIViewController {
         }
         self.mapView.addAnnotation(newPin)
         
+        let count = self.mapView.annotations.count
+        print("mapView annotations.count", count)
     }
 }
 
@@ -124,7 +126,7 @@ extension MapItemsVC: MKMapViewDelegate{
             pinView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: reusePin)
         }
         
-        pinView?.markerTintColor = UIColor.green
+        pinView?.markerTintColor = UIColor.orange
         pinView?.canShowCallout = true
         
         let smallSquare = CGSize(width: 30, height: 30)
@@ -173,6 +175,7 @@ extension MapItemsVC: CLLocationManagerDelegate{
         if hasUpdatedUserLocation{
             if let location = locations.first{
                 let region = MKCoordinateRegion(center: location.coordinate, span: span)
+                print("didUpdateLocations ", region)
                 mapView.setRegion(region, animated: true)
                 getGeoHash(region: region)
             }

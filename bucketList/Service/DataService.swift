@@ -28,6 +28,12 @@ class DataService{
         return geoFirestore
     }
     
+    var currentUserGeoFirestore: GeoFirestore{
+        var geo = currentUserDoc.collection("MyGeoHash")
+        var geoFirestore = GeoFirestore(collectionRef: geo)
+        return geoFirestore
+    }
+    
     var usersRef: CollectionReference{
         return Firestore.firestore().collection("users")
     }

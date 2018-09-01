@@ -22,6 +22,7 @@ class BucketItem{
     var pinLong: String?
     var created: String?
     var createdDate: Date?
+    var id: String?
     
     func addressFull() -> String?{
         let address = [addressPrimary, addressSeconary].compactMap{$0}.joined(separator: ", ")
@@ -56,7 +57,7 @@ class BucketItem{
         pinLong = nil
     }
     
-    init (dict: Dictionary<String, Any>?){
+    init (dict: Dictionary<String, Any>?, id: String? = nil){
         if let dict = dict{
             title = dict["title"] as? String
             price = dict["price"] as? String
@@ -67,6 +68,9 @@ class BucketItem{
             pinLat = dict["pinLat"] as? String
             pinLong = dict["pinLong"] as? String
 
+        }
+        if let id = id{
+            self.id = id
         }
     }
     
