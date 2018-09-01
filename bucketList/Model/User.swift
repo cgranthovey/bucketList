@@ -15,6 +15,7 @@ class User{
     var email: String?
     var profileURL: String?
     var uid: String!
+    var friendType: FriendStatus?
     
     var fullName: String{
         return [fname, lname].compactMap{$0}.joined(separator: " ")

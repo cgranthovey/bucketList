@@ -12,11 +12,6 @@ import FirebaseAuth
 import FirebaseFirestore
 
 
-enum FriendStatus: String{
-    case friend = "Friend"
-    case requestSent = "Request Sent"
-    case requestReceived = "Request Received"
-}
 
 
 class FriendSearchVC: UIViewController {
@@ -208,16 +203,27 @@ extension FriendSearchVC: SearchFriendsCellDelegate{
             for snap in snapshot!.documents{
                 print("friends here!", snap.data())
                 let user = User(data: snap.data(), uid: snap.documentID)
-                users.append(user)
+                
+                DataService.instance.currentUserFriends.document(user.uid).getDocument(completion: { (snapshot, error) in
+                    guard error == nil && snapshot != nil && snapshot?.data() != nil else{
+                        users.append(user)
+                        if let cell = self.searchFriendsCell{
+                            cell.users = users
+                            cell.cvSearch.reloadData()
+                        }
+                        return
+                    }
+                    let friend:Friend = Friend(data: snapshot!.data()!, id: snapshot!.documentID)
+                    user.friendType = friend.status
+                    users.append(user)
+                    
+                    if let cell = self.searchFriendsCell{
+                        cell.users = users
+                        cell.cvSearch.reloadData()
+                    }
+                })
             }
-            if let cell = self.searchFriendsCell{
-                print("enter cell", users.count)
-                for item in users{
-                    print("item name - ", item.fullName)
-                }
-                cell.users = users
-                cell.cvSearch.reloadData()
-            }
+
         }
     }
     

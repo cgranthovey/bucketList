@@ -9,8 +9,8 @@
 import UIKit
 
 protocol UserCellDelegate{
-    func primaryBtnPress(user: User)
-    func secondaryBtnPress(user: User)
+    func primaryBtnPress(user: User, btnAction: UserCellBtnActions?)
+    func secondaryBtnPress(user: User, btnAction: UserCellBtnActions?)
 }
 
 class UserCell: BaseCell {
@@ -61,10 +61,11 @@ class UserCell: BaseCell {
         return btn
     }()
     
-    
     var user: User!
     var delegate: UserCellDelegate?
     var isRequestReceived: Bool = false
+    var primaryBtnAction: UserCellBtnActions?
+    var secondaryBtnAction: UserCellBtnActions?
     
     override func setUpViews() {
         
@@ -73,9 +74,8 @@ class UserCell: BaseCell {
         holderView.addSubview(imgView)
         let topAnchor: CGFloat = 10
         let bottomAnchor: CGFloat = 10
-        
         let imgHeight = self.frame.height - topAnchor - bottomAnchor
-        print("img height", imgHeight)
+
         imgView.translatesAutoresizingMaskIntoConstraints = false
         imgView.leftAnchor.constraint(equalTo: holderView.leftAnchor, constant: 10).isActive = true
         imgView.topAnchor.constraint(equalTo: holderView.topAnchor, constant: topAnchor).isActive = true
@@ -97,7 +97,6 @@ class UserCell: BaseCell {
         btnPrimary.translatesAutoresizingMaskIntoConstraints = false
         btnPrimary.bottomAnchor.constraint(equalTo: holderView.bottomAnchor, constant: -10).isActive = true
         btnPrimary.leftAnchor.constraint(equalTo: lblName.leftAnchor, constant: 0).isActive = true
-//        btnPrimary.widthAnchor.constraint(equalToConstant: 90).isActive = true
         btnPrimary.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 10)
         btnPrimary.heightAnchor.constraint(greaterThanOrEqualToConstant: 40).isActive = true
         
@@ -106,19 +105,54 @@ class UserCell: BaseCell {
         btnSecondary.centerYAnchor.constraint(equalTo: btnPrimary.centerYAnchor).isActive = true
         btnSecondary.leftAnchor.constraint(equalTo: btnPrimary.rightAnchor, constant: 20).isActive = true
         btnSecondary.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 10)
-//        btnSecondary.widthAnchor.constraint(greaterThanOrEqualToConstant: 90).isActive = true
         btnSecondary.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
-    func configure(user: User, isSearch: Bool = false){
-        if isSearch{
-            btnPrimary.setTitleWithoutAnimation(title: "Send Request")
-            btnSecondary.isHidden = true
+    func configure(user: User){
+        print("friend type \(user.friendType)")
+        primaryBtnAction = nil
+        secondaryBtnAction = nil
+        if let type = user.friendType{
+            if type == .blocked{
+                btnSecondary.isHidden = true
+                btnPrimary.isHidden = true
+                primaryBtnAction = UserCellBtnActions.block
+                lblNameSecondary.isHidden = false
+                lblNameSecondary.text = "(Blocked)"
+            }
+            if type == .friend{
+                btnSecondary.isHidden = true
+                btnPrimary.isHidden = true
+                lblNameSecondary.isHidden = false
+                lblNameSecondary.text = "(Friends)"
+            }
+            if type == .requestReceived{
+                btnPrimary.setTitleWithoutAnimation(title: "Accept")
+                btnSecondary.setTitleWithoutAnimation(title: "Decline")
+                primaryBtnAction = UserCellBtnActions.acceptRequest
+                secondaryBtnAction = UserCellBtnActions.declineRequest
+                btnSecondary.isHidden = false
+                btnPrimary.isHidden = false
+                lblNameSecondary.isHidden = true
+            }
+            if type == .requestSent{
+                btnPrimary.setTitleWithoutAnimation(title: "Cancel Request")
+                primaryBtnAction = UserCellBtnActions.cancelRequest
+                btnPrimary.isHidden = false
+                btnSecondary.isHidden = true
+                lblNameSecondary.isHidden = false
+                lblNameSecondary.text = "(Request Sent)"
+            }
         } else{
-            btnPrimary.setTitleWithoutAnimation(title: "Accept")
-            btnSecondary.isHidden = false
+            btnPrimary.setTitleWithoutAnimation(title: "Send Request")
+            primaryBtnAction = UserCellBtnActions.sendRequest
+            btnPrimary.isHidden = false
+            btnSecondary.isHidden = true
+            lblNameSecondary.isHidden = true
         }
+
         self.user = user
+        lblName.text = user.fullName
         
         if let urlStr = user.profileURL{
             let url = URL(string: urlStr)
@@ -127,19 +161,17 @@ class UserCell: BaseCell {
         } else{
             imgView.image = #imageLiteral(resourceName: "profile")
         }
-        lblName.text = user.fullName
-        lblNameSecondary.isHidden = true
-        btnPrimary.isHidden = false
+
     }
     
     @objc func acceptBtnPress(){
         if let del = delegate{
-            del.primaryBtnPress(user: user)
+            del.primaryBtnPress(user: user, btnAction: primaryBtnAction)
         }
     }
     @objc func declineBtnPress(){
         if let del = delegate{
-            del.secondaryBtnPress(user: user)
+            del.secondaryBtnPress(user: user, btnAction: secondaryBtnAction)
         }
     }
 }

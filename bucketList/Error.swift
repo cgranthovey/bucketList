@@ -8,14 +8,7 @@
 
 import Foundation
 
-enum AuthSubmitType{
-    case login
-    case createAccount
-    case forgotPassword
-    case updatingPassword
-    case updatingEmail
-    case validatingEmailPassword
-}
+
 
 extension Error{
     

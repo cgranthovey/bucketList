@@ -12,7 +12,7 @@ class Friend{
     var fname: String?
     var lname: String?
     var profileURL: String?
-    var status: String?
+    var status: FriendStatus
     var id: String?
     
     var fullName: String{
@@ -26,8 +26,15 @@ class Friend{
         if let profileURL = data["profileURL"] as? String{
             self.profileURL = profileURL
         }
-        if let status = data["status"] as? String{
-            self.status = status
+        if let stat = data["status"] as? String{
+            switch stat{
+            case FriendStatus.friend.rawValue: status = .friend
+            case FriendStatus.requestReceived.rawValue: status = .requestReceived
+            case FriendStatus.requestSent.rawValue: status = .requestSent
+            default: status = .blocked
+            }
+        } else{
+            status = .blocked
         }
         
         self.id = id

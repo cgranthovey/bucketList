@@ -112,7 +112,7 @@ extension SearchFriendsCell: UICollectionViewDelegate, UICollectionViewDataSourc
         if let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: reuseID, for:
             indexPath) as? UserCell{
             cell.delegate = self
-            cell.configure(user: users[indexPath.row], isSearch: true)
+            cell.configure(user: users[indexPath.row])
             
             return cell
         }
@@ -133,35 +133,45 @@ extension SearchFriendsCell: UICollectionViewDelegate, UICollectionViewDataSourc
 
 extension SearchFriendsCell: UserCellDelegate{
     
-    func primaryBtnPress(user: User){
-        let batch = Firestore.firestore().batch()
+    func primaryBtnPress(user: User, btnAction: UserCellBtnActions?) {
         
-        let requesteeDoc = DataService.instance.usersRef.document(user.uid).collection("friends").document(CurrentUser.instance.user.uid)
-        let requesterDoc = DataService.instance.currentUserFriends.document(user.uid)
-        
-        var dict2 = CurrentUser.instance.user.friendRequestInfo()
-        dict2["status"] = FriendStatus.requestReceived.rawValue
-        dict2["created"] = FieldValue.serverTimestamp()
-        batch.setData(dict2, forDocument: requesteeDoc)
-        
-        var dict = user.friendRequestInfo()
-        dict["status"] = FriendStatus.requestSent.rawValue
-        dict["created"] = FieldValue.serverTimestamp()
-        batch.setData(dict, forDocument: requesterDoc)
-        
-        batch.commit { (error) in
-            guard error == nil else{
-                print("error is nil ", error?.localizedDescription)
-                return
-            }
-//            cell.btnRequest.setTitle("Request Sent", for: .normal)
-//            cell.btnRequest.isUserInteractionEnabled = false
+        guard btnAction != nil else{
+            return
         }
+        if btnAction == UserCellBtnActions.acceptRequest{
+            let batch = Firestore.firestore().batch()
+            
+            let requesteeDoc = DataService.instance.usersRef.document(user.uid).collection("friends").document(CurrentUser.instance.user.uid)
+            let requesterDoc = DataService.instance.currentUserFriends.document(user.uid)
+            
+            var dict2 = CurrentUser.instance.user.friendRequestInfo()
+            dict2["status"] = FriendStatus.requestReceived.rawValue
+            dict2["created"] = FieldValue.serverTimestamp()
+            batch.setData(dict2, forDocument: requesteeDoc)
+            
+            var dict = user.friendRequestInfo()
+            dict["status"] = FriendStatus.requestSent.rawValue
+            dict["created"] = FieldValue.serverTimestamp()
+            batch.setData(dict, forDocument: requesterDoc)
+            
+            batch.commit { (error) in
+                guard error == nil else{
+                    print("error is nil ", error?.localizedDescription)
+                    return
+                }
+            }
+        }
+        if btnAction == UserCellBtnActions.cancelRequest{
+            
+        }
+
     }
     
-    func secondaryBtnPress(user: User){
+    func secondaryBtnPress(user: User, btnAction: UserCellBtnActions?) {
         
     }
+    
+
 }
 
 

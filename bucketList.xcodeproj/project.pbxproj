@@ -15,6 +15,7 @@
 		1507CA2520F6ED1E00704426 /* AddBucketDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1507CA2420F6ED1E00704426 /* AddBucketDetailsVC.swift */; };
 		1507CA2720F6F9E000704426 /* CheckAuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1507CA2620F6F9E000704426 /* CheckAuthVC.swift */; };
 		1507CA2920F824D100704426 /* AddBucketSuccessfulVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1507CA2820F824D100704426 /* AddBucketSuccessfulVC.swift */; };
+		1508124E213A31B400A4D14A /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1508124D213A31B400A4D14A /* Enums.swift */; };
 		1508579D20EEFEB8009372A0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1508579C20EEFEB8009372A0 /* GoogleService-Info.plist */; };
 		150F97952106A33A00C4D3C7 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150F97942106A33A00C4D3C7 /* CurrentUser.swift */; };
 		1510B7EA21015AC0009FBCEC /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1510B7E921015AC0009FBCEC /* Button.swift */; };
@@ -103,6 +104,7 @@
 		1507CA2420F6ED1E00704426 /* AddBucketDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBucketDetailsVC.swift; sourceTree = "<group>"; };
 		1507CA2620F6F9E000704426 /* CheckAuthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAuthVC.swift; sourceTree = "<group>"; };
 		1507CA2820F824D100704426 /* AddBucketSuccessfulVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBucketSuccessfulVC.swift; sourceTree = "<group>"; };
+		1508124D213A31B400A4D14A /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		1508579C20EEFEB8009372A0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		150F97942106A33A00C4D3C7 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		1510B7E921015AC0009FBCEC /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				1507CA1D20F6E93900704426 /* NewBucketItem.swift */,
 				1510B7EE2101670F009FBCEC /* GetData.swift */,
 				150F97942106A33A00C4D3C7 /* CurrentUser.swift */,
+				1508124D213A31B400A4D14A /* Enums.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -704,6 +707,7 @@
 				15C6633620F19CA300C7DF5E /* PasswordResetVC.swift in Sources */,
 				1507CA2120F6E9C800704426 /* BucketItem.swift in Sources */,
 				152C89FE211936880032A581 /* UpdateProfileVC.swift in Sources */,
+				1508124E213A31B400A4D14A /* Enums.swift in Sources */,
 				1522B0BD20F04EB400C5CF9C /* Error.swift in Sources */,
 				15C37E872103F78700ED0503 /* MapItemsVC.swift in Sources */,
 				15C37E9121050C1B00ED0503 /* FriendSearchTblCell.swift in Sources */,

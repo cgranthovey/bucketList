@@ -83,8 +83,7 @@ extension RequestReceivedCell: UICollectionViewDelegate, UICollectionViewDataSou
 }
 
 extension RequestReceivedCell: UserCellDelegate{
-    
-    func primaryBtnPress(user: User){
+    func primaryBtnPress(user: User, btnAction: UserCellBtnActions?) {
         guard user.uid != nil else{
             return
         }
@@ -102,7 +101,7 @@ extension RequestReceivedCell: UserCellDelegate{
         }
     }
     
-    func secondaryBtnPress(user: User){
+    func secondaryBtnPress(user: User, btnAction: UserCellBtnActions?) {
         guard user.uid != nil else{
             return
         }
