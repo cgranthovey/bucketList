@@ -14,9 +14,33 @@
 		1507CA2320F6EC5E00704426 /* AddBucketLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1507CA2220F6EC5E00704426 /* AddBucketLocationVC.swift */; };
 		1507CA2520F6ED1E00704426 /* AddBucketDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1507CA2420F6ED1E00704426 /* AddBucketDetailsVC.swift */; };
 		1507CA2720F6F9E000704426 /* CheckAuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1507CA2620F6F9E000704426 /* CheckAuthVC.swift */; };
+		1507CA2920F824D100704426 /* AddBucketSuccessfulVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1507CA2820F824D100704426 /* AddBucketSuccessfulVC.swift */; };
+		1508124E213A31B400A4D14A /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1508124D213A31B400A4D14A /* Enums.swift */; };
 		1508579D20EEFEB8009372A0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1508579C20EEFEB8009372A0 /* GoogleService-Info.plist */; };
+		150F97952106A33A00C4D3C7 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150F97942106A33A00C4D3C7 /* CurrentUser.swift */; };
+		1510B7EA21015AC0009FBCEC /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1510B7E921015AC0009FBCEC /* Button.swift */; };
+		1510B7ED210162C3009FBCEC /* BucketListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1510B7EC210162C3009FBCEC /* BucketListCell.swift */; };
+		1510B7EF2101670F009FBCEC /* GetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1510B7EE2101670F009FBCEC /* GetData.swift */; };
 		1522B0BD20F04EB400C5CF9C /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1522B0BC20F04EB400C5CF9C /* Error.swift */; };
 		1522B0C420F056A300C5CF9C /* LandingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1522B0C320F056A300C5CF9C /* LandingVC.swift */; };
+		1529D42D2117CD8800AC4829 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1529D42C2117CD8800AC4829 /* ProfileVC.swift */; };
+		1529D42F2117F8B000AC4829 /* MainTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1529D42E2117F8B000AC4829 /* MainTBC.swift */; };
+		1529D4312117FADB00AC4829 /* SettingsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1529D4302117FADB00AC4829 /* SettingsTVC.swift */; };
+		152C89FA21192ECD0032A581 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152C89F921192ECD0032A581 /* Settings.storyboard */; };
+		152C89FC211931600032A581 /* UpdateNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152C89FB211931600032A581 /* UpdateNameVC.swift */; };
+		152C89FE211936880032A581 /* UpdateProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152C89FD211936880032A581 /* UpdateProfileVC.swift */; };
+		1536DD4F2123A6AF0022A43F /* FriendsItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1536DD4E2123A6AF0022A43F /* FriendsItemCell.swift */; };
+		1555DDA1212274510064A798 /* FriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1555DDA0212274510064A798 /* FriendsCell.swift */; };
+		1576E40520F96A020067341D /* LocationSearchTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1576E40420F96A020067341D /* LocationSearchTableVC.swift */; };
+		1576E40720F96E220067341D /* MKPlacemark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1576E40620F96E220067341D /* MKPlacemark.swift */; };
+		1576E40A20F9CE5C0067341D /* SearchTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1576E40920F9CE5C0067341D /* SearchTblCell.swift */; };
+		158D1CE02130D3F300FD8BAD /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D1CDF2130D3F300FD8BAD /* UIFont.swift */; };
+		158D1CE22130F08D00FD8BAD /* SearchFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D1CE12130F08D00FD8BAD /* SearchFriendsCell.swift */; };
+		158D1CE421312FC400FD8BAD /* CustomTF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D1CE321312FC400FD8BAD /* CustomTF.swift */; };
+		158D1CE82132729900FD8BAD /* RequestReceivedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D1CE72132729800FD8BAD /* RequestReceivedCell.swift */; };
+		158D1CEA21337CA600FD8BAD /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D1CE921337CA600FD8BAD /* Friend.swift */; };
+		158D1CEC21337F6600FD8BAD /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D1CEB21337F6600FD8BAD /* UserCell.swift */; };
+		159CC7A22136169B00BEFAE3 /* ContactsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159CC7A12136169B00BEFAE3 /* ContactsCell.swift */; };
 		15BAA8AE20EF0FB500289C7A /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BAA8AD20EF0FB500289C7A /* View.swift */; };
 		15BCDB0A20E47B9A00E1B6A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BCDB0920E47B9A00E1B6A9 /* AppDelegate.swift */; };
 		15BCDB0C20E47B9A00E1B6A9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BCDB0B20E47B9A00E1B6A9 /* ViewController.swift */; };
@@ -33,9 +57,20 @@
 		15BCDB4D20E728BA00E1B6A9 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BCDB4C20E728BA00E1B6A9 /* LoginVC.swift */; };
 		15BCDB4F20E9938400E1B6A9 /* CreateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BCDB4E20E9938400E1B6A9 /* CreateAccountVC.swift */; };
 		15BCDB5220E994DA00E1B6A9 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BCDB5120E994DA00E1B6A9 /* String.swift */; };
+		15C37E872103F78700ED0503 /* MapItemsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C37E862103F78700ED0503 /* MapItemsVC.swift */; };
+		15C37E89210419F100ED0503 /* MKCoordinateRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C37E88210419F100ED0503 /* MKCoordinateRegion.swift */; };
+		15C37E8B2104283500ED0503 /* BucketMKPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C37E8A2104283500ED0503 /* BucketMKPointAnnotation.swift */; };
+		15C37E8D2105080C00ED0503 /* FriendSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C37E8C2105080C00ED0503 /* FriendSearchVC.swift */; };
+		15C37E8F21050AE400ED0503 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C37E8E21050AE400ED0503 /* User.swift */; };
+		15C37E9121050C1B00ED0503 /* FriendSearchTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C37E9021050C1B00ED0503 /* FriendSearchTblCell.swift */; };
+		15C5664B211AA9BB001F5F6C /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C5664A211AA9BB001F5F6C /* Image.swift */; };
+		15C5664D211BDEF7001F5F6C /* UpdatePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C5664C211BDEF7001F5F6C /* UpdatePasswordVC.swift */; };
+		15C5664F211BFB46001F5F6C /* UpdateEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C5664E211BFB46001F5F6C /* UpdateEmailVC.swift */; };
 		15C6633420F18D6B00C7DF5E /* VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C6633320F18D6B00C7DF5E /* VC.swift */; };
 		15C6633620F19CA300C7DF5E /* PasswordResetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C6633520F19CA300C7DF5E /* PasswordResetVC.swift */; };
 		15C6633820F44BB800C7DF5E /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C6633720F44BB800C7DF5E /* TextField.swift */; };
+		15E41EC8211F998A003AC82F /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E41EC7211F998A003AC82F /* UIColor.swift */; };
+		15E41ECA21209399003AC82F /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E41EC921209399003AC82F /* MenuBar.swift */; };
 		15ECED7620F6D61400BF42FD /* AddBucketTitleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ECED7520F6D61400BF42FD /* AddBucketTitleVC.swift */; };
 		482BED12B0CAF167AFD22FE1 /* Pods_bucketList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF59627E3CB18DE61EB8A6A1 /* Pods_bucketList.framework */; };
 		C089EE37050654A3C79FACA1 /* Pods_bucketListTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94117F4274025BCBF82DFE4F /* Pods_bucketListTests.framework */; };
@@ -68,9 +103,33 @@
 		1507CA2220F6EC5E00704426 /* AddBucketLocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBucketLocationVC.swift; sourceTree = "<group>"; };
 		1507CA2420F6ED1E00704426 /* AddBucketDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBucketDetailsVC.swift; sourceTree = "<group>"; };
 		1507CA2620F6F9E000704426 /* CheckAuthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAuthVC.swift; sourceTree = "<group>"; };
+		1507CA2820F824D100704426 /* AddBucketSuccessfulVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBucketSuccessfulVC.swift; sourceTree = "<group>"; };
+		1508124D213A31B400A4D14A /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		1508579C20EEFEB8009372A0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		150F97942106A33A00C4D3C7 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
+		1510B7E921015AC0009FBCEC /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		1510B7EC210162C3009FBCEC /* BucketListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketListCell.swift; sourceTree = "<group>"; };
+		1510B7EE2101670F009FBCEC /* GetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetData.swift; sourceTree = "<group>"; };
 		1522B0BC20F04EB400C5CF9C /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		1522B0C320F056A300C5CF9C /* LandingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingVC.swift; sourceTree = "<group>"; };
+		1529D42C2117CD8800AC4829 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		1529D42E2117F8B000AC4829 /* MainTBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTBC.swift; sourceTree = "<group>"; };
+		1529D4302117FADB00AC4829 /* SettingsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTVC.swift; sourceTree = "<group>"; };
+		152C89F921192ECD0032A581 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		152C89FB211931600032A581 /* UpdateNameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateNameVC.swift; sourceTree = "<group>"; };
+		152C89FD211936880032A581 /* UpdateProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileVC.swift; sourceTree = "<group>"; };
+		1536DD4E2123A6AF0022A43F /* FriendsItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsItemCell.swift; sourceTree = "<group>"; };
+		1555DDA0212274510064A798 /* FriendsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsCell.swift; sourceTree = "<group>"; };
+		1576E40420F96A020067341D /* LocationSearchTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableVC.swift; sourceTree = "<group>"; };
+		1576E40620F96E220067341D /* MKPlacemark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKPlacemark.swift; sourceTree = "<group>"; };
+		1576E40920F9CE5C0067341D /* SearchTblCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTblCell.swift; sourceTree = "<group>"; };
+		158D1CDF2130D3F300FD8BAD /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		158D1CE12130F08D00FD8BAD /* SearchFriendsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendsCell.swift; sourceTree = "<group>"; };
+		158D1CE321312FC400FD8BAD /* CustomTF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTF.swift; sourceTree = "<group>"; };
+		158D1CE72132729800FD8BAD /* RequestReceivedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestReceivedCell.swift; sourceTree = "<group>"; };
+		158D1CE921337CA600FD8BAD /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		158D1CEB21337F6600FD8BAD /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		159CC7A12136169B00BEFAE3 /* ContactsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsCell.swift; sourceTree = "<group>"; };
 		15BAA8AD20EF0FB500289C7A /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		15BCDB0620E47B9A00E1B6A9 /* bucketList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bucketList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15BCDB0920E47B9A00E1B6A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -93,9 +152,20 @@
 		15BCDB4C20E728BA00E1B6A9 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		15BCDB4E20E9938400E1B6A9 /* CreateAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountVC.swift; sourceTree = "<group>"; };
 		15BCDB5120E994DA00E1B6A9 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		15C37E862103F78700ED0503 /* MapItemsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapItemsVC.swift; sourceTree = "<group>"; };
+		15C37E88210419F100ED0503 /* MKCoordinateRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKCoordinateRegion.swift; sourceTree = "<group>"; };
+		15C37E8A2104283500ED0503 /* BucketMKPointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketMKPointAnnotation.swift; sourceTree = "<group>"; };
+		15C37E8C2105080C00ED0503 /* FriendSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSearchVC.swift; sourceTree = "<group>"; };
+		15C37E8E21050AE400ED0503 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		15C37E9021050C1B00ED0503 /* FriendSearchTblCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSearchTblCell.swift; sourceTree = "<group>"; };
+		15C5664A211AA9BB001F5F6C /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		15C5664C211BDEF7001F5F6C /* UpdatePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordVC.swift; sourceTree = "<group>"; };
+		15C5664E211BFB46001F5F6C /* UpdateEmailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateEmailVC.swift; sourceTree = "<group>"; };
 		15C6633320F18D6B00C7DF5E /* VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.swift; sourceTree = "<group>"; };
 		15C6633520F19CA300C7DF5E /* PasswordResetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetVC.swift; sourceTree = "<group>"; };
 		15C6633720F44BB800C7DF5E /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		15E41EC7211F998A003AC82F /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		15E41EC921209399003AC82F /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 		15ECED7520F6D61400BF42FD /* AddBucketTitleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBucketTitleVC.swift; sourceTree = "<group>"; };
 		3ABEB8F2F44D4253FA2D33DD /* Pods-bucketListUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bucketListUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-bucketListUITests/Pods-bucketListUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4202367AB43FB23AAD0A654D /* Pods-bucketListTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bucketListTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-bucketListTests/Pods-bucketListTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -140,6 +210,9 @@
 			children = (
 				1507CA1920F6D8BF00704426 /* DataService.swift */,
 				1507CA1D20F6E93900704426 /* NewBucketItem.swift */,
+				1510B7EE2101670F009FBCEC /* GetData.swift */,
+				150F97942106A33A00C4D3C7 /* CurrentUser.swift */,
+				1508124D213A31B400A4D14A /* Enums.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -148,17 +221,47 @@
 			isa = PBXGroup;
 			children = (
 				1507CA2020F6E9C800704426 /* BucketItem.swift */,
+				15C37E8A2104283500ED0503 /* BucketMKPointAnnotation.swift */,
+				15C37E8E21050AE400ED0503 /* User.swift */,
+				158D1CE921337CA600FD8BAD /* Friend.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		1510B7EB21016273009FBCEC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1510B7EC210162C3009FBCEC /* BucketListCell.swift */,
+				15E41EC921209399003AC82F /* MenuBar.swift */,
+				1555DDA0212274510064A798 /* FriendsCell.swift */,
+				1536DD4E2123A6AF0022A43F /* FriendsItemCell.swift */,
+				158D1CE12130F08D00FD8BAD /* SearchFriendsCell.swift */,
+				158D1CE72132729800FD8BAD /* RequestReceivedCell.swift */,
+				158D1CEB21337F6600FD8BAD /* UserCell.swift */,
+				159CC7A12136169B00BEFAE3 /* ContactsCell.swift */,
+				158D1CE321312FC400FD8BAD /* CustomTF.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		1522B0BE20F054C600C5CF9C /* LoggedIn */ = {
 			isa = PBXGroup;
 			children = (
+				1510B7EB21016273009FBCEC /* View */,
 				15C6633920F473A400C7DF5E /* Controller */,
 				15BCDB0D20E47B9A00E1B6A9 /* Main.storyboard */,
+				152C89F921192ECD0032A581 /* Settings.storyboard */,
 			);
 			path = LoggedIn;
+			sourceTree = "<group>";
+		};
+		1576E40820F9CE110067341D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1576E40920F9CE5C0067341D /* SearchTblCell.swift */,
+				15C37E9021050C1B00ED0503 /* FriendSearchTblCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		15BCDAFD20E47B9A00E1B6A9 = {
@@ -186,6 +289,7 @@
 		15BCDB0820E47B9A00E1B6A9 /* bucketList */ = {
 			isa = PBXGroup;
 			children = (
+				1576E40820F9CE110067341D /* View */,
 				1507CA1F20F6E99C00704426 /* Model */,
 				1507CA1820F6D8A900704426 /* Service */,
 				1522B0BE20F054C600C5CF9C /* LoggedIn */,
@@ -267,6 +371,12 @@
 				1522B0BC20F04EB400C5CF9C /* Error.swift */,
 				15C6633320F18D6B00C7DF5E /* VC.swift */,
 				15C6633720F44BB800C7DF5E /* TextField.swift */,
+				1576E40620F96E220067341D /* MKPlacemark.swift */,
+				1510B7E921015AC0009FBCEC /* Button.swift */,
+				15C37E88210419F100ED0503 /* MKCoordinateRegion.swift */,
+				15C5664A211AA9BB001F5F6C /* Image.swift */,
+				15E41EC7211F998A003AC82F /* UIColor.swift */,
+				158D1CDF2130D3F300FD8BAD /* UIFont.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -276,9 +386,20 @@
 			children = (
 				1522B0C320F056A300C5CF9C /* LandingVC.swift */,
 				15ECED7520F6D61400BF42FD /* AddBucketTitleVC.swift */,
-				1507CA1B20F6E58700704426 /* AddBucketMapVC.swift */,
+				1576E40420F96A020067341D /* LocationSearchTableVC.swift */,
 				1507CA2220F6EC5E00704426 /* AddBucketLocationVC.swift */,
 				1507CA2420F6ED1E00704426 /* AddBucketDetailsVC.swift */,
+				1507CA2820F824D100704426 /* AddBucketSuccessfulVC.swift */,
+				1507CA1B20F6E58700704426 /* AddBucketMapVC.swift */,
+				15C37E862103F78700ED0503 /* MapItemsVC.swift */,
+				15C37E8C2105080C00ED0503 /* FriendSearchVC.swift */,
+				1529D42C2117CD8800AC4829 /* ProfileVC.swift */,
+				1529D42E2117F8B000AC4829 /* MainTBC.swift */,
+				1529D4302117FADB00AC4829 /* SettingsTVC.swift */,
+				152C89FB211931600032A581 /* UpdateNameVC.swift */,
+				152C89FD211936880032A581 /* UpdateProfileVC.swift */,
+				15C5664C211BDEF7001F5F6C /* UpdatePasswordVC.swift */,
+				15C5664E211BFB46001F5F6C /* UpdateEmailVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -420,6 +541,7 @@
 				15BCDB0F20E47B9A00E1B6A9 /* Main.storyboard in Resources */,
 				15BCDB4820E726CB00E1B6A9 /* CreateAccount.storyboard in Resources */,
 				15BCDB3820E47DE200E1B6A9 /* Onboarding.storyboard in Resources */,
+				152C89FA21192ECD0032A581 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,7 +564,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		3AB041075E495F3EACC72107 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -451,6 +573,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
@@ -464,6 +587,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
@@ -537,27 +661,61 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15C37E8D2105080C00ED0503 /* FriendSearchVC.swift in Sources */,
 				15BCDB4120E482E200E1B6A9 /* OnboardingPageVC.swift in Sources */,
+				1529D42D2117CD8800AC4829 /* ProfileVC.swift in Sources */,
+				1576E40720F96E220067341D /* MKPlacemark.swift in Sources */,
+				15E41EC8211F998A003AC82F /* UIColor.swift in Sources */,
 				15BCDB4320E5BF9500E1B6A9 /* OnboardingImgVC.swift in Sources */,
 				15BCDB4D20E728BA00E1B6A9 /* LoginVC.swift in Sources */,
+				158D1CEC21337F6600FD8BAD /* UserCell.swift in Sources */,
 				1507CA2520F6ED1E00704426 /* AddBucketDetailsVC.swift in Sources */,
+				158D1CE82132729900FD8BAD /* RequestReceivedCell.swift in Sources */,
+				15C5664B211AA9BB001F5F6C /* Image.swift in Sources */,
+				1510B7ED210162C3009FBCEC /* BucketListCell.swift in Sources */,
+				1529D42F2117F8B000AC4829 /* MainTBC.swift in Sources */,
 				15ECED7620F6D61400BF42FD /* AddBucketTitleVC.swift in Sources */,
+				150F97952106A33A00C4D3C7 /* CurrentUser.swift in Sources */,
+				158D1CEA21337CA600FD8BAD /* Friend.swift in Sources */,
 				1507CA1C20F6E58700704426 /* AddBucketMapVC.swift in Sources */,
 				1507CA1E20F6E93900704426 /* NewBucketItem.swift in Sources */,
+				1576E40A20F9CE5C0067341D /* SearchTblCell.swift in Sources */,
 				15BCDB4520E5C6DD00E1B6A9 /* OnboardingVC.swift in Sources */,
+				1555DDA1212274510064A798 /* FriendsCell.swift in Sources */,
+				1507CA2920F824D100704426 /* AddBucketSuccessfulVC.swift in Sources */,
 				15BCDB4F20E9938400E1B6A9 /* CreateAccountVC.swift in Sources */,
 				15BAA8AE20EF0FB500289C7A /* View.swift in Sources */,
 				1507CA2320F6EC5E00704426 /* AddBucketLocationVC.swift in Sources */,
 				1507CA1A20F6D8BF00704426 /* DataService.swift in Sources */,
+				15C37E8B2104283500ED0503 /* BucketMKPointAnnotation.swift in Sources */,
+				158D1CE02130D3F300FD8BAD /* UIFont.swift in Sources */,
+				15E41ECA21209399003AC82F /* MenuBar.swift in Sources */,
+				158D1CE421312FC400FD8BAD /* CustomTF.swift in Sources */,
 				15BCDB0C20E47B9A00E1B6A9 /* ViewController.swift in Sources */,
+				1536DD4F2123A6AF0022A43F /* FriendsItemCell.swift in Sources */,
+				1510B7EA21015AC0009FBCEC /* Button.swift in Sources */,
+				152C89FC211931600032A581 /* UpdateNameVC.swift in Sources */,
+				15C5664D211BDEF7001F5F6C /* UpdatePasswordVC.swift in Sources */,
+				1510B7EF2101670F009FBCEC /* GetData.swift in Sources */,
 				1507CA2720F6F9E000704426 /* CheckAuthVC.swift in Sources */,
+				158D1CE22130F08D00FD8BAD /* SearchFriendsCell.swift in Sources */,
 				15BCDB5220E994DA00E1B6A9 /* String.swift in Sources */,
 				15C6633420F18D6B00C7DF5E /* VC.swift in Sources */,
+				15C5664F211BFB46001F5F6C /* UpdateEmailVC.swift in Sources */,
+				15C37E8F21050AE400ED0503 /* User.swift in Sources */,
+				159CC7A22136169B00BEFAE3 /* ContactsCell.swift in Sources */,
 				15C6633620F19CA300C7DF5E /* PasswordResetVC.swift in Sources */,
 				1507CA2120F6E9C800704426 /* BucketItem.swift in Sources */,
+				152C89FE211936880032A581 /* UpdateProfileVC.swift in Sources */,
+				1508124E213A31B400A4D14A /* Enums.swift in Sources */,
 				1522B0BD20F04EB400C5CF9C /* Error.swift in Sources */,
+				15C37E872103F78700ED0503 /* MapItemsVC.swift in Sources */,
+				15C37E9121050C1B00ED0503 /* FriendSearchTblCell.swift in Sources */,
 				15BCDB0A20E47B9A00E1B6A9 /* AppDelegate.swift in Sources */,
+				1529D4312117FADB00AC4829 /* SettingsTVC.swift in Sources */,
+				15C37E89210419F100ED0503 /* MKCoordinateRegion.swift in Sources */,
 				1522B0C420F056A300C5CF9C /* LandingVC.swift in Sources */,
+				1576E40520F96A020067341D /* LocationSearchTableVC.swift in Sources */,
 				15C6633820F44BB800C7DF5E /* TextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

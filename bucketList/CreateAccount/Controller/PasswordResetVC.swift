@@ -43,7 +43,7 @@ class PasswordResetVC: UIViewController {
                 let alert = UIAlertController(title: "Email Sent", message: "Check your email address to reset password.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
                 alert.addAction(UIAlertAction(title: "Return to Login", style: .default, handler: { (action) in
-                    self.dismiss(animated: true, completion: nil)
+                    self.navigationController?.popViewController(animated: true)
                 }))
                 self.present(alert, animated: true, completion: nil)
             })
@@ -51,7 +51,7 @@ class PasswordResetVC: UIViewController {
     }
     
     @IBAction func backBtnPress(_ sender: AnyObject){
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
 
 }

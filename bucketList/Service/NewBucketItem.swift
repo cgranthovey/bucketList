@@ -15,10 +15,11 @@ class NewBucketItem{
         return _instance
     }
     
-    var item: BucketItem = BucketItem()
+    var item: BucketItem = BucketItem(dict: nil)
     
     func clearItem(){
         
-        item = BucketItem()
+        item = BucketItem(dict: nil)
+        
     }
 }

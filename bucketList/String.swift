@@ -17,4 +17,36 @@ extension String{
             return false
         }
     }
+    
+    var digits: String{
+        return components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+    }
+    
+    func isEmptyOrWhitespace() -> Bool {
+        
+        if(self.isEmpty) {
+            return true
+        }
+        return (self.trimmingCharacters(in: NSCharacterSet.whitespaces) == "")
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

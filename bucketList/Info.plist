@@ -22,6 +22,16 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Needed for bucket list.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Camera needed to take images in app.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Location used to set and find items on your bucket list.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Needed to add images to your bucket list.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Needed to add images to your bucket list.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -43,5 +53,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSContactsUsageDescription</key>
+	<string>Enable contacts to find your friends using the app.</string>
 </dict>
 </plist>

@@ -58,16 +58,21 @@ class CreateAccountVC: UIViewController {
     
     func signUpUser(email: String, password: String, name: String){
         self.view.showBlurLoader()
+        print("signUpUser0")
         Auth.auth().createUser(withEmail: email, password: password) { (user, err) in
-            guard err == nil else{
+            guard err == nil && user != nil else{
+                print("signUpUser0.4",err)
                 self.view.removeBluerLoader(completionHandler: {
                     self.okAlert(title: "Error", message: err!.customAuthError(submitType: AuthSubmitType.createAccount))
                 })
                 return
             }
 
-            let db = Firestore.firestore()
-            var _ = db.collection("users").addDocument(data: [
+            let usersRef = DataService.instance.usersRef
+            
+            print("signUpUser1", user!.user.uid)
+            
+            var _ = usersRef.document(user!.user.uid).setData([
                 "email": email,
                 "fname": name,
                 "created": FieldValue.serverTimestamp()
@@ -77,7 +82,7 @@ class CreateAccountVC: UIViewController {
                         return
                     }
                     let storboardMain = UIStoryboard(name: "Main", bundle: nil)
-                    if let vc = storboardMain.instantiateViewController(withIdentifier: "LandingVC") as? LandingVC{
+                    if let vc = storboardMain.instantiateViewController(withIdentifier: "UITabBarController") as? UITabBarController{
                         self.present(vc, animated: true, completion: {
                             self.view.removeBluerLoader(completionHandler: nil)
                         })

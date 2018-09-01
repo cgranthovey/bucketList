@@ -39,7 +39,7 @@ class OnboardingVC: UIViewController {
         let loginStoryboard = UIStoryboard(name: "CreateAccount", bundle: nil)
         if let createAccountVC = loginStoryboard.instantiateViewController(withIdentifier: "CreateAccountVC") as? CreateAccountVC{
             createAccountVC.modalTransitionStyle = .flipHorizontal
-            present(createAccountVC, animated: true, completion: nil)
+            self.navigationController?.pushViewController(createAccountVC, animated: true)
         }
     }
     
