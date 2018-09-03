@@ -13,11 +13,13 @@ class AddBucketLocationVC: UIViewController {
     @IBOutlet weak var lblAddressPrimary: UILabel!
     @IBOutlet weak var lblAddressSecondary: UILabel!
     @IBOutlet weak var btnAddLocation: UIButton!
+    @IBOutlet weak var btnNext: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hero.isEnabled = true
         btnAddLocation.hero.id = "top"
+        btnNext.hero.id = "next"
     }
     
     override func viewWillAppear(_ animated: Bool) {

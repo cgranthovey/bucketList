@@ -16,7 +16,7 @@ class AddBucketTitleVC: UIViewController {
     
     @IBOutlet weak var tfTitle: UITextField!
     @IBOutlet weak var tfPrice: UITextField!
-    
+    @IBOutlet weak var btnNext: UIButton!
     
 
     override func viewDidLoad() {
@@ -26,16 +26,12 @@ class AddBucketTitleVC: UIViewController {
         tfPrice.delegate = self
         
         tfPrice.hero.id = "top"
+        btnNext.hero.id = "next"
         self.navigationController?.hero.isEnabled = true
-        self.navigationController?.hero.navigationAnimationType = .none
+        self.navigationController?.hero.navigationAnimationType = .fade
     }
     
     @IBAction func nextBtnPress(_ sender: AnyObject){
-        
-    }
-    
-    @IBAction func backBtnPress(_ sender: AnyObject){
-        self.navigationController?.popViewController(animated: true)
         
     }
     

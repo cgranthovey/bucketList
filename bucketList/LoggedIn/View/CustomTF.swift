@@ -30,6 +30,19 @@ class CustomTF: UITextField {
 
 }
 
+class BottomLineTF: UITextField{
+    
+    override func draw(_ rect: CGRect) {
+        textColor = UIColor().textBlack
+        
+        borderStyle = .none
+        
+        font = UIFont().primary(size: 25)
+        self.addLineToView(position: .LINE_POSITION_BOTTOM, color: UIColor().disabledBlack, width: 1.5)
+    }
+    
+}
+
 
 
 

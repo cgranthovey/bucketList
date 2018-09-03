@@ -11,7 +11,7 @@ import UIKit
 
 extension UIColor{
     func rgb(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> UIColor{
-        return UIColor(displayP3Red: red/255, green: green/255, blue: blue/255, alpha: 1.0)
+        return UIColor(displayP3Red: red/255, green: green/255, blue: blue/255, alpha: alpha)
     }
     var lightGrey: UIColor{
         return rgb(red: 238, green: 238, blue: 238, alpha: 1)
@@ -21,6 +21,24 @@ extension UIColor{
     }
     var deactiveDark: UIColor{
         return rgb(red: 91, green: 14, blue: 13, alpha: 1)
+    }
+    
+    var primaryColor: UIColor{
+        return rgb(red: 247, green: 180, blue: 68, alpha: 1)
+    }
+    var primaryBlue: UIColor{
+        return rgb(red: 0, green: 178, blue: 255, alpha: 1)
+    }
+    
+    
+    var textBlack: UIColor{
+        return rgb(red: 0, green: 0, blue: 0, alpha: 0.87)
+    }
+    var secondaryBlack: UIColor{
+        return rgb(red: 0, green: 0, blue: 0, alpha: 0.54)
+    }
+    var disabledBlack: UIColor{
+        return rgb(red: 0, green: 0, blue: 0, alpha: 0.38)
     }
     
 }

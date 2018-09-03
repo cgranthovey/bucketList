@@ -8,14 +8,17 @@
 
 import UIKit
 import Firebase
+import DGElasticPullToRefresh
 
 
 class LandingVC: UIViewController {
 
     @IBOutlet weak var table: UITableView!
+    @IBOutlet weak var viewTop: UIView!
     
     var bucketItems = [BucketItem]()
     var lastDoc: DocumentSnapshot?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,15 +27,36 @@ class LandingVC: UIViewController {
         table.rowHeight = UITableViewAutomaticDimension
         table.estimatedRowHeight = 150
         
-        table.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 75, right: 0)
+        table.contentInset = UIEdgeInsets(top: 0
+            , left: 0, bottom: 75, right: 0)
         
         
         CurrentUser.instance.getCurrentUserData { (success) in
             
         }
         
+        getData {
+        }
+        
+        setUpPullTableLoader()
+        setUpUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+
+    }
+
+    func setUpUI(){
+     //   viewTop.backgroundColor = UIColor().primaryColor
+    }
+    
+    typealias Completion = () -> Void
+    func getData(onComplete: @escaping Completion){
+        
+        print("get data doc \(lastDoc)")
         GetData.instance.retrieve(collection: DataService.instance.bucketListRef, lastDoc: lastDoc) { (items, lastDoc) in
             self.lastDoc = lastDoc
+            self.bucketItems = []
             for item in items{
                 if let dict = item as? Dictionary<String, AnyObject>{
                     let bucketItem = BucketItem(dict: dict)
@@ -40,11 +64,27 @@ class LandingVC: UIViewController {
                 }
             }
             self.table.reloadData()
+            onComplete()
         }
-
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    func setUpPullTableLoader(){
+        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+        loadingView.tintColor = UIColor.white
+
+        table.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+            // Add your logic here
+            // Do not forget to call dg_stopLoading() at the end
+            self?.lastDoc = nil
+
+            self?.getData {
+                self?.table.dg_stopLoading()
+            }
+            
+        }, loadingView: loadingView)
+        table.dg_stopLoading()
+        table.dg_setPullToRefreshFillColor(UIColor().primaryColor)
+        table.dg_setPullToRefreshBackgroundColor(UIColor().rgb(red: 246, green: 246, blue: 246, alpha: 1))
     }
     
 
@@ -54,6 +94,11 @@ class LandingVC: UIViewController {
 extension LandingVC: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0 {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "cell0") as? UITableViewCell{
+                return cell 
+            }
+        }
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? BucketListCell{
             cell.configure(item: bucketItems[indexPath.row])
             
@@ -67,4 +112,12 @@ extension LandingVC: UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        if indexPath.row == 0{
+//            return 1
+//        }
+//        return
+//    }    
+
 }

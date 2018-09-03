@@ -31,6 +31,7 @@
 		152C89FE211936880032A581 /* UpdateProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152C89FD211936880032A581 /* UpdateProfileVC.swift */; };
 		1536DD4F2123A6AF0022A43F /* FriendsItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1536DD4E2123A6AF0022A43F /* FriendsItemCell.swift */; };
 		1555DDA1212274510064A798 /* FriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1555DDA0212274510064A798 /* FriendsCell.swift */; };
+		15623EF0213DDCD000F43372 /* ViewCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15623EEF213DDCD000F43372 /* ViewCustom.swift */; };
 		1576E40520F96A020067341D /* LocationSearchTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1576E40420F96A020067341D /* LocationSearchTableVC.swift */; };
 		1576E40720F96E220067341D /* MKPlacemark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1576E40620F96E220067341D /* MKPlacemark.swift */; };
 		1576E40A20F9CE5C0067341D /* SearchTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1576E40920F9CE5C0067341D /* SearchTblCell.swift */; };
@@ -72,6 +73,7 @@
 		15E41EC8211F998A003AC82F /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E41EC7211F998A003AC82F /* UIColor.swift */; };
 		15E41ECA21209399003AC82F /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E41EC921209399003AC82F /* MenuBar.swift */; };
 		15ECED7620F6D61400BF42FD /* AddBucketTitleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ECED7520F6D61400BF42FD /* AddBucketTitleVC.swift */; };
+		15F5E049213DD11300D3903B /* ButtonCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F5E048213DD11200D3903B /* ButtonCustom.swift */; };
 		482BED12B0CAF167AFD22FE1 /* Pods_bucketList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF59627E3CB18DE61EB8A6A1 /* Pods_bucketList.framework */; };
 		C089EE37050654A3C79FACA1 /* Pods_bucketListTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94117F4274025BCBF82DFE4F /* Pods_bucketListTests.framework */; };
 		D16F1429AEB00874657BC7E8 /* Pods_bucketListUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07F899451FC8A511037D3EF7 /* Pods_bucketListUITests.framework */; };
@@ -120,6 +122,7 @@
 		152C89FD211936880032A581 /* UpdateProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileVC.swift; sourceTree = "<group>"; };
 		1536DD4E2123A6AF0022A43F /* FriendsItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsItemCell.swift; sourceTree = "<group>"; };
 		1555DDA0212274510064A798 /* FriendsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsCell.swift; sourceTree = "<group>"; };
+		15623EEF213DDCD000F43372 /* ViewCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCustom.swift; sourceTree = "<group>"; };
 		1576E40420F96A020067341D /* LocationSearchTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableVC.swift; sourceTree = "<group>"; };
 		1576E40620F96E220067341D /* MKPlacemark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKPlacemark.swift; sourceTree = "<group>"; };
 		1576E40920F9CE5C0067341D /* SearchTblCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTblCell.swift; sourceTree = "<group>"; };
@@ -167,6 +170,7 @@
 		15E41EC7211F998A003AC82F /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		15E41EC921209399003AC82F /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 		15ECED7520F6D61400BF42FD /* AddBucketTitleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBucketTitleVC.swift; sourceTree = "<group>"; };
+		15F5E048213DD11200D3903B /* ButtonCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCustom.swift; sourceTree = "<group>"; };
 		3ABEB8F2F44D4253FA2D33DD /* Pods-bucketListUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bucketListUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-bucketListUITests/Pods-bucketListUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4202367AB43FB23AAD0A654D /* Pods-bucketListTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bucketListTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-bucketListTests/Pods-bucketListTests.release.xcconfig"; sourceTree = "<group>"; };
 		6C9591011211C8377124A597 /* Pods-bucketListTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bucketListTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bucketListTests/Pods-bucketListTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -240,6 +244,8 @@
 				158D1CEB21337F6600FD8BAD /* UserCell.swift */,
 				159CC7A12136169B00BEFAE3 /* ContactsCell.swift */,
 				158D1CE321312FC400FD8BAD /* CustomTF.swift */,
+				15F5E048213DD11200D3903B /* ButtonCustom.swift */,
+				15623EEF213DDCD000F43372 /* ViewCustom.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -386,8 +392,8 @@
 			children = (
 				1522B0C320F056A300C5CF9C /* LandingVC.swift */,
 				15ECED7520F6D61400BF42FD /* AddBucketTitleVC.swift */,
-				1576E40420F96A020067341D /* LocationSearchTableVC.swift */,
 				1507CA2220F6EC5E00704426 /* AddBucketLocationVC.swift */,
+				1576E40420F96A020067341D /* LocationSearchTableVC.swift */,
 				1507CA2420F6ED1E00704426 /* AddBucketDetailsVC.swift */,
 				1507CA2820F824D100704426 /* AddBucketSuccessfulVC.swift */,
 				1507CA1B20F6E58700704426 /* AddBucketMapVC.swift */,
@@ -570,6 +576,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-bucketList/Pods-bucketList-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/DGElasticPullToRefresh/DGElasticPullToRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
@@ -585,6 +592,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DGElasticPullToRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
@@ -706,7 +714,9 @@
 				15C5664F211BFB46001F5F6C /* UpdateEmailVC.swift in Sources */,
 				15C37E8F21050AE400ED0503 /* User.swift in Sources */,
 				159CC7A22136169B00BEFAE3 /* ContactsCell.swift in Sources */,
+				15F5E049213DD11300D3903B /* ButtonCustom.swift in Sources */,
 				15C6633620F19CA300C7DF5E /* PasswordResetVC.swift in Sources */,
+				15623EF0213DDCD000F43372 /* ViewCustom.swift in Sources */,
 				1507CA2120F6E9C800704426 /* BucketItem.swift in Sources */,
 				152C89FE211936880032A581 /* UpdateProfileVC.swift in Sources */,
 				1508124E213A31B400A4D14A /* Enums.swift in Sources */,
