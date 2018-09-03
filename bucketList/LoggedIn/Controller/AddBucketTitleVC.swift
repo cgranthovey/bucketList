@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import Geofirestore
+import Hero
 
 
 class AddBucketTitleVC: UIViewController {
@@ -24,9 +25,13 @@ class AddBucketTitleVC: UIViewController {
         tfTitle.delegate = self
         tfPrice.delegate = self
         
+        tfPrice.hero.id = "top"
+        self.navigationController?.hero.isEnabled = true
+        self.navigationController?.hero.navigationAnimationType = .none
     }
     
     @IBAction func nextBtnPress(_ sender: AnyObject){
+        
     }
     
     @IBAction func backBtnPress(_ sender: AnyObject){

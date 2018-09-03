@@ -16,6 +16,8 @@ class AddBucketLocationVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hero.isEnabled = true
+        btnAddLocation.hero.id = "top"
     }
     
     override func viewWillAppear(_ animated: Bool) {

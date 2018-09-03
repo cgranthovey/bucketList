@@ -24,6 +24,8 @@ class LandingVC: UIViewController {
         table.rowHeight = UITableViewAutomaticDimension
         table.estimatedRowHeight = 150
         
+        table.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 75, right: 0)
+        
         
         CurrentUser.instance.getCurrentUserData { (success) in
             

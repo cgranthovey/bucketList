@@ -14,6 +14,7 @@ pod 'Firebase/Storage'
 pod 'Firebase', '~> 5.4'
 pod 'Geofirestore'
 pod 'SDWebImage', '~> 4.0'
+pod 'Hero'
 
 
 
