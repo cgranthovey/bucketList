@@ -18,10 +18,21 @@ class AddBucketDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tvDetails.delegate = self
+        setUpUI()
+        
     }
     
     func setUpUI(){
-        tvDetails.text = NewBucketItem.instance.item.details
+        print("setUpUI()1", NewBucketItem.instance.item.details)
+        if NewBucketItem.instance.item.details == nil || NewBucketItem.instance.item.details?.isEmptyOrWhitespace() == true{
+            print("setUpUI()2")
+            tvDetails.text = "Add any other details here."
+            tvDetails.textColor = UIColor().disabledBlack
+        } else{
+            tvDetails.text = NewBucketItem.instance.item.details
+        }
+        
+        
     }
     
     @IBAction func submit(_ sender: AnyObject){
@@ -49,11 +60,25 @@ class AddBucketDetailsVC: UIViewController {
     }
     
     @IBAction func backBtnPress(_ sender: AnyObject){
+        
+        print("tv details.text", tvDetails.text!)
+        NewBucketItem.instance.item.details = tvDetails.text!
+
         self.navigationController?.popViewController(animated: true)
     }
 }
 
 extension AddBucketDetailsVC: UITextViewDelegate{
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        print("should begin")
+        textView.text = ""
+        return true
+    }
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        print("did begin")
+        tvDetails.textColor = UIColor().secondaryBlack
+        textView.text = ""
+    }
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView == tvDetails{
             NewBucketItem.instance.item.details = textView.text!

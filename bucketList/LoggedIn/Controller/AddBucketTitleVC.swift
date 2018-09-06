@@ -25,8 +25,7 @@ class AddBucketTitleVC: UIViewController {
         tfTitle.delegate = self
         tfPrice.delegate = self
         
-        tfPrice.hero.id = "top"
-        btnNext.hero.id = "next"
+        btnNext.hero.id = "mainTransform"
         self.navigationController?.hero.isEnabled = true
         self.navigationController?.hero.navigationAnimationType = .fade
     }

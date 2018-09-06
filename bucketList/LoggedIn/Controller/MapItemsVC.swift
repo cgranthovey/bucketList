@@ -24,6 +24,7 @@ class MapItemsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hero.isEnabled = true
         
         setUpMap()
     }

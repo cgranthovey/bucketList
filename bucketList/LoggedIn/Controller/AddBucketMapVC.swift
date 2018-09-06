@@ -20,6 +20,7 @@ class AddBucketMapVC: UIViewController {
     @IBOutlet weak var pinIV: UIImageView!
     @IBOutlet weak var clearBtn: UIButton!
     @IBOutlet weak var approveBtn: UIButton!
+    @IBOutlet weak var btnBack: UIButton!
     
     
     let locationManager = CLLocationManager()
@@ -48,6 +49,12 @@ class AddBucketMapVC: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.hidesBackButton = true
         self.navigationItem.titleView = resultSearchController?.searchBar
+        btnBack.imageView?.contentMode = .scaleAspectFit
+
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
     }
     
     @IBAction func approvePinBtnPress(_ sender: AnyObject){
@@ -59,6 +66,7 @@ class AddBucketMapVC: UIViewController {
             
             NewBucketItem.instance.item.pinLat = lat
             NewBucketItem.instance.item.pinLong = long
+            self.navigationController?.hero.navigationAnimationType = .uncover(direction: .down)
             self.navigationController?.popViewController(animated: true)
         }
     }
@@ -78,6 +86,7 @@ class AddBucketMapVC: UIViewController {
     }
     
     @IBAction func backBtnPress(_ sender: AnyObject){
+        self.navigationController?.hero.navigationAnimationType = .uncover(direction: .down)
         self.navigationController?.popViewController(animated: true)
     }
     

@@ -16,6 +16,9 @@ extension UIColor{
     var lightGrey: UIColor{
         return rgb(red: 238, green: 238, blue: 238, alpha: 1)
     }
+    var extraLightGrey: UIColor{
+        return rgb(red: 246, green: 246, blue: 246, alpha: 1)
+    }
     var mediumGrey: UIColor{
         return rgb(red: 189, green: 189, blue: 189, alpha: 1)
     }

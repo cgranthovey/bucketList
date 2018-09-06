@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import DGElasticPullToRefresh
+import FirebaseFirestore
 
 
 class LandingVC: UIViewController {
@@ -26,6 +27,7 @@ class LandingVC: UIViewController {
         table.dataSource = self
         table.rowHeight = UITableViewAutomaticDimension
         table.estimatedRowHeight = 150
+        
         
         table.contentInset = UIEdgeInsets(top: 0
             , left: 0, bottom: 75, right: 0)
@@ -94,14 +96,17 @@ class LandingVC: UIViewController {
 extension LandingVC: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         if indexPath.row == 0 {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "cell0") as? UITableViewCell{
-                return cell 
+                cell.selectionStyle = .none
+
+                return cell
             }
         }
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? BucketListCell{
             cell.configure(item: bucketItems[indexPath.row])
-            
+            cell.selectionStyle = .none
             return cell
         }
         return UITableViewCell()
@@ -111,6 +116,16 @@ extension LandingVC: UITableViewDelegate, UITableViewDataSource{
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        print("did select at", indexPath.row)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "BucketDetails") as?
+            BucketDetails{
+            print("did select at 2", indexPath.row)
+            vc.bucketItem = bucketItems[indexPath.row]
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

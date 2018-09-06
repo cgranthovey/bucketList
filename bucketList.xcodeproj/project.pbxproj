@@ -32,6 +32,10 @@
 		1536DD4F2123A6AF0022A43F /* FriendsItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1536DD4E2123A6AF0022A43F /* FriendsItemCell.swift */; };
 		1555DDA1212274510064A798 /* FriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1555DDA0212274510064A798 /* FriendsCell.swift */; };
 		15623EF0213DDCD000F43372 /* ViewCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15623EEF213DDCD000F43372 /* ViewCustom.swift */; };
+		15623EF2213DFC3200F43372 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15623EF1213DFC3200F43372 /* CustomTextView.swift */; };
+		15623EF4213F5C5C00F43372 /* BucketDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15623EF3213F5C5C00F43372 /* BucketDetails.swift */; };
+		15623EF6213F5DA600F43372 /* DetailImgCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15623EF5213F5DA600F43372 /* DetailImgCell.swift */; };
+		15623EF8213F6C3F00F43372 /* DetailDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15623EF7213F6C3F00F43372 /* DetailDataCell.swift */; };
 		1576E40520F96A020067341D /* LocationSearchTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1576E40420F96A020067341D /* LocationSearchTableVC.swift */; };
 		1576E40720F96E220067341D /* MKPlacemark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1576E40620F96E220067341D /* MKPlacemark.swift */; };
 		1576E40A20F9CE5C0067341D /* SearchTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1576E40920F9CE5C0067341D /* SearchTblCell.swift */; };
@@ -123,6 +127,10 @@
 		1536DD4E2123A6AF0022A43F /* FriendsItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsItemCell.swift; sourceTree = "<group>"; };
 		1555DDA0212274510064A798 /* FriendsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsCell.swift; sourceTree = "<group>"; };
 		15623EEF213DDCD000F43372 /* ViewCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCustom.swift; sourceTree = "<group>"; };
+		15623EF1213DFC3200F43372 /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
+		15623EF3213F5C5C00F43372 /* BucketDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketDetails.swift; sourceTree = "<group>"; };
+		15623EF5213F5DA600F43372 /* DetailImgCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImgCell.swift; sourceTree = "<group>"; };
+		15623EF7213F6C3F00F43372 /* DetailDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDataCell.swift; sourceTree = "<group>"; };
 		1576E40420F96A020067341D /* LocationSearchTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableVC.swift; sourceTree = "<group>"; };
 		1576E40620F96E220067341D /* MKPlacemark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKPlacemark.swift; sourceTree = "<group>"; };
 		1576E40920F9CE5C0067341D /* SearchTblCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTblCell.swift; sourceTree = "<group>"; };
@@ -244,8 +252,11 @@
 				158D1CEB21337F6600FD8BAD /* UserCell.swift */,
 				159CC7A12136169B00BEFAE3 /* ContactsCell.swift */,
 				158D1CE321312FC400FD8BAD /* CustomTF.swift */,
+				15623EF1213DFC3200F43372 /* CustomTextView.swift */,
 				15F5E048213DD11200D3903B /* ButtonCustom.swift */,
 				15623EEF213DDCD000F43372 /* ViewCustom.swift */,
+				15623EF5213F5DA600F43372 /* DetailImgCell.swift */,
+				15623EF7213F6C3F00F43372 /* DetailDataCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -406,6 +417,7 @@
 				152C89FD211936880032A581 /* UpdateProfileVC.swift */,
 				15C5664C211BDEF7001F5F6C /* UpdatePasswordVC.swift */,
 				15C5664E211BFB46001F5F6C /* UpdateEmailVC.swift */,
+				15623EF3213F5C5C00F43372 /* BucketDetails.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -682,15 +694,18 @@
 				1507CA2520F6ED1E00704426 /* AddBucketDetailsVC.swift in Sources */,
 				158D1CE82132729900FD8BAD /* RequestReceivedCell.swift in Sources */,
 				15C5664B211AA9BB001F5F6C /* Image.swift in Sources */,
+				15623EF6213F5DA600F43372 /* DetailImgCell.swift in Sources */,
 				1510B7ED210162C3009FBCEC /* BucketListCell.swift in Sources */,
 				1529D42F2117F8B000AC4829 /* MainTBC.swift in Sources */,
 				15ECED7620F6D61400BF42FD /* AddBucketTitleVC.swift in Sources */,
+				15623EF4213F5C5C00F43372 /* BucketDetails.swift in Sources */,
 				150F97952106A33A00C4D3C7 /* CurrentUser.swift in Sources */,
 				158D1CEA21337CA600FD8BAD /* Friend.swift in Sources */,
 				1507CA1C20F6E58700704426 /* AddBucketMapVC.swift in Sources */,
 				1507CA1E20F6E93900704426 /* NewBucketItem.swift in Sources */,
 				1576E40A20F9CE5C0067341D /* SearchTblCell.swift in Sources */,
 				15BCDB4520E5C6DD00E1B6A9 /* OnboardingVC.swift in Sources */,
+				15623EF8213F6C3F00F43372 /* DetailDataCell.swift in Sources */,
 				1555DDA1212274510064A798 /* FriendsCell.swift in Sources */,
 				1507CA2920F824D100704426 /* AddBucketSuccessfulVC.swift in Sources */,
 				15BCDB4F20E9938400E1B6A9 /* CreateAccountVC.swift in Sources */,
@@ -729,6 +744,7 @@
 				1522B0C420F056A300C5CF9C /* LandingVC.swift in Sources */,
 				1576E40520F96A020067341D /* LocationSearchTableVC.swift in Sources */,
 				15C6633820F44BB800C7DF5E /* TextField.swift in Sources */,
+				15623EF2213DFC3200F43372 /* CustomTextView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

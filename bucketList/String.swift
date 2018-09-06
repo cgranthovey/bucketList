@@ -29,10 +29,8 @@ extension String{
         }
         return (self.trimmingCharacters(in: NSCharacterSet.whitespaces) == "")
     }
+    
 }
-
-
-
 
 
 
