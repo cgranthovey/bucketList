@@ -25,8 +25,8 @@ class BucketDetails: UIViewController {
         
 //        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout{
 //            flowLayout.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize
-//            let width = self.collectionView.frame.size.width / CGFloat(3.0)
-//            flowLayout.itemSize = CGSize(width: width, height: width)
+////            let width = self.collectionView.frame.size.width / CGFloat(3.0)
+////            flowLayout.itemSize = CGSize(width: width, height: width)
 //        }
         
         if let item = bucketItem{
@@ -40,6 +40,10 @@ class BucketDetails: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func backBtnPress(_ sender: AnyObject){
+        self.navigationController?.popViewController(animated: true)
     }
 
 

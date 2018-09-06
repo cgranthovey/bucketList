@@ -24,7 +24,7 @@ class AddBucketMapVC: UIViewController {
     
     
     let locationManager = CLLocationManager()
-    var currentLocation: CLLocation!
+    var currentLocation: CLLocation?
     var resultSearchController: UISearchController?
     var searchBar = UISearchBar()
     
@@ -37,7 +37,7 @@ class AddBucketMapVC: UIViewController {
     
     var generalSpan: MKCoordinateSpan{
         get {
-            return MKCoordinateSpanMake(0.01, 0.01)
+            return MKCoordinateSpanMake(1.5, 1.5)
         }
     }
     
@@ -82,6 +82,14 @@ class AddBucketMapVC: UIViewController {
             self.pinIV.transform = .identity
         }) { (success) in
             
+        }
+    }
+    
+    @IBAction func centerUserBtnPress(_ sender: AnyObject){
+        let span = MKCoordinateSpan(latitudeDelta: 0.4, longitudeDelta: 0.4)
+        if currentLocation != nil{
+            let region = MKCoordinateRegion(center: currentLocation!.coordinate, span: span)
+            self.mapView.setRegion(region, animated: true)
         }
     }
     
