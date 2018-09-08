@@ -62,10 +62,14 @@ class LandingVC: UIViewController {
             for item in items{
                 print("number of items")
                 if let dict = item as? Dictionary<String, AnyObject>{
+                    print("number of items2")
+
                     let bucketItem = BucketItem(dict: dict)
                     self.bucketItems.append(bucketItem)
                 }
             }
+            print("number of items3", self.bucketItems.count)
+
             self.table.reloadData()
             onComplete()
         }
@@ -97,7 +101,8 @@ class LandingVC: UIViewController {
 extension LandingVC: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+
+        //creates top inset since cellInsets did not work.
         if indexPath.row == 0 {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "cell0") as? UITableViewCell{
                 cell.selectionStyle = .none
@@ -106,34 +111,26 @@ extension LandingVC: UITableViewDelegate, UITableViewDataSource{
             }
         }
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? BucketListCell{
-            cell.configure(item: bucketItems[indexPath.row])
+            cell.configure(item: bucketItems[indexPath.row - 1])
             cell.selectionStyle = .none
             return cell
         }
         return UITableViewCell()
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return bucketItems.count
+        return bucketItems.count + 1
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        print("did select at", indexPath.row)
         if let vc = storyboard.instantiateViewController(withIdentifier: "BucketDetails") as?
             BucketDetails{
-            print("did select at 2", indexPath.row)
-            vc.bucketItem = bucketItems[indexPath.row]
+            vc.bucketItem = bucketItems[indexPath.row - 1]
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
-    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        if indexPath.row == 0{
-//            return 1
-//        }
-//        return
-//    }    
+ 
 
 }

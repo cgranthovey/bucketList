@@ -45,6 +45,7 @@ class GetData{
                 }
                 let bucketInfo = self.getBucket(snapshot: snapshot)
                 print("my query2", bucketInfo)
+                print("my query2.2", bucketInfo.data.count)
                 onComplete(bucketInfo.data, bucketInfo.lastDoc)
             }
         }
