@@ -1,38 +1,22 @@
 //
-//  DetailDataCell.swift
+//  BucketDetailDataCell.swift
 //  bucketList
 //
-//  Created by Christopher Hovey on 9/4/18.
+//  Created by Christopher Hovey on 9/6/18.
 //  Copyright © 2018 Chris Hovey. All rights reserved.
 //
 
 import UIKit
 
-class DetailDataCell: UICollectionViewCell {
+class BucketDetailDataCell: UICollectionViewCell {
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblPrice: UILabel!
-    @IBOutlet weak var lblDetails: UILabel!
+    @IBOutlet weak var lblDescription: UILabel!
     @IBOutlet weak var btnAddress: UIButton!
-    @IBOutlet weak var viewContainer: UIView!
     
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//
-//    }
-    
-//    required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//        fatalError("init(coder:) has not been implemented")
-//    }
-    
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        viewContainer.translatesAutoresizingMaskIntoConstraints = false
-//        viewContainer.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
-//
-//    }
-//
-
+    @IBAction func addressBtnPress(_ sender: AnyObject){
+        
+    }
     
     func configure(item: BucketItem){
         print("item.title", item.title)
@@ -47,7 +31,7 @@ class DetailDataCell: UICollectionViewCell {
         btnAddress.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         
         if let details = item.details{
-            lblDetails.text = details
+            lblDescription.text = details
         }
         
         var addressDisplay = ""
@@ -65,24 +49,5 @@ class DetailDataCell: UICollectionViewCell {
             btnAddress.setTitleWithoutAnimation(title: addressDisplay)
         }
     }
+    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

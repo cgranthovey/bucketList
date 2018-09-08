@@ -18,6 +18,11 @@ class MainTBC: UITabBarController {
             vc.tabBarItem = profileItem
             self.viewControllers?.append(vc)
         }
+        //UITabBar.appearance().tintColor = UIColor().primaryColor
+//        UITabBar.appearance().barTintColor = UIColor.white
+//        UITabBar.appearance().backgroundColor = UIColor.white
+//        self.tabBar.isTranslucent = true
+        self.tabBar.barTintColor = .white
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -45,7 +45,7 @@ class LandingVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-
+        
     }
 
     func setUpUI(){
@@ -60,6 +60,7 @@ class LandingVC: UIViewController {
             self.lastDoc = lastDoc
             self.bucketItems = []
             for item in items{
+                print("number of items")
                 if let dict = item as? Dictionary<String, AnyObject>{
                     let bucketItem = BucketItem(dict: dict)
                     self.bucketItems.append(bucketItem)

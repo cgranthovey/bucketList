@@ -17,13 +17,16 @@ class GetData{
     }
     
     
-    var limit = 10
+    var limit = 20
     
     
     typealias Completion = (_ items: [Any], _ lastDoc: DocumentSnapshot?) -> Void
     func retrieve(collection: CollectionReference, lastDoc: DocumentSnapshot?, onComplete: @escaping Completion){
+        
+        let query = collection.order(by: "created", descending: true).limit(to: limit)
+        
         if let doc = lastDoc{
-            collection.start(afterDocument: doc).limit(to: limit).getDocuments { (snapshot, error) in
+            query.start(afterDocument: doc).getDocuments { (snapshot, error) in
                 guard error == nil else{
                     print("retrieve snapshot error1", error!)
                     return
@@ -33,12 +36,15 @@ class GetData{
             }
             
         } else{
-            collection.limit(to: 10).getDocuments { (snapshot, error) in
+            print("my query", query)
+            query.getDocuments { (snapshot, error) in
+                
                 guard error == nil else{
                     print("retrieve snapshot error2", error!)
                     return
                 }
                 let bucketInfo = self.getBucket(snapshot: snapshot)
+                print("my query2", bucketInfo)
                 onComplete(bucketInfo.data, bucketInfo.lastDoc)
             }
         }

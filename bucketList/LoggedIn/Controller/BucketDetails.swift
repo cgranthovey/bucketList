@@ -13,21 +13,24 @@ class BucketDetails: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     var images: [String] = [String]()
     var bucketItem: BucketItem?
+    
+    lazy var holderDetailDataCell: DetailDataCell = {
+        let cell = DetailDataCell()
+        return cell
+    }()
+    
+    var sizingNibNew = Bundle.main.loadNibNamed("ItemDataCell", owner: ItemDataCell.self, options: nil) as? NSArray
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
         
-//        let layout = UICollectionViewFlowLayout()
-//        layout.itemSize = UICollectionViewFlowLayoutAutomaticSize
-//        layout.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize
+        let nib = UINib(nibName: "ItemDataCell", bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: "ItemDataCell")
         
-//        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout{
-//            flowLayout.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize
-////            let width = self.collectionView.frame.size.width / CGFloat(3.0)
-////            flowLayout.itemSize = CGSize(width: width, height: width)
-//        }
+        
         
         if let item = bucketItem{
             images = item.imgs
@@ -59,40 +62,60 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("cv1")
         if indexPath.row == 0, let bucketItem = bucketItem{
-            print("cv2")
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellDetails", for: indexPath) as? DetailDataCell{
+            
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemDataCell", for: indexPath) as? ItemDataCell{
                 cell.configure(item: bucketItem)
                 return cell
             }
         }
         if indexPath.row > 0{
-            print("cv3")
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? DetailImgCell{
-                print("cv4")
                 cell.configure(imgUrl: images[indexPath.row - 1])
-                print("cv5")
                 return cell
             }
         }
         return UICollectionViewCell()
     }
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        if indexPath.row > 0{
-//            print("in it all")
-//            let width = self.view.frame.width / 3.0
-//            return CGSize(width: width, height: width)
-//        }
-//        print("in it all2", UICollectionViewFlowLayoutAutomaticSize.height)
-//        print("in it all2", collectionView.contentInset)
-//        return CGSize(width: collectionView.frame.size.width, height: UICollectionViewFlowLayoutAutomaticSize.height)
-//    }
-//
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        <#code#>
-//    }
+
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if indexPath.row == 0{
+            print("in it all")
+            let width = self.view.frame.width - CGFloat(20)// / 3.0
+
+            if let item = bucketItem{
+                let requiredWidth = collectionView.bounds.size.width
+                let targetSize = CGSize(width: requiredWidth, height: 0)
+                let newCell: ItemDataCell = .fromNib()
+                newCell.configure(item: item)
+                let layoutAttributes = collectionViewLayout.layoutAttributesForItem(at: indexPath)
+                layoutAttributes?.frame.size = targetSize
+                let adequateSize = newCell.preferredLayoutAttributesFitting(layoutAttributes!)
+                return CGSize(width: self.collectionView.bounds.width, height: adequateSize.frame.height)
+                
+
+//                let sizingNewNib: ItemDataCell = .fromNib()
+//
+//                sizingNewNib.configure(item: item)
+//                let requiredWidth = collectionView.bounds.size.width
+//                let targetSize = CGSize(width: requiredWidth, height: 0)
+//                let adequateSize = sizingNewNib.systemLayoutSizeFitting(targetSize)
+//                print("the adequate size", adequateSize)
+//                return adequateSize
+            }
+
+            
+            return CGSize(width: width, height: width)
+        }
+        print("in it all2", UICollectionViewFlowLayoutAutomaticSize.height)
+        print("in it all2", collectionView.contentInset)
+        let width = collectionView.frame.width / 2 - 10
+        
+        return CGSize(width: width, height: width)
+    }
+
 }
 
 

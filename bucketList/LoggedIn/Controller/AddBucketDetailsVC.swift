@@ -35,23 +35,27 @@ class AddBucketDetailsVC: UIViewController {
         
     }
     
-    @IBAction func submit(_ sender: AnyObject){
+    @IBAction func submitBtnPress(_ sender: AnyObject){
         self.view.endEditing(true)
-
+        print("submit1")
         let ref = DataService.instance.bucketListRef.document()
         
         ref.setData(NewBucketItem.instance.item.itemsToPost()){ error in
+        print("submit2")
             guard error == nil else{
-                print("errror on submit ", error!)
+                print("error on submit ", error!)
                 return
             }
-            
+            print("submit3")
             if let geoPoint = NewBucketItem.instance.item.getGeoPoint(){
+                print("submit4")
                 DataService.instance.currentUserGeoFirestore.setLocation(geopoint: geoPoint, forDocumentWithID: ref.documentID, completion: { (error) in
+                    print("submit5")
                     guard error == nil else{
                         print("geoPoint error set ", error!)
                         return
                     }
+                    print("submit6")
                     self.performSegue(withIdentifier: "AddBucketDetailsVC", sender: nil)
                 })
             }

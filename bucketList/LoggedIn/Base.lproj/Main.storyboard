@@ -249,7 +249,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="245" height="174"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Qv-d9-L4V">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Qv-d9-L4V">
                                                     <rect key="frame" x="0.0" y="0.0" width="254" height="197"/>
                                                 </imageView>
                                             </subviews>
@@ -977,11 +977,11 @@
                                                             <constraint firstAttribute="height" constant="50" id="Thz-Iw-3mB"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
-                                                        <state key="normal" title="Next">
+                                                        <state key="normal" title="Submit">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="nextBtnPress:" destination="fZ5-op-38R" eventType="touchUpInside" id="1Sx-B7-DRu"/>
+                                                            <action selector="submitBtnPress:" destination="oJx-3d-PtW" eventType="touchUpInside" id="NkZ-8Y-ma8"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
