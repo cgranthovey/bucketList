@@ -133,6 +133,7 @@ extension LandingVC: UITableViewDelegate, UITableViewDataSource{
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "BucketDetails") as?
             BucketDetails{
+            print("indexPath.row", indexPath.row)
             vc.bucketItem = bucketItems[indexPath.row - 1]
             self.navigationController?.pushViewController(vc, animated: true)
         }

@@ -28,6 +28,7 @@ class BucketDetails: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        
         let nib = UINib(nibName: "ItemDataCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: "ItemDataCell")
         
@@ -94,8 +95,19 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
         if let vc = storyboard.instantiateViewController(withIdentifier: "LargeImageVC") as? LargeImageVC{
             vc.imgURLString = images[indexPath.row - 1]
             if let cell = collectionView.cellForItem(at: indexPath){
-                cell.hero.id = "toLargeImg"
+              //  cell.hero.id = "toLargeImg"
             }
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        }
+    }
+    
+    @IBAction func btnPress(_ sender: AnyObject){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+        if let vc = storyboard.instantiateViewController(withIdentifier: "LargeImageVC") as? LargeImageVC{
+            vc.imgURLString = images[1]
             
             self.navigationController?.pushViewController(vc, animated: true)
             
@@ -115,7 +127,9 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
                 let layoutAttributes = collectionViewLayout.layoutAttributesForItem(at: indexPath)
                 layoutAttributes?.frame.size = targetSize
                 let adequateSize = newCell.preferredLayoutAttributesFitting(layoutAttributes!)
-                return CGSize(width: self.collectionView.bounds.width, height: adequateSize.frame.height)
+                let inset = collectionView.contentInset.right + collectionView.contentInset.left
+
+                return CGSize(width: self.collectionView.bounds.width - inset, height: adequateSize.frame.height)
                 
 
 //                let sizingNewNib: ItemDataCell = .fromNib()
@@ -134,7 +148,10 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
         print("in it all2", UICollectionViewFlowLayoutAutomaticSize.height)
         print("in it all2", collectionView.contentInset)
         let inset = collectionView.contentInset.right + collectionView.contentInset.left
-        let width = collectionView.frame.width / 2 - spaceBetweenCells / 2 - inset / 2
+        
+        
+        
+        let width = collectionView.frame.width / 2 - spaceBetweenCells / 2 - inset / 2 - 1
         
         return CGSize(width: width, height: width)
     }

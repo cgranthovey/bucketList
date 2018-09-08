@@ -14,6 +14,7 @@ class ItemDataCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         self.contentView.autoresizingMask = .flexibleHeight
+        isUserInteractionEnabled = false
     }
     
     override func layoutSubviews() {
@@ -87,6 +88,7 @@ class ItemDataCell: UICollectionViewCell {
             btnAddress.isHidden = false
             btnAddress.setTitleWithoutAnimation(title: addressDisplay)
         }
+
     }
 
 }

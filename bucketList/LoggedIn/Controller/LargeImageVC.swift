@@ -14,13 +14,16 @@ class LargeImageVC: UIViewController {
     var imgURLString: String!
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("largeImageVC")
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewWillAppear0")
         let url = URL(string: imgURLString)
-        self.hero.isEnabled = true
-        imgView.hero.id = "toLargeImg"
-        
+      //  self.hero.isEnabled = true
+       // imgView.hero.id = "toLargeImg"
+        print("viewWillAppear", imgURLString)
         imgView.sd_setHighlightedImage(with: url, options: .progressiveDownload, completed: { (img, err, cache, url) in
         })
     }
