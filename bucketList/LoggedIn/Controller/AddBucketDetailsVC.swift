@@ -14,6 +14,7 @@ import Geofirestore
 class AddBucketDetailsVC: UIViewController {
 
     @IBOutlet weak var tvDetails: UITextView!
+    var textViewOriginalHeight: CGFloat! = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,30 +33,28 @@ class AddBucketDetailsVC: UIViewController {
             tvDetails.text = NewBucketItem.instance.item.details
         }
         
-        
+        tvDetails.translatesAutoresizingMaskIntoConstraints = false
+        tvDetails.isScrollEnabled = false
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        textViewOriginalHeight = tvDetails.frame.height
+    }
+
     @IBAction func submitBtnPress(_ sender: AnyObject){
         self.view.endEditing(true)
-        print("submit1")
         let ref = DataService.instance.bucketListRef.document()
-        
         ref.setData(NewBucketItem.instance.item.itemsToPost()){ error in
-        print("submit2")
             guard error == nil else{
                 print("error on submit ", error!)
                 return
             }
-            print("submit3")
             if let geoPoint = NewBucketItem.instance.item.getGeoPoint(){
-                print("submit4")
                 DataService.instance.currentUserGeoFirestore.setLocation(geopoint: geoPoint, forDocumentWithID: ref.documentID, completion: { (error) in
-                    print("submit5")
                     guard error == nil else{
                         print("geoPoint error set ", error!)
                         return
                     }
-                    print("submit6")
                     self.performSegue(withIdentifier: "AddBucketDetailsVC", sender: nil)
                 })
             }
@@ -88,4 +87,31 @@ extension AddBucketDetailsVC: UITextViewDelegate{
             NewBucketItem.instance.item.details = textView.text!
         }
     }
+    func textViewDidChange(_ textView: UITextView) {
+        textView.constraints.forEach { (constraint) in
+            if constraint.firstAttribute == .height{
+                let inset = textView.textContainerInset
+                let width = textView.frame.width - inset.left - inset.right
+                let size = CGSize(width: textView.frame.width, height: .infinity)
+                let estimatedSize = textView.sizeThatFits(size)
+                if estimatedSize.height >= textViewOriginalHeight{
+                    constraint.constant = estimatedSize.height
+                }
+            }
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
