@@ -20,7 +20,6 @@ class LandingVC: UIViewController {
     var bucketItems = [BucketItem]()
     var lastDoc: DocumentSnapshot?
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         table.delegate = self
@@ -37,7 +36,7 @@ class LandingVC: UIViewController {
             
         }
         
-        getData {
+        getData(lastDoc: nil) {
         }
         
         setUpPullTableLoader()
@@ -51,25 +50,32 @@ class LandingVC: UIViewController {
     func setUpUI(){
      //   viewTop.backgroundColor = UIColor().primaryColor
     }
-    
+    var allItemsLoaded = false;
+    var itemsReloaded = true;
     typealias Completion = () -> Void
-    func getData(onComplete: @escaping Completion){
+    func getData(lastDoc: DocumentSnapshot?, onComplete: @escaping Completion){
         
-        print("get data doc \(lastDoc)")
-        GetData.instance.retrieve(collection: DataService.instance.bucketListRef, lastDoc: lastDoc) { (items, lastDoc) in
-            self.lastDoc = lastDoc
-            self.bucketItems = []
-            for item in items{
-                print("number of items")
-                if let dict = item as? Dictionary<String, AnyObject>{
-                    print("number of items2")
-
-                    let bucketItem = BucketItem(dict: dict)
-                    self.bucketItems.append(bucketItem)
-                }
+        guard !allItemsLoaded else{
+            print("getDataGuard1")
+            return
+        }
+        print("getDataGuard2")
+        GetData.instance.retrieve(collection: DataService.instance.bucketListRef, lastDoc: lastDoc) { (snapshots, lastDoc) in
+            
+            if self.itemsReloaded{
+                self.bucketItems = []
+                self.itemsReloaded = false
             }
-            print("number of items3", self.bucketItems.count)
-
+            
+            self.lastDoc = lastDoc
+            if snapshots.documents.count == 0{
+                self.allItemsLoaded = true
+            }
+            
+            for item in snapshots.documents{
+                let bucketItem = BucketItem(dict: item.data())
+                self.bucketItems.append(bucketItem)
+            }
             self.table.reloadData()
             onComplete()
         }
@@ -83,11 +89,11 @@ class LandingVC: UIViewController {
             // Add your logic here
             // Do not forget to call dg_stopLoading() at the end
             self?.lastDoc = nil
-
-            self?.getData {
+            self?.allItemsLoaded = false
+            self?.itemsReloaded = true
+            self?.getData(lastDoc: nil, onComplete: {
                 self?.table.dg_stopLoading()
-            }
-            
+            })
         }, loadingView: loadingView)
         table.dg_stopLoading()
         table.dg_setPullToRefreshFillColor(UIColor().primaryColor)
@@ -129,6 +135,14 @@ extension LandingVC: UITableViewDelegate, UITableViewDataSource{
             BucketDetails{
             vc.bucketItem = bucketItems[indexPath.row - 1]
             self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        if indexPath.row == bucketItems.count - 1{
+            print("will display last cell")
+            getData(lastDoc: lastDoc) {
+            }
         }
     }
  

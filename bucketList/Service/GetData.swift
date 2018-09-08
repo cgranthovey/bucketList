@@ -17,36 +17,32 @@ class GetData{
     }
     
     
-    var limit = 20
+    var limit = 7
     
     
-    typealias Completion = (_ items: [Any], _ lastDoc: DocumentSnapshot?) -> Void
+    typealias Completion = (_ items: QuerySnapshot, _ lastDoc: DocumentSnapshot?) -> Void
     func retrieve(collection: CollectionReference, lastDoc: DocumentSnapshot?, onComplete: @escaping Completion){
         
         let query = collection.order(by: "created", descending: true).limit(to: limit)
         
         if let doc = lastDoc{
             query.start(afterDocument: doc).getDocuments { (snapshot, error) in
-                guard error == nil else{
+                guard error == nil && snapshot != nil else{
                     print("retrieve snapshot error1", error!)
                     return
                 }
-                let bucketInfo = self.getBucket(snapshot: snapshot)
-                onComplete(bucketInfo.data, bucketInfo.lastDoc)
+                onComplete(snapshot!, snapshot!.documents.last)
             }
             
         } else{
             print("my query", query)
             query.getDocuments { (snapshot, error) in
                 
-                guard error == nil else{
+                guard error == nil && snapshot != nil else{
                     print("retrieve snapshot error2", error!)
                     return
                 }
-                let bucketInfo = self.getBucket(snapshot: snapshot)
-                print("my query2", bucketInfo)
-                print("my query2.2", bucketInfo.data.count)
-                onComplete(bucketInfo.data, bucketInfo.lastDoc)
+                onComplete(snapshot!, snapshot!.documents.last)
             }
         }
     }
@@ -57,7 +53,6 @@ class GetData{
         var lastDoc: DocumentSnapshot?
         if let snapshot = snapshot{
             for item in snapshot.documents{
-                //let bucketItem = BucketItem(dict: item.data())
                 bucketItems.append(item.data())
                 lastDoc = item
             }
