@@ -14,6 +14,7 @@ class BucketDetails: UIViewController {
     var images: [String] = [String]()
     var bucketItem: BucketItem?
     var spaceBetweenCells: CGFloat = 10
+    var selectedImgCell: DetailImgCell?
     
     lazy var holderDetailDataCell: DetailDataCell = {
         let cell = DetailDataCell()
@@ -28,12 +29,14 @@ class BucketDetails: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        hero.isEnabled = true
+        hero.modalAnimationType = .fade
+        
         
         let nib = UINib(nibName: "ItemDataCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: "ItemDataCell")
         
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-        
         
         if let item = bucketItem{
             images = item.imgs
@@ -90,16 +93,25 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
         return spaceBetweenCells
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.navigationController?.hero.navigationAnimationType = .fade
+
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "LargeImageVC") as? LargeImageVC{
             vc.imgURLString = images[indexPath.row - 1]
-            if let cell = collectionView.cellForItem(at: indexPath){
-              //  cell.hero.id = "toLargeImg"
+            if let cell = collectionView.cellForItem(at: indexPath) as? DetailImgCell{
+                selectedImgCell?.hero.id = nil
+                selectedImgCell = cell
+                cell.hero.id = "toLargeImg"
+                if let img = cell.imgView.image{
+                    vc.newImg = img
+                }
             }
-            
-            self.navigationController?.pushViewController(vc, animated: true)
-            
+
+            vc.hero.isEnabled = true
+            self.hero.modalAnimationType = .none
+            present(vc, animated: true, completion: nil)
         }
     }
     
@@ -108,15 +120,12 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
 
         if let vc = storyboard.instantiateViewController(withIdentifier: "LargeImageVC") as? LargeImageVC{
             vc.imgURLString = images[1]
-            
             self.navigationController?.pushViewController(vc, animated: true)
-            
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.row == 0{
-            print("in it all")
             let width = self.view.frame.width - CGFloat(20)// / 3.0
 
             if let item = bucketItem{
@@ -130,27 +139,12 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
                 let inset = collectionView.contentInset.right + collectionView.contentInset.left
 
                 return CGSize(width: self.collectionView.bounds.width - inset, height: adequateSize.frame.height)
-                
 
-//                let sizingNewNib: ItemDataCell = .fromNib()
-//
-//                sizingNewNib.configure(item: item)
-//                let requiredWidth = collectionView.bounds.size.width
-//                let targetSize = CGSize(width: requiredWidth, height: 0)
-//                let adequateSize = sizingNewNib.systemLayoutSizeFitting(targetSize)
-//                print("the adequate size", adequateSize)
-//                return adequateSize
             }
-
-            
             return CGSize(width: width, height: width)
         }
-        print("in it all2", UICollectionViewFlowLayoutAutomaticSize.height)
-        print("in it all2", collectionView.contentInset)
+
         let inset = collectionView.contentInset.right + collectionView.contentInset.left
-        
-        
-        
         let width = collectionView.frame.width / 2 - spaceBetweenCells / 2 - inset / 2 - 1
         
         return CGSize(width: width, height: width)

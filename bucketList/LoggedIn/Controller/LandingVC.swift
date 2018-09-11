@@ -27,7 +27,7 @@ class LandingVC: UIViewController {
         table.rowHeight = UITableViewAutomaticDimension
         table.estimatedRowHeight = 150
         
-        
+
         table.contentInset = UIEdgeInsets(top: 0
             , left: 0, bottom: 75, right: 0)
         
@@ -41,10 +41,23 @@ class LandingVC: UIViewController {
         
         setUpPullTableLoader()
         setUpUI()
+        print("my nav ", self.navigationController)
+        self.tabBarController?.tabBar.hero.isEnabled = true
+        self.tabBarController?.tabBar.layer.removeAllAnimations()
+        self.hero.isEnabled = true
+        self.navigationController?.hero.isEnabled = true
+        self.navigationController?.hero.navigationAnimationType = .fade
+
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        print("Landing VC2")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("Landing VC3")
+
     }
 
     func setUpUI(){

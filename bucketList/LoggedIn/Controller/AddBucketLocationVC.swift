@@ -22,6 +22,7 @@ class AddBucketLocationVC: UIViewController {
         self.hero.isEnabled = true
 
         viewChooseLocation.hero.id = "mainTransform"
+        btnNext.hero.id = "nextToTextView"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,6 +45,13 @@ class AddBucketLocationVC: UIViewController {
         print("add bucket map details2", NewBucketItem.instance.item.details)
 
         self.navigationController?.hero.navigationAnimationType = .fade
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "AddBucketDetailsVC") as? AddBucketDetailsVC{
+            vc.hero.isEnabled = true
+            vc.navigationController?.hero.navigationAnimationType = .fade
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        }
     }
     
     @IBAction func chooseLocationBtnPress(_ sender: AnyObject){

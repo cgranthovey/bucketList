@@ -20,12 +20,12 @@ class CheckAuthVC: UIViewController {
         if Auth.auth().currentUser != nil{
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             if let vc = storyboard.instantiateViewController(withIdentifier: "UITabBarController") as? MainTBC{
-                self.navigationController?.pushViewController(vc, animated: true)
+                self.navigationController?.pushViewController(vc, animated: false)
             }
         } else{
             performSegue(withIdentifier: "OnboardingVC", sender: nil)
         }
-        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {

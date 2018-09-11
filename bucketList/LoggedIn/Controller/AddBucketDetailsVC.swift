@@ -14,13 +14,16 @@ import Geofirestore
 class AddBucketDetailsVC: UIViewController {
 
     @IBOutlet weak var tvDetails: UITextView!
+    @IBOutlet weak var btnSubmit: UIButton!
     var textViewOriginalHeight: CGFloat! = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tvDetails.delegate = self
         setUpUI()
-        
+        tvDetails.hero.isEnabled = true
+        tvDetails.hero.id = "nextToTextView"
+//        btnSubmit.hero.modifiers = [.fade, .scale(0.8), .translate(x: 0, y: 50, z: 0)]
     }
     
     func setUpUI(){
