@@ -53,6 +53,7 @@ class BucketDetails: UIViewController {
     }
     
     @IBAction func backBtnPress(_ sender: AnyObject){
+        self.navigationController?.hero.navigationAnimationType = .uncover(direction: .down)
         self.navigationController?.popViewController(animated: true)
     }
 

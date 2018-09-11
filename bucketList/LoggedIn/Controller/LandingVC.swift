@@ -46,7 +46,7 @@ class LandingVC: UIViewController {
         self.tabBarController?.tabBar.layer.removeAllAnimations()
         self.hero.isEnabled = true
         self.navigationController?.hero.isEnabled = true
-        self.navigationController?.hero.navigationAnimationType = .fade
+
 
 
     }
@@ -148,6 +148,7 @@ extension LandingVC: UITableViewDelegate, UITableViewDataSource{
             BucketDetails{
             print("indexPath.row", indexPath.row)
             vc.bucketItem = bucketItems[indexPath.row - 1]
+            self.navigationController?.hero.navigationAnimationType = .cover(direction: .up)
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
