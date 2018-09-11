@@ -45,7 +45,6 @@ class ItemDataCell: UICollectionViewCell {
         return layoutAttributes
     }
     
-    @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblPrice: UILabel!
     @IBOutlet weak var lblDescription: UILabel!
     @IBOutlet weak var btnAddress: UIButton!
@@ -60,7 +59,6 @@ class ItemDataCell: UICollectionViewCell {
         print("item.addressFull", item.addressFull())
         print("item.price", item.price)
         
-        lblTitle.text = item.title
         
         if let price = item.price, price != "" {
             lblPrice.text = price

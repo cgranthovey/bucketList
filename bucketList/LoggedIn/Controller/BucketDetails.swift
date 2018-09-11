@@ -11,6 +11,7 @@ import UIKit
 class BucketDetails: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var lblTitle: UILabel!
     var images: [String] = [String]()
     var bucketItem: BucketItem?
     var spaceBetweenCells: CGFloat = 10
@@ -44,6 +45,11 @@ class BucketDetails: UIViewController {
 
         images = ["https://www.myyosemitepark.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_960/MTQ4NjQxMDIxOTQzNjIxMjk5/yosemite-falls-river_dp_1600.jpg", "https://media-cdn.tripadvisor.com/media/photo-s/0d/f4/e0/b6/yosemite-national-park.jpg"]
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        lblTitle.text = bucketItem?.title
+        
     }
 
     override func didReceiveMemoryWarning() {
