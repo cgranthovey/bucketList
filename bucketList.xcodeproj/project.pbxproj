@@ -38,12 +38,9 @@
 		15623EF2213DFC3200F43372 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15623EF1213DFC3200F43372 /* CustomTextView.swift */; };
 		15623EF4213F5C5C00F43372 /* BucketDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15623EF3213F5C5C00F43372 /* BucketDetails.swift */; };
 		15623EF6213F5DA600F43372 /* DetailImgCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15623EF5213F5DA600F43372 /* DetailImgCell.swift */; };
-		15623EF8213F6C3F00F43372 /* DetailDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15623EF7213F6C3F00F43372 /* DetailDataCell.swift */; };
 		1576E40520F96A020067341D /* LocationSearchTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1576E40420F96A020067341D /* LocationSearchTableVC.swift */; };
 		1576E40720F96E220067341D /* MKPlacemark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1576E40620F96E220067341D /* MKPlacemark.swift */; };
 		1576E40A20F9CE5C0067341D /* SearchTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1576E40920F9CE5C0067341D /* SearchTblCell.swift */; };
-		157FCA7C2141F62D0036EE3A /* BucketDetailDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 157FCA7B2141F62D0036EE3A /* BucketDetailDataCell.xib */; };
-		157FCA7E2141F8000036EE3A /* BucketDetailDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157FCA7D2141F8000036EE3A /* BucketDetailDataCell.swift */; };
 		157FCA802141F94D0036EE3A /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157FCA7F2141F94D0036EE3A /* CollectionViewCell.swift */; };
 		158D1CE02130D3F300FD8BAD /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D1CDF2130D3F300FD8BAD /* UIFont.swift */; };
 		158D1CE22130F08D00FD8BAD /* SearchFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D1CE12130F08D00FD8BAD /* SearchFriendsCell.swift */; };
@@ -84,8 +81,6 @@
 		15E41ECA21209399003AC82F /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E41EC921209399003AC82F /* MenuBar.swift */; };
 		15ECED7620F6D61400BF42FD /* AddBucketTitleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ECED7520F6D61400BF42FD /* AddBucketTitleVC.swift */; };
 		15F5E049213DD11300D3903B /* ButtonCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F5E048213DD11200D3903B /* ButtonCustom.swift */; };
-		15F723BF2142021F00533017 /* DataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F723BD2142021F00533017 /* DataCell.swift */; };
-		15F723C02142021F00533017 /* DataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15F723BE2142021F00533017 /* DataCell.xib */; };
 		15F723C52142049D00533017 /* ItemDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F723C32142049D00533017 /* ItemDataCell.swift */; };
 		15F723C62142049D00533017 /* ItemDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15F723C42142049D00533017 /* ItemDataCell.xib */; };
 		482BED12B0CAF167AFD22FE1 /* Pods_bucketList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF59627E3CB18DE61EB8A6A1 /* Pods_bucketList.framework */; };
@@ -143,12 +138,9 @@
 		15623EF1213DFC3200F43372 /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		15623EF3213F5C5C00F43372 /* BucketDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketDetails.swift; sourceTree = "<group>"; };
 		15623EF5213F5DA600F43372 /* DetailImgCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImgCell.swift; sourceTree = "<group>"; };
-		15623EF7213F6C3F00F43372 /* DetailDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDataCell.swift; sourceTree = "<group>"; };
 		1576E40420F96A020067341D /* LocationSearchTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableVC.swift; sourceTree = "<group>"; };
 		1576E40620F96E220067341D /* MKPlacemark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKPlacemark.swift; sourceTree = "<group>"; };
 		1576E40920F9CE5C0067341D /* SearchTblCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTblCell.swift; sourceTree = "<group>"; };
-		157FCA7B2141F62D0036EE3A /* BucketDetailDataCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BucketDetailDataCell.xib; sourceTree = "<group>"; };
-		157FCA7D2141F8000036EE3A /* BucketDetailDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketDetailDataCell.swift; sourceTree = "<group>"; };
 		157FCA7F2141F94D0036EE3A /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		158D1CDF2130D3F300FD8BAD /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		158D1CE12130F08D00FD8BAD /* SearchFriendsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendsCell.swift; sourceTree = "<group>"; };
@@ -195,8 +187,6 @@
 		15E41EC921209399003AC82F /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 		15ECED7520F6D61400BF42FD /* AddBucketTitleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBucketTitleVC.swift; sourceTree = "<group>"; };
 		15F5E048213DD11200D3903B /* ButtonCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCustom.swift; sourceTree = "<group>"; };
-		15F723BD2142021F00533017 /* DataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCell.swift; sourceTree = "<group>"; };
-		15F723BE2142021F00533017 /* DataCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DataCell.xib; sourceTree = "<group>"; };
 		15F723C32142049D00533017 /* ItemDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDataCell.swift; sourceTree = "<group>"; };
 		15F723C42142049D00533017 /* ItemDataCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemDataCell.xib; sourceTree = "<group>"; };
 		3ABEB8F2F44D4253FA2D33DD /* Pods-bucketListUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bucketListUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-bucketListUITests/Pods-bucketListUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -276,7 +266,6 @@
 				15F5E048213DD11200D3903B /* ButtonCustom.swift */,
 				15623EEF213DDCD000F43372 /* ViewCustom.swift */,
 				15623EF5213F5DA600F43372 /* DetailImgCell.swift */,
-				15623EF7213F6C3F00F43372 /* DetailDataCell.swift */,
 				1555C2CB2140DA34002AF5C6 /* ImgAspectFitBtn.swift */,
 			);
 			path = View;
@@ -305,10 +294,6 @@
 		157FCA7A2141F6130036EE3A /* Nib */ = {
 			isa = PBXGroup;
 			children = (
-				157FCA7B2141F62D0036EE3A /* BucketDetailDataCell.xib */,
-				157FCA7D2141F8000036EE3A /* BucketDetailDataCell.swift */,
-				15F723BD2142021F00533017 /* DataCell.swift */,
-				15F723BE2142021F00533017 /* DataCell.xib */,
 				15F723C32142049D00533017 /* ItemDataCell.swift */,
 				15F723C42142049D00533017 /* ItemDataCell.xib */,
 			);
@@ -591,11 +576,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				157FCA7C2141F62D0036EE3A /* BucketDetailDataCell.xib in Resources */,
 				15BCDB1420E47B9D00E1B6A9 /* LaunchScreen.storyboard in Resources */,
 				1508579D20EEFEB8009372A0 /* GoogleService-Info.plist in Resources */,
 				15BCDB1120E47B9D00E1B6A9 /* Assets.xcassets in Resources */,
-				15F723C02142021F00533017 /* DataCell.xib in Resources */,
 				15BCDB0F20E47B9A00E1B6A9 /* Main.storyboard in Resources */,
 				15BCDB4820E726CB00E1B6A9 /* CreateAccount.storyboard in Resources */,
 				15BCDB3820E47DE200E1B6A9 /* Onboarding.storyboard in Resources */,
@@ -748,7 +731,6 @@
 				1507CA1E20F6E93900704426 /* NewBucketItem.swift in Sources */,
 				1576E40A20F9CE5C0067341D /* SearchTblCell.swift in Sources */,
 				15BCDB4520E5C6DD00E1B6A9 /* OnboardingVC.swift in Sources */,
-				15623EF8213F6C3F00F43372 /* DetailDataCell.swift in Sources */,
 				1555DDA1212274510064A798 /* FriendsCell.swift in Sources */,
 				1507CA2920F824D100704426 /* AddBucketSuccessfulVC.swift in Sources */,
 				15BCDB4F20E9938400E1B6A9 /* CreateAccountVC.swift in Sources */,
@@ -758,7 +740,6 @@
 				15C37E8B2104283500ED0503 /* BucketMKPointAnnotation.swift in Sources */,
 				158D1CE02130D3F300FD8BAD /* UIFont.swift in Sources */,
 				15E41ECA21209399003AC82F /* MenuBar.swift in Sources */,
-				157FCA7E2141F8000036EE3A /* BucketDetailDataCell.swift in Sources */,
 				158D1CE421312FC400FD8BAD /* CustomTF.swift in Sources */,
 				15BCDB0C20E47B9A00E1B6A9 /* ViewController.swift in Sources */,
 				1536DD4F2123A6AF0022A43F /* FriendsItemCell.swift in Sources */,
@@ -788,7 +769,6 @@
 				1529D4312117FADB00AC4829 /* SettingsTVC.swift in Sources */,
 				15C37E89210419F100ED0503 /* MKCoordinateRegion.swift in Sources */,
 				157FCA802141F94D0036EE3A /* CollectionViewCell.swift in Sources */,
-				15F723BF2142021F00533017 /* DataCell.swift in Sources */,
 				1522B0C420F056A300C5CF9C /* LandingVC.swift in Sources */,
 				1576E40520F96A020067341D /* LocationSearchTableVC.swift in Sources */,
 				15C6633820F44BB800C7DF5E /* TextField.swift in Sources */,

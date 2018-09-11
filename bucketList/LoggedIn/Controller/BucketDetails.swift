@@ -17,11 +17,6 @@ class BucketDetails: UIViewController {
     var spaceBetweenCells: CGFloat = 10
     var selectedImgCell: DetailImgCell?
     
-    lazy var holderDetailDataCell: DetailDataCell = {
-        let cell = DetailDataCell()
-        return cell
-    }()
-    
     var sizingNibNew = Bundle.main.loadNibNamed("ItemDataCell", owner: ItemDataCell.self, options: nil) as? NSArray
     
 
@@ -75,15 +70,18 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row == 0, let bucketItem = bucketItem{
-            
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemDataCell", for: indexPath) as? ItemDataCell{
                 cell.configure(item: bucketItem)
                 return cell
             }
         }
+        if indexPath.row == 1{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellCamera", for: indexPath)
+            return cell
+        }
         if indexPath.row > 0{
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? DetailImgCell{
-                cell.configure(imgUrl: images[indexPath.row - 1])
+                cell.configure(imgUrl: images[indexPath.row - 2])
                 return cell
             }
         }
@@ -105,7 +103,7 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "LargeImageVC") as? LargeImageVC{
-            vc.imgURLString = images[indexPath.row - 1]
+            vc.imgURLString = images[indexPath.row - 2]
             if let cell = collectionView.cellForItem(at: indexPath) as? DetailImgCell{
                 selectedImgCell?.hero.id = nil
                 selectedImgCell = cell
@@ -145,14 +143,18 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
                 let inset = collectionView.contentInset.right + collectionView.contentInset.left
 
                 return CGSize(width: self.collectionView.bounds.width - inset, height: adequateSize.frame.height)
-
             }
             return CGSize(width: width, height: width)
         }
-
+        
         let inset = collectionView.contentInset.right + collectionView.contentInset.left
         let width = collectionView.frame.width / 2 - spaceBetweenCells / 2 - inset / 2 - 1
         
+        if indexPath.row == 1{
+            return CGSize(width: collectionView.frame.width - inset - 20, height: 50)
+        }
+
+
         return CGSize(width: width, height: width)
     }
 
