@@ -9,6 +9,7 @@
 import UIKit
 import Photos
 import Firebase
+import FirebaseStorage
 
 
 
@@ -213,7 +214,6 @@ extension UpdateProfileVC: UIImagePickerControllerDelegate, UINavigationControll
             uploadImg(img: image)
             imgView.image = image
             dismiss(animated: true, completion: nil)
-            
         }
     }
 }

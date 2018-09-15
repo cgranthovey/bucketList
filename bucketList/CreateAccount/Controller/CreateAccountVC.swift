@@ -10,6 +10,7 @@ import UIKit
 import FirebaseCore
 import FirebaseAuth
 import Firebase
+import FirebaseFirestore
 
 class CreateAccountVC: UIViewController {
     @IBOutlet weak var tfPassword: UITextField!

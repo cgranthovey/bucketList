@@ -41,6 +41,7 @@
 		1576E40520F96A020067341D /* LocationSearchTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1576E40420F96A020067341D /* LocationSearchTableVC.swift */; };
 		1576E40720F96E220067341D /* MKPlacemark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1576E40620F96E220067341D /* MKPlacemark.swift */; };
 		1576E40A20F9CE5C0067341D /* SearchTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1576E40920F9CE5C0067341D /* SearchTblCell.swift */; };
+		15777C84214CB91A00CC66DB /* AddCategoriesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15777C83214CB91A00CC66DB /* AddCategoriesVC.swift */; };
 		157FCA802141F94D0036EE3A /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157FCA7F2141F94D0036EE3A /* CollectionViewCell.swift */; };
 		158D1CE02130D3F300FD8BAD /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D1CDF2130D3F300FD8BAD /* UIFont.swift */; };
 		158D1CE22130F08D00FD8BAD /* SearchFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D1CE12130F08D00FD8BAD /* SearchFriendsCell.swift */; };
@@ -79,6 +80,8 @@
 		15C6633820F44BB800C7DF5E /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C6633720F44BB800C7DF5E /* TextField.swift */; };
 		15E41EC8211F998A003AC82F /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E41EC7211F998A003AC82F /* UIColor.swift */; };
 		15E41ECA21209399003AC82F /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E41EC921209399003AC82F /* MenuBar.swift */; };
+		15E855252149E8D4006B9E52 /* ImgLblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E855242149E8D4006B9E52 /* ImgLblCell.swift */; };
+		15E855272149E9CD006B9E52 /* AddPriceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E855262149E9CD006B9E52 /* AddPriceVC.swift */; };
 		15ECED7620F6D61400BF42FD /* AddBucketTitleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ECED7520F6D61400BF42FD /* AddBucketTitleVC.swift */; };
 		15F5E049213DD11300D3903B /* ButtonCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F5E048213DD11200D3903B /* ButtonCustom.swift */; };
 		15F723C52142049D00533017 /* ItemDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F723C32142049D00533017 /* ItemDataCell.swift */; };
@@ -141,6 +144,7 @@
 		1576E40420F96A020067341D /* LocationSearchTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableVC.swift; sourceTree = "<group>"; };
 		1576E40620F96E220067341D /* MKPlacemark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKPlacemark.swift; sourceTree = "<group>"; };
 		1576E40920F9CE5C0067341D /* SearchTblCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTblCell.swift; sourceTree = "<group>"; };
+		15777C83214CB91A00CC66DB /* AddCategoriesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoriesVC.swift; sourceTree = "<group>"; };
 		157FCA7F2141F94D0036EE3A /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		158D1CDF2130D3F300FD8BAD /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		158D1CE12130F08D00FD8BAD /* SearchFriendsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendsCell.swift; sourceTree = "<group>"; };
@@ -185,6 +189,8 @@
 		15C6633720F44BB800C7DF5E /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		15E41EC7211F998A003AC82F /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		15E41EC921209399003AC82F /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
+		15E855242149E8D4006B9E52 /* ImgLblCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgLblCell.swift; sourceTree = "<group>"; };
+		15E855262149E9CD006B9E52 /* AddPriceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPriceVC.swift; sourceTree = "<group>"; };
 		15ECED7520F6D61400BF42FD /* AddBucketTitleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBucketTitleVC.swift; sourceTree = "<group>"; };
 		15F5E048213DD11200D3903B /* ButtonCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCustom.swift; sourceTree = "<group>"; };
 		15F723C32142049D00533017 /* ItemDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDataCell.swift; sourceTree = "<group>"; };
@@ -267,6 +273,7 @@
 				15623EEF213DDCD000F43372 /* ViewCustom.swift */,
 				15623EF5213F5DA600F43372 /* DetailImgCell.swift */,
 				1555C2CB2140DA34002AF5C6 /* ImgAspectFitBtn.swift */,
+				15E855242149E8D4006B9E52 /* ImgLblCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -425,11 +432,13 @@
 			children = (
 				1522B0C320F056A300C5CF9C /* LandingVC.swift */,
 				15ECED7520F6D61400BF42FD /* AddBucketTitleVC.swift */,
+				15E855262149E9CD006B9E52 /* AddPriceVC.swift */,
+				15777C83214CB91A00CC66DB /* AddCategoriesVC.swift */,
 				1507CA2220F6EC5E00704426 /* AddBucketLocationVC.swift */,
 				1576E40420F96A020067341D /* LocationSearchTableVC.swift */,
+				1507CA1B20F6E58700704426 /* AddBucketMapVC.swift */,
 				1507CA2420F6ED1E00704426 /* AddBucketDetailsVC.swift */,
 				1507CA2820F824D100704426 /* AddBucketSuccessfulVC.swift */,
-				1507CA1B20F6E58700704426 /* AddBucketMapVC.swift */,
 				15C37E862103F78700ED0503 /* MapItemsVC.swift */,
 				15C37E8C2105080C00ED0503 /* FriendSearchVC.swift */,
 				1529D42C2117CD8800AC4829 /* ProfileVC.swift */,
@@ -729,6 +738,7 @@
 				1518346D2145EF61009F74AB /* UIImageView.swift in Sources */,
 				1507CA1C20F6E58700704426 /* AddBucketMapVC.swift in Sources */,
 				1507CA1E20F6E93900704426 /* NewBucketItem.swift in Sources */,
+				15E855252149E8D4006B9E52 /* ImgLblCell.swift in Sources */,
 				1576E40A20F9CE5C0067341D /* SearchTblCell.swift in Sources */,
 				15BCDB4520E5C6DD00E1B6A9 /* OnboardingVC.swift in Sources */,
 				1555DDA1212274510064A798 /* FriendsCell.swift in Sources */,
@@ -770,6 +780,8 @@
 				15C37E89210419F100ED0503 /* MKCoordinateRegion.swift in Sources */,
 				157FCA802141F94D0036EE3A /* CollectionViewCell.swift in Sources */,
 				1522B0C420F056A300C5CF9C /* LandingVC.swift in Sources */,
+				15E855272149E9CD006B9E52 /* AddPriceVC.swift in Sources */,
+				15777C84214CB91A00CC66DB /* AddCategoriesVC.swift in Sources */,
 				1576E40520F96A020067341D /* LocationSearchTableVC.swift in Sources */,
 				15C6633820F44BB800C7DF5E /* TextField.swift in Sources */,
 				15623EF2213DFC3200F43372 /* CustomTextView.swift in Sources */,

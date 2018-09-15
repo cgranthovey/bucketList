@@ -15,7 +15,8 @@ class AddBucketSuccessfulVC: UIViewController {
     }
 
     @IBAction func homeBtnPress(_ sender: AnyObject){
-        if let vc = self.navigationController?.viewControllers.filter({$0 is LandingVC}).first{
+        self.navigationController?.hero.modalAnimationType = .zoomOut
+        if let vc = self.navigationController?.viewControllers.filter({$0 is AddBucketTitleVC}).first{
             self.navigationController?.popToViewController(vc, animated: true)
         }
     }

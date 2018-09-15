@@ -10,6 +10,7 @@ import Foundation
 import Firebase
 import FirebaseFirestore
 import Geofirestore
+import FirebaseStorage
 
 class DataService{
     

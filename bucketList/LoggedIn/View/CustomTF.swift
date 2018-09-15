@@ -32,13 +32,17 @@ class CustomTF: UITextField {
 
 class BottomLineTF: UITextField{
     
+    var hasAddedToLine = false
     override func draw(_ rect: CGRect) {
-        textColor = UIColor().textBlack
-        
+        textColor = UIColor().secondaryBlack
         borderStyle = .none
-        
         font = UIFont().primary(size: 25)
-        self.addLineToView(position: .LINE_POSITION_BOTTOM, color: UIColor().disabledBlack, width: 1.5)
+        adjustsFontSizeToFitWidth = false
+        if !hasAddedToLine{
+            hasAddedToLine = true
+            print("adding line")
+            self.addLineToView(position: .LINE_POSITION_BOTTOM, color: UIColor().disabledBlack, width: 1.5)
+        }
     }
     
 }

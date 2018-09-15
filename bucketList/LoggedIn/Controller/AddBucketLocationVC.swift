@@ -21,8 +21,8 @@ class AddBucketLocationVC: UIViewController {
         super.viewDidLoad()
         self.hero.isEnabled = true
 
-        viewChooseLocation.hero.id = "mainTransform"
-        btnNext.hero.id = "nextToTextView"
+//        viewChooseLocation.hero.id = "mainTransform"
+//        btnNext.hero.id = "nextToTextView"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,7 +49,7 @@ class AddBucketLocationVC: UIViewController {
         if let vc = storyboard.instantiateViewController(withIdentifier: "AddBucketDetailsVC") as? AddBucketDetailsVC{
             vc.hero.isEnabled = true
             vc.navigationController?.hero.navigationAnimationType = .fade
-            self.navigationController?.pushViewController(vc, animated: true)
+           // self.navigationController?.pushViewController(vc, animated: true)
             
         }
     }

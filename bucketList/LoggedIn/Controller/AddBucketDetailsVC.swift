@@ -58,6 +58,7 @@ class AddBucketDetailsVC: UIViewController {
                         print("geoPoint error set ", error!)
                         return
                     }
+                    self.navigationController?.hero.modalAnimationType = .zoom
                     self.performSegue(withIdentifier: "AddBucketDetailsVC", sender: nil)
                 })
             }
@@ -69,9 +70,11 @@ class AddBucketDetailsVC: UIViewController {
         
         print("tv details.text", tvDetails.text!)
         NewBucketItem.instance.item.details = tvDetails.text!
-
+        
         self.navigationController?.popViewController(animated: true)
     }
+    
+    
 }
 
 extension AddBucketDetailsVC: UITextViewDelegate{

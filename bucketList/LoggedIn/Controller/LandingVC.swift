@@ -86,7 +86,9 @@ class LandingVC: UIViewController {
             }
             
             for item in snapshots.documents{
-                let bucketItem = BucketItem(dict: item.data())
+                
+                var bucketItem: BucketItem = BucketItem(dict: item.data())
+                bucketItem.id = item.documentID
                 self.bucketItems.append(bucketItem)
             }
             self.table.reloadData()

@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import FirebaseFirestore
 
 class GetData{
     fileprivate static var _instance = GetData()
@@ -31,6 +32,7 @@ class GetData{
                     print("retrieve snapshot error1", error!)
                     return
                 }
+
                 onComplete(snapshot!, snapshot!.documents.last)
             }
             

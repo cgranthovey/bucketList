@@ -15,7 +15,7 @@ class CustomTextView: UITextView {
         super.draw(rect)
         contentInset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
         backgroundColor = UIColor().lightGrey
-        backgroundColor = UIColor.yellow
+       // backgroundColor = UIColor.yellow
         font = UIFont().primary(size: 22)
     }
     
