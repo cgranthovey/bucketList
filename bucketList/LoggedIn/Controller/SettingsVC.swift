@@ -19,12 +19,14 @@ class SettingsVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     let updateName = tblCellInfo(text: "Update Name", vc: UpdateNameVC())
-    
+    var selectedIndexPath: IndexPath!
 //    let settings2: [tblCellInfo] = [tblCellInfo.ini]
-    let settings: [String] = ["Update Name", "Update Profile Image", "Change Password", "Change Email", "Log Out"]
+    let settings: [String] = ["Update Name", "Profile Image", "Change Password", "Change Email", "Log Out"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
+        tableView.tableFooterView = UIView()
         tableView.dataSource = self
         tableView.delegate = self
     }
@@ -45,6 +47,11 @@ class SettingsVC: UIViewController {
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         DispatchQueue.main.async {
             self.present(alert, animated: true, completion: nil)
+        }
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        if let ip = selectedIndexPath{
+            tableView.deselectRow(at: ip, animated: false)
         }
     }
 
@@ -70,14 +77,15 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? LblArrowCell{
+            selectedIndexPath = indexPath
             let storyboard = UIStoryboard(name: "Settings", bundle: nil)
             if cell.lbl.text! == "Update Name"{
                 if let vc = storyboard.instantiateViewController(withIdentifier: "Update Name") as? UpdateNameVC{
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
             }
-            if cell.lbl.text! == "Update Profile Image"{
-                if let vc = storyboard.instantiateViewController(withIdentifier: "Update Profile Image") as? UpdateProfileVC{
+            if cell.lbl.text! == "Profile Image"{
+                if let vc = storyboard.instantiateViewController(withIdentifier: "Profile Image") as? UpdateProfileVC{
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
             }

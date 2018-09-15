@@ -14,6 +14,9 @@ class LblArrowCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        let lightBg = UIView(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
+        lightBg.backgroundColor = UIColor().lightGrey
+        selectedBackgroundView = lightBg
         // Initialization code
     }
 

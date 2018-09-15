@@ -27,7 +27,6 @@
 		1522B0C420F056A300C5CF9C /* LandingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1522B0C320F056A300C5CF9C /* LandingVC.swift */; };
 		1529D42D2117CD8800AC4829 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1529D42C2117CD8800AC4829 /* ProfileVC.swift */; };
 		1529D42F2117F8B000AC4829 /* MainTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1529D42E2117F8B000AC4829 /* MainTBC.swift */; };
-		1529D4312117FADB00AC4829 /* SettingsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1529D4302117FADB00AC4829 /* SettingsTVC.swift */; };
 		152C89FA21192ECD0032A581 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152C89F921192ECD0032A581 /* Settings.storyboard */; };
 		152C89FC211931600032A581 /* UpdateNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152C89FB211931600032A581 /* UpdateNameVC.swift */; };
 		152C89FE211936880032A581 /* UpdateProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152C89FD211936880032A581 /* UpdateProfileVC.swift */; };
@@ -132,7 +131,6 @@
 		1522B0C320F056A300C5CF9C /* LandingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingVC.swift; sourceTree = "<group>"; };
 		1529D42C2117CD8800AC4829 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		1529D42E2117F8B000AC4829 /* MainTBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTBC.swift; sourceTree = "<group>"; };
-		1529D4302117FADB00AC4829 /* SettingsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTVC.swift; sourceTree = "<group>"; };
 		152C89F921192ECD0032A581 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		152C89FB211931600032A581 /* UpdateNameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateNameVC.swift; sourceTree = "<group>"; };
 		152C89FD211936880032A581 /* UpdateProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileVC.swift; sourceTree = "<group>"; };
@@ -448,7 +446,6 @@
 				15C37E8C2105080C00ED0503 /* FriendSearchVC.swift */,
 				1529D42C2117CD8800AC4829 /* ProfileVC.swift */,
 				1529D42E2117F8B000AC4829 /* MainTBC.swift */,
-				1529D4302117FADB00AC4829 /* SettingsTVC.swift */,
 				1564D9CA214D8396002B04C1 /* SettingsVC.swift */,
 				152C89FB211931600032A581 /* UpdateNameVC.swift */,
 				152C89FD211936880032A581 /* UpdateProfileVC.swift */,
@@ -783,7 +780,6 @@
 				15C37E872103F78700ED0503 /* MapItemsVC.swift in Sources */,
 				15C37E9121050C1B00ED0503 /* FriendSearchTblCell.swift in Sources */,
 				15BCDB0A20E47B9A00E1B6A9 /* AppDelegate.swift in Sources */,
-				1529D4312117FADB00AC4829 /* SettingsTVC.swift in Sources */,
 				15C37E89210419F100ED0503 /* MKCoordinateRegion.swift in Sources */,
 				157FCA802141F94D0036EE3A /* CollectionViewCell.swift in Sources */,
 				1522B0C420F056A300C5CF9C /* LandingVC.swift in Sources */,
