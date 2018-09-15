@@ -150,7 +150,7 @@ extension LandingVC: UITableViewDelegate, UITableViewDataSource{
             BucketDetails{
             print("indexPath.row", indexPath.row)
             vc.bucketItem = bucketItems[indexPath.row - 1]
-            self.navigationController?.hero.navigationAnimationType = .cover(direction: .up)
+//            self.navigationController?.hero.navigationAnimationType = .push(direction: .right)
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

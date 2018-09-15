@@ -434,6 +434,7 @@
 			isa = PBXGroup;
 			children = (
 				1522B0C320F056A300C5CF9C /* LandingVC.swift */,
+				15623EF3213F5C5C00F43372 /* BucketDetails.swift */,
 				15ECED7520F6D61400BF42FD /* AddBucketTitleVC.swift */,
 				15E855262149E9CD006B9E52 /* AddPriceVC.swift */,
 				15777C83214CB91A00CC66DB /* AddCategoriesVC.swift */,
@@ -451,7 +452,6 @@
 				152C89FD211936880032A581 /* UpdateProfileVC.swift */,
 				15C5664C211BDEF7001F5F6C /* UpdatePasswordVC.swift */,
 				15C5664E211BFB46001F5F6C /* UpdateEmailVC.swift */,
-				15623EF3213F5C5C00F43372 /* BucketDetails.swift */,
 				151834682144727F009F74AB /* LargeImageVC.swift */,
 			);
 			path = Controller;

@@ -53,10 +53,11 @@ class BucketDetails: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        lblTitle.text = bucketItem?.title
+        //lblTitle.text = bucketItem?.title
         getImages()
-        
+//        self.navigationController?.hero.navigationAnimationType = .push(direction: .left)
     }
+    
     
     func getImages(){
         if let item = bucketItem, let id = item.id{
