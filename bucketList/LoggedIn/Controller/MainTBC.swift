@@ -31,7 +31,7 @@ class MainTBC: UITabBarController {
             })
         }
         let settingsStoryboard = UIStoryboard(name: "Settings", bundle: nil)
-        if let vc = settingsStoryboard.instantiateViewController(withIdentifier: "SettingsTVC") as? SettingsTVC{
+        if let vc = settingsStoryboard.instantiateViewController(withIdentifier: "SettingsVC") as? SettingsVC{
             let profileItem = UITabBarItem(title: nil, image: #imageLiteral(resourceName: "settings"), selectedImage: #imageLiteral(resourceName: "settings"))
             vc.tabBarItem = profileItem
             profileItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)

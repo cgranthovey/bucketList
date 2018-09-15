@@ -44,11 +44,9 @@ class SettingsTVC: UITableViewController {
 //    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("didSelect0")
         if let cell = tableView.cellForRow(at: indexPath) as? UITableViewCell{
             if let reuseId = cell.reuseIdentifier{
                 if reuseId == "logOut"{
-                    print("didSelect1")
                     logOutAlert()
                 }
             }
@@ -56,24 +54,14 @@ class SettingsTVC: UITableViewController {
     }
     
     func logOutAlert(){
-        print("logOutAlert")
         let alert = UIAlertController(title: "Logout", message: "Are you sure you would like to logout?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
-            print("log out pressed")
             do{
-                print("log out pressed1")
-                
                 if let vc = self.navigationController?.viewControllers.filter({$0 is CheckAuthVC}).first as? CheckAuthVC{
-                    print("log out pressed2")
                     vc.userLoggedOut = true
                 }
-                print("log out pressed3")
                 self.navigationController?.popToRootViewController(animated: true)
-                print("log out pressed4")
                 try Auth.auth().signOut()
-                print("log out pressed5")
-                
-                
             } catch {
                 print("error signing out")
             }
@@ -82,8 +70,6 @@ class SettingsTVC: UITableViewController {
         DispatchQueue.main.async {
             self.present(alert, animated: true, completion: nil)
         }
-
-
     }
 
 }
