@@ -47,10 +47,6 @@ class AddCategoriesVC: UIViewController {
         
     }
     
-    @IBAction func backBtnPress(_ sender: AnyObject){
-        self.navigationController?.popViewController(animated: true)
-    }
-    
     
 }
 

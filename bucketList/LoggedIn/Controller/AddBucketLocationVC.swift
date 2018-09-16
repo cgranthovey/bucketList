@@ -20,18 +20,19 @@ class AddBucketLocationVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hero.isEnabled = true
-
+        print("back bbi", navigationItem.backBarButtonItem?.title)
+        navigationItem.backBarButtonItem?.title = ""
+        self.navigationController?.navigationItem.backBarButtonItem?.title = " "
 //        viewChooseLocation.hero.id = "mainTransform"
 //        btnNext.hero.id = "nextToTextView"
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.isNavigationBarHidden = true
         print("add bucket map details", NewBucketItem.instance.item.details)
 
         setUpUI()
         print("add bucket map details 0.5", NewBucketItem.instance.item.details)
-
+        extendedLayoutIncludesOpaqueBars = true
     }
     
     override func viewDidAppear(_ animated: Bool) {

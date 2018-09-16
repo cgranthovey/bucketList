@@ -50,9 +50,12 @@ class AddBucketMapVC: UIViewController {
         self.navigationItem.hidesBackButton = true
         self.navigationItem.titleView = resultSearchController?.searchBar
         btnBack.imageView?.contentMode = .scaleAspectFit
-
-
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        self.navigationItem.titleView = nil
+    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         approveBtn.alpha = 0

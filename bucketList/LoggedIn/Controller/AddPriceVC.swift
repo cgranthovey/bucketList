@@ -37,13 +37,14 @@ class AddPriceVC: UIViewController {
         collectionView.contentInset = collectionViewInsets
         collectionView.allowsSelection = true
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        //self.navigationController?.navigationItem.title = "Price"
+    }
 
     @IBAction func nextBtnPress(_ sender: AnyObject){
         
-    }
-    
-    @IBAction func backBtnPress(_ sender: AnyObject){
-        self.navigationController?.popViewController(animated: true)
     }
 
 
