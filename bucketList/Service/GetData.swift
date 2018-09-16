@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import FirebaseFirestore
 
 class GetData{
     fileprivate static var _instance = GetData()
@@ -17,29 +18,33 @@ class GetData{
     }
     
     
-    var limit = 10
+    var limit = 7
     
     
-    typealias Completion = (_ items: [Any], _ lastDoc: DocumentSnapshot?) -> Void
+    typealias Completion = (_ items: QuerySnapshot, _ lastDoc: DocumentSnapshot?) -> Void
     func retrieve(collection: CollectionReference, lastDoc: DocumentSnapshot?, onComplete: @escaping Completion){
+        
+        let query = collection.order(by: "created", descending: true).limit(to: limit)
+        
         if let doc = lastDoc{
-            collection.start(afterDocument: doc).limit(to: limit).getDocuments { (snapshot, error) in
-                guard error == nil else{
+            query.start(afterDocument: doc).getDocuments { (snapshot, error) in
+                guard error == nil && snapshot != nil else{
                     print("retrieve snapshot error1", error!)
                     return
                 }
-                let bucketInfo = self.getBucket(snapshot: snapshot)
-                onComplete(bucketInfo.data, bucketInfo.lastDoc)
+
+                onComplete(snapshot!, snapshot!.documents.last)
             }
             
         } else{
-            collection.limit(to: 10).getDocuments { (snapshot, error) in
-                guard error == nil else{
+            print("my query", query)
+            query.getDocuments { (snapshot, error) in
+                
+                guard error == nil && snapshot != nil else{
                     print("retrieve snapshot error2", error!)
                     return
                 }
-                let bucketInfo = self.getBucket(snapshot: snapshot)
-                onComplete(bucketInfo.data, bucketInfo.lastDoc)
+                onComplete(snapshot!, snapshot!.documents.last)
             }
         }
     }
@@ -50,7 +55,6 @@ class GetData{
         var lastDoc: DocumentSnapshot?
         if let snapshot = snapshot{
             for item in snapshot.documents{
-                //let bucketItem = BucketItem(dict: item.data())
                 bucketItems.append(item.data())
                 lastDoc = item
             }

@@ -29,12 +29,21 @@ class BucketListCell: UITableViewCell {
         lblTitle.text = item.title
         if let details = item.details{
             lblDetails.text = details
+            lblDetails.isHidden = false
+        } else{
+            lblDetails.isHidden = true
         }
         if let address = item.addressPrimary{
             lblAddress.text = address
+            lblAddress.isHidden = false
+        } else {
+            lblAddress.isHidden = true
         }
         if let price = item.price{
             lblPrice.text = price
+            lblPrice.isHidden = false
+        } else{
+            lblPrice.isHidden = true
         }
     }
     

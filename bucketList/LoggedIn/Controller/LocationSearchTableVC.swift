@@ -24,7 +24,6 @@ class LocationSearchTableVC: UITableViewController {
         searchCompleter.delegate = self
     }
 
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

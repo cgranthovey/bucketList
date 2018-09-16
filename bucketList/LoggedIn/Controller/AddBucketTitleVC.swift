@@ -9,36 +9,42 @@
 import UIKit
 import Firebase
 import Geofirestore
+import Hero
 
 
 class AddBucketTitleVC: UIViewController {
     
     @IBOutlet weak var tfTitle: UITextField!
-    @IBOutlet weak var tfPrice: UITextField!
-    
-    
+    @IBOutlet weak var btnNext: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
         tfTitle.delegate = self
-        tfPrice.delegate = self
         
+//        btnNext.hero.id = "mainTransform"
+        self.navigationController?.hero.isEnabled = true
+        self.navigationController?.hero.navigationAnimationType = .fade
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(AddBucketTitleVC.dismissKB))
+        self.view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKB(){
+        self.view.endEditing(true)
     }
     
     @IBAction func nextBtnPress(_ sender: AnyObject){
-    }
-    
-    @IBAction func backBtnPress(_ sender: AnyObject){
-        self.navigationController?.popViewController(animated: true)
-        
+        guard tfTitle.hasText else{
+            okAlert(title: "Error", message: "Complete title field.")
+            return
+        }
+        dismissKB()
     }
     
     func setUpUI(){
         tfTitle.text = NewBucketItem.instance.item.title
-        tfPrice.text = NewBucketItem.instance.item.price
     }
-    
 }
 
 extension AddBucketTitleVC: UITextFieldDelegate{
@@ -46,11 +52,6 @@ extension AddBucketTitleVC: UITextFieldDelegate{
         if textField == tfTitle{
             let title = tfTitle.text!
             NewBucketItem.instance.item.title = title
-        }
-        
-        if textField == tfPrice{
-            let price = tfPrice.text!
-            NewBucketItem.instance.item.price = price
         }
     }
 }

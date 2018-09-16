@@ -25,6 +25,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         settings.areTimestampsInSnapshotsEnabled = true
         db.settings = settings
         
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().barTintColor = UIColor().primaryColor
+        var navTitleAttributes = [
+            NSAttributedStringKey.font: UIFont.init(name: "Arial", size: 20)!,
+            NSAttributedStringKey.foregroundColor: UIColor.white
+        ]
+        UINavigationBar.appearance().titleTextAttributes =  navTitleAttributes
+        UINavigationBar.appearance().isTranslucent = false
+        
+        
         return true
     }
 

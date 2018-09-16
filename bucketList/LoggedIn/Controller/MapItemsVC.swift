@@ -15,7 +15,6 @@ import Firebase
 class MapItemsVC: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var btnBack: UIButton!
     
     var locationManager = CLLocationManager()
     var hasUpdatedUserLocation = true
@@ -24,6 +23,7 @@ class MapItemsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hero.isEnabled = true
         
         setUpMap()
     }
@@ -33,11 +33,7 @@ class MapItemsVC: UIViewController {
 //            query.removeAllObservers()
 //        }
     }
-    
-    @IBAction func backBtnPress(_ sender: AnyObject){
-        self.navigationController?.popViewController(animated: true)
-    }
-    
+
     func setUpMap(){
         mapView.delegate = self
         mapView.showsUserLocation = true

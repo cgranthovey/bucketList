@@ -20,10 +20,11 @@ class AddBucketMapVC: UIViewController {
     @IBOutlet weak var pinIV: UIImageView!
     @IBOutlet weak var clearBtn: UIButton!
     @IBOutlet weak var approveBtn: UIButton!
+    @IBOutlet weak var btnBack: UIButton!
     
     
     let locationManager = CLLocationManager()
-    var currentLocation: CLLocation!
+    var currentLocation: CLLocation?
     var resultSearchController: UISearchController?
     var searchBar = UISearchBar()
     
@@ -36,7 +37,7 @@ class AddBucketMapVC: UIViewController {
     
     var generalSpan: MKCoordinateSpan{
         get {
-            return MKCoordinateSpanMake(0.01, 0.01)
+            return MKCoordinateSpanMake(1.5, 1.5)
         }
     }
     
@@ -48,6 +49,17 @@ class AddBucketMapVC: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.hidesBackButton = true
         self.navigationItem.titleView = resultSearchController?.searchBar
+        btnBack.imageView?.contentMode = .scaleAspectFit
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        self.navigationItem.titleView = nil
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        approveBtn.alpha = 0
+        approveBtn.isEnabled = false
     }
     
     @IBAction func approvePinBtnPress(_ sender: AnyObject){
@@ -59,6 +71,7 @@ class AddBucketMapVC: UIViewController {
             
             NewBucketItem.instance.item.pinLat = lat
             NewBucketItem.instance.item.pinLong = long
+            self.navigationController?.hero.navigationAnimationType = .uncover(direction: .down)
             self.navigationController?.popViewController(animated: true)
         }
     }
@@ -70,6 +83,10 @@ class AddBucketMapVC: UIViewController {
         searchBar.text = ""
         self.pinIV.isHidden = false
         self.pinIV.transform = CGAffineTransform(translationX: 0, y: self.view.frame.height)
+        UIView.animate(withDuration: 0.3) {
+            self.approveBtn.alpha = 0
+            self.approveBtn.isEnabled = false
+        }
         UIView.animate(withDuration: 0.5, delay: 0.1, usingSpringWithDamping: 1, initialSpringVelocity: 2, options: .curveEaseInOut, animations: {
             self.pinIV.transform = .identity
         }) { (success) in
@@ -77,7 +94,18 @@ class AddBucketMapVC: UIViewController {
         }
     }
     
+    @IBAction func centerUserBtnPress(_ sender: AnyObject){
+        let span = MKCoordinateSpan(latitudeDelta: 0.4, longitudeDelta: 0.4)
+        print("coord0")
+        if currentLocation != nil{
+            print("coord", currentLocation!.coordinate)
+            let region = MKCoordinateRegion(center: currentLocation!.coordinate, span: span)
+            self.mapView.setRegion(region, animated: true)
+        }
+    }
+    
     @IBAction func backBtnPress(_ sender: AnyObject){
+        self.navigationController?.hero.navigationAnimationType = .uncover(direction: .down)
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -107,16 +135,26 @@ class AddBucketMapVC: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let addressFull = NewBucketItem.instance.item.addressFull()
+        if let addressFull = NewBucketItem.instance.item.addressFull(){
             searchBar.text = addressFull
-        
+
+            
+            if searchBar.text != nil && !searchBar.text!.isEmptyOrWhitespace(){
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.approveBtn.alpha = 1
+                }) { (success) in
+                    self.approveBtn.isEnabled = true
+                }
+            }
+        }
     }
     
     func setUpMap(){
         
         if let coordinate2D = NewBucketItem.instance.item.coordinate2D(), let primary = NewBucketItem.instance.item.addressPrimary{
             pinIV.isHidden = true
-            let region = MKCoordinateRegion(center: coordinate2D, span: generalSpan)
+            let span = MKCoordinateSpan(latitudeDelta: 0.4, longitudeDelta: 0.4)
+            let region = MKCoordinateRegion(center: coordinate2D, span: span)
             mapView.setRegion(region, animated: true)
             showingSearchedPin = true
             addAnnotations(coord: coordinate2D, addressPrimary: primary)
@@ -131,6 +169,21 @@ class AddBucketMapVC: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
+    }
+    
+    func animateInApproveBtn(txtView: UISearchBar, delay: TimeInterval){
+        print("animate it2", txtView.text)
+        if txtView.text != nil && !txtView.text!.isEmptyOrWhitespace() && self.approveBtn.alpha == 0{
+            print("animate it2")
+            self.approveBtn.transform = CGAffineTransform(translationX: -20, y: 0)
+            
+            UIView.animate(withDuration: 0.4, delay: delay, usingSpringWithDamping: 1, initialSpringVelocity: 2, options: .curveEaseOut, animations: {
+                self.approveBtn.transform = .identity
+                self.approveBtn.alpha = 1
+            }, completion: { (success) in
+                self.approveBtn.isEnabled = true
+            })
+        }
     }
 
 }
@@ -188,11 +241,14 @@ extension AddBucketMapVC: MKMapViewDelegate{
                 }
 
                 if self.showingSearchedPin == false && self.showSearchText{
+                    
                     self.searchBar.text = addressString
                     self.pinLat = "\(loc.coordinate.latitude)"
                     self.pinLong = "\(loc.coordinate.longitude)"
                     self.addressPrimary = addressString
 //                    addressPrimary =
+                    self.animateInApproveBtn(txtView: self.searchBar, delay: 0)
+
                 }
                 self.showSearchText = true
                 
@@ -214,10 +270,12 @@ extension AddBucketMapVC: SearchResultDelegate{
         showingSearchedPin = true
         self.pinIV.isHidden = true
         print("my region1 - ", region)
-        
-        let regionNewSpan = MKCoordinateRegion(center: region.center, span: generalSpan)
+        let span = MKCoordinateSpan(latitudeDelta: 0.4, longitudeDelta: 0.4)
+
+        let regionNewSpan = MKCoordinateRegion(center: region.center, span: span)
         
         mapView.setRegion(regionNewSpan, animated: true)
+        animateInApproveBtn(txtView: searchBar, delay: 0.5)
     }
     
     func addAnnotations(coord: CLLocationCoordinate2D, addressPrimary: String){
@@ -239,7 +297,9 @@ extension AddBucketMapVC: CLLocationManagerDelegate{
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
+        print("didUpdateLoc1")
         if let location = locations.first, NewBucketItem.instance.item.coordinate2D() == nil{
+            print("didUpdateLoc2")
             currentLocation = location
             let region = MKCoordinateRegion(center: location.coordinate, span: generalSpan)
             mapView.setRegion(region, animated: true)

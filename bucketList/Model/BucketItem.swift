@@ -10,6 +10,7 @@ import Foundation
 import MapKit
 import FirebaseCore
 import Firebase
+import FirebaseFirestore
 
 class BucketItem{
     var title: String!
@@ -23,6 +24,7 @@ class BucketItem{
     var created: String?
     var createdDate: Date?
     var id: String?
+    var imgs: [String] = [String]()
     
     func addressFull() -> String?{
         let address = [addressPrimary, addressSeconary].compactMap{$0}.joined(separator: ", ")
