@@ -44,9 +44,9 @@ class LandingVC: UIViewController {
         print("my nav ", self.navigationController)
         self.tabBarController?.tabBar.hero.isEnabled = true
         self.tabBarController?.tabBar.layer.removeAllAnimations()
-        self.hero.isEnabled = true
-        self.navigationController?.hero.isEnabled = true
-
+//        self.hero.isEnabled = true
+//        self.navigationController?.hero.isEnabled = true
+        
 
 
     }

@@ -17,7 +17,6 @@ import FirebaseFirestore
 class BucketDetails: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var lblTitle: UILabel!
     var images: [String] = [String]()
     var bucketItem: BucketItem?
     var spaceBetweenCells: CGFloat = 10
@@ -26,18 +25,14 @@ class BucketDetails: UIViewController {
     
     var sizingNibNew = Bundle.main.loadNibNamed("ItemDataCell", owner: ItemDataCell.self, options: nil) as? NSArray
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
-        
         hero.isEnabled = true
         hero.modalAnimationType = .fade
-        
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-
         
         let nib = UINib(nibName: "ItemDataCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: "ItemDataCell")
@@ -47,18 +42,15 @@ class BucketDetails: UIViewController {
         if let item = bucketItem{
             images = item.imgs
         }
-
-        images = ["https://www.myyosemitepark.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_960/MTQ4NjQxMDIxOTQzNjIxMjk5/yosemite-falls-river_dp_1600.jpg", "https://media-cdn.tripadvisor.com/media/photo-s/0d/f4/e0/b6/yosemite-national-park.jpg"]
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //lblTitle.text = bucketItem?.title
         getImages()
+        if let item = bucketItem{
+            self.navigationItem.title = item.title
+        }
         self.navigationController?.setNavigationBarHidden(false, animated: false)
-//        self.navigationController?.hero.navigationAnimationType = .push(direction: .left)
     }
-    
     
     func getImages(){
         if let item = bucketItem, let id = item.id{
@@ -66,7 +58,6 @@ class BucketDetails: UIViewController {
                 guard error == nil && snapshot != nil else{
                     return
                 }
-                
                 for snap in snapshot!.documents{
                     let snapDoc = snap.data()
                     if let url = snapDoc["url"] as? String{
@@ -74,22 +65,15 @@ class BucketDetails: UIViewController {
                     }
                 }
                 self.collectionView.reloadData()
-                
             }
         }
-        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     @IBAction func backBtnPress(_ sender: AnyObject){
         self.navigationController?.hero.navigationAnimationType = .uncover(direction: .down)
         self.navigationController?.popViewController(animated: true)
     }
-
+    
     func uploadImage(image: UIImage){
         let usersStorageRef = DataService.instance.storageUserRef()
         guard bucketItem != nil && bucketItem?.id != nil else{
@@ -142,7 +126,6 @@ class BucketDetails: UIViewController {
     
     func showCamera(){
         if UIImagePickerController.isSourceTypeAvailable(.camera){
-//            imagePicker.cameraCaptureMode = .photo
             imagePicker.sourceType = .camera
             present(imagePicker, animated: true, completion: nil)
         }
@@ -153,7 +136,7 @@ class BucketDetails: UIViewController {
             present(imagePicker, animated: true, completion: nil)
         }
     }
-
+    
 }
 
 extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
@@ -188,7 +171,6 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
         return UICollectionViewCell()
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return spaceBetweenCells
     }
@@ -197,14 +179,10 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
         return spaceBetweenCells
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.navigationController?.hero.navigationAnimationType = .fade
-
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
         if indexPath.row == 1{
-            
             showAlert()
         } else{
             if let vc = storyboard.instantiateViewController(withIdentifier: "LargeImageVC") as? LargeImageVC{
@@ -217,20 +195,16 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
                         vc.newImg = img
                     }
                 }
-                
                 vc.hero.isEnabled = true
                 self.hero.modalAnimationType = .none
                 present(vc, animated: true, completion: nil)
             }
         }
-        
-        
-
     }
     
     @IBAction func btnPress(_ sender: AnyObject){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-
+        
         if let vc = storyboard.instantiateViewController(withIdentifier: "LargeImageVC") as? LargeImageVC{
             vc.imgURLString = images[1]
             self.navigationController?.pushViewController(vc, animated: true)
@@ -240,7 +214,7 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.row == 0{
             let width = self.view.frame.width - CGFloat(20)// / 3.0
-
+            
             if let item = bucketItem{
                 let requiredWidth = collectionView.bounds.size.width
                 let targetSize = CGSize(width: requiredWidth, height: 0)
@@ -250,7 +224,7 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
                 layoutAttributes?.frame.size = targetSize
                 let adequateSize = newCell.preferredLayoutAttributesFitting(layoutAttributes!)
                 let inset = collectionView.contentInset.right + collectionView.contentInset.left
-
+                
                 return CGSize(width: self.collectionView.bounds.width - inset, height: adequateSize.frame.height)
             }
             return CGSize(width: width, height: width)
@@ -262,11 +236,8 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
         if indexPath.row == 1{
             return CGSize(width: collectionView.frame.width - inset - 20, height: 50)
         }
-
-
         return CGSize(width: width, height: width)
     }
-
 }
 
 
