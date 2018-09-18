@@ -102,7 +102,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5Kn-oH-V1a"/>
                     </view>
+                    <navigationItem key="navigationItem" id="eev-ba-uBV"/>
                     <connections>
+                        <outlet property="btnCancel" destination="cew-OZ-ykO" id="zsr-WE-9NH"/>
                         <outlet property="tfEmail" destination="LHB-BH-Ky9" id="vpY-NY-5rg"/>
                         <outlet property="tfFname" destination="ofc-nS-5WK" id="cxG-6X-3we"/>
                         <outlet property="tfPassword" destination="7aa-LA-7hT" id="wwQ-WA-7hj"/>
@@ -110,7 +112,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Ym-OQ-dRk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="189.59999999999999" y="135.38230884557723"/>
+            <point key="canvasLocation" x="1128.8" y="135.38230884557723"/>
         </scene>
         <!--LoginVC-->
         <scene sceneID="17w-lo-ikN">
@@ -203,7 +205,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ihg-sn-DFg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="926" y="135"/>
+            <point key="canvasLocation" x="1864.8" y="134.48275862068968"/>
         </scene>
         <!--Password ResetVC-->
         <scene sceneID="yOQ-Qs-t99">
@@ -271,7 +273,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TyW-2D-4HS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1666" y="134"/>
+            <point key="canvasLocation" x="2604" y="133.5832083958021"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fHi-cH-QvH">
+            <objects>
+                <navigationController storyboardIdentifier="navigationController" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="rm6-uw-qSc" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="A8t-Q8-3Vb">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="O0x-fE-vfu" kind="relationship" relationship="rootViewController" id="4z8-q7-TLg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yRf-1u-FZL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="189.59999999999999" y="135.38230884557723"/>
         </scene>
     </scenes>
 </document>

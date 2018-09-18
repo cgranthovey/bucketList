@@ -47,7 +47,7 @@ extension UIView{
     
     typealias CompletionHandler = () -> Void
     
-    func removeBluerLoader(completionHandler: CompletionHandler?){
+    func removeBlurLoader(completionHandler: CompletionHandler?){
         self.subviews.compactMap {  $0 as? UIVisualEffectView }.forEach {
             //$0.removeFromSuperview()
             $0.fadeViewOut(completionHandler: {

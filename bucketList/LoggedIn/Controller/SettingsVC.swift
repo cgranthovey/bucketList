@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import Hero
 
 struct tblCellInfo{
     var text: String
@@ -34,15 +35,32 @@ class SettingsVC: UIViewController {
     func logOutAlert(){
         let alert = UIAlertController(title: "Logout", message: "Are you sure you would like to logout?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+            print("logOut ok")
             do{
-                if let vc = self.navigationController?.viewControllers.filter({$0 is CheckAuthVC}).first as? CheckAuthVC{
-                    vc.userLoggedOut = true
+                print("logOut ok2", self.navigationController?.viewControllers.count)
+//                if let vc = self.navigationController?.viewControllers.filter({$0 is CheckAuthVC}).first as? CheckAuthVC{
+//                    vc.userLoggedOut = true
+//
+//                    print("logOut ok2.2")
+//                }
+                
+
+                let storyboard = UIStoryboard(name: "CreateAccount", bundle: nil)
+                if let vc = storyboard.instantiateViewController(withIdentifier: "navigationController") as? UINavigationController{
+                    print("logOut ok3")
+                    self.hero.isEnabled = true
+                    self.hero.modalAnimationType = HeroDefaultAnimationType.zoomSlide(direction: .right)
+                    vc.hero.isEnabled = true
+                    self.present(vc, animated: true, completion: nil)
                 }
-                self.navigationController?.popToRootViewController(animated: true)
+//              self.navigationController?.popToRootViewController(animated: true)
+                print("logOut ok4")
+                
                 try Auth.auth().signOut()
-            } catch {
-                print("error signing out")
+            } catch let error {
+                print("error signing out", error)
             }
+            print("after")
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         DispatchQueue.main.async {

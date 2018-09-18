@@ -17,6 +17,7 @@ class CheckAuthVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if Auth.auth().currentUser != nil{
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             if let vc = storyboard.instantiateViewController(withIdentifier: "UITabBarController") as? MainTBC{
@@ -37,6 +38,7 @@ class CheckAuthVC: UIViewController {
         } else{
             viewLoggedOut.isHidden = true
         }
+        print("checkAuthVC")
     }
     
 

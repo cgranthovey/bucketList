@@ -33,6 +33,7 @@ class AddBucketLocationVC: UIViewController {
         setUpUI()
         print("add bucket map details 0.5", NewBucketItem.instance.item.details)
         extendedLayoutIncludesOpaqueBars = true
+        self.navigationController?.hero.navigationAnimationType = .fade
     }
     
     override func viewDidAppear(_ animated: Bool) {

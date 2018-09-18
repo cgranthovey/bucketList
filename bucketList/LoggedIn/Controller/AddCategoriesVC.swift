@@ -37,6 +37,7 @@ class AddCategoriesVC: UIViewController {
         collectionView.delegate =  self
         collectionView.contentInset = collectionViewInsets
         collectionView.allowsSelection = true
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

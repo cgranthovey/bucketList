@@ -55,6 +55,7 @@ class BucketDetails: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         //lblTitle.text = bucketItem?.title
         getImages()
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
 //        self.navigationController?.hero.navigationAnimationType = .push(direction: .left)
     }
     

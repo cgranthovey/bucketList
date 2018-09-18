@@ -38,6 +38,14 @@ class AddBucketDetailsVC: UIViewController {
         
         tvDetails.translatesAutoresizingMaskIntoConstraints = false
         tvDetails.isScrollEnabled = false
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(AddBucketDetailsVC.dismissKB))
+        self.view.addGestureRecognizer(tap)
+        
+    }
+    
+    @objc func dismissKB(){
+        self.view.endEditing(true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,6 +61,7 @@ class AddBucketDetailsVC: UIViewController {
                 return
             }
             if let geoPoint = NewBucketItem.instance.item.getGeoPoint(){
+                
                 DataService.instance.currentUserGeoFirestore.setLocation(geopoint: geoPoint, forDocumentWithID: ref.documentID, completion: { (error) in
                     guard error == nil else{
                         print("geoPoint error set ", error!)

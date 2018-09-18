@@ -16,6 +16,7 @@ class CreateAccountVC: UIViewController {
     @IBOutlet weak var tfPassword: UITextField!
     @IBOutlet weak var tfEmail: UITextField!
     @IBOutlet weak var tfFname: UITextField!
+    @IBOutlet weak var btnCancel: UIButton!
     
     var requiredFields: [UITextField]!
     override func viewDidLoad() {
@@ -26,12 +27,25 @@ class CreateAccountVC: UIViewController {
         self.view.addGestureRecognizer(tap)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        btnCancel.isHidden = true
+        if let nav = self.navigationController{
+            if nav.viewControllers.count > 1{
+                btnCancel.isHidden = false
+            }
+        }
+    }
+    
     @IBAction func createAccount(_ sender: AnyObject){
         checkRequiredFields()
     }
     
     @IBAction func cancelVC(_ sender: AnyObject){
-        self.dismiss(animated: true, completion: nil)
+        if let nav = self.navigationController{
+            nav.popViewController(animated: true)
+        } else{
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     func checkRequiredFields(){
@@ -63,7 +77,7 @@ class CreateAccountVC: UIViewController {
         Auth.auth().createUser(withEmail: email, password: password) { (user, err) in
             guard err == nil && user != nil else{
                 print("signUpUser0.4",err)
-                self.view.removeBluerLoader(completionHandler: {
+                self.view.removeBlurLoader(completionHandler: {
                     self.okAlert(title: "Error", message: err!.customAuthError(submitType: AuthSubmitType.createAccount))
                 })
                 return
@@ -79,13 +93,13 @@ class CreateAccountVC: UIViewController {
                 "created": FieldValue.serverTimestamp()
                 ], completion: { (err) in
                     guard err == nil else{
-                        self.view.removeBluerLoader(completionHandler: nil)
+                        self.view.removeBlurLoader(completionHandler: nil)
                         return
                     }
                     let storboardMain = UIStoryboard(name: "Main", bundle: nil)
                     if let vc = storboardMain.instantiateViewController(withIdentifier: "UITabBarController") as? UITabBarController{
                         self.present(vc, animated: true, completion: {
-                            self.view.removeBluerLoader(completionHandler: nil)
+                            self.view.removeBlurLoader(completionHandler: nil)
                         })
                     }
                 }

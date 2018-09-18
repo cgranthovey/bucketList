@@ -68,12 +68,11 @@ class AddBucketMapVC: UIViewController {
             if let secondary = addressSecondary{
                 NewBucketItem.instance.item.addressSeconary = secondary
             }
-            
             NewBucketItem.instance.item.pinLat = lat
             NewBucketItem.instance.item.pinLong = long
-            self.navigationController?.hero.navigationAnimationType = .uncover(direction: .down)
-            self.navigationController?.popViewController(animated: true)
         }
+        self.navigationController?.hero.navigationAnimationType = .uncover(direction: .down)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func clearPinBtnPress(_ sender: AnyObject){
