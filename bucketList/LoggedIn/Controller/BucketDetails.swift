@@ -24,6 +24,7 @@ class BucketDetails: UIViewController {
     var imagePicker: UIImagePickerController!
     
     var sizingNibNew = Bundle.main.loadNibNamed("ItemDataCell", owner: ItemDataCell.self, options: nil) as? NSArray
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

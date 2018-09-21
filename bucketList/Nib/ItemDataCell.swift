@@ -9,12 +9,25 @@
 import UIKit
 
 class ItemDataCell: UICollectionViewCell {
+    
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.contentView.autoresizingMask = .flexibleHeight
         isUserInteractionEnabled = false
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ItemDataCell.tapped))
+        addGestureRecognizer(tap)
+    }
+    
+    override var intrinsicContentSize: CGSize{
+        return CGSize(width: 500, height: 1000)
+    }
+    
+    @objc func tapped(){
+        print("tapped")
     }
     
     override func layoutSubviews() {
@@ -50,7 +63,8 @@ class ItemDataCell: UICollectionViewCell {
     @IBOutlet weak var btnAddress: UIButton!
     
     @IBAction func addressBtnPress(_ sender: AnyObject){
-        
+        print("address btn press!")
+
     }
     
     func configure(item: BucketItem){
