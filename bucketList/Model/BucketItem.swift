@@ -26,6 +26,20 @@ class BucketItem{
     var id: String?
     var imgs: [String] = [String]()
     
+    var isTravel: Bool = false
+    var isNature: Bool = false
+    var isEducation: Bool = false
+    var isSports: Bool = false
+    var isSocial: Bool = false
+    var isReligion: Bool = false
+    var isExercise: Bool = false
+    var isArt: Bool = false
+    var isHistory: Bool = false
+    
+    lazy var isItems: [Bool] = {
+        return [isTravel, isNature, isEducation, isSports, isSocial, isReligion, isExercise, isArt, isHistory]
+    }()
+    
     func addressFull() -> String?{
         let address = [addressPrimary, addressSeconary].compactMap{$0}.joined(separator: ", ")
         return address
@@ -70,6 +84,33 @@ class BucketItem{
             pinLat = dict["pinLat"] as? String
             pinLong = dict["pinLong"] as? String
 
+            if let travel = dict["isTravel"] as? Bool{
+                isTravel = travel
+            }
+            if let nature = dict["isNature"] as? Bool{
+                isNature = nature
+            }
+            if let education = dict["isEducation"] as? Bool{
+                isEducation = education
+            }
+            if let sports = dict["isSports"] as? Bool{
+                isSports = sports
+            }
+            if let social = dict["isSocial"] as? Bool{
+                isSocial = social
+            }
+            if let religion = dict["isReligion"] as? Bool{
+                isReligion = religion
+            }
+            if let exercise = dict["isExercise"] as? Bool{
+                isExercise = exercise
+            }
+            if let art = dict["isArt"] as? Bool{
+                isArt = art
+            }
+            if let history = dict["isHistory"] as? Bool{
+                isHistory = history
+            }
         }
         if let id = id{
             self.id = id
@@ -90,7 +131,15 @@ class BucketItem{
             "pinLong": pinLong as Any
         ]
         
-        
+        isTravel ? items["isTravel"] = true : Void()
+        isNature ? items["isNature"] = true : Void()
+        isEducation ? items["isEducation"] = true : Void()
+        isSports ? items["isSports"] = true : Void()
+        isSocial ? items["isSocial"] = true : Void()
+        isReligion ? items["isReligion"] = true : Void()
+        isExercise ? items["isExercise"] = true : Void()
+        isArt ? items["isArt"] = true : Void()
+        isHistory ? items["isHistory"] = true: Void()
         
         items["created"] = FieldValue.serverTimestamp()
         if let geoLoc = getGeoPoint(){

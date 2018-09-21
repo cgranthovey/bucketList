@@ -136,8 +136,6 @@ class AddBucketMapVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         if let addressFull = NewBucketItem.instance.item.addressFull(){
             searchBar.text = addressFull
-
-            
             if searchBar.text != nil && !searchBar.text!.isEmptyOrWhitespace(){
                 UIView.animate(withDuration: 0.3, animations: {
                     self.approveBtn.alpha = 1

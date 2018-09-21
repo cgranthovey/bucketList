@@ -145,17 +145,19 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1 + images.count
+        return 1 + images.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row == 0, let bucketItem = bucketItem{
+            print("cellForItemAt1")
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemDataCell", for: indexPath) as? ItemDataCell{
                 cell.configure(item: bucketItem)
                 return cell
             }
         }
         if indexPath.row == 1{
+            print("cellForItemAt2")
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellCamera", for: indexPath)
             let lightGrayView = UIView(frame: CGRect(x: 0, y: 0, width: cell.frame.width, height: cell.frame.height))
             lightGrayView.backgroundColor = UIColor().extraLightGrey
@@ -163,6 +165,7 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
             return cell
         }
         if indexPath.row > 0{
+            print("cellForItemA3")
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? DetailImgCell{
                 cell.configure(imgUrl: images[indexPath.row - 2])
                 return cell
