@@ -47,7 +47,7 @@ class LandingVC: UIViewController {
 //        self.hero.isEnabled = true
 //        self.navigationController?.hero.isEnabled = true
         
-
+        
 
     }
     

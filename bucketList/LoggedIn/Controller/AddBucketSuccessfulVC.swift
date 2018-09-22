@@ -13,6 +13,15 @@ class AddBucketSuccessfulVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+       // NotificationCenter.default.post(name: NSNotification.Name("newItem"), object: nil)
+        NewBucketItem.instance.clearItem()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+    }
 
     @IBAction func homeBtnPress(_ sender: AnyObject){
         self.navigationController?.hero.modalAnimationType = .zoomOut

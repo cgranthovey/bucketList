@@ -60,6 +60,7 @@ class ItemDataCell: UICollectionViewCell {
     
     @IBOutlet weak var lblPrice: UILabel!
     @IBOutlet weak var lblDescription: UILabel!
+    @IBOutlet weak var lblTime: UILabel!
     
     @IBAction func addressBtnPress(_ sender: AnyObject){
         print("address btn press!")
@@ -72,6 +73,10 @@ class ItemDataCell: UICollectionViewCell {
         print("item.addressFull", item.addressFull())
         print("item.price", item.price)
         
+        
+        if let time = item.completionTime{
+            lblTime.text = time
+        }
         
         if let price = item.price, price != "" {
             lblPrice.text = price

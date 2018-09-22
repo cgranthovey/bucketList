@@ -108,6 +108,7 @@
             <connections>
                 <outlet property="lblDescription" destination="zac-Oz-ude" id="YD8-LP-5DO"/>
                 <outlet property="lblPrice" destination="9AN-fx-g60" id="J6v-Wg-y3S"/>
+                <outlet property="lblTime" destination="rot-TQ-TQH" id="oKI-Oh-FD6"/>
             </connections>
             <point key="canvasLocation" x="194.5" y="105"/>
         </collectionViewCell>
