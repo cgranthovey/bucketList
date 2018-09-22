@@ -40,29 +40,28 @@ class LandingVC: UIViewController {
         }
         
         setUpPullTableLoader()
-        setUpUI()
         print("my nav ", self.navigationController)
         self.tabBarController?.tabBar.hero.isEnabled = true
         self.tabBarController?.tabBar.layer.removeAllAnimations()
 //        self.hero.isEnabled = true
 //        self.navigationController?.hero.isEnabled = true
         
-        
-
+        NotificationCenter.default.addObserver(self, selector: #selector(LandingVC.newBucketItem), name: NSNotification.Name(rawValue: "newItem"), object: nil)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        print("Landing VC2")
-    }
     
-    override func viewDidAppear(_ animated: Bool) {
-        print("Landing VC3")
-
+    
+    @objc func newBucketItem(){
+        lastDoc = nil
+        allItemsLoaded = false
+        itemsReloaded = true
+        getData(lastDoc: nil) {
+            
+        }
+        print("newBucketItem")
     }
 
-    func setUpUI(){
-     //   viewTop.backgroundColor = UIColor().primaryColor
-    }
+
     var allItemsLoaded = false;
     var itemsReloaded = true;
     typealias Completion = () -> Void
@@ -73,8 +72,10 @@ class LandingVC: UIViewController {
             return
         }
         print("getDataGuard2")
-        GetData.instance.retrieve(collection: DataService.instance.bucketListRef, lastDoc: lastDoc) { (snapshots, lastDoc) in
-            
+        GetData.instance.retrieve(collection: DataService.instance.bucketListRef, lastDoc: lastDoc)
+        { (snapshots, lastDoc) in
+            print("getDataGuard3, ", snapshots)
+
             if self.itemsReloaded{
                 self.bucketItems = []
                 self.itemsReloaded = false
@@ -88,6 +89,7 @@ class LandingVC: UIViewController {
             for item in snapshots.documents{
                 
                 var bucketItem: BucketItem = BucketItem(dict: item.data())
+                print("bucketItemTitle -", bucketItem.title)
                 bucketItem.id = item.documentID
                 self.bucketItems.append(bucketItem)
             }

@@ -39,6 +39,7 @@ class AddPriceVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+//        self.navigationController?.navigationItem.setHidesBackButton(true, animated: true)
 //        if let price = NewBucketItem.instance.item.price{
 //            for (index, item) in priceOptions.enumerated(){
 //                if item.txt == price{

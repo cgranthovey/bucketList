@@ -81,16 +81,17 @@ extension AddCompletionTimeVC: UICollectionViewDelegate, UICollectionViewDataSou
         NewBucketItem.instance.item.completionTime = items[indexPath.row]
         
         if let cell = collectionView.cellForItem(at: indexPath) as? CompletionTimeCell{
-            UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn, animations: {
-                cell.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
+            UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseIn, animations: {
+                cell.transform = CGAffineTransform(scaleX: 1.04, y: 1.04)
             }) { (success) in
                 UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-                    cell.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
-                }, completion: { (success) in
-                    UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-                        cell.transform = .identity
-                    }, completion: { (success) in
-                    })
+                    cell.transform = .identity
+
+//                    cell.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
+//                }, completion: { (success) in
+//                    UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+//                    }, completion: { (success) in
+//                    })
                 })
             }
             //cell.lbl.textColor = UIColor.white
