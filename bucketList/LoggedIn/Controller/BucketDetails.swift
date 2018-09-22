@@ -277,7 +277,7 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
         }
         
         if indexPath.row == 2{
-            return CGSize(width: collectionView.frame.width - inset, height: 2)
+            return CGSize(width: collectionView.frame.width - inset, height: 40)
         }
         return CGSize(width: width, height: width)
     }

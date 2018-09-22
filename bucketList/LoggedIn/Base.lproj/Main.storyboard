@@ -242,51 +242,51 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellCamera" id="h4C-Xc-NZ1">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="99c-F7-7bi">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" alpha="0.65000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="0Z0-nJ-IGf">
-                                                            <rect key="frame" x="20" y="7" width="50" height="30"/>
+                                                            <rect key="frame" x="12" y="5" width="50" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="50" id="0eI-Kj-toE"/>
-                                                                <constraint firstAttribute="height" constant="30" id="eyW-2L-T5V"/>
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="0Z0-nJ-IGf" secondAttribute="bottom" constant="8" id="1qW-Pi-Kij"/>
-                                                        <constraint firstItem="0Z0-nJ-IGf" firstAttribute="leading" secondItem="99c-F7-7bi" secondAttribute="leading" constant="20" id="yci-oK-YBw"/>
+                                                        <constraint firstItem="0Z0-nJ-IGf" firstAttribute="top" secondItem="99c-F7-7bi" secondAttribute="top" constant="5" id="bcP-Om-ph6"/>
+                                                        <constraint firstAttribute="bottom" secondItem="0Z0-nJ-IGf" secondAttribute="bottom" constant="5" id="v3e-Ci-5x2"/>
+                                                        <constraint firstItem="0Z0-nJ-IGf" firstAttribute="leading" secondItem="99c-F7-7bi" secondAttribute="leading" constant="12" id="yci-oK-YBw"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="agu-cW-4qx">
-                                                    <rect key="frame" x="28" y="43" width="319" height="2"/>
-                                                    <color key="backgroundColor" red="0.70588235294117641" green="0.70588235294117641" blue="0.70588235294117641" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <rect key="frame" x="82" y="19.5" width="275" height="1"/>
+                                                    <color key="backgroundColor" red="0.39215686274509803" green="0.39215686274509803" blue="0.39215686274509803" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="2" id="oWI-9L-Nvh"/>
+                                                        <constraint firstAttribute="height" constant="1" id="oWI-9L-Nvh"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="agu-cW-4qx" secondAttribute="bottom" id="AjI-bw-Bpf"/>
+                                            <constraint firstItem="agu-cW-4qx" firstAttribute="leading" secondItem="0Z0-nJ-IGf" secondAttribute="trailing" constant="20" id="Bok-Qe-4zp"/>
                                             <constraint firstAttribute="trailing" secondItem="99c-F7-7bi" secondAttribute="trailing" id="Hc5-BS-QJ7"/>
                                             <constraint firstItem="99c-F7-7bi" firstAttribute="top" secondItem="h4C-Xc-NZ1" secondAttribute="top" id="MeY-Zw-oYi"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="agu-cW-4qx" secondAttribute="trailing" constant="20" id="NEE-e7-DCT"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="agu-cW-4qx" secondAttribute="trailing" constant="10" id="NEE-e7-DCT"/>
                                             <constraint firstItem="99c-F7-7bi" firstAttribute="leading" secondItem="h4C-Xc-NZ1" secondAttribute="leading" id="Z6A-cm-iYg"/>
                                             <constraint firstAttribute="bottom" secondItem="99c-F7-7bi" secondAttribute="bottom" id="hwn-5x-4fi"/>
-                                            <constraint firstItem="agu-cW-4qx" firstAttribute="leading" secondItem="h4C-Xc-NZ1" secondAttribute="leadingMargin" constant="20" id="vR6-XQ-SXm"/>
+                                            <constraint firstItem="agu-cW-4qx" firstAttribute="centerY" secondItem="0Z0-nJ-IGf" secondAttribute="centerY" id="ved-Ag-f2r"/>
                                         </constraints>
-                                        <size key="customSize" width="375" height="45"/>
+                                        <size key="customSize" width="375" height="40"/>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="5z0-6Z-hs5" customClass="DetailImgCell" customModule="bucketList" customModuleProvider="target">
-                                        <rect key="frame" x="65" y="55" width="245" height="174"/>
+                                        <rect key="frame" x="65" y="50" width="245" height="174"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="245" height="174"/>
@@ -309,7 +309,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellDetails" id="LsG-4s-MmF" customClass="DetailsCell" customModule="bucketList" customModuleProvider="target">
-                                        <rect key="frame" x="28.5" y="239" width="318" height="70"/>
+                                        <rect key="frame" x="28.5" y="234" width="318" height="70"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="318" height="70"/>
