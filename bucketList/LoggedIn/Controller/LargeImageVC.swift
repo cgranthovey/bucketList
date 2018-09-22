@@ -48,7 +48,6 @@ class LargeImageVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let url = URL(string: imgURLString)
     }
     
     override func didReceiveMemoryWarning() {

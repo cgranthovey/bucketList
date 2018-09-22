@@ -43,7 +43,7 @@ class BucketDetails: UIViewController {
         let nib = UINib(nibName: "ItemDataCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: "ItemDataCell")
         
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 20, right: 10)
         
         if let item = bucketItem{
             images = item.imgs
@@ -128,6 +128,11 @@ class BucketDetails: UIViewController {
                     print("snapshot uploaded successfully")
                 }
             }
+            
+            _ = uploadTask.observe(.failure, handler: { (snapshot) in
+                self.cellUploading?.uploadFail()
+            })
+            
             _ = uploadTask.observe(.progress) { (snapshot) in
                 guard snapshot.error == nil else{
                     print("error uploading ", snapshot.error!)
@@ -184,26 +189,20 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row == 0, let bucketItem = bucketItem{
-            print("cellForItemAt1")
-            
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemDataCell", for: indexPath) as? ItemDataCell{
                 cell.configure(item: bucketItem)
                 return cell
             }
         }
         if indexPath.row == 1, let bucketItem = bucketItem{
-            print("cellForItemAt1.1")
-
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellDetails", for: indexPath) as? DetailsCell{
-                
-                print("cellForItemAt1.2")
+
                 cell.configure(item: bucketItem)
                 cell.delegate = self
                 return cell
             }
         }
         if indexPath.row == 2{
-            print("cellForItemAt2")
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellCamera", for: indexPath)
             let lightGrayView = UIView(frame: CGRect(x: 0, y: 0, width: cell.frame.width, height: cell.frame.height))
             lightGrayView.backgroundColor = UIColor().extraLightGrey
@@ -211,7 +210,6 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
             return cell
         }
         if indexPath.row > 2{
-            print("cellForItemA3")
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? DetailImgCell{
                 cell.configure(imgUrl: images[indexPath.row - 3])
                 return cell

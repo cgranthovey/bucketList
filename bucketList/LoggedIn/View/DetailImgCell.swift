@@ -12,7 +12,7 @@ class DetailImgCell: UICollectionViewCell {
     @IBOutlet weak var imgView: UIImageView!
     
     override func awakeFromNib() {
-
+        
         
     }
     
@@ -25,16 +25,21 @@ class DetailImgCell: UICollectionViewCell {
         if let img = imgUrl as? UIImage{
             imgView.image = img
         }
+        hideLightView()
     }
     
     func showUploading(){
-        print("showUpload!")
         showLightLoader()
     }
     
+    func uploadFail(){
+        failedViewOut {
+            print("failed view out!")
+        }
+    }
+    
     func uploadSuccess(){
-        print("uploadSuccess!")
-        removeLightLoader {
+        successViewOut {
             print("uploadSuccess2!")
         }
     }
