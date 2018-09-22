@@ -49,24 +49,47 @@ extension UIView{
     
     func removeBlurLoader(completionHandler: CompletionHandler?){
         self.subviews.compactMap {  $0 as? UIVisualEffectView }.forEach {
-            //$0.removeFromSuperview()
             $0.fadeViewOut(completionHandler: {
                 completionHandler?()
             })
-//            $0.fadeViewOut()
-//            if let handler = completionHandler{
-//                handler()
-//            }
-            
-//            UIView.animate(withDuration: 0.3, animations: {
-//                $0.alpha = 0
-//            }, completion: { (success) in
-//                success.removeFromSuperview()
-//            })
-//
-            
         }
     }
+    
+    class LightLoaderContainer: UIView{
+        
+    }
+    
+    func showLightLoader(){
+        
+        let coverView = LightLoaderContainer(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
+        coverView.backgroundColor = UIColor.clear
+        coverView.alpha = 0
+        self.addSubview(coverView)
+        
+        let lightView = UIView(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
+        lightView.backgroundColor = UIColor.black
+        lightView.alpha = 0.3
+        coverView.addSubview(lightView)
+        
+        let spinner = UIActivityIndicatorView(activityIndicatorStyle: .white)
+        spinner.startAnimating()
+        spinner.center = coverView.center
+        coverView.addSubview(spinner)
+        UIView.animate(withDuration: 0.3) {
+            coverView.alpha = 1
+        }
+    }
+    func removeLightLoader(completionHandler: CompletionHandler?){
+        self.subviews.compactMap { $0 as? LightLoaderContainer }.forEach{
+            $0.fadeViewOut(completionHandler: {
+                completionHandler?()
+            })
+        }
+    }
+    
+    
+    
+    
     
     enum LINE_POSITION {
         case LINE_POSITION_TOP

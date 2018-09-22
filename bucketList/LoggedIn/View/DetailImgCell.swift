@@ -16,9 +16,27 @@ class DetailImgCell: UICollectionViewCell {
         
     }
     
-    func configure(imgUrl: String){
-        if let url = URL(string: imgUrl){
-            imgView.sd_setImage(with: url, placeholderImage: nil, options: .progressiveDownload, progress: nil, completed: nil)
+    func configure(imgUrl: Any){
+        if let imgUrl = imgUrl as? String{
+            if let url = URL(string: imgUrl){
+                imgView.sd_setImage(with: url, placeholderImage: nil, options: .progressiveDownload, progress: nil, completed: nil)
+            }
+        }
+        if let img = imgUrl as? UIImage{
+            imgView.image = img
         }
     }
+    
+    func showUploading(){
+        print("showUpload!")
+        showLightLoader()
+    }
+    
+    func uploadSuccess(){
+        print("uploadSuccess!")
+        removeLightLoader {
+            print("uploadSuccess2!")
+        }
+    }
+    
 }

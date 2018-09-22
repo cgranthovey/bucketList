@@ -14,10 +14,15 @@ import FirebaseCore
 import FirebaseFirestore
 import MapKit
 
+class URLOrImage{
+    var urlString: String?
+    var image: String?
+}
+
 class BucketDetails: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    var images: [String] = [String]()
+    var images: [Any] = [Any]()
     var bucketItem: BucketItem?
     var spaceBetweenCells: CGFloat = 10
     var selectedImgCell: DetailImgCell?
@@ -73,11 +78,8 @@ class BucketDetails: UIViewController {
             }
         }
     }
-
-    @IBAction func backBtnPress(_ sender: AnyObject){
-        self.navigationController?.hero.navigationAnimationType = .uncover(direction: .down)
-        self.navigationController?.popViewController(animated: true)
-    }
+    
+    var cellUploading: DetailImgCell?
     
     func uploadImage(image: UIImage){
         let usersStorageRef = DataService.instance.storageUserRef()
@@ -90,10 +92,13 @@ class BucketDetails: UIViewController {
             return
         }
         
-//        let ip = IndexPath(item: 3, section: 0)
-//        images.append(<#T##newElement: String##String#>)
-//        collectionView.insertItems(at: [ip])
-//        
+        let ip = IndexPath(item: 3, section: 0)
+        images.insert(image, at: 0)
+        collectionView.insertItems(at: [ip])
+        cellUploading = (collectionView.cellForItem(at: ip) as! DetailImgCell)
+        cellUploading?.showUploading()
+        
+//
         if let data = UIImagePNGRepresentation(img!){
             let meta = StorageMetadata(dictionary: ["contentType": "image/"])
             let date = Date().timeIntervalSince1970
@@ -119,6 +124,7 @@ class BucketDetails: UIViewController {
                     return
                 }
                 if snapshot.status == StorageTaskStatus.success{
+                    self.cellUploading?.uploadSuccess()
                     print("snapshot uploaded successfully")
                 }
             }
@@ -229,7 +235,7 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
             showAlert()
         } else if indexPath.row > 2{
             if let vc = storyboard.instantiateViewController(withIdentifier: "LargeImageVC") as? LargeImageVC{
-                vc.imgURLString = images[indexPath.row - 3]
+                
                 if let cell = collectionView.cellForItem(at: indexPath) as? DetailImgCell{
                     selectedImgCell?.hero.id = nil
                     selectedImgCell = cell
@@ -242,15 +248,6 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
                 self.hero.modalAnimationType = .none
                 present(vc, animated: true, completion: nil)
             }
-        }
-    }
-    
-    @IBAction func btnPress(_ sender: AnyObject){
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        if let vc = storyboard.instantiateViewController(withIdentifier: "LargeImageVC") as? LargeImageVC{
-            vc.imgURLString = images[1]
-            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
