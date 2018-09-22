@@ -24,12 +24,21 @@ class MapItemsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hero.isEnabled = true
-        
+        self.tabBarController?.hero.tabBarAnimationType = .fade
         setUpMap()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        if let tb = tabBarController as? MainTBC{
+            if let bucketItem = tb.bucketItem, let coord2D = bucketItem.coordinate2D(){
+                print("maps vc - ", bucketItem.coordinate2D())
+                let span = MKCoordinateSpan(latitudeDelta: 0.4, longitudeDelta: 0.4)
+                let region = MKCoordinateRegion(center: coord2D, span: span)
+                self.mapView.setRegion(region, animated: true)
+            }
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {

@@ -9,6 +9,8 @@
 import UIKit
 
 class MainTBC: UITabBarController {
+    
+    var bucketItem: BucketItem?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,5 +51,6 @@ class MainTBC: UITabBarController {
         
 
     }
+    
 
 }

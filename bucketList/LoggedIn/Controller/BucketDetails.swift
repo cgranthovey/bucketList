@@ -12,7 +12,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseCore
 import FirebaseFirestore
-
+import MapKit
 
 class BucketDetails: UIViewController {
     
@@ -49,13 +49,17 @@ class BucketDetails: UIViewController {
         getImages()
         if let item = bucketItem{
             self.navigationItem.title = item.title
+            print("bucketItem ID", item.id!)
         }
+        let cameraBtn = UIBarButtonItem(image: #imageLiteral(resourceName: "camera-1"), landscapeImagePhone: #imageLiteral(resourceName: "camera-1"), style: .plain, target: self, action: #selector(BucketDetails.showAlert))
+        navigationItem.rightBarButtonItems = [cameraBtn]
+
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     func getImages(){
         if let item = bucketItem, let id = item.id{
-            DataService.instance.bucketListRef.document(id).collection("images").getDocuments{(snapshot, error) in
+            DataService.instance.bucketListRef.document(id).collection("images").order(by: "added", descending: true).getDocuments{(snapshot, error) in
                 guard error == nil && snapshot != nil else{
                     return
                 }
@@ -86,6 +90,10 @@ class BucketDetails: UIViewController {
             return
         }
         
+//        let ip = IndexPath(item: 3, section: 0)
+//        images.append(<#T##newElement: String##String#>)
+//        collectionView.insertItems(at: [ip])
+//        
         if let data = UIImagePNGRepresentation(img!){
             let meta = StorageMetadata(dictionary: ["contentType": "image/"])
             let date = Date().timeIntervalSince1970
@@ -95,7 +103,6 @@ class BucketDetails: UIViewController {
                     print("error uploading")
                     return
                 }
-                
                 imageRef.downloadURL(completion: { (url, error) in
                     guard error == nil else {
                         print("downloadURL error", error?.localizedDescription)
@@ -106,11 +113,31 @@ class BucketDetails: UIViewController {
                     }
                 })
             }
+            _ = uploadTask.observe(.success) { (snapshot) in
+                guard snapshot.error == nil else{
+                    print("error sucess upload", snapshot.error!)
+                    return
+                }
+                if snapshot.status == StorageTaskStatus.success{
+                    print("snapshot uploaded successfully")
+                }
+            }
+            _ = uploadTask.observe(.progress) { (snapshot) in
+                guard snapshot.error == nil else{
+                    print("error uploading ", snapshot.error!)
+                    return
+                }
+                if let progress = snapshot.progress{
+                    let percentComplete = Int(progress.fractionCompleted * 100)
+                    print("fraction completed \(percentComplete)%")
+                }
+            }
+            
         }
     }
     
-    func showAlert(){
-        let actionSheet = UIAlertController(title: "Bucket Image", message: nil, preferredStyle: .actionSheet)
+    @objc func showAlert(){
+        let actionSheet = UIAlertController(title: "Add Images", message: nil, preferredStyle: .actionSheet)
         let takePhoto = UIAlertAction(title: "Camera", style: .default) { (action) in
             self.showCamera()
         }
@@ -146,18 +173,30 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1 + images.count + 1
+        return 1 + images.count + 1 + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row == 0, let bucketItem = bucketItem{
             print("cellForItemAt1")
+            
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemDataCell", for: indexPath) as? ItemDataCell{
                 cell.configure(item: bucketItem)
                 return cell
             }
         }
-        if indexPath.row == 1{
+        if indexPath.row == 1, let bucketItem = bucketItem{
+            print("cellForItemAt1.1")
+
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellDetails", for: indexPath) as? DetailsCell{
+                
+                print("cellForItemAt1.2")
+                cell.configure(item: bucketItem)
+                cell.delegate = self
+                return cell
+            }
+        }
+        if indexPath.row == 2{
             print("cellForItemAt2")
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellCamera", for: indexPath)
             let lightGrayView = UIView(frame: CGRect(x: 0, y: 0, width: cell.frame.width, height: cell.frame.height))
@@ -165,10 +204,10 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
             cell.selectedBackgroundView = lightGrayView
             return cell
         }
-        if indexPath.row > 0{
+        if indexPath.row > 2{
             print("cellForItemA3")
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? DetailImgCell{
-                cell.configure(imgUrl: images[indexPath.row - 2])
+                cell.configure(imgUrl: images[indexPath.row - 3])
                 return cell
             }
         }
@@ -186,11 +225,11 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.navigationController?.hero.navigationAnimationType = .fade
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if indexPath.row == 1{
+        if indexPath.row == 2{
             showAlert()
-        } else{
+        } else if indexPath.row > 2{
             if let vc = storyboard.instantiateViewController(withIdentifier: "LargeImageVC") as? LargeImageVC{
-                vc.imgURLString = images[indexPath.row - 2]
+                vc.imgURLString = images[indexPath.row - 3]
                 if let cell = collectionView.cellForItem(at: indexPath) as? DetailImgCell{
                     selectedImgCell?.hero.id = nil
                     selectedImgCell = cell
@@ -233,12 +272,17 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
             }
             return CGSize(width: width, height: width)
         }
+
         
         let inset = collectionView.contentInset.right + collectionView.contentInset.left
         let width = collectionView.frame.width / 2 - spaceBetweenCells / 2 - inset / 2 - 1
         
         if indexPath.row == 1{
-            return CGSize(width: collectionView.frame.width - inset - 20, height: 50)
+            return CGSize(width: collectionView.frame.width - inset, height: 55)
+        }
+        
+        if indexPath.row == 2{
+            return CGSize(width: collectionView.frame.width - inset, height: 2)
         }
         return CGSize(width: width, height: width)
     }
@@ -258,7 +302,17 @@ extension BucketDetails: UIImagePickerControllerDelegate, UINavigationController
     }
 }
 
-
+extension BucketDetails: DetailsCellDelegate{
+    func goToAddress(bucketItem: BucketItem){
+        if let coord2D = bucketItem.coordinate2D(){
+            let placemark = MKPlacemark(coordinate: coord2D)
+            let mapItem = MKMapItem(placemark: placemark)
+            mapItem.name = bucketItem.addressFull()
+            mapItem.openInMaps(launchOptions: nil)
+        }
+        print("bucketItem coord", bucketItem.pinLat)
+    }
+}
 
 
 

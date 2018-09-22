@@ -60,7 +60,6 @@ class ItemDataCell: UICollectionViewCell {
     
     @IBOutlet weak var lblPrice: UILabel!
     @IBOutlet weak var lblDescription: UILabel!
-    @IBOutlet weak var btnAddress: UIButton!
     
     @IBAction func addressBtnPress(_ sender: AnyObject){
         print("address btn press!")
@@ -80,7 +79,6 @@ class ItemDataCell: UICollectionViewCell {
         } else{
             lblPrice.isHidden = true
         }
-        btnAddress.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         
         if let details = item.details{
             lblDescription.text = details
@@ -95,10 +93,7 @@ class ItemDataCell: UICollectionViewCell {
             addressDisplay = addressSecondary
         }
         if addressDisplay == ""{
-            btnAddress.isHidden = true
         } else{
-            btnAddress.isHidden = false
-            btnAddress.setTitleWithoutAnimation(title: addressDisplay)
         }
 
     }
