@@ -25,6 +25,7 @@ class BucketItem{
     var createdDate: Date?
     var id: String?
     var imgs: [String] = [String]()
+    var completionTime: String?
     
     var isTravel: Bool = false
     var isNature: Bool = false
@@ -111,6 +112,7 @@ class BucketItem{
             if let history = dict["isHistory"] as? Bool{
                 isHistory = history
             }
+            completionTime = dict["completionTime"] as? String
         }
         if let id = id{
             self.id = id
@@ -128,7 +130,8 @@ class BucketItem{
             "addressPrimary": addressPrimary as Any,
             "addressSeconary": addressSeconary as Any,
             "pinLat": pinLat as Any,
-            "pinLong": pinLong as Any
+            "pinLong": pinLong as Any,
+            "completionTime": completionTime as Any
         ]
         
         isTravel ? items["isTravel"] = true : Void()

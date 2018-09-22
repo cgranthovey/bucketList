@@ -53,6 +53,8 @@
 		15970056215489D90030560C /* DetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15970055215489D90030560C /* DetailsCell.swift */; };
 		159CC7A22136169B00BEFAE3 /* ContactsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159CC7A12136169B00BEFAE3 /* ContactsCell.swift */; };
 		15BAA8AE20EF0FB500289C7A /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BAA8AD20EF0FB500289C7A /* View.swift */; };
+		15BCA1722156A279005EB0C2 /* AddCompletionTimeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BCA1712156A279005EB0C2 /* AddCompletionTimeVC.swift */; };
+		15BCA1742156A49E005EB0C2 /* CompletionTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BCA1732156A49E005EB0C2 /* CompletionTimeCell.swift */; };
 		15BCDB0A20E47B9A00E1B6A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BCDB0920E47B9A00E1B6A9 /* AppDelegate.swift */; };
 		15BCDB0C20E47B9A00E1B6A9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BCDB0B20E47B9A00E1B6A9 /* ViewController.swift */; };
 		15BCDB0F20E47B9A00E1B6A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15BCDB0D20E47B9A00E1B6A9 /* Main.storyboard */; };
@@ -158,6 +160,8 @@
 		15970055215489D90030560C /* DetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCell.swift; sourceTree = "<group>"; };
 		159CC7A12136169B00BEFAE3 /* ContactsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsCell.swift; sourceTree = "<group>"; };
 		15BAA8AD20EF0FB500289C7A /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		15BCA1712156A279005EB0C2 /* AddCompletionTimeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCompletionTimeVC.swift; sourceTree = "<group>"; };
+		15BCA1732156A49E005EB0C2 /* CompletionTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionTimeCell.swift; sourceTree = "<group>"; };
 		15BCDB0620E47B9A00E1B6A9 /* bucketList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bucketList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15BCDB0920E47B9A00E1B6A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15BCDB0B20E47B9A00E1B6A9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -280,6 +284,7 @@
 				15E855242149E8D4006B9E52 /* ImgLblCell.swift */,
 				1564D9CC214D872B002B04C1 /* LblArrowCell.swift */,
 				15970055215489D90030560C /* DetailsCell.swift */,
+				15BCA1732156A49E005EB0C2 /* CompletionTimeCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -444,6 +449,7 @@
 				15777C83214CB91A00CC66DB /* AddCategoriesVC.swift */,
 				1576E40420F96A020067341D /* LocationSearchTableVC.swift */,
 				1507CA1B20F6E58700704426 /* AddBucketMapVC.swift */,
+				15BCA1712156A279005EB0C2 /* AddCompletionTimeVC.swift */,
 				1507CA2420F6ED1E00704426 /* AddBucketDetailsVC.swift */,
 				1507CA2820F824D100704426 /* AddBucketSuccessfulVC.swift */,
 				15C37E862103F78700ED0503 /* MapItemsVC.swift */,
@@ -733,6 +739,7 @@
 				151834692144727F009F74AB /* LargeImageVC.swift in Sources */,
 				1507CA2520F6ED1E00704426 /* AddBucketDetailsVC.swift in Sources */,
 				158D1CE82132729900FD8BAD /* RequestReceivedCell.swift in Sources */,
+				15BCA1722156A279005EB0C2 /* AddCompletionTimeVC.swift in Sources */,
 				15C5664B211AA9BB001F5F6C /* Image.swift in Sources */,
 				15623EF6213F5DA600F43372 /* DetailImgCell.swift in Sources */,
 				1510B7ED210162C3009FBCEC /* BucketListCell.swift in Sources */,
@@ -786,6 +793,7 @@
 				15C37E89210419F100ED0503 /* MKCoordinateRegion.swift in Sources */,
 				15970056215489D90030560C /* DetailsCell.swift in Sources */,
 				157FCA802141F94D0036EE3A /* CollectionViewCell.swift in Sources */,
+				15BCA1742156A49E005EB0C2 /* CompletionTimeCell.swift in Sources */,
 				1522B0C420F056A300C5CF9C /* LandingVC.swift in Sources */,
 				15E855272149E9CD006B9E52 /* AddPriceVC.swift in Sources */,
 				15777C84214CB91A00CC66DB /* AddCategoriesVC.swift in Sources */,
