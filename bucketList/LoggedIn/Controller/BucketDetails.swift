@@ -61,8 +61,8 @@ class BucketDetails: UIViewController {
             self.navigationItem.title = item.title
             print("bucketItem ID", item.id!)
         }
-        let cameraBtn = UIBarButtonItem(image: #imageLiteral(resourceName: "camera-1"), landscapeImagePhone: #imageLiteral(resourceName: "camera-1"), style: .plain, target: self, action: #selector(BucketDetails.showAlert))
-        navigationItem.rightBarButtonItems = [cameraBtn]
+//        let cameraBtn = UIBarButtonItem(image: #imageLiteral(resourceName: "camera-1"), landscapeImagePhone: #imageLiteral(resourceName: "camera-1"), style: .plain, target: self, action: #selector(BucketDetails.showAlert))
+//        navigationItem.rightBarButtonItems = [cameraBtn]
 
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
