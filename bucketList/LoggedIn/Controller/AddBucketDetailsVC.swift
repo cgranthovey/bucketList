@@ -38,6 +38,14 @@ class AddBucketDetailsVC: UIViewController {
         
         tvDetails.translatesAutoresizingMaskIntoConstraints = false
         tvDetails.isScrollEnabled = false
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(AddBucketDetailsVC.dismissKB))
+        self.view.addGestureRecognizer(tap)
+        
+    }
+    
+    @objc func dismissKB(){
+        self.view.endEditing(true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,9 +55,14 @@ class AddBucketDetailsVC: UIViewController {
     @IBAction func submitBtnPress(_ sender: AnyObject){
         self.view.endEditing(true)
         let ref = DataService.instance.bucketListRef.document()
+        self.view.showBlurLoader()
         ref.setData(NewBucketItem.instance.item.itemsToPost()){ error in
             guard error == nil else{
                 print("error on submit ", error!)
+                self.view.removeBlurLoader(completionHandler: {
+                    self.okAlert(title: "Error", message: "There was a problem posting, please try again later.")
+                })
+
                 return
             }
             if let geoPoint = NewBucketItem.instance.item.getGeoPoint(){
@@ -64,6 +77,12 @@ class AddBucketDetailsVC: UIViewController {
             }
         }
 
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        self.view.removeBlurLoader {
+            
+        }
     }
     
     @IBAction func backBtnPress(_ sender: AnyObject){

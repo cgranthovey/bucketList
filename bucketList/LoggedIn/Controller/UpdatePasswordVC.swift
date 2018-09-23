@@ -14,16 +14,22 @@ class UpdatePasswordVC: UIViewController {
     @IBOutlet weak var tfCurrentPassword: UITextField!
     @IBOutlet weak var tfNewPassword: UITextField!
     @IBOutlet weak var tfRepeatNewPassword: UITextField!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UpdatePasswordVC.dropKB))
+        self.view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dropKB(){
+        self.view.endEditing(true)
     }
     
     @IBAction func changePasswordBtnPress(_ sender: AnyObject){
+        dropKB()
         let tfs: [UITextField] = [tfCurrentPassword, tfNewPassword, tfRepeatNewPassword]
         guard !tfs.containsIncompleteField() else{
             okAlert(title: "Error", message: "Complete all fields")
@@ -39,12 +45,17 @@ class UpdatePasswordVC: UIViewController {
         }
         
         if let currentUserEmail = CurrentUser.instance.user.email{
+            self.view.showBlurLoader()
             Auth.auth().signIn(withEmail: currentUserEmail, password: tfCurrentPassword.text!) { (auth, error) in
                 guard error == nil else{
                     print("currentUserEmail error \(error!)")
-                    if let customError = error?.customAuthError(submitType: AuthSubmitType.updatingPassword){
-                        self.okAlert(title: "Error", message: customError)
-                    }
+                    self.view.removeBlurLoader(completionHandler: {
+                        
+                        if let customError = error?.customAuthError(submitType: AuthSubmitType.updatingPassword){
+                            self.okAlert(title: "Error", message: customError)
+                            
+                        }
+                    })
                     return
                 }
                 
@@ -52,12 +63,19 @@ class UpdatePasswordVC: UIViewController {
                     guard error == nil else{
                         print("update password error - \(error!)")
                         self.okAlert(title: "Error", message: "Error with updating password.")
-                        if let customError = error?.customAuthError(submitType: AuthSubmitType.updatingPassword){
-                            self.okAlert(title: "Error", message: customError)
-                        }
+                        self.view.removeBlurLoader(completionHandler: {
+                            
+                            if let customError = error?.customAuthError(submitType: AuthSubmitType.updatingPassword){
+                                self.okAlert(title: "Error", message: customError)
+                                
+                            }
+                        })
                         return
                     }
-                    print("success!")
+                    self.view.removeBlurLoader(completionHandler: {
+                        self.okAlert(title: "Success", message: "Password successfully updated.")
+                        print("success!")
+                    })
                 })
             }
         }
@@ -68,7 +86,7 @@ class UpdatePasswordVC: UIViewController {
     }
     
     
-
+    
 }
 
 

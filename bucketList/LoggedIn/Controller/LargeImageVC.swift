@@ -25,7 +25,6 @@ class LargeImageVC: UIViewController {
         self.view.addGestureRecognizer(pan)
         self.view.isUserInteractionEnabled = true
 
-        
         imgView.image = newImg
         let size = imgView.imageSize
         imgView.image = nil
@@ -48,7 +47,6 @@ class LargeImageVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let url = URL(string: imgURLString)
     }
     
     override func didReceiveMemoryWarning() {

@@ -12,13 +12,36 @@ class DetailImgCell: UICollectionViewCell {
     @IBOutlet weak var imgView: UIImageView!
     
     override func awakeFromNib() {
-
+        
         
     }
     
-    func configure(imgUrl: String){
-        if let url = URL(string: imgUrl){
-            imgView.sd_setImage(with: url, placeholderImage: nil, options: .progressiveDownload, progress: nil, completed: nil)
+    func configure(imgUrl: Any){
+        if let imgUrl = imgUrl as? String{
+            if let url = URL(string: imgUrl){
+                imgView.sd_setImage(with: url, placeholderImage: nil, options: .progressiveDownload, progress: nil, completed: nil)
+            }
+        }
+        if let img = imgUrl as? UIImage{
+            imgView.image = img
+        }
+        hideLightView()
+    }
+    
+    func showUploading(){
+        showLightLoader()
+    }
+    
+    func uploadFail(){
+        failedViewOut {
+            print("failed view out!")
         }
     }
+    
+    func uploadSuccess(){
+        successViewOut {
+            print("uploadSuccess2!")
+        }
+    }
+    
 }

@@ -24,23 +24,31 @@ class MapItemsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hero.isEnabled = true
-        
+        self.tabBarController?.hero.tabBarAnimationType = .fade
         setUpMap()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        if let tb = tabBarController as? MainTBC{
+            if let bucketItem = tb.bucketItem, let coord2D = bucketItem.coordinate2D(){
+                print("maps vc - ", bucketItem.coordinate2D())
+                let span = MKCoordinateSpan(latitudeDelta: 0.4, longitudeDelta: 0.4)
+                let region = MKCoordinateRegion(center: coord2D, span: span)
+                self.mapView.setRegion(region, animated: true)
+            }
+        }
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
-//        if let query = geoQuery{
-//            query.removeAllObservers()
-//        }
+
     }
 
     func setUpMap(){
         mapView.delegate = self
         mapView.showsUserLocation = true
-//        mapView.mapType = .satellite
-//        mapView.showsPointsOfInterest = true
-        
-//        mapView.convert(<#T##coordinate: CLLocationCoordinate2D##CLLocationCoordinate2D#>, toPointTo: <#T##UIView?#>)
+
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
@@ -52,8 +60,8 @@ class MapItemsVC: UIViewController {
     
     func getGeoHash(region: MKCoordinateRegion){
         geoQuery = DataService.instance.currentUserGeoFirestore.query(inRegion: region)
+        
         if let query = geoQuery{
-            
             let geoQueryEnterHandle = query.observe(.documentEntered) { (key, location) in
                 guard key != nil else{
                     return
@@ -61,6 +69,8 @@ class MapItemsVC: UIViewController {
                 guard !self.keysOfAnnotations.contains(key!) else{
                     return
                 }
+                let count = query.totalObserverCount()
+                
                 self.keysOfAnnotations.append(key!)
                 if let key = key, let location = location{
                     self.getBucketItem(key: key, location: location)
@@ -83,27 +93,21 @@ class MapItemsVC: UIViewController {
     
     func makeAnnotation(data: [String: Any], location: CLLocation, id: String){
         
-        
         let newPin = BucketMKPointAnnotation()
         let bucketItem = BucketItem.init(dict: data, id: id)
-        
-//        if self.mapView.annotations.contains(where: { (<#MKAnnotation#>) -> Bool in
-//            <#code#>
-//        })
-        
         newPin.bucketItem = bucketItem
         
         newPin.coordinate = location.coordinate
         if let title = bucketItem.title{
             newPin.title = title
         }
-        if let subtitle = bucketItem.addressPrimary{
-            newPin.subtitle = subtitle
-        }
-        self.mapView.addAnnotation(newPin)
         
+        let pin = MKPointAnnotation()
+//        if let subtitle = bucketItem.addressPrimary{
+//            newPin.subtitle = subtitle
+//        }
+        self.mapView.addAnnotation(newPin)
         let count = self.mapView.annotations.count
-        print("mapView annotations.count", count)
     }
 }
 
@@ -113,38 +117,56 @@ extension MapItemsVC: MKMapViewDelegate{
         if annotation is MKUserLocation{
             return nil
         }
-        let reusePin = "pin"
-        
-        let pinView: MKMarkerAnnotationView!
-        if let pin = mapView.dequeueReusableAnnotationView(withIdentifier: reusePin) as? MKMarkerAnnotationView{
-            pinView = pin
-        } else{
-            pinView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: reusePin)
-        }
-        
-        pinView?.markerTintColor = UIColor.orange
-        pinView?.canShowCallout = true
-        
-        let smallSquare = CGSize(width: 30, height: 30)
-        let button = UIButton(frame: CGRect(origin: CGPoint.zero, size: smallSquare))
-        button.setImage(#imageLiteral(resourceName: "diver"), for: .normal)
-        //button.addTarget(self, action: #selector(AnnotationMapVC.annotationBtnTapped(_:)), for: .touchUpInside)
-        button.imageView?.contentMode = .scaleAspectFit
-        button.tag = 1//currentBtnTag
-        pinView?.tag = 2// currentBtnTag
-        
-        //self.dictEnterTagForEventKey[currentBtnTag] = myEvent!.key
-        //currentBtnTag = currentBtnTag + 1
-        let yellowView = UIView(frame: CGRect.init(x: 0, y: 0, width: 30, height: 30))
-        view.backgroundColor = UIColor.yellow
-        pinView?.detailCalloutAccessoryView = yellowView
-        pinView?.leftCalloutAccessoryView = button
+        if let annotation = annotation as? BucketMKPointAnnotation, let bucketItem = annotation.bucketItem{
 
-        if let pin = pinView{
+            let reusePin = "pin"
+            let pinView: MKMarkerAnnotationView!
+            if let pin = mapView.dequeueReusableAnnotationView(withIdentifier: reusePin) as? MKMarkerAnnotationView{
+                pinView = pin
+            } else{
+                pinView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: reusePin)
+            }
             
-            return pin
+            pinView?.markerTintColor = UIColor().primaryColor
+           // pinView?.canShowCallout = true
+            
+            //button.addTarget(self, action: #selector(AnnotationMapVC.annotationBtnTapped(_:)), for: .touchUpInside)
+            //        button.imageView?.contentMode = .scaleAspectFit
+            //        button.tag = 1//currentBtnTag
+            pinView?.tag = 2// currentBtnTag
+            
+            //self.dictEnterTagForEventKey[currentBtnTag] = myEvent!.key
+            //currentBtnTag = currentBtnTag + 1
+            
+            let rightImg = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+            rightImg.image = #imageLiteral(resourceName: "right-arrow")
+            pinView?.rightCalloutAccessoryView = rightImg
+            
+            let tap = BucketTapGesture(target: self, action: #selector(self.toDetails(sender:)))
+            
+            pinView.addGestureRecognizer(tap)
+            tap.bucketItem = bucketItem
+            
+            if let pin = pinView{
+                return pin
+            }
+            return nil
         }
         return nil
+    }
+    
+    @objc func toDetails(sender: BucketTapGesture){
+        print("to details1")
+        if let bucketItem = sender.bucketItem{
+            print("to details2")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            if let vc = storyboard.instantiateViewController(withIdentifier: "BucketDetails") as?
+                BucketDetails{
+                print("to details3")
+                vc.bucketItem = bucketItem
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
@@ -184,7 +206,9 @@ extension MapItemsVC: CLLocationManagerDelegate{
     }
 }
 
-
+class BucketTapGesture: UITapGestureRecognizer{
+    var bucketItem: BucketItem!
+}
 
 
 

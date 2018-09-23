@@ -35,7 +35,7 @@ class PasswordResetVC: UIViewController {
     func signInUser(){
         self.view.showBlurLoader()
         Auth.auth().sendPasswordReset(withEmail: tfEmail.text!) { (error) in
-            self.view.removeBluerLoader(completionHandler: {
+            self.view.removeBlurLoader(completionHandler: {
                 guard error == nil else{
                     self.okAlert(title: "Error", message: error!.customAuthError(submitType: AuthSubmitType.forgotPassword))
                     return

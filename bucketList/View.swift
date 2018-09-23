@@ -47,26 +47,124 @@ extension UIView{
     
     typealias CompletionHandler = () -> Void
     
-    func removeBluerLoader(completionHandler: CompletionHandler?){
+    func removeBlurLoader(completionHandler: CompletionHandler?){
         self.subviews.compactMap {  $0 as? UIVisualEffectView }.forEach {
-            //$0.removeFromSuperview()
             $0.fadeViewOut(completionHandler: {
                 completionHandler?()
             })
-//            $0.fadeViewOut()
-//            if let handler = completionHandler{
-//                handler()
-//            }
-            
-//            UIView.animate(withDuration: 0.3, animations: {
-//                $0.alpha = 0
-//            }, completion: { (success) in
-//                success.removeFromSuperview()
-//            })
-//
-            
         }
     }
+    
+    class LightLoaderContainer: UIView{
+        var lightView: UIView!
+        var spinner: UIView!
+        var successImg: UIImageView!
+        var failedLbl: UILabel!
+    }
+    
+    func showLightLoader(){
+        
+        let coverView = LightLoaderContainer(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
+        coverView.backgroundColor = UIColor.clear
+        coverView.alpha = 0
+        self.addSubview(coverView)
+        
+        let lightView = UIView(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
+        lightView.backgroundColor = UIColor.black
+        lightView.alpha = 0.45
+        coverView.addSubview(lightView)
+        coverView.lightView = lightView
+        
+        let successImg = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        successImg.image = #imageLiteral(resourceName: "checked")
+        successImg.alpha = 0
+        successImg.center = coverView.center
+        coverView.successImg = successImg
+        coverView.addSubview(successImg)
+        
+        let failedLbl = UILabel(frame: CGRect(x: 0, y: 0, width: self.frame.width - 15, height: 30))
+        failedLbl.text = "Upload failed, try again."
+        failedLbl.font = UIFont.init(name: "Arial", size: 11)
+        failedLbl.center = coverView.center
+        failedLbl.alpha = 0
+        failedLbl.textColor = UIColor.white
+        coverView.failedLbl = failedLbl
+        coverView.addSubview(failedLbl)
+        
+        let spinner = UIActivityIndicatorView(activityIndicatorStyle: .white)
+        spinner.startAnimating()
+        spinner.center = coverView.center
+        coverView.addSubview(spinner)
+        coverView.spinner = spinner
+        UIView.animate(withDuration: 0.3) {
+            coverView.alpha = 1
+        }
+    }
+    func removeLightLoader(completionHandler: CompletionHandler?){
+        self.subviews.compactMap { $0 as? LightLoaderContainer }.forEach{
+            $0.fadeViewOut(completionHandler: {
+                completionHandler?()
+            })
+        }
+    }
+    
+    func failedViewOut(completionHandler: CompletionHandler?){
+        self.subviews.compactMap { $0 as? LightLoaderContainer }.forEach{
+            $0.failFadeViewOut(lightView: $0, completionHandler: {
+                completionHandler?()
+            })
+        }
+    }
+    
+    func successViewOut(completionHandler: CompletionHandler?){
+        self.subviews.compactMap { $0 as? LightLoaderContainer }.forEach{
+            $0.successFadeViewOut(lightView: $0, completionHandler: {
+                completionHandler?()
+            })
+        }
+    }
+    
+    private func failFadeViewOut(lightView: LightLoaderContainer, completionHandler: CompletionHandler?){
+        UIView.animate(withDuration: 0.3, animations: {
+            lightView.spinner.alpha = 0
+        }) { (success) in
+            UIView.animate(withDuration: 0.3, animations: {
+                lightView.failedLbl.alpha = 1
+            }, completion: { (success) in
+                completionHandler?()
+            })
+        }
+    }
+    
+    private func successFadeViewOut(lightView: LightLoaderContainer, completionHandler: CompletionHandler?){
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            lightView.spinner.alpha = 0
+        }) { (success) in
+            lightView.successImg.transform = CGAffineTransform(translationX: 0, y: 20)
+            UIView.animate(withDuration: 0.3, animations: {
+                lightView.successImg.alpha = 1
+                lightView.successImg.transform = .identity
+            }, completion: { (success) in
+                UIView.animate(withDuration: 0.3, delay: 1, options: .curveEaseInOut, animations: {
+                    self.alpha = 0
+                }, completion: { (success) in
+                    self.removeFromSuperview()
+                    completionHandler?()
+                })
+            })
+        }
+    }
+    
+    func hideLightView(){
+        self.subviews.compactMap { $0 as? LightLoaderContainer }.forEach{
+            $0.removeFromSuperview()
+        }
+    }
+    
+    
+    
+    
     
     enum LINE_POSITION {
         case LINE_POSITION_TOP

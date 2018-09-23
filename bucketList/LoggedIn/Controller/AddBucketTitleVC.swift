@@ -19,7 +19,6 @@ class AddBucketTitleVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpUI()
         tfTitle.delegate = self
         
 //        btnNext.hero.id = "mainTransform"
@@ -30,11 +29,17 @@ class AddBucketTitleVC: UIViewController {
         self.view.addGestureRecognizer(tap)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        setUpUI()
+    }
+    
     @objc func dismissKB(){
         self.view.endEditing(true)
     }
     
     @IBAction func nextBtnPress(_ sender: AnyObject){
+        NotificationCenter.default.post(name: NSNotification.Name("newItem"), object: nil)
+
         guard tfTitle.hasText else{
             okAlert(title: "Error", message: "Complete title field.")
             return
