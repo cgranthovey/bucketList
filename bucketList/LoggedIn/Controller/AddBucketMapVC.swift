@@ -76,10 +76,13 @@ class AddBucketMapVC: UIViewController {
             NewBucketItem.instance.item.pinLat = lat
             NewBucketItem.instance.item.pinLong = long
         }
+        if let del = delegate{
+            del.approvePress()
+        }
+
         self.navigationController?.hero.navigationAnimationType = .uncover(direction: .down)
         self.navigationController?.popViewController(animated: true)
         
-        delegate?.approvePress()
     }
     
     @IBAction func clearPinBtnPress(_ sender: AnyObject){
