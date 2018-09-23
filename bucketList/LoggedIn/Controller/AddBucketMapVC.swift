@@ -14,6 +14,10 @@ protocol SearchResultDelegate{
     func zoomInAt(region: MKCoordinateRegion, addressPrimary: String, addressSecondary: String)
 }
 
+protocol AddBucketMapDelegate {
+    func approvePress()
+}
+
 class AddBucketMapVC: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
@@ -27,6 +31,7 @@ class AddBucketMapVC: UIViewController {
     var currentLocation: CLLocation?
     var resultSearchController: UISearchController?
     var searchBar = UISearchBar()
+    var delegate: AddBucketMapDelegate?
     
     var addressPrimary: String?
     var addressSecondary: String?
@@ -73,6 +78,8 @@ class AddBucketMapVC: UIViewController {
         }
         self.navigationController?.hero.navigationAnimationType = .uncover(direction: .down)
         self.navigationController?.popViewController(animated: true)
+        
+        delegate?.approvePress()
     }
     
     @IBAction func clearPinBtnPress(_ sender: AnyObject){
@@ -172,7 +179,7 @@ class AddBucketMapVC: UIViewController {
         print("animate it2", txtView.text)
         if txtView.text != nil && !txtView.text!.isEmptyOrWhitespace() && self.approveBtn.alpha == 0{
             print("animate it2")
-            self.approveBtn.transform = CGAffineTransform(translationX: -20, y: 0)
+            self.approveBtn.transform = CGAffineTransform(translationX: 0, y: 20)
             
             UIView.animate(withDuration: 0.4, delay: delay, usingSpringWithDamping: 1, initialSpringVelocity: 2, options: .curveEaseOut, animations: {
                 self.approveBtn.transform = .identity
