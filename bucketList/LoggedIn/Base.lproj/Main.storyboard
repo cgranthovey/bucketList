@@ -335,21 +335,21 @@
                                             <outlet property="btnAddress" destination="WBb-z2-yE6" id="k3m-3Y-lHN"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="addImage" id="0mC-ax-sdm" customClass="DetailsCell" customModule="bucketList" customModuleProvider="target">
-                                        <rect key="frame" x="28.5" y="314" width="318" height="148"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="addImage" id="0mC-ax-sdm">
+                                        <rect key="frame" x="28.5" y="314" width="318" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="318" height="148"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="318" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" alpha="0.54000000000000004" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="picture" translatesAutoresizingMaskIntoConstraints="NO" id="Qv1-z5-406">
-                                                    <rect key="frame" x="109" y="15" width="100" height="75.5"/>
+                                                    <rect key="frame" x="109" y="15" width="100" height="77.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="v4A-wJ-hMT"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add First Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3v-Tj-3PJ">
-                                                    <rect key="frame" x="88.5" y="105.5" width="141.5" height="22.5"/>
+                                                    <rect key="frame" x="88.5" y="107.5" width="141.5" height="22.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="22.5" id="fNz-96-5qM"/>
                                                     </constraints>
@@ -366,7 +366,7 @@
                                             <constraint firstAttribute="bottomMargin" secondItem="h3v-Tj-3PJ" secondAttribute="bottom" constant="12" id="XDc-rX-Ede"/>
                                             <constraint firstItem="Qv1-z5-406" firstAttribute="top" secondItem="0mC-ax-sdm" secondAttribute="top" constant="15" id="xBS-45-ZJU"/>
                                         </constraints>
-                                        <size key="customSize" width="318" height="148"/>
+                                        <size key="customSize" width="318" height="150"/>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>

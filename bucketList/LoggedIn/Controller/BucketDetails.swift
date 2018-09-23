@@ -28,6 +28,8 @@ class BucketDetails: UIViewController {
     var selectedImgCell: DetailImgCell?
     var imagePicker: UIImagePickerController!
     
+    var nonImgCells = [0, 1, 2, 3]
+    
     var sizingNibNew = Bundle.main.loadNibNamed("ItemDataCell", owner: ItemDataCell.self, options: nil) as? NSArray
 
     
@@ -47,6 +49,9 @@ class BucketDetails: UIViewController {
         
         if let item = bucketItem{
             images = item.imgs
+            if images.count > 0{
+                nonImgCells.removeLast()
+            }
         }
     }
     
@@ -93,12 +98,19 @@ class BucketDetails: UIViewController {
         }
         
         let ip = IndexPath(item: 3, section: 0)
+        var zeroItems = images.count > 0 ? false : true
+
+        
+        if zeroItems{
+            nonImgCells.removeLast()
+            collectionView.deleteItems(at: [ip])
+        }
         images.insert(image, at: 0)
+
         collectionView.insertItems(at: [ip])
         cellUploading = (collectionView.cellForItem(at: ip) as! DetailImgCell)
         cellUploading?.showUploading()
         
-//
         if let data = UIImagePNGRepresentation(img!){
             let meta = StorageMetadata(dictionary: ["contentType": "image/"])
             let date = Date().timeIntervalSince1970
@@ -184,7 +196,16 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1 + images.count + 1 + 1
+        
+        print("img count", images.count)
+        print("nonImgCells count", nonImgCells.count)
+        
+        return images.count + nonImgCells.count
+//        if images.count > 0{
+//
+//        } else{
+//            return 4
+//        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -209,12 +230,18 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
             cell.selectedBackgroundView = lightGrayView
             return cell
         }
-        if indexPath.row > 2{
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? DetailImgCell{
-                cell.configure(imgUrl: images[indexPath.row - 3])
-                return cell
+        if images.count == 0{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addImage", for: indexPath)
+            return cell
+        } else{
+            if indexPath.row > 2{
+                if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? DetailImgCell{
+                    cell.configure(imgUrl: images[indexPath.row - 3])
+                    return cell
+                }
             }
         }
+
         return UICollectionViewCell()
     }
     
@@ -232,20 +259,27 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
         if indexPath.row == 2{
             showAlert()
         } else if indexPath.row > 2{
-            if let vc = storyboard.instantiateViewController(withIdentifier: "LargeImageVC") as? LargeImageVC{
-                
-                if let cell = collectionView.cellForItem(at: indexPath) as? DetailImgCell{
-                    selectedImgCell?.hero.id = nil
-                    selectedImgCell = cell
-                    cell.hero.id = "toLargeImg"
-                    if let img = cell.imgView.image{
-                        vc.newImg = img
+            
+            if images.count == 0{
+                showAlert()
+
+            } else{
+                if let vc = storyboard.instantiateViewController(withIdentifier: "LargeImageVC") as? LargeImageVC{
+                    if let cell = collectionView.cellForItem(at: indexPath) as? DetailImgCell{
+                        selectedImgCell?.hero.id = nil
+                        selectedImgCell = cell
+                        cell.hero.id = "toLargeImg"
+                        if let img = cell.imgView.image{
+                            vc.newImg = img
+                        }
                     }
+                    vc.hero.isEnabled = true
+                    self.hero.modalAnimationType = .none
+                    present(vc, animated: true, completion: nil)
                 }
-                vc.hero.isEnabled = true
-                self.hero.modalAnimationType = .none
-                present(vc, animated: true, completion: nil)
             }
+            
+
         }
     }
     
@@ -279,6 +313,11 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
         if indexPath.row == 2{
             return CGSize(width: collectionView.frame.width - inset, height: 40)
         }
+        
+        if images.count == 0 && indexPath.row == 3{
+            return CGSize(width: collectionView.frame.width - inset, height: 150)
+        }
+        
         return CGSize(width: width, height: width)
     }
 }
