@@ -78,30 +78,33 @@ extension AddCompletionTimeVC: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        NewBucketItem.instance.item.completionTime = items[indexPath.row]
         
-        if let cell = collectionView.cellForItem(at: indexPath) as? CompletionTimeCell{
-            UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseIn, animations: {
-                cell.transform = CGAffineTransform(scaleX: 1.04, y: 1.04)
-            }) { (success) in
-                UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-                    cell.transform = .identity
-
-//                    cell.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
-//                }, completion: { (success) in
-//                    UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-//                    }, completion: { (success) in
-//                    })
-                })
+        if let time = NewBucketItem.instance.item.completionTime, time == items[indexPath.row]{
+            NewBucketItem.instance.item.completionTime = nil
+            collectionView.deselectItem(at: indexPath, animated: true)
+        } else{
+            NewBucketItem.instance.item.completionTime = items[indexPath.row]
+            print("did SELECT")
+            if let cell = collectionView.cellForItem(at: indexPath) as? CompletionTimeCell{
+                UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
+                    cell.transform = CGAffineTransform(scaleX: 1.04, y: 1.04)
+                }) { (success) in
+                    UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut, animations: {
+                        cell.transform = .identity
+                    })
+                }
             }
-            //cell.lbl.textColor = UIColor.white
         }
+        
+
     }
 //
 //    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-//        if let cell = collectionView.cellForItem(at: indexPath) as? CompletionTimeCell{
-//            cell.lbl.textColor = UIColor.black
-//        }
+//        print("did deselect")
+
+////        if let cell = collectionView.cellForItem(at: indexPath) as? CompletionTimeCell{
+////            cell.lbl.textColor = UIColor.black
+////        }
 //    }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
