@@ -26,7 +26,6 @@ class AddBucketMapVC: UIViewController {
     @IBOutlet weak var approveBtn: UIButton!
     @IBOutlet weak var btnBack: UIButton!
     
-    
     let locationManager = CLLocationManager()
     var currentLocation: CLLocation?
     var resultSearchController: UISearchController?
@@ -79,10 +78,8 @@ class AddBucketMapVC: UIViewController {
         if let del = delegate{
             del.approvePress()
         }
-
         self.navigationController?.hero.navigationAnimationType = .uncover(direction: .down)
         self.navigationController?.popViewController(animated: true)
-        
     }
     
     @IBAction func clearPinBtnPress(_ sender: AnyObject){
@@ -139,7 +136,6 @@ class AddBucketMapVC: UIViewController {
                 searchBar.sizeToFit()
                 searchBar.placeholder = "Search or press to drop pin"
             }
-
         }
     }
     
@@ -169,7 +165,6 @@ class AddBucketMapVC: UIViewController {
                 searchBar.text = addressFull
             }
         }
-
         
         self.mapView.showsUserLocation = true
         locationManager.delegate = self
@@ -192,7 +187,6 @@ class AddBucketMapVC: UIViewController {
             })
         }
     }
-
 }
 
 
