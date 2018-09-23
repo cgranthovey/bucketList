@@ -90,6 +90,18 @@ class AddBucketLocationVC: UIViewController {
     }
 }
 
+extension AddBucketLocationVC: AddBucketMapDelegate {
+    func approvePress(){
+        stackLabels.transform = CGAffineTransform(translationX: 0, y: 20)
+        stackLabels.alpha = 0
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+            self.stackLabels.transform = .identity
+            self.stackLabels.alpha = 1
+        }) { (success) in
+        }
+    }
+}
+
 extension AddBucketLocationVC: UITextFieldDelegate{
 
 }

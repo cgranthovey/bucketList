@@ -79,6 +79,9 @@ class BucketDetails: UIViewController {
                         self.images.append(url)
                     }
                 }
+                if self.images.count > 0{
+                    self.nonImgCells.removeLast()
+                }
                 self.collectionView.reloadData()
             }
         }
@@ -236,7 +239,9 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
         } else{
             if indexPath.row > 2{
                 if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? DetailImgCell{
-                    cell.configure(imgUrl: images[indexPath.row - 3])
+                    print("the indexpath.row", indexPath.row)
+                    print("the nonImgCells.count", nonImgCells.count)
+                    cell.configure(imgUrl: images[indexPath.row - nonImgCells.count])
                     return cell
                 }
             }
