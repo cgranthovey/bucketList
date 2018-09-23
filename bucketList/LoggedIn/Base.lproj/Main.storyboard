@@ -840,10 +840,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tsa-fJ-9T2">
-                                <rect key="frame" x="10" y="551" width="355" height="50"/>
+                                <rect key="frame" x="0.0" y="553" width="375" height="65"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O1v-i5-aWY">
-                                        <rect key="frame" x="0.0" y="0.0" width="355" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                         <color key="backgroundColor" red="0.14509803921568626" green="0.69019607843137254" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
                                         <state key="normal" title="Approve Pin">
@@ -858,7 +858,7 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="O1v-i5-aWY" secondAttribute="bottom" id="D8M-Ox-Dap"/>
                                     <constraint firstItem="O1v-i5-aWY" firstAttribute="leading" secondItem="tsa-fJ-9T2" secondAttribute="leading" id="KJu-Ye-cEk"/>
-                                    <constraint firstAttribute="height" constant="50" id="PlS-m0-3eK"/>
+                                    <constraint firstAttribute="height" constant="65" id="PlS-m0-3eK"/>
                                     <constraint firstAttribute="trailing" secondItem="O1v-i5-aWY" secondAttribute="trailing" id="ogD-6y-hX1"/>
                                     <constraint firstItem="O1v-i5-aWY" firstAttribute="top" secondItem="tsa-fJ-9T2" secondAttribute="top" id="sSF-ZA-xYk"/>
                                 </constraints>
@@ -867,17 +867,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="LSd-zX-DgD" firstAttribute="bottom" secondItem="OWn-Ye-NAH" secondAttribute="bottom" id="1bR-VE-UbY"/>
-                            <constraint firstItem="LSd-zX-DgD" firstAttribute="bottom" secondItem="tsa-fJ-9T2" secondAttribute="bottom" constant="17" id="7yt-ya-fVe"/>
+                            <constraint firstItem="LSd-zX-DgD" firstAttribute="bottom" secondItem="tsa-fJ-9T2" secondAttribute="bottom" id="7yt-ya-fVe"/>
                             <constraint firstItem="zEe-mv-vcT" firstAttribute="centerY" secondItem="GKN-7S-aBR" secondAttribute="centerY" constant="-18" id="CWI-p0-eGj"/>
                             <constraint firstItem="OWn-Ye-NAH" firstAttribute="leading" secondItem="LSd-zX-DgD" secondAttribute="leading" id="ClU-yp-gMt"/>
                             <constraint firstItem="LSd-zX-DgD" firstAttribute="trailing" secondItem="86H-Jh-sbq" secondAttribute="trailing" constant="10" id="EoH-bd-PyG"/>
                             <constraint firstItem="zEe-mv-vcT" firstAttribute="centerX" secondItem="GKN-7S-aBR" secondAttribute="centerX" id="IpW-SC-hjX"/>
-                            <constraint firstItem="tsa-fJ-9T2" firstAttribute="trailing" secondItem="86H-Jh-sbq" secondAttribute="trailing" id="PoQ-BB-htH"/>
                             <constraint firstItem="OWn-Ye-NAH" firstAttribute="top" secondItem="GKN-7S-aBR" secondAttribute="top" id="Pq2-Hv-XVz"/>
                             <constraint firstItem="86H-Jh-sbq" firstAttribute="top" secondItem="LSd-zX-DgD" secondAttribute="top" constant="25" id="XSE-85-WdS"/>
+                            <constraint firstItem="LSd-zX-DgD" firstAttribute="trailing" secondItem="tsa-fJ-9T2" secondAttribute="trailing" id="ara-Mh-qBo"/>
                             <constraint firstItem="LSd-zX-DgD" firstAttribute="trailing" secondItem="OWn-Ye-NAH" secondAttribute="trailing" id="dKl-5a-TGb"/>
-                            <constraint firstItem="tsa-fJ-9T2" firstAttribute="leading" secondItem="aRH-V9-VI4" secondAttribute="leading" id="jHp-am-Xy2"/>
                             <constraint firstItem="86H-Jh-sbq" firstAttribute="leading" secondItem="LSd-zX-DgD" secondAttribute="leading" constant="10" id="pc8-dg-eqA"/>
+                            <constraint firstItem="tsa-fJ-9T2" firstAttribute="leading" secondItem="LSd-zX-DgD" secondAttribute="leading" id="vtV-n9-zhW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LSd-zX-DgD"/>
                     </view>
@@ -1058,7 +1058,7 @@
                                 <rect key="frame" x="30" y="94" width="315" height="200"/>
                                 <connections>
                                     <action selector="chooseLocationBtnPress:" destination="fZ5-op-38R" eventType="touchUpInside" id="fJ0-y8-dX2"/>
-                                    <segue destination="JTw-3o-WnL" kind="show" id="3sB-Xb-KlU"/>
+                                    <segue destination="JTw-3o-WnL" kind="show" identifier="AddBucketMapVC" id="3sB-Xb-KlU"/>
                                 </connections>
                             </button>
                         </subviews>

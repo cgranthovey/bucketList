@@ -57,7 +57,16 @@ class AddBucketLocationVC: UIViewController {
     }
     
     @IBAction func chooseLocationBtnPress(_ sender: AnyObject){
+        
         self.navigationController?.hero.navigationAnimationType = .cover(direction: .up)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "AddBucketMapVC"{
+            if let vc = segue.destination as? AddBucketMapVC{
+                vc.delegate = self
+            }
+        }
     }
     
     @IBAction func backBtnPress(_ sender: AnyObject){
@@ -94,7 +103,9 @@ extension AddBucketLocationVC: AddBucketMapDelegate {
     func approvePress(){
         stackLabels.transform = CGAffineTransform(translationX: 0, y: 20)
         stackLabels.alpha = 0
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+        print("approve press1")
+        UIView.animate(withDuration: 0.3, delay: 0.25, options: .curveEaseInOut, animations: {
+            print("approve press2")
             self.stackLabels.transform = .identity
             self.stackLabels.alpha = 1
         }) { (success) in
