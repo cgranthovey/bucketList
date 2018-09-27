@@ -567,7 +567,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="424.80000000000001" y="1371.3643178410796"/>
+            <point key="canvasLocation" x="-1620" y="1745"/>
         </scene>
         <!--Map ItemsVC-->
         <scene sceneID="0oJ-pB-E6R">
@@ -599,7 +599,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q27-R4-ArE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1272.8" y="484.40779610194909"/>
+            <point key="canvasLocation" x="860" y="1287"/>
         </scene>
         <!--New Item-->
         <scene sceneID="KAN-fx-u4V">
@@ -1281,7 +1281,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OKb-ZP-DfM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2916" y="591"/>
+            <point key="canvasLocation" x="-1620" y="384"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="u0U-Zl-uec">
@@ -1458,7 +1458,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wys-wp-urP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="333.60000000000002" y="484.40779610194909"/>
+            <point key="canvasLocation" x="-316" y="1287"/>
         </scene>
         <!--Time-->
         <scene sceneID="ZLE-B3-Skl">

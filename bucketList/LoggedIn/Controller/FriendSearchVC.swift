@@ -93,15 +93,17 @@ class FriendSearchVC: UIViewController {
                 print("error finding friends", error)
                 return
             }
-            GetData.instance.retrieve(collection: DataService.instance.currentUserFriends, lastDoc: self.lastDoc, onComplete: { (snapshots, lastDoc) in
-                self.lastDoc = lastDoc
-                for item in snapshots.documents{
-                    if let uid = item.data()["uid"] as? String{
-                        let user = User(data: item.data(), uid: uid)
-                        self.users.append(user)
-                    }
-                }
-            })
+            
+// need to update retrieve function
+//            GetData.instance.retrieve(query: query, onComplete: { (snapshots, lastDoc) in
+//                self.lastDoc = lastDoc
+//                for item in snapshots.documents{
+//                    if let uid = item.data()["uid"] as? String{
+//                        let user = User(data: item.data(), uid: uid)
+//                        self.users.append(user)
+//                    }
+//                }
+//            })
         }
     }
 }

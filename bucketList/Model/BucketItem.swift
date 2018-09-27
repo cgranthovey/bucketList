@@ -11,6 +11,7 @@ import MapKit
 import FirebaseCore
 import Firebase
 import FirebaseFirestore
+import FirebaseAuth
 
 class BucketItem{
     var title: String!
@@ -131,7 +132,8 @@ class BucketItem{
             "addressSeconary": addressSeconary as Any,
             "pinLat": pinLat as Any,
             "pinLong": pinLong as Any,
-            "completionTime": completionTime as Any
+            "completionTime": completionTime as Any,
+            "userID": CurrentUser.instance.user.uid
         ]
         
         isTravel ? items["isTravel"] = true : Void()
@@ -143,6 +145,7 @@ class BucketItem{
         isExercise ? items["isExercise"] = true : Void()
         isArt ? items["isArt"] = true : Void()
         isHistory ? items["isHistory"] = true: Void()
+        
         
         items["created"] = FieldValue.serverTimestamp()
         if let geoLoc = getGeoPoint(){
