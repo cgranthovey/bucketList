@@ -8,11 +8,13 @@
 
 import UIKit
 import FirebaseAuth
+import Hero
 
 class PasswordResetVC: UIViewController {
 
     @IBOutlet weak var tfEmail: UITextField!
     @IBOutlet weak var btnSubmit: UIButton!
+    @IBOutlet weak var lblTitle: UILabel!
     var requiredFields: [UITextField]!
 
     override func viewDidLoad() {
@@ -31,6 +33,16 @@ class PasswordResetVC: UIViewController {
         NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillHide, object: nil)
         NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillChangeFrame, object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        lblTitle.transform = CGAffineTransform(translationX: 0, y: 20)
+        lblTitle.alpha = 0
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+            self.lblTitle.transform = .identity
+            self.lblTitle.alpha = 1
+        }) { (success) in
+        }
     }
     
     @IBAction func passwordReset(_ sender: AnyObject){

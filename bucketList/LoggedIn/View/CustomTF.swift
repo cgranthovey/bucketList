@@ -32,16 +32,22 @@ class CustomTF: UITextField {
 
 class BottomLineTF: UITextField{
     
+    override func awakeFromNib() {
+//        textColor = UIColor.white
+        
+    }
+    
     var hasAddedToLine = false
     override func draw(_ rect: CGRect) {
-        textColor = UIColor().secondaryBlack
+        textColor = UIColor.white // UIColor().secondaryBlack
         borderStyle = .none
         font = UIFont().primary(size: 25)
         adjustsFontSizeToFitWidth = false
         if !hasAddedToLine{
             hasAddedToLine = true
             print("adding line")
-            self.addLineToView(position: .LINE_POSITION_BOTTOM, color: UIColor().disabledBlack, width: 1.5)
+            self.addLineToView(position: .LINE_POSITION_BOTTOM, color: UIColor.white, width: 1.5)
+            //self.addLineToView(position: .LINE_POSITION_BOTTOM, color: UIColor().disabledBlack, width: 1.5)
         }
     }
     

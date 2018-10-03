@@ -17,6 +17,7 @@ class CreateAccountVC: UIViewController {
     @IBOutlet weak var tfEmail: UITextField!
     @IBOutlet weak var tfFname: UITextField!
     
+    @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var btnCreate: UIButton!
     
     var requiredFields: [UITextField]!
@@ -39,6 +40,15 @@ class CreateAccountVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        lblTitle.transform = CGAffineTransform(translationX: 0, y: 20)
+        lblTitle.alpha = 0
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+            self.lblTitle.transform = .identity
+            self.lblTitle.alpha = 1
+        }) { (success) in
+        }
+        
         if let nav = self.navigationController{
             if nav.viewControllers.count > 1{
             }

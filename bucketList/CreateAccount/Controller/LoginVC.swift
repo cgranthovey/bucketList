@@ -16,6 +16,7 @@ class LoginVC: UIViewController {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var btnLogin: UIButton!
+    @IBOutlet weak var lblTitle: UILabel!
     
     var requiredFields = [UITextField]()
 
@@ -31,6 +32,7 @@ class LoginVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.keyboardWillChange(notification:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.keyboardWillChange(notification:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.keyboardWillChange(notification:)), name: Notification.Name.UIKeyboardWillChangeFrame, object: nil)
+        animateUI()
     }
     
     deinit {
@@ -42,6 +44,16 @@ class LoginVC: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         self.view.removeBlurLoader(completionHandler: nil)
+    }
+    
+    func animateUI(){
+        lblTitle.transform = CGAffineTransform(translationX: 0, y: 20)
+        lblTitle.alpha = 0
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+            self.lblTitle.transform = .identity
+            self.lblTitle.alpha = 1
+        }) { (success) in
+        }
     }
     
     @IBAction func loginBtnPress(_ sender: AnyObject){
