@@ -12,16 +12,53 @@ import FirebaseAuth
 class PasswordResetVC: UIViewController {
 
     @IBOutlet weak var tfEmail: UITextField!
+    @IBOutlet weak var btnSubmit: UIButton!
     var requiredFields: [UITextField]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         requiredFields = [tfEmail]
         tfEmail.delegate = self
+        let tap = UITapGestureRecognizer(target: self, action: #selector(LoginVC.dropKB))
+        self.view.addGestureRecognizer(tap)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(PasswordResetVC.keyboardWillChange(notification:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(PasswordResetVC.keyboardWillChange(notification:)), name: Notification.Name.UIKeyboardWillChangeFrame, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(PasswordResetVC.keyboardWillChange(notification:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillChangeFrame, object: nil)
     }
     
     @IBAction func passwordReset(_ sender: AnyObject){
         checkRequiredFields()
+    }
+    
+    @objc func dropKB(){
+        self.view.endEditing(true)
+    }
+    
+    @objc func keyboardWillChange(notification: Notification){
+        if let keyboardRect = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue{
+            if notification.name == Notification.Name.UIKeyboardWillShow || notification.name == Notification.Name.UIKeyboardWillChangeFrame{
+                let submitBtnBottomY = btnSubmit.frame.origin.y + btnSubmit.frame.height
+                let toBottom = UIScreen.main.bounds.height - submitBtnBottomY
+                let distanceToAdjust = keyboardRect.height - toBottom
+                
+                print("distance to adjust", distanceToAdjust)
+                print("keyboardRect.height", keyboardRect.height)
+                print("submitBtnBottom", toBottom)
+                
+                if distanceToAdjust > 0{
+                    self.view.frame.origin.y = -distanceToAdjust - GVar.instance.keyboardToButton
+                }
+            } else{
+                self.view.frame.origin.y = 0
+            }
+        }
     }
     
     func checkRequiredFields(){
