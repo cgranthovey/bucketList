@@ -28,36 +28,22 @@ class AddBucketLocationVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("add bucket map details", NewBucketItem.instance.item.details)
-
         setUpUI()
-        print("add bucket map details 0.5", NewBucketItem.instance.item.details)
         extendedLayoutIncludesOpaqueBars = true
         self.navigationController?.hero.navigationAnimationType = .fade
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        print("add bucket map details 0.9", NewBucketItem.instance.item.details)
-
-    }
-    
-    
 
     @IBAction func nextBtnPress(_ sender: AnyObject){
-        print("add bucket map details2", NewBucketItem.instance.item.details)
-
         self.navigationController?.hero.navigationAnimationType = .fade
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "AddBucketDetailsVC") as? AddBucketDetailsVC{
             vc.hero.isEnabled = true
             vc.navigationController?.hero.navigationAnimationType = .fade
            // self.navigationController?.pushViewController(vc, animated: true)
-            
         }
     }
     
     @IBAction func chooseLocationBtnPress(_ sender: AnyObject){
-        
         self.navigationController?.hero.navigationAnimationType = .cover(direction: .up)
     }
     
