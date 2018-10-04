@@ -38,9 +38,13 @@ class PasswordResetVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         lblTitle.transform = CGAffineTransform(translationX: 0, y: 20)
         lblTitle.alpha = 0
-        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+        btnSubmit.alpha = 0
+        tfEmail.alpha = 0
+        UIView.animate(withDuration: 0.5, delay: 0.2, options: .curveEaseOut, animations: {
             self.lblTitle.transform = .identity
             self.lblTitle.alpha = 1
+            self.btnSubmit.alpha = 1
+            self.tfEmail.alpha = 1
         }) { (success) in
         }
     }
@@ -78,6 +82,8 @@ class PasswordResetVC: UIViewController {
             self.okAlert(title: "Error", message: "Please enter an email address")
             return
         }
+        self.view.endEditing(true)
+
         signInUser()
     }
     

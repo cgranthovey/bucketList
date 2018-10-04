@@ -43,11 +43,21 @@ class CreateAccountVC: UIViewController {
         
         lblTitle.transform = CGAffineTransform(translationX: 0, y: 20)
         lblTitle.alpha = 0
-        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+        tfPassword.alpha = 0
+        tfEmail.alpha = 0
+        tfFname.alpha = 0
+        btnCreate.alpha = 0
+        UIView.animate(withDuration: 0.5, delay: 0.2, options: .curveEaseOut, animations: {
             self.lblTitle.transform = .identity
             self.lblTitle.alpha = 1
+            self.tfPassword.alpha = 1
+            self.tfEmail.alpha = 1
+            self.tfFname.alpha = 1
+            self.btnCreate.alpha = 1
         }) { (success) in
         }
+        
+
         
         if let nav = self.navigationController{
             if nav.viewControllers.count > 1{
@@ -76,6 +86,8 @@ class CreateAccountVC: UIViewController {
     }
     
     @IBAction func createAccount(_ sender: AnyObject){
+        self.view.endEditing(true)
+
         checkRequiredFields()
     }
     

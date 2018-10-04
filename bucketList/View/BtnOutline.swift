@@ -15,8 +15,8 @@ class BtnOutline: UIButton {
         setTitleColor(UIColor().primaryColor, for: .normal)
         
         
-        backgroundColor = UIColor.clear
-        layer.borderWidth = 3
+        backgroundColor = UIColor().rgb(red: 255, green: 255, blue: 255, alpha: 0.2)
+        layer.borderWidth = 2
         layer.cornerRadius = 10
         clipsToBounds = true
     }

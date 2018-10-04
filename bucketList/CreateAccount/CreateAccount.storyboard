@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="223.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ocean" translatesAutoresizingMaskIntoConstraints="NO" id="7LI-Z1-quv">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="air" translatesAutoresizingMaskIntoConstraints="NO" id="7LI-Z1-quv">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <view alpha="0.45000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MHF-v3-9hm">
@@ -46,7 +46,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jH0-VN-sj2">
                                 <rect key="frame" x="30" y="273.5" width="315" height="125"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LHB-BH-Ky9" customClass="BottomLineTF" customModule="bucketList" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LHB-BH-Ky9" customClass="BottomLineTFWhite" customModule="bucketList" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="315" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="FT7-Rk-O0v"/>
@@ -60,7 +60,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7aa-LA-7hT" customClass="BottomLineTF" customModule="bucketList" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7aa-LA-7hT" customClass="BottomLineTFWhite" customModule="bucketList" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="45" width="315" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="8s9-SA-c0p"/>
@@ -74,7 +74,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ofc-nS-5WK" customClass="BottomLineTF" customModule="bucketList" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ofc-nS-5WK" customClass="BottomLineTFWhite" customModule="bucketList" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="90" width="315" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="kUU-Ma-OZr"/>
@@ -173,7 +173,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="TNs-OX-13a">
                                 <rect key="frame" x="30" y="272.5" width="315" height="80"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6x9-iv-Gzc" customClass="BottomLineTF" customModule="bucketList" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6x9-iv-Gzc" customClass="BottomLineTFWhite" customModule="bucketList" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="315" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="isB-Rb-sgi"/>
@@ -187,7 +187,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QT5-S7-hYa" customClass="BottomLineTF" customModule="bucketList" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QT5-S7-hYa" customClass="BottomLineTFWhite" customModule="bucketList" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="45" width="315" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="C33-MP-8GT"/>
@@ -279,7 +279,9 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
+                        <outlet property="btnCreate" destination="hS0-CN-fto" id="3VT-Z5-Epf"/>
                         <outlet property="btnLogin" destination="yHN-bd-dgT" id="Eax-Qh-b1F"/>
+                        <outlet property="btnReset" destination="ftK-Gp-ksJ" id="LQk-WW-BVe"/>
                         <outlet property="email" destination="6x9-iv-Gzc" id="6Mr-bu-HMu"/>
                         <outlet property="lblTitle" destination="uaz-Nd-Tlk" id="6DU-b3-zb7"/>
                         <outlet property="password" destination="QT5-S7-hYa" id="9c2-xM-BWw"/>
@@ -344,7 +346,7 @@
                                     <action selector="passwordReset:" destination="Auz-KX-J8a" eventType="touchUpInside" id="2bV-Sp-jNO"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k7V-fS-cCw" customClass="BottomLineTF" customModule="bucketList" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k7V-fS-cCw" customClass="BottomLineTFWhite" customModule="bucketList" customModuleProvider="target">
                                 <rect key="frame" x="30" y="272.5" width="315" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="uSb-ib-xI8"/>
@@ -419,8 +421,8 @@
     </scenes>
     <resources>
         <image name="ag" width="3056" height="3949"/>
+        <image name="air" width="2168" height="2983"/>
         <image name="dirt" width="1929" height="2700"/>
         <image name="left-arrow" width="64" height="64"/>
-        <image name="ocean" width="2178" height="3000"/>
     </resources>
 </document>

@@ -17,6 +17,8 @@ class LoginVC: UIViewController {
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var btnLogin: UIButton!
     @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var btnReset: UIButton!
+    @IBOutlet weak var btnCreate: UIButton!
     
     var requiredFields = [UITextField]()
 
@@ -49,9 +51,19 @@ class LoginVC: UIViewController {
     func animateUI(){
         lblTitle.transform = CGAffineTransform(translationX: 0, y: 20)
         lblTitle.alpha = 0
-        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+        password.alpha = 0
+        email.alpha = 0
+        btnLogin.alpha = 0
+        btnReset.alpha = 0
+        btnCreate.alpha = 0
+        UIView.animate(withDuration: 1, delay: 0.4, options: .curveEaseOut, animations: {
             self.lblTitle.transform = .identity
             self.lblTitle.alpha = 1
+            self.password.alpha = 1
+            self.email.alpha = 1
+            self.btnLogin.alpha = 1
+            self.btnReset.alpha = 1
+            self.btnCreate.alpha = 1
         }) { (success) in
         }
     }
@@ -61,6 +73,7 @@ class LoginVC: UIViewController {
             self.okAlert(title: "Error", message: "Please enter all required fields.")
             return
         }
+        self.view.endEditing(true)
         loginUser(email: email.text!, password: password.text!)
     }
     
