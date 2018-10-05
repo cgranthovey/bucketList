@@ -31,6 +31,9 @@
 		152C89FC211931600032A581 /* UpdateNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152C89FB211931600032A581 /* UpdateNameVC.swift */; };
 		152C89FE211936880032A581 /* UpdateProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152C89FD211936880032A581 /* UpdateProfileVC.swift */; };
 		1536DD4F2123A6AF0022A43F /* FriendsItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1536DD4E2123A6AF0022A43F /* FriendsItemCell.swift */; };
+		153753922165A1A400481B48 /* StatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153753912165A1A400481B48 /* StatusCell.swift */; };
+		153753942165A9F700481B48 /* UpdateStatus.xib in Resources */ = {isa = PBXBuildFile; fileRef = 153753932165A9F700481B48 /* UpdateStatus.xib */; };
+		153753962165AB2E00481B48 /* UpdateStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153753952165AB2E00481B48 /* UpdateStatus.swift */; };
 		1545AE2121643D3200F5148D /* GVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1545AE2021643D3200F5148D /* GVar.swift */; };
 		1545AE2521645A8D00F5148D /* BtnOutline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1545AE2421645A8D00F5148D /* BtnOutline.swift */; };
 		1555C2CC2140DA34002AF5C6 /* ImgAspectFitBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1555C2CB2140DA34002AF5C6 /* ImgAspectFitBtn.swift */; };
@@ -72,6 +75,8 @@
 		15BCDB4D20E728BA00E1B6A9 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BCDB4C20E728BA00E1B6A9 /* LoginVC.swift */; };
 		15BCDB4F20E9938400E1B6A9 /* CreateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BCDB4E20E9938400E1B6A9 /* CreateAccountVC.swift */; };
 		15BCDB5220E994DA00E1B6A9 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BCDB5120E994DA00E1B6A9 /* String.swift */; };
+		15C350702166F31100FEE557 /* StatusVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C3506F2166F31100FEE557 /* StatusVC.swift */; };
+		15C350722166F3C500FEE557 /* StatusPopupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C350712166F3C500FEE557 /* StatusPopupCell.swift */; };
 		15C37E872103F78700ED0503 /* MapItemsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C37E862103F78700ED0503 /* MapItemsVC.swift */; };
 		15C37E89210419F100ED0503 /* MKCoordinateRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C37E88210419F100ED0503 /* MKCoordinateRegion.swift */; };
 		15C37E8B2104283500ED0503 /* BucketMKPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C37E8A2104283500ED0503 /* BucketMKPointAnnotation.swift */; };
@@ -140,6 +145,9 @@
 		152C89FB211931600032A581 /* UpdateNameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateNameVC.swift; sourceTree = "<group>"; };
 		152C89FD211936880032A581 /* UpdateProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileVC.swift; sourceTree = "<group>"; };
 		1536DD4E2123A6AF0022A43F /* FriendsItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsItemCell.swift; sourceTree = "<group>"; };
+		153753912165A1A400481B48 /* StatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCell.swift; sourceTree = "<group>"; };
+		153753932165A9F700481B48 /* UpdateStatus.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdateStatus.xib; sourceTree = "<group>"; };
+		153753952165AB2E00481B48 /* UpdateStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateStatus.swift; sourceTree = "<group>"; };
 		1545AE2021643D3200F5148D /* GVar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GVar.swift; sourceTree = "<group>"; };
 		1545AE2421645A8D00F5148D /* BtnOutline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BtnOutline.swift; sourceTree = "<group>"; };
 		1555C2CB2140DA34002AF5C6 /* ImgAspectFitBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgAspectFitBtn.swift; sourceTree = "<group>"; };
@@ -187,6 +195,8 @@
 		15BCDB4C20E728BA00E1B6A9 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		15BCDB4E20E9938400E1B6A9 /* CreateAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountVC.swift; sourceTree = "<group>"; };
 		15BCDB5120E994DA00E1B6A9 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		15C3506F2166F31100FEE557 /* StatusVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusVC.swift; sourceTree = "<group>"; };
+		15C350712166F3C500FEE557 /* StatusPopupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPopupCell.swift; sourceTree = "<group>"; };
 		15C37E862103F78700ED0503 /* MapItemsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapItemsVC.swift; sourceTree = "<group>"; };
 		15C37E88210419F100ED0503 /* MKCoordinateRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKCoordinateRegion.swift; sourceTree = "<group>"; };
 		15C37E8A2104283500ED0503 /* BucketMKPointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketMKPointAnnotation.swift; sourceTree = "<group>"; };
@@ -290,6 +300,8 @@
 				1564D9CC214D872B002B04C1 /* LblArrowCell.swift */,
 				15970055215489D90030560C /* DetailsCell.swift */,
 				15BCA1732156A49E005EB0C2 /* CompletionTimeCell.swift */,
+				153753912165A1A400481B48 /* StatusCell.swift */,
+				15C350712166F3C500FEE557 /* StatusPopupCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -320,6 +332,8 @@
 			children = (
 				15F723C32142049D00533017 /* ItemDataCell.swift */,
 				15F723C42142049D00533017 /* ItemDataCell.xib */,
+				153753932165A9F700481B48 /* UpdateStatus.xib */,
+				153753952165AB2E00481B48 /* UpdateStatus.swift */,
 			);
 			path = Nib;
 			sourceTree = "<group>";
@@ -468,6 +482,7 @@
 				15C5664C211BDEF7001F5F6C /* UpdatePasswordVC.swift */,
 				15C5664E211BFB46001F5F6C /* UpdateEmailVC.swift */,
 				151834682144727F009F74AB /* LargeImageVC.swift */,
+				15C3506F2166F31100FEE557 /* StatusVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -608,6 +623,7 @@
 				15BCDB1120E47B9D00E1B6A9 /* Assets.xcassets in Resources */,
 				15BCDB0F20E47B9A00E1B6A9 /* Main.storyboard in Resources */,
 				15BCDB4820E726CB00E1B6A9 /* CreateAccount.storyboard in Resources */,
+				153753942165A9F700481B48 /* UpdateStatus.xib in Resources */,
 				15BCDB3820E47DE200E1B6A9 /* Onboarding.storyboard in Resources */,
 				15F723C62142049D00533017 /* ItemDataCell.xib in Resources */,
 				152C89FA21192ECD0032A581 /* Settings.storyboard in Resources */,
@@ -750,6 +766,7 @@
 				15C5664B211AA9BB001F5F6C /* Image.swift in Sources */,
 				15623EF6213F5DA600F43372 /* DetailImgCell.swift in Sources */,
 				1510B7ED210162C3009FBCEC /* BucketListCell.swift in Sources */,
+				15C350702166F31100FEE557 /* StatusVC.swift in Sources */,
 				1529D42F2117F8B000AC4829 /* MainTBC.swift in Sources */,
 				15ECED7620F6D61400BF42FD /* AddBucketTitleVC.swift in Sources */,
 				15623EF4213F5C5C00F43372 /* BucketDetails.swift in Sources */,
@@ -785,6 +802,7 @@
 				15C6633420F18D6B00C7DF5E /* VC.swift in Sources */,
 				15C5664F211BFB46001F5F6C /* UpdateEmailVC.swift in Sources */,
 				15C37E8F21050AE400ED0503 /* User.swift in Sources */,
+				153753922165A1A400481B48 /* StatusCell.swift in Sources */,
 				1564D9CD214D872B002B04C1 /* LblArrowCell.swift in Sources */,
 				159CC7A22136169B00BEFAE3 /* ContactsCell.swift in Sources */,
 				15F5E049213DD11300D3903B /* ButtonCustom.swift in Sources */,
@@ -795,6 +813,7 @@
 				1508124E213A31B400A4D14A /* Enums.swift in Sources */,
 				1522B0BD20F04EB400C5CF9C /* Error.swift in Sources */,
 				15C37E872103F78700ED0503 /* MapItemsVC.swift in Sources */,
+				15C350722166F3C500FEE557 /* StatusPopupCell.swift in Sources */,
 				15C37E9121050C1B00ED0503 /* FriendSearchTblCell.swift in Sources */,
 				15BCDB0A20E47B9A00E1B6A9 /* AppDelegate.swift in Sources */,
 				15C37E89210419F100ED0503 /* MKCoordinateRegion.swift in Sources */,
@@ -807,6 +826,7 @@
 				1576E40520F96A020067341D /* LocationSearchTableVC.swift in Sources */,
 				15C6633820F44BB800C7DF5E /* TextField.swift in Sources */,
 				15623EF2213DFC3200F43372 /* CustomTextView.swift in Sources */,
+				153753962165AB2E00481B48 /* UpdateStatus.swift in Sources */,
 				1564D9CB214D8396002B04C1 /* SettingsVC.swift in Sources */,
 				1545AE2521645A8D00F5148D /* BtnOutline.swift in Sources */,
 			);

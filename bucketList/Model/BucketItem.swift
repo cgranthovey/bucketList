@@ -13,6 +13,12 @@ import Firebase
 import FirebaseFirestore
 import FirebaseAuth
 
+enum ItemStatus: String{
+    case toDo = "To Do"
+    case inProgress = "In Progress"
+    case completed = "Completed"
+}
+
 class BucketItem{
     var title: String!
     var price: String?
@@ -27,6 +33,7 @@ class BucketItem{
     var id: String?
     var imgs: [String] = [String]()
     var completionTime: String?
+    var status: String?
     
     var isTravel: Bool = false
     var isNature: Bool = false
@@ -113,6 +120,9 @@ class BucketItem{
             if let history = dict["isHistory"] as? Bool{
                 isHistory = history
             }
+            if let status = dict["status"] as? String{
+                self.status = status
+            }
             completionTime = dict["completionTime"] as? String
         }
         if let id = id{
@@ -146,6 +156,7 @@ class BucketItem{
         isArt ? items["isArt"] = true : Void()
         isHistory ? items["isHistory"] = true: Void()
         
+        items["status"] = ItemStatus.toDo.rawValue
         
         items["created"] = FieldValue.serverTimestamp()
         if let geoLoc = getGeoPoint(){
