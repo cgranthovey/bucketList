@@ -64,6 +64,7 @@ class BucketListCell: UITableViewCell {
         
         print("item is sports", item.isSports)
         print("item is education", item.isEducation)
+        print("is travel", item.isTravel)
         if item.isTravel{imgTravel.isHidden = false} else{imgTravel.isHidden = true}
         if item.isHistory{imgHistory.isHidden = false} else{imgHistory.isHidden = true}
         if item.isArt{imgArt.isHidden = false} else{imgArt.isHidden = true}

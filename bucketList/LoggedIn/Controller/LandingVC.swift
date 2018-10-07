@@ -259,10 +259,12 @@ extension LandingVC: UITableViewDelegate, UITableViewDataSource{
         if indexPath.row == 0 {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "cell0") as? UITableViewCell{
                 cell.selectionStyle = .none
+                cell.isUserInteractionEnabled = false
                 return cell
             }
         }
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? BucketListCell{
+            cell.isUserInteractionEnabled = true
             cell.configure(item: bucketItems[indexPath.row - 1])
             cell.selectionStyle = .none
             return cell
