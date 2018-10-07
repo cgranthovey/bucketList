@@ -28,7 +28,7 @@ class BucketDetails: UIViewController {
     var selectedImgCell: DetailImgCell?
     var imagePicker: UIImagePickerController!
     
-    var nonImgCells = [0, 1, 2, 3]
+    var nonImgCells = [0, 1, 2, 3, 4]
     
     var sizingNibNew = Bundle.main.loadNibNamed("ItemDataCell", owner: ItemDataCell.self, options: nil) as? NSArray
 
@@ -47,6 +47,9 @@ class BucketDetails: UIViewController {
         
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 20, right: 10)
         
+        
+
+        
         if let item = bucketItem{
             images = item.imgs
             if images.count > 0{
@@ -54,6 +57,8 @@ class BucketDetails: UIViewController {
             }
         }
     }
+    
+
     
     override func viewWillAppear(_ animated: Bool) {
         getImages()
@@ -78,6 +83,9 @@ class BucketDetails: UIViewController {
                     if let url = snapDoc["url"] as? String{
                         self.images.append(url)
                     }
+                }
+                if self.images.count > 0{
+                    self.nonImgCells.removeLast()
                 }
                 self.collectionView.reloadData()
             }
@@ -210,12 +218,19 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row == 0, let bucketItem = bucketItem{
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "statusCell", for: indexPath) as? StatusCell{
+                cell.delegate = self
+                cell.configure(bucketItem: bucketItem)
+                return cell
+            }
+        }
+        if indexPath.row == 1, let bucketItem = bucketItem{
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemDataCell", for: indexPath) as? ItemDataCell{
                 cell.configure(item: bucketItem)
                 return cell
             }
         }
-        if indexPath.row == 1, let bucketItem = bucketItem{
+        if indexPath.row == 2, let bucketItem = bucketItem{
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellDetails", for: indexPath) as? DetailsCell{
 
                 cell.configure(item: bucketItem)
@@ -223,7 +238,7 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
                 return cell
             }
         }
-        if indexPath.row == 2{
+        if indexPath.row == 3{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellCamera", for: indexPath)
             let lightGrayView = UIView(frame: CGRect(x: 0, y: 0, width: cell.frame.width, height: cell.frame.height))
             lightGrayView.backgroundColor = UIColor().extraLightGrey
@@ -234,9 +249,11 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addImage", for: indexPath)
             return cell
         } else{
-            if indexPath.row > 2{
+            if indexPath.row > 3{
                 if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? DetailImgCell{
-                    cell.configure(imgUrl: images[indexPath.row - 3])
+                    print("the indexpath.row", indexPath.row)
+                    print("the nonImgCells.count", nonImgCells.count)
+                    cell.configure(imgUrl: images[indexPath.row - nonImgCells.count])
                     return cell
                 }
             }
@@ -256,9 +273,9 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.navigationController?.hero.navigationAnimationType = .fade
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if indexPath.row == 2{
+        if indexPath.row == 3{
             showAlert()
-        } else if indexPath.row > 2{
+        } else if indexPath.row > 3{
             
             if images.count == 0{
                 showAlert()
@@ -284,7 +301,15 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let inset = collectionView.contentInset.right + collectionView.contentInset.left
+        let width = collectionView.frame.width / 2 - spaceBetweenCells / 2 - inset / 2 - 1
+        
         if indexPath.row == 0{
+            return CGSize(width: collectionView.frame.width - inset, height: 95)
+        }
+        
+        if indexPath.row == 1{
             let width = self.view.frame.width - CGFloat(20)// / 3.0
             
             if let item = bucketItem{
@@ -303,23 +328,26 @@ extension BucketDetails: UICollectionViewDelegate, UICollectionViewDataSource, U
         }
 
         
-        let inset = collectionView.contentInset.right + collectionView.contentInset.left
-        let width = collectionView.frame.width / 2 - spaceBetweenCells / 2 - inset / 2 - 1
+
         
-        if indexPath.row == 1{
+        if indexPath.row == 2{
             return CGSize(width: collectionView.frame.width - inset, height: 55)
         }
         
-        if indexPath.row == 2{
+        if indexPath.row == 3{
             return CGSize(width: collectionView.frame.width - inset, height: 40)
         }
         
-        if images.count == 0 && indexPath.row == 3{
+        if images.count == 0 && indexPath.row == 4{
             return CGSize(width: collectionView.frame.width - inset, height: 150)
         }
         
         return CGSize(width: width, height: width)
     }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle { return UIModalPresentationStyle.none }
+    
+
 }
 
 
@@ -348,12 +376,42 @@ extension BucketDetails: DetailsCellDelegate{
     }
 }
 
+extension BucketDetails: StatusCellDelegate{
+    func statusBtnPress(btn: UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "StatusVC") as? StatusVC{
+            vc.modalPresentationStyle = .popover
+            vc.delegate = self
+            vc.preferredContentSize = CGSize(width: 200, height: 180)
+            if let bucketItem = bucketItem{
+                vc.bucketItem = bucketItem
+            }
+            if let presentationController = vc.popoverPresentationController {
+                presentationController.delegate = self
+                presentationController.permittedArrowDirections = .right
+                presentationController.sourceView = btn
+                presentationController.sourceRect = CGRect(x: 0, y: 0, width: 50, height: 50)
+                present(vc, animated: true, completion: nil)
+            }
+        }
+    }
+}
+
+extension BucketDetails: StatusVCDelegate {
+    func didSelectStatus(status: ItemStatus){
+        print("status selected", status.rawValue)
+        if let cell = collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as? StatusCell{
+            cell.setBtnStatus(status: status)
+            
+            
+        }
+    }
+}
 
 
-
-
-
-
+extension BucketDetails: UIPopoverPresentationControllerDelegate{
+    
+}
 
 
 

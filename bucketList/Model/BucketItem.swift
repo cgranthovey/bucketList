@@ -11,6 +11,13 @@ import MapKit
 import FirebaseCore
 import Firebase
 import FirebaseFirestore
+import FirebaseAuth
+
+enum ItemStatus: String{
+    case toDo = "To Do"
+    case inProgress = "In Progress"
+    case complete = "Complete"
+}
 
 class BucketItem{
     var title: String!
@@ -26,6 +33,7 @@ class BucketItem{
     var id: String?
     var imgs: [String] = [String]()
     var completionTime: String?
+    var status: ItemStatus = .toDo
     
     var isTravel: Bool = false
     var isNature: Bool = false
@@ -112,6 +120,15 @@ class BucketItem{
             if let history = dict["isHistory"] as? Bool{
                 isHistory = history
             }
+            if let status = dict["status"] as? String{
+                if status == ItemStatus.inProgress.rawValue{
+                    self.status = .inProgress
+                } else if status == ItemStatus.complete.rawValue{
+                    self.status = .complete
+                } else{
+                    self.status = .toDo
+                }
+            }
             completionTime = dict["completionTime"] as? String
         }
         if let id = id{
@@ -131,7 +148,8 @@ class BucketItem{
             "addressSeconary": addressSeconary as Any,
             "pinLat": pinLat as Any,
             "pinLong": pinLong as Any,
-            "completionTime": completionTime as Any
+            "completionTime": completionTime as Any,
+            "userID": CurrentUser.instance.user.uid
         ]
         
         isTravel ? items["isTravel"] = true : Void()
@@ -143,6 +161,8 @@ class BucketItem{
         isExercise ? items["isExercise"] = true : Void()
         isArt ? items["isArt"] = true : Void()
         isHistory ? items["isHistory"] = true: Void()
+        
+        items["status"] = status.rawValue
         
         items["created"] = FieldValue.serverTimestamp()
         if let geoLoc = getGeoPoint(){

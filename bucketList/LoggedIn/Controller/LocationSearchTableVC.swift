@@ -22,6 +22,7 @@ class LocationSearchTableVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchCompleter.delegate = self
+        self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {

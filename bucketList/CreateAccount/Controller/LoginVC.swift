@@ -15,6 +15,10 @@ class LoginVC: UIViewController {
     
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var email: UITextField!
+    @IBOutlet weak var btnLogin: UIButton!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var btnReset: UIButton!
+    @IBOutlet weak var btnCreate: UIButton!
     
     var requiredFields = [UITextField]()
 
@@ -23,10 +27,45 @@ class LoginVC: UIViewController {
         requiredFields = [password, email]
         password.delegate = self
         email.delegate = self
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(LoginVC.dropKB))
+        self.view.addGestureRecognizer(tap)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.keyboardWillChange(notification:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.keyboardWillChange(notification:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.keyboardWillChange(notification:)), name: Notification.Name.UIKeyboardWillChangeFrame, object: nil)
+        animateUI()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillChangeFrame, object: nil)
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         self.view.removeBlurLoader(completionHandler: nil)
+    }
+    
+    func animateUI(){
+        lblTitle.transform = CGAffineTransform(translationX: 0, y: 20)
+        lblTitle.alpha = 0
+        password.alpha = 0
+        email.alpha = 0
+        btnLogin.alpha = 0
+        btnReset.alpha = 0
+        btnCreate.alpha = 0
+        UIView.animate(withDuration: 1, delay: 0.4, options: .curveEaseOut, animations: {
+            self.lblTitle.transform = .identity
+            self.lblTitle.alpha = 1
+            self.password.alpha = 1
+            self.email.alpha = 1
+            self.btnLogin.alpha = 1
+            self.btnReset.alpha = 1
+            self.btnCreate.alpha = 1
+        }) { (success) in
+        }
     }
     
     @IBAction func loginBtnPress(_ sender: AnyObject){
@@ -34,6 +73,7 @@ class LoginVC: UIViewController {
             self.okAlert(title: "Error", message: "Please enter all required fields.")
             return
         }
+        self.view.endEditing(true)
         loginUser(email: email.text!, password: password.text!)
     }
     
@@ -41,24 +81,46 @@ class LoginVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @objc func dropKB(){
+        self.view.endEditing(true)
+    }
+    
+    @objc func keyboardWillChange(notification: Notification){
+        guard let keyboardRect = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else{
+            return
+        }
+        
+        print("keyboardWillChange1", notification.name)
+        
+        if notification.name == Notification.Name.UIKeyboardWillShow || notification.name == Notification.Name.UIKeyboardWillChangeFrame{
+            print("keyboardWillChange2", notification.name)
+            let screenHeight = UIScreen.main.bounds.height
+            let btnToBottomOfScreen = screenHeight - btnLogin.frame.origin.y - btnLogin.frame.height
+            
+            let amountToRaise = keyboardRect.height - btnToBottomOfScreen
+            
+            if amountToRaise > 0{
+                view.frame.origin.y = -amountToRaise - GVar.instance.keyboardToButton
+            }
+        } else{
+            print("keyboardWillChange3", notification.name)
+            view.frame.origin.y = 0
+        }
+        
+    }
+    
     func loginUser(email: String, password: String){
         self.view.showBlurLoader()
-        print("loginUser1")
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-        print("loginUser2")
             guard error == nil else{
-                print("loginUser3")
                 self.view.removeBlurLoader(completionHandler: {
-                    print("loginUser4")
                     self.okAlert(title: "Error", message: error!.customAuthError(submitType: AuthSubmitType.login))
                 })
                 return
             }
-            print("loginUser5")
             let storboardMain = UIStoryboard(name: "Main", bundle: nil)
             
             if let vc = storboardMain.instantiateViewController(withIdentifier: "UITabBarController") as? UITabBarController{
-                print("loginUser6")
 //                if (self.navigationController == nil){
 //                    
 //                } else{

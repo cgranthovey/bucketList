@@ -103,9 +103,9 @@ class MapItemsVC: UIViewController {
         }
         
         let pin = MKPointAnnotation()
-//        if let subtitle = bucketItem.addressPrimary{
-//            newPin.subtitle = subtitle
-//        }
+        if let subtitle = bucketItem.addressPrimary{
+            newPin.subtitle = subtitle
+        }
         self.mapView.addAnnotation(newPin)
         let count = self.mapView.annotations.count
     }
@@ -128,24 +128,15 @@ extension MapItemsVC: MKMapViewDelegate{
             }
             
             pinView?.markerTintColor = UIColor().primaryColor
-           // pinView?.canShowCallout = true
-            
-            //button.addTarget(self, action: #selector(AnnotationMapVC.annotationBtnTapped(_:)), for: .touchUpInside)
-            //        button.imageView?.contentMode = .scaleAspectFit
-            //        button.tag = 1//currentBtnTag
-            pinView?.tag = 2// currentBtnTag
-            
-            //self.dictEnterTagForEventKey[currentBtnTag] = myEvent!.key
-            //currentBtnTag = currentBtnTag + 1
-            
+            pinView?.canShowCallout = true
+            pinView?.tag = 2
+
             let rightImg = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
             rightImg.image = #imageLiteral(resourceName: "right-arrow")
-            pinView?.rightCalloutAccessoryView = rightImg
-            
-            let tap = BucketTapGesture(target: self, action: #selector(self.toDetails(sender:)))
-            
-            pinView.addGestureRecognizer(tap)
-            tap.bucketItem = bucketItem
+            let btn = BtnBucketItem(type: .detailDisclosure)
+            btn.bucketItem = bucketItem
+            btn.addTarget(self, action: #selector(self.toDetails(sender:)), for: .touchUpInside)
+            pinView?.rightCalloutAccessoryView =  btn
             
             if let pin = pinView{
                 return pin
@@ -207,6 +198,10 @@ extension MapItemsVC: CLLocationManagerDelegate{
 }
 
 class BucketTapGesture: UITapGestureRecognizer{
+    var bucketItem: BucketItem!
+}
+
+class BtnBucketItem: UIButton{
     var bucketItem: BucketItem!
 }
 

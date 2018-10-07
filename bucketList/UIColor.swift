@@ -32,7 +32,15 @@ extension UIColor{
     var primaryBlue: UIColor{
         return rgb(red: 0, green: 178, blue: 255, alpha: 1)
     }
-    
+    var darkerBlue: UIColor{
+        return rgb(red: 28, green: 137, blue: 200, alpha: 1)
+    }
+    var primaryGreen: UIColor{
+        return rgb(red: 32, green: 163, blue: 0, alpha: 1)
+    }
+    var primaryBlueAlpha: UIColor{
+        return rgb(red: 0, green: 178, blue: 255, alpha: 0.3)
+    }
     
     var textBlack: UIColor{
         return rgb(red: 0, green: 0, blue: 0, alpha: 0.87)

@@ -28,36 +28,31 @@ class AddBucketLocationVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("add bucket map details", NewBucketItem.instance.item.details)
-
         setUpUI()
-        print("add bucket map details 0.5", NewBucketItem.instance.item.details)
         extendedLayoutIncludesOpaqueBars = true
         self.navigationController?.hero.navigationAnimationType = .fade
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        print("add bucket map details 0.9", NewBucketItem.instance.item.details)
-
-    }
-    
-    
 
     @IBAction func nextBtnPress(_ sender: AnyObject){
-        print("add bucket map details2", NewBucketItem.instance.item.details)
-
         self.navigationController?.hero.navigationAnimationType = .fade
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "AddBucketDetailsVC") as? AddBucketDetailsVC{
             vc.hero.isEnabled = true
             vc.navigationController?.hero.navigationAnimationType = .fade
            // self.navigationController?.pushViewController(vc, animated: true)
-            
         }
     }
     
     @IBAction func chooseLocationBtnPress(_ sender: AnyObject){
         self.navigationController?.hero.navigationAnimationType = .cover(direction: .up)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "AddBucketMapVC"{
+            if let vc = segue.destination as? AddBucketMapVC{
+                vc.delegate = self
+            }
+        }
     }
     
     @IBAction func backBtnPress(_ sender: AnyObject){
@@ -88,8 +83,38 @@ class AddBucketLocationVC: UIViewController {
             btnNext.isHidden = false
         }
     }
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle { return UIModalPresentationStyle.none }
+    
+}
+
+extension AddBucketLocationVC: AddBucketMapDelegate {
+    func approvePress(){
+        stackLabels.transform = CGAffineTransform(translationX: 0, y: 20)
+        stackLabels.alpha = 0
+        print("approve press1")
+        UIView.animate(withDuration: 0.3, delay: 0.25, options: .curveEaseInOut, animations: {
+            print("approve press2")
+            self.stackLabels.transform = .identity
+            self.stackLabels.alpha = 1
+        }) { (success) in
+        }
+    }
 }
 
 extension AddBucketLocationVC: UITextFieldDelegate{
 
 }
+
+extension AddBucketLocationVC: UIPopoverPresentationControllerDelegate{
+    
+}
+
+
+
+
+
+
+
+
+
+

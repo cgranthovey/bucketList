@@ -8,27 +8,24 @@
 
 import UIKit
 
+struct Status{
+    var status: ItemStatus
+    var color: UIColor
+}
+
+
+
 class AddCategoriesVC: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var heightCollectionView: NSLayoutConstraint!
     @IBOutlet weak var btnNext: UIButton!
     
-    let option1 = txtImg.init(txt: "Travel", img: #imageLiteral(resourceName: "cat-airplane"))
-    let option2 = txtImg.init(txt: "Nature", img: #imageLiteral(resourceName: "cat-tree"))
-    let option3 = txtImg.init(txt: "Education", img: #imageLiteral(resourceName: "cat-books"))
-    let option4 = txtImg.init(txt: "Sports", img: #imageLiteral(resourceName: "cat-soccer"))
-    let option5 = txtImg.init(txt: "Social", img: #imageLiteral(resourceName: "cat-social"))
-    let option6 = txtImg.init(txt: "Religion", img: #imageLiteral(resourceName: "cat-religious"))
-    let option7 = txtImg.init(txt: "Exercise", img: #imageLiteral(resourceName: "cat-exercise"))
-    let option8 = txtImg.init(txt: "Art", img: #imageLiteral(resourceName: "cat-art"))
-    let option9 = txtImg.init(txt: "History", img: #imageLiteral(resourceName: "cat-history"))
-    
     let collectionViewInsets = UIEdgeInsetsMake(0, 20, 0, 20)
     let collectionLineSpacing: CGFloat = 5
     
     lazy var categoryOptions: [txtImg] = {
-        return [option1, option2, option3, option4, option5, option6, option7, option8, option9]
+        return BucketOptions.instance.allCategories
     }()
     
     override func viewDidLoad() {

@@ -16,7 +16,9 @@ class CreateAccountVC: UIViewController {
     @IBOutlet weak var tfPassword: UITextField!
     @IBOutlet weak var tfEmail: UITextField!
     @IBOutlet weak var tfFname: UITextField!
-    @IBOutlet weak var btnCancel: UIButton!
+    
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var btnCreate: UIButton!
     
     var requiredFields: [UITextField]!
     override func viewDidLoad() {
@@ -25,18 +27,67 @@ class CreateAccountVC: UIViewController {
         setUpDelegates()
         let tap = UITapGestureRecognizer(target: self, action: #selector(CreateAccountVC.viewTapped))
         self.view.addGestureRecognizer(tap)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(CreateAccountVC.keyboardWillChange(notification:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(CreateAccountVC.keyboardWillChange(notification:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(CreateAccountVC.keyboardWillChange(notification:)), name: Notification.Name.UIKeyboardWillChangeFrame, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillChangeFrame, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        btnCancel.isHidden = true
+        
+        lblTitle.transform = CGAffineTransform(translationX: 0, y: 20)
+        lblTitle.alpha = 0
+        tfPassword.alpha = 0
+        tfEmail.alpha = 0
+        tfFname.alpha = 0
+        btnCreate.alpha = 0
+        UIView.animate(withDuration: 0.5, delay: 0.2, options: .curveEaseOut, animations: {
+            self.lblTitle.transform = .identity
+            self.lblTitle.alpha = 1
+            self.tfPassword.alpha = 1
+            self.tfEmail.alpha = 1
+            self.tfFname.alpha = 1
+            self.btnCreate.alpha = 1
+        }) { (success) in
+        }
+        
+
+        
         if let nav = self.navigationController{
             if nav.viewControllers.count > 1{
-                btnCancel.isHidden = false
+            }
+        }
+    }
+    
+    @objc func keyboardWillChange(notification: Notification){
+        
+        if let keyboardHeight = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue{
+            if notification.name == Notification.Name.UIKeyboardWillShow || notification.name == Notification.Name.UIKeyboardWillChangeFrame{
+                
+                let btnBottomHeight = btnCreate.frame.origin.y + btnCreate.frame.height
+                let screenHeight = UIScreen.main.bounds.height
+                let btnCreateToBottom = screenHeight - btnBottomHeight
+                
+                let amountToAdjust = keyboardHeight.height - btnCreateToBottom
+                if amountToAdjust > 0{
+                    self.view.frame.origin.y = -amountToAdjust - GVar.instance.keyboardToButton
+                }
+                
+            } else{
+                self.view.frame.origin.y = 0
             }
         }
     }
     
     @IBAction func createAccount(_ sender: AnyObject){
+        self.view.endEditing(true)
+
         checkRequiredFields()
     }
     
@@ -46,6 +97,10 @@ class CreateAccountVC: UIViewController {
         } else{
             self.dismiss(animated: true, completion: nil)
         }
+    }
+    
+    @IBAction func backBtnPress(_ sender: AnyObject){
+        self.navigationController?.popViewController(animated: true)
     }
     
     func checkRequiredFields(){

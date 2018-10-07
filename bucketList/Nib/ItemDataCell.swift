@@ -37,7 +37,7 @@ class ItemDataCell: UICollectionViewCell {
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
         
         let originalFrame = self.frame
-        let originalMaxWidth = self.lblPrice.preferredMaxLayoutWidth
+        let originalMaxWidth = self.lblDescription.preferredMaxLayoutWidth
         
         var frame = self.frame
         frame.size = layoutAttributes.size
@@ -46,7 +46,7 @@ class ItemDataCell: UICollectionViewCell {
         self.setNeedsLayout()
         self.layoutIfNeeded()
         
-        self.lblPrice.preferredMaxLayoutWidth = self.lblDescription.bounds.size.width
+        self.lblDescription.preferredMaxLayoutWidth = self.lblDescription.bounds.size.width
         
         let computedSize = self.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
         let targetSize = layoutAttributes.size
@@ -58,9 +58,9 @@ class ItemDataCell: UICollectionViewCell {
         return layoutAttributes
     }
     
-    @IBOutlet weak var lblPrice: UILabel!
+//    @IBOutlet weak var lblPrice: UILabel!
     @IBOutlet weak var lblDescription: UILabel!
-    @IBOutlet weak var lblTime: UILabel!
+//    @IBOutlet weak var lblTime: UILabel!
     
     @IBAction func addressBtnPress(_ sender: AnyObject){
         print("address btn press!")
@@ -74,16 +74,16 @@ class ItemDataCell: UICollectionViewCell {
         print("item.price", item.price)
         
         
-        if let time = item.completionTime{
-            lblTime.text = time
-        }
-        
-        if let price = item.price, price != "" {
-            lblPrice.text = price
-            lblPrice.isHidden = false
-        } else{
-            lblPrice.isHidden = true
-        }
+//        if let time = item.completionTime{
+//            lblTime.text = time
+//        }
+//
+//        if let price = item.price, price != "" {
+//            lblPrice.text = price
+//            lblPrice.isHidden = false
+//        } else{
+//            lblPrice.isHidden = true
+//        }
         
         if let details = item.details{
             lblDescription.text = details

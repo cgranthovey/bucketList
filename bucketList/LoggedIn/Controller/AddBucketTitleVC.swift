@@ -38,8 +38,6 @@ class AddBucketTitleVC: UIViewController {
     }
     
     @IBAction func nextBtnPress(_ sender: AnyObject){
-        NotificationCenter.default.post(name: NSNotification.Name("newItem"), object: nil)
-
         guard tfTitle.hasText else{
             okAlert(title: "Error", message: "Complete title field.")
             return

@@ -37,7 +37,7 @@ class OnboardingVC: UIViewController {
     
     func toLogin(){
         let loginStoryboard = UIStoryboard(name: "CreateAccount", bundle: nil)
-        if let createAccountVC = loginStoryboard.instantiateViewController(withIdentifier: "CreateAccountVC") as? CreateAccountVC{
+        if let createAccountVC = loginStoryboard.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC{
             createAccountVC.modalTransitionStyle = .flipHorizontal
             self.navigationController?.pushViewController(createAccountVC, animated: true)
         }

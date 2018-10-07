@@ -22,31 +22,41 @@ class GetData{
     
     
     typealias Completion = (_ items: QuerySnapshot, _ lastDoc: DocumentSnapshot?) -> Void
-    func retrieve(collection: CollectionReference, lastDoc: DocumentSnapshot?, onComplete: @escaping Completion){
+    func retrieve(query: Query, onComplete: @escaping Completion){
         
-        let query = collection.order(by: "created", descending: true).limit(to: limit)
-        
-        if let doc = lastDoc{
-            query.start(afterDocument: doc).getDocuments { (snapshot, error) in
-                guard error == nil && snapshot != nil else{
-                    print("retrieve snapshot error1", error!)
-                    return
-                }
-
-                onComplete(snapshot!, snapshot!.documents.last)
-            }
+        query.getDocuments { (snapshot, error) in
             
-        } else{
-            print("my query", query)
-            query.getDocuments { (snapshot, error) in
-                
-                guard error == nil && snapshot != nil else{
-                    print("retrieve snapshot error2", error!)
-                    return
-                }
-                onComplete(snapshot!, snapshot!.documents.last)
+            guard error == nil && snapshot != nil else{
+                print("retrieve snapshot error2", error!)
+                return
             }
+            onComplete(snapshot!, snapshot!.documents.last)
         }
+        
+//        let query = collection.order(by: "created", descending: true).limit(to: limit)
+//
+//
+//
+//
+//        if let doc = lastDoc{
+//            query.start(afterDocument: doc).getDocuments { (snapshot, error) in
+//                guard error == nil && snapshot != nil else{
+//                    print("retrieve snapshot error1", error!)
+//                    return
+//                }
+//                onComplete(snapshot!, snapshot!.documents.last)
+//            }
+//        } else{
+//            print("my query", query)
+//            query.getDocuments { (snapshot, error) in
+//
+//                guard error == nil && snapshot != nil else{
+//                    print("retrieve snapshot error2", error!)
+//                    return
+//                }
+//                onComplete(snapshot!, snapshot!.documents.last)
+//            }
+//        }
     }
     
 

@@ -8,26 +8,17 @@
 
 import UIKit
 
-
-
 class AddPriceVC: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var heightCollectionView: NSLayoutConstraint!
     @IBOutlet weak var btnNext: UIButton!
     
-    let optionFree = txtImg.init(txt: "Free", img: #imageLiteral(resourceName: "free"))
-    let option2 = txtImg.init(txt: "< $15", img: #imageLiteral(resourceName: "coin"))
-    let option3 = txtImg.init(txt: "< $50", img: #imageLiteral(resourceName: "coins"))
-    let option4 = txtImg.init(txt: "< $100", img: #imageLiteral(resourceName: "notes"))
-    let option5 = txtImg.init(txt: "< $500", img: #imageLiteral(resourceName: "notesBundle"))
-    let option6 = txtImg.init(txt: "$500+", img: #imageLiteral(resourceName: "rich"))
-    
     let collectionViewInsets = UIEdgeInsetsMake(0, 20, 0, 20)
     let collectionLineSpacing: CGFloat = 5
     
     lazy var priceOptions: [txtImg] = {
-        return [optionFree, option2, option3, option4, option5, option6]
+        return BucketOptions.instance.allPrices
     }()
     
     override func viewDidLoad() {
