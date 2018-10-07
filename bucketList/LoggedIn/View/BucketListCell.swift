@@ -67,7 +67,11 @@ class BucketListCell: UITableViewCell {
         print("item is education", item.isEducation)
         print("is travel", item.isTravel)
         
+        print("has nature", item.isNature)
+        
         if item.hasIsItem{
+            print("has item0")
+            stackCategories.isHidden = false
             if item.isTravel{imgTravel.isHidden = false} else{imgTravel.isHidden = true}
             if item.isHistory{imgHistory.isHidden = false} else{imgHistory.isHidden = true}
             if item.isArt{imgArt.isHidden = false} else{imgArt.isHidden = true}
@@ -78,6 +82,7 @@ class BucketListCell: UITableViewCell {
             if item.isEducation{imgEducation.isHidden = false} else{imgEducation.isHidden = true}
             if item.isNature{imgNature.isHidden = false} else{imgNature.isHidden = true}
         } else{
+            print("has item1")
             stackCategories.isHidden = true
         }
         

@@ -160,8 +160,11 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aFc-DB-GnE">
-                                <rect key="frame" x="257" y="324" width="30" height="30"/>
-                                <state key="normal" title="Edit"/>
+                                <rect key="frame" x="257" y="324" width="30" height="31"/>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
+                                <state key="normal" title="Edit">
+                                    <color key="titleColor" red="0.1100596578" green="0.53731183230000001" blue="0.7842161017" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="editBtnPress:" destination="hqd-5j-BhG" eventType="touchUpInside" id="SBL-Rr-e5o"/>
                                 </connections>
