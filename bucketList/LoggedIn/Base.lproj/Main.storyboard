@@ -512,10 +512,10 @@
             </objects>
             <point key="canvasLocation" x="3100" y="-233"/>
         </scene>
-        <!--Query Categories-->
+        <!--Filter-->
         <scene sceneID="WkT-wO-DzI">
             <objects>
-                <viewController title="Query Categories" id="Kl3-3M-Wzb" customClass="QueryVC" customModule="bucketList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Filter" id="Kl3-3M-Wzb" customClass="QueryVC" customModule="bucketList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4i6-QU-kq4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -641,6 +641,9 @@
                                         <state key="normal" title="Clear">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="clearBtnPress:" destination="Kl3-3M-Wzb" eventType="touchUpInside" id="Mdn-ae-Ex6"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j70-ot-QSc">
                                         <rect key="frame" x="187.5" y="0.0" width="187.5" height="60"/>
@@ -649,6 +652,9 @@
                                         <state key="normal" title="Search">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="searchBtnPress:" destination="Kl3-3M-Wzb" eventType="touchUpInside" id="5vF-3Y-Zgo"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>

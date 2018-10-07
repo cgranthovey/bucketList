@@ -9,7 +9,7 @@
 import UIKit
 
 protocol QueryVCDelegate{
-    searchBtnPress()
+    func searchBtnPress()
 }
 
 class QueryVC: UIViewController {
@@ -32,17 +32,65 @@ class QueryVC: UIViewController {
         collectionView.contentInset = UIEdgeInsetsMake(20, sideInset, 40, sideInset)
         
         collectionView.allowsMultipleSelection = true
+        setUpSelected()
     }
     
     override func viewWillAppear(_ animated: Bool) {
     }
     
+    func setUpSelected(){
+        for (section, item) in allQueryOptions.enumerated(){
+            if item.0 == "status", let queryStatus = QueryService.instance.statusFilter{
+                if let statuses = item.1 as? [Status]{
+                    for (itemIndex, status) in statuses.enumerated(){
+                        if queryStatus == status.status.rawValue{
+                            let indexPath = IndexPath(item: itemIndex + 1, section: section)
+                            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
+                        }
+                    }
+                }
+            }
+            if item.0 == "category", let queryCategory = QueryService.instance.categoryStrFilter{
+                if let categories = item.1 as? [txtImg]{
+                    for (itemIndex, category) in categories.enumerated(){
+                        if queryCategory == category.txt{
+                            let indexPath = IndexPath(item: itemIndex + 1, section: section)
+                            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
+                        }
+                    }
+                }
+            }
+            if item.0 == "price", let queryPrice = QueryService.instance.priceFilter{
+                if let prices = item.1 as? [txtImg]{
+                    for (itemIndex, price) in prices.enumerated(){
+                        if queryPrice == price.txt{
+                            let indexPath = IndexPath(item: itemIndex + 1, section: section)
+                            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
+                        }
+                    }
+                }
+            }
+            if item.0 == "time", let queryTime = QueryService.instance.timeFilter{
+                if let times = item.1 as? [String]{
+                    for (itemIndex, time) in times.enumerated(){
+                        if queryTime == time{
+                            let indexPath = IndexPath(item: itemIndex + 1, section: section)
+                            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     @IBAction func clearBtnPress(_ sender: AnyObject){
-        
+        QueryService.instance.clear()
+        collectionView.reloadData()
     }
     
     @IBAction func searchBtnPress(_ sender: AnyObject){
-        
+        delegate.searchBtnPress()
+        self.navigationController?.popViewController(animated: true)
     }
     
 
@@ -93,8 +141,8 @@ extension QueryVC: UICollectionViewDelegate, UICollectionViewDataSource{
         return selectedView
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
         if indexPath.row == 0{
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellHeader", for: indexPath) as? QueryHeaderCell{
                 switch indexPath.section{
@@ -109,13 +157,11 @@ extension QueryVC: UICollectionViewDelegate, UICollectionViewDataSource{
             }
         }
         
-        
-        
         if let options = allQueryOptions[indexPath.section].1 as? [Status]{
-            let status = options[indexPath.row - 1]
+            let itemStatus = options[indexPath.row - 1]
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellText", for: indexPath)
                 as? QueryTxtCell{
-                cell.lbl.text = status.status.rawValue
+                cell.lbl.text = itemStatus.status.rawValue
                 cell.selectedBackgroundView = getSelectedView(cell: cell)
                 cell.backgroundColor = UIColor().extraLightGrey
                 return cell
@@ -155,21 +201,37 @@ extension QueryVC: UICollectionViewDelegate, UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         let option = allQueryOptions[indexPath.section]
+        let indexPathRowMinusHeader = indexPath.row - 1
         if let status = option.1 as? [Status], option.0 == "status"{
-            QueryService.instance.statusFilter = status[indexPath.row].status.rawValue
+            QueryService.instance.statusFilter = status[indexPathRowMinusHeader].status.rawValue
         }
         if let category = option.1 as? [txtImg], option.0 == "category"{
-            QueryService.instance.categoryFilter = category[indexPath.row].txt
+            QueryService.instance.categoryStrFilter = category[indexPathRowMinusHeader].txt
         }
         if let price = option.1 as? [txtImg], option.0 == "price"{
-            QueryService.instance.categoryFilter = price[indexPath.row].txt
+            QueryService.instance.priceFilter = price[indexPathRowMinusHeader].txt
         }
         if let time = option.1 as? [String], option.0 == "time"{
-            QueryService.instance.categoryFilter = time[indexPath.row]
+            QueryService.instance.timeFilter = time[indexPathRowMinusHeader]
         }
         selectOnlyOneCellFor(indexPath: indexPath, collectionView: collectionView)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let option = allQueryOptions[indexPath.section]
+        if option.0 == "status"{
+            QueryService.instance.statusFilter = nil
+        }
+        if option.0 == "category"{
+            QueryService.instance.categoryStrFilter = nil
+        }
+        if option.0 == "price"{
+            QueryService.instance.priceFilter = nil
+        }
+        if option.0 == "time"{
+            QueryService.instance.timeFilter = nil
+        }
     }
 }
 

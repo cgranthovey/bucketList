@@ -79,6 +79,15 @@ class LandingVC: UIViewController {
     @objc func sortTapped(){
         performSegue(withIdentifier: "QueryVC", sender: nil)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "QueryVC"{
+            if let vc = segue.destination as? QueryVC{
+                vc.delegate = self
+            }
+        }
+    }
+    
     var allItemsLoaded = false;
     var itemsReloaded = true;
     typealias Completion = () -> Void
@@ -93,6 +102,22 @@ class LandingVC: UIViewController {
         if let user = Auth.auth().currentUser{
             query = query.whereField("userID", isEqualTo: user.uid)
         }
+        
+        if let statusFilter = QueryService.instance.statusFilter{
+            query = query.whereField("status", isEqualTo: statusFilter)
+        }
+        if let categoryFilter = QueryService.instance.categoryIsFilter{
+            query = query.whereField(categoryFilter, isEqualTo: true)
+        }
+        if let priceFilter = QueryService.instance.priceFilter{
+            query = query.whereField("price", isEqualTo: priceFilter)
+        }
+        if let timeFilter = QueryService.instance.timeFilter{
+            query = query.whereField("completionTime", isEqualTo: timeFilter)
+        }
+        
+        
+        
         query = query.order(by: "created", descending: true)
         if let doc = lastDoc{
             query = query.start(afterDocument: doc)
@@ -237,10 +262,22 @@ extension LandingVC: UITableViewDelegate, UITableViewDataSource{
 
 }
 
+extension LandingVC: QueryVCDelegate{
+    func searchBtnPress(){
+        print("search btn press")
+        print("cat filter", QueryService.instance.categoryStrFilter)
+        print("cat price", QueryService.instance.priceFilter)
+        print("cat time", QueryService.instance.timeFilter)
+        print("cat status", QueryService.instance.statusFilter)
+        itemsReloaded = true
+        allItemsLoaded = false
+        bucketItems = []
+        table.reloadData()
+        getData(lastDoc: nil) {
 
-
-
-
+        }
+    }
+}
 
 
 
