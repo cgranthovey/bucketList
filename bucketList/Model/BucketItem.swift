@@ -49,6 +49,16 @@ class BucketItem{
         return [isTravel, isNature, isEducation, isSports, isSocial, isReligion, isExercise, isArt, isHistory]
     }()
     
+    lazy var hasIsItem: Bool = {
+        let items = [isTravel, isNature, isEducation, isSports, isSocial, isReligion, isExercise, isArt, isHistory]
+        for item in items{
+            if item == true{
+                return true
+            }
+        }
+        return false
+    }()
+    
     func addressFull() -> String?{
         let address = [addressPrimary, addressSeconary].compactMap{$0}.joined(separator: ", ")
         return address

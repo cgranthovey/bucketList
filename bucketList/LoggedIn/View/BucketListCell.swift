@@ -23,6 +23,7 @@ class BucketListCell: UITableViewCell {
     @IBOutlet weak var imgSports: UIImageView!
     @IBOutlet weak var imgEducation: UIImageView!
     @IBOutlet weak var imgNature: UIImageView!
+    @IBOutlet weak var stackCategories: UIStackView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -53,7 +54,7 @@ class BucketListCell: UITableViewCell {
         } else if item.status == .inProgress {
             lblPrice.textColor = UIColor().primaryColor
         } else{
-            lblPrice.textColor = UIColor().primaryBlue
+            lblPrice.textColor = UIColor().darkerBlue
         }
 //        if let price = item.price{
 //            lblPrice.text = price
@@ -65,15 +66,22 @@ class BucketListCell: UITableViewCell {
         print("item is sports", item.isSports)
         print("item is education", item.isEducation)
         print("is travel", item.isTravel)
-        if item.isTravel{imgTravel.isHidden = false} else{imgTravel.isHidden = true}
-        if item.isHistory{imgHistory.isHidden = false} else{imgHistory.isHidden = true}
-        if item.isArt{imgArt.isHidden = false} else{imgArt.isHidden = true}
-        if item.isExercise{imgExercise.isHidden = false} else{imgExercise.isHidden = true}
-        if item.isReligion{imgReligion.isHidden = false} else{imgReligion.isHidden = true}
-        if item.isSocial{imgSocial.isHidden = false} else{imgSocial.isHidden = true}
-        if item.isSports{imgSports.isHidden = false} else{imgSports.isHidden = true}
-        if item.isEducation{imgEducation.isHidden = false} else{imgEducation.isHidden = true}
-        if item.isNature{imgNature.isHidden = false} else{imgNature.isHidden = true}
+        
+        if item.hasIsItem{
+            if item.isTravel{imgTravel.isHidden = false} else{imgTravel.isHidden = true}
+            if item.isHistory{imgHistory.isHidden = false} else{imgHistory.isHidden = true}
+            if item.isArt{imgArt.isHidden = false} else{imgArt.isHidden = true}
+            if item.isExercise{imgExercise.isHidden = false} else{imgExercise.isHidden = true}
+            if item.isReligion{imgReligion.isHidden = false} else{imgReligion.isHidden = true}
+            if item.isSocial{imgSocial.isHidden = false} else{imgSocial.isHidden = true}
+            if item.isSports{imgSports.isHidden = false} else{imgSports.isHidden = true}
+            if item.isEducation{imgEducation.isHidden = false} else{imgEducation.isHidden = true}
+            if item.isNature{imgNature.isHidden = false} else{imgNature.isHidden = true}
+        } else{
+            stackCategories.isHidden = true
+        }
+        
+
         
 //        item.isTravel = true ? imgTravel.isHidden = false : imgTravel.isHidden = true
 //        item.isHistory = true ? imgHistory.isHidden = false : imgHistory.isHidden = true
