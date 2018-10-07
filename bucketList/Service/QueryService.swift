@@ -30,6 +30,20 @@ class QueryService {
     var priceFilter: String?
     var timeFilter: String?
     
+    var allQueryStr: String?{
+        let allFilters = [statusFilter, categoryStrFilter, priceFilter, timeFilter]
+        let str: String? = allFilters.compactMap({$0}).joined(separator: ", ")
+        return str
+    }
+    
+    var hasQuery: Bool{
+        if allQueryStr == ""{
+            return false
+        } else {
+            return true
+        }
+    }
+    
     func clear(){
         statusFilter = nil
         categoryStrFilter = nil

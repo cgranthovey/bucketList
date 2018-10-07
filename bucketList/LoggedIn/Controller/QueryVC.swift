@@ -86,6 +86,8 @@ class QueryVC: UIViewController {
     @IBAction func clearBtnPress(_ sender: AnyObject){
         QueryService.instance.clear()
         collectionView.reloadData()
+        delegate.searchBtnPress()
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func searchBtnPress(_ sender: AnyObject){
