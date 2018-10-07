@@ -16,10 +16,17 @@ import FirebaseAuth
 class LandingVC: UIViewController {
 
     @IBOutlet weak var table: UITableView!
-    @IBOutlet weak var viewTop: UIView!
+    @IBOutlet weak var viewFilter: UIView!
+    @IBOutlet weak var lblFilter: UILabel!
+    @IBOutlet weak var btnFilter: UIButton!
     
     var bucketItems = [BucketItem]()
     var lastDoc: DocumentSnapshot?
+    var hasDisplayedIndexPath: [Int] = [Int]()
+    
+    @IBAction func filterViewBtn(_ sender: AnyObject){
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +34,6 @@ class LandingVC: UIViewController {
         table.dataSource = self
         table.rowHeight = UITableViewAutomaticDimension
         table.estimatedRowHeight = 150
-        
 
         table.contentInset = UIEdgeInsets(top: 0
             , left: 0, bottom: 75, right: 0)
@@ -36,7 +42,6 @@ class LandingVC: UIViewController {
             
         }
         
-        setUpPullTableLoader()
         self.tabBarController?.tabBar.hero.isEnabled = true
         self.tabBarController?.tabBar.layer.removeAllAnimations()
 //        self.hero.isEnabled = true
@@ -46,34 +51,52 @@ class LandingVC: UIViewController {
         
         getData(lastDoc: nil) {
         }
-        
-
+    }
+    
+    @IBAction func filterBtnTapped(_ sender: AnyObject){
+        sortTapped()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        let rightBarBtn = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(LandingVC.toggleTableHeader))
-//        self.navigationController?.navigationItem.rightBarButtonItems = [rightBarBtn]
+        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
 
-//            let cameraBtn = UIBarButtonItem(image: #imageLiteral(resourceName: "sort"), landscapeImagePhone: #imageLiteral(resourceName: "sort"), style: .plain, target: self, action: #selector(LandingVC.sortTapped))
-//            navigationItem.rightBarButtonItems = [cameraBtn]
-
+        viewFilter.backgroundColor = UIColor().mediumLightGrey//.primaryColor
+        lblFilter.textColor = UIColor.black
+        lblFilter.alpha = 0.54
+        if let str = QueryService.instance.allQueryStr, str != ""{
+            lblFilter.text = "Filtering - \(str)"
+            viewFilter.isHidden = false
+            setUpPullTableLoader(backgroundColor: UIColor().mediumLightGrey, spinnerColor: UIColor.gray)
+        } else{
+            setUpPullTableLoader(backgroundColor: UIColor().primaryColor, spinnerColor: UIColor.white)
+            viewFilter.isHidden = true
+        }
         
         let sortBtn = UIBarButtonItem(image: #imageLiteral(resourceName: "sort"), style: .plain, target: self, action: #selector(LandingVC.sortTapped))
         navigationItem.rightBarButtonItems = [sortBtn]
+        
+        
+//        let lbl = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: tableView.frame.height))
+//
+//        if QueryService.instance.hasQuery{
+//            lbl.text = "Query found no results."
+//        } else{
+//            lbl.text = "Query found no results."
+//        }
+//        lbl.alpha = 0.54
+//        lbl.font = UIFont(name: "Arial", size: 25)
+//        lbl.textAlignment = .center
+//        lbl.numberOfLines = 0
+//        tableView.backgroundView = lbl
     }
-    
-    
     
     @objc func newBucketItem(){
         lastDoc = nil
         allItemsLoaded = false
         itemsReloaded = true
-        print("newBucketItem")
         bucketItems = []
         getData(lastDoc: nil) {
-            
         }
-        
     }
 
     @objc func sortTapped(){
@@ -90,6 +113,8 @@ class LandingVC: UIViewController {
     
     var allItemsLoaded = false;
     var itemsReloaded = true;
+    var noResultsFound = false
+    var isLoading = false
     typealias Completion = () -> Void
     func getData(lastDoc: DocumentSnapshot?, onComplete: @escaping Completion){
         
@@ -123,9 +148,13 @@ class LandingVC: UIViewController {
             query = query.start(afterDocument: doc)
         }
         print("calling Get data")
+        shouldShowLoadingView()
+        
+        isLoading = true
         GetData.instance.retrieve(query: query)
         { (snapshots, lastDoc) in
             print("getDataGuard3, ", snapshots)
+            self.isLoading = false
 //            guard self.itemsReloaded else{
 //                return
 //            }
@@ -137,7 +166,12 @@ class LandingVC: UIViewController {
             
             self.lastDoc = lastDoc
             if snapshots.documents.count == 0{
+                print("nada found")
+                self.noResultsFound = true
                 self.allItemsLoaded = true
+                self.showNoDocumentsLoaded()
+            } else{
+                self.noResultsFound = false
             }
             
             for item in snapshots.documents{
@@ -151,10 +185,57 @@ class LandingVC: UIViewController {
         }
     }
     
-    func setUpPullTableLoader(){
-        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-        loadingView.tintColor = UIColor.white
+    var spinner: UIActivityIndicatorView!
+    func shouldShowLoadingView(){
+        if bucketItems.isEmpty{
+            spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+            spinner.startAnimating()
+            spinner.alpha = 0
+            spinner.center = table.center
+            table.backgroundView = spinner
+            
+            UIView.animate(withDuration: 0.1) {
+                self.spinner.alpha = 1
+            }
+        }
+    }
+    
+    func showNoDocumentsLoaded(){
+        if spinner != nil{
+            UIView.animate(withDuration: 0.3, animations: {
+                self.spinner.alpha = 0
+            }) { (success) in
+                self.spinner.removeFromSuperview()
+                let noDataView = TableNoDataView(frame: CGRect(x: 0, y: 0, width: self.table.frame.width, height: self.table.frame.height))
+                noDataView.delegate = self
+                
+                if QueryService.instance.hasQuery{
+                    noDataView.lbl.text = "No Items Found"
+                    noDataView.btn.setTitleWithoutAnimation(title: "Change Filter")
+                } else{
+                    noDataView.lbl.text = "No Items Found"
+                    noDataView.btn.setTitleWithoutAnimation(title: "Create First Bucket Item")
+                }
+                
+                
+                self.table.backgroundView = noDataView
+                noDataView.alpha = 0
+                
+                UIView.animate(withDuration: 0.3, animations: {
+                    noDataView.alpha = 1
+                }, completion: { (success) in
+                    
+                })
 
+                
+            }
+        }
+    }
+    
+    func setUpPullTableLoader(backgroundColor: UIColor, spinnerColor: UIColor){
+        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+        loadingView.tintColor = spinnerColor
+        
         table.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
             // Add your logic here
             // Do not forget to call dg_stopLoading() at the end
@@ -166,109 +247,70 @@ class LandingVC: UIViewController {
             })
         }, loadingView: loadingView)
         table.dg_stopLoading()
-        table.dg_setPullToRefreshFillColor(UIColor().primaryColor)
+        table.dg_setPullToRefreshFillColor(backgroundColor)
         table.dg_setPullToRefreshBackgroundColor(UIColor().rgb(red: 246, green: 246, blue: 246, alpha: 1))
     }
-
-    
-//    @objc func toggleTableHeader(){
-////        table.headerView(forSection: <#T##Int#>)
-//        let header = table.tableHeaderView!//.headerView(forSection: 0)
-//        print("the header", header)
-//
-//        if (header.frame.height) > CGFloat(0) {
-//            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
-//                header.transform = CGAffineTransform(scaleX: 0, y: 0)
-//            }) { (success) in
-//            }
-//        } else{
-//            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
-//                header.transform = CGAffineTransform(scaleX: 1, y: 0)
-//            }) { (success) in
-//            }
-//        }
-//
-//    }
-
-
 }
 
 extension LandingVC: UITableViewDelegate, UITableViewDataSource{
     
-    
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         //creates top inset since cellInsets did not work.
         if indexPath.row == 0 {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "cell0") as? UITableViewCell{
                 cell.selectionStyle = .none
-
                 return cell
             }
         }
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? BucketListCell{
             cell.configure(item: bucketItems[indexPath.row - 1])
             cell.selectionStyle = .none
-            
-//            let selectedView = UIView(frame: CGRect(x: 0, y: 0, width: cell.frame.width, height: cell.frame.height))
-//            selectedView.backgroundColor = UIColor().rgb(red: 250, green: 250, blue: 250, alpha: 1)
-//            cell.selectedBackgroundView = selectedView
             return cell
         }
         return UITableViewCell()
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return bucketItems.count + 1
     }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        var numberOfSections = 1
+        if bucketItems.count == 0 && isLoading == false && noResultsFound == true{
+            numberOfSections = 0
+        } else{
+            tableView.backgroundView = nil
+        }
+        return numberOfSections
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "BucketDetails") as?
             BucketDetails{
-            print("indexPath.row", indexPath.row)
             vc.bucketItem = bucketItems[indexPath.row - 1]
-//            self.navigationController?.hero.navigationAnimationType = .push(direction: .right)
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-        if indexPath.row == bucketItems.count - 1{
-            print("will display last cell")
-            getData(lastDoc: lastDoc) {
-            }
-        }
-    }
- 
-
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 60))
-//        view.backgroundColor = UIColor.brown
-//        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
-//        label.center = view.center
-//        label.textColor = UIColor.white
-//        label.text = "Is this right?"
-//
-//        view.addSubview(label)
-//        return view
-//    }
     
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 60
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        cell.alpha = 0
+//
+//        print("willDisplay", indexPath.row)
+//        print("hasDisplayedIP", hasDisplayedIndexPath)
+//        if !hasDisplayedIndexPath.contains(indexPath.row){
+//            print("willDisplay2", indexPath.row)
+//            UIView.animate(withDuration: 0.3, delay: 0.2, options: .curveEaseInOut, animations: {
+//                cell.alpha = 1
+//            }) { (success) in
+//            }
+//            hasDisplayedIndexPath.append(indexPath.row)
+//        }
 //    }
-
 }
 
 extension LandingVC: QueryVCDelegate{
     func searchBtnPress(){
-        print("search btn press")
-        print("cat filter", QueryService.instance.categoryStrFilter)
-        print("cat price", QueryService.instance.priceFilter)
-        print("cat time", QueryService.instance.timeFilter)
-        print("cat status", QueryService.instance.statusFilter)
         itemsReloaded = true
         allItemsLoaded = false
         bucketItems = []
@@ -279,10 +321,24 @@ extension LandingVC: QueryVCDelegate{
     }
 }
 
+extension LandingVC: TableNoDataViewDelegate{
+    func noDataBtnPress(){
+        if QueryService.instance.hasQuery{
+            sortTapped()
+        } else{
+            self.tabBarController?.selectedIndex = 1
+        }
+    }
+}
 
 
-
-
+class BtnTouchDarker: UIButton{
+    override open var isHighlighted: Bool {
+        didSet {
+            backgroundColor = isHighlighted ? UIColor().mediumLessLightGrey : UIColor().mediumLightGrey
+        }
+    }
+}
 
 
 

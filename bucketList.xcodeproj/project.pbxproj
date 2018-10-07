@@ -95,6 +95,8 @@
 		15C6633420F18D6B00C7DF5E /* VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C6633320F18D6B00C7DF5E /* VC.swift */; };
 		15C6633620F19CA300C7DF5E /* PasswordResetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C6633520F19CA300C7DF5E /* PasswordResetVC.swift */; };
 		15C6633820F44BB800C7DF5E /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C6633720F44BB800C7DF5E /* TextField.swift */; };
+		15E09E17216AA2F400F1D7EE /* TableNoDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15E09E16216AA2F400F1D7EE /* TableNoDataView.xib */; };
+		15E09E19216AA3A100F1D7EE /* TableNoDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E09E18216AA3A100F1D7EE /* TableNoDataView.swift */; };
 		15E41EC8211F998A003AC82F /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E41EC7211F998A003AC82F /* UIColor.swift */; };
 		15E41ECA21209399003AC82F /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E41EC921209399003AC82F /* MenuBar.swift */; };
 		15E855252149E8D4006B9E52 /* ImgLblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E855242149E8D4006B9E52 /* ImgLblCell.swift */; };
@@ -221,6 +223,8 @@
 		15C6633320F18D6B00C7DF5E /* VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.swift; sourceTree = "<group>"; };
 		15C6633520F19CA300C7DF5E /* PasswordResetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetVC.swift; sourceTree = "<group>"; };
 		15C6633720F44BB800C7DF5E /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		15E09E16216AA2F400F1D7EE /* TableNoDataView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableNoDataView.xib; sourceTree = "<group>"; };
+		15E09E18216AA3A100F1D7EE /* TableNoDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableNoDataView.swift; sourceTree = "<group>"; };
 		15E41EC7211F998A003AC82F /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		15E41EC921209399003AC82F /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 		15E855242149E8D4006B9E52 /* ImgLblCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgLblCell.swift; sourceTree = "<group>"; };
@@ -351,6 +355,8 @@
 				15F723C42142049D00533017 /* ItemDataCell.xib */,
 				153753932165A9F700481B48 /* UpdateStatus.xib */,
 				153753952165AB2E00481B48 /* UpdateStatus.swift */,
+				15E09E16216AA2F400F1D7EE /* TableNoDataView.xib */,
+				15E09E18216AA3A100F1D7EE /* TableNoDataView.swift */,
 			);
 			path = Nib;
 			sourceTree = "<group>";
@@ -638,6 +644,7 @@
 			files = (
 				15BCDB1420E47B9D00E1B6A9 /* LaunchScreen.storyboard in Resources */,
 				1508579D20EEFEB8009372A0 /* GoogleService-Info.plist in Resources */,
+				15E09E17216AA2F400F1D7EE /* TableNoDataView.xib in Resources */,
 				15BCDB1120E47B9D00E1B6A9 /* Assets.xcassets in Resources */,
 				15BCDB0F20E47B9A00E1B6A9 /* Main.storyboard in Resources */,
 				15BCDB4820E726CB00E1B6A9 /* CreateAccount.storyboard in Resources */,
@@ -788,6 +795,7 @@
 				15C350702166F31100FEE557 /* StatusVC.swift in Sources */,
 				1529D42F2117F8B000AC4829 /* MainTBC.swift in Sources */,
 				15ECED7620F6D61400BF42FD /* AddBucketTitleVC.swift in Sources */,
+				15E09E19216AA3A100F1D7EE /* TableNoDataView.swift in Sources */,
 				15623EF4213F5C5C00F43372 /* BucketDetails.swift in Sources */,
 				150F97952106A33A00C4D3C7 /* CurrentUser.swift in Sources */,
 				158D1CEA21337CA600FD8BAD /* Friend.swift in Sources */,
