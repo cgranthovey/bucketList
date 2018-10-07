@@ -83,6 +83,11 @@
 		15C37E8D2105080C00ED0503 /* FriendSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C37E8C2105080C00ED0503 /* FriendSearchVC.swift */; };
 		15C37E8F21050AE400ED0503 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C37E8E21050AE400ED0503 /* User.swift */; };
 		15C37E9121050C1B00ED0503 /* FriendSearchTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C37E9021050C1B00ED0503 /* FriendSearchTblCell.swift */; };
+		15C3EE712168534500AC300F /* QueryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C3EE702168534500AC300F /* QueryVC.swift */; };
+		15C3EE7321685C2700AC300F /* QueryImgCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C3EE7221685C2700AC300F /* QueryImgCell.swift */; };
+		15C3EE7521685C4E00AC300F /* QueryTxtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C3EE7421685C4E00AC300F /* QueryTxtCell.swift */; };
+		15C3EE772168731700AC300F /* QueryHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C3EE762168731700AC300F /* QueryHeaderCell.swift */; };
+		15C3EE7921697CDB00AC300F /* QueryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C3EE7821697CDB00AC300F /* QueryService.swift */; };
 		15C5664B211AA9BB001F5F6C /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C5664A211AA9BB001F5F6C /* Image.swift */; };
 		15C5664D211BDEF7001F5F6C /* UpdatePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C5664C211BDEF7001F5F6C /* UpdatePasswordVC.swift */; };
 		15C5664F211BFB46001F5F6C /* UpdateEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C5664E211BFB46001F5F6C /* UpdateEmailVC.swift */; };
@@ -203,6 +208,11 @@
 		15C37E8C2105080C00ED0503 /* FriendSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSearchVC.swift; sourceTree = "<group>"; };
 		15C37E8E21050AE400ED0503 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		15C37E9021050C1B00ED0503 /* FriendSearchTblCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSearchTblCell.swift; sourceTree = "<group>"; };
+		15C3EE702168534500AC300F /* QueryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryVC.swift; sourceTree = "<group>"; };
+		15C3EE7221685C2700AC300F /* QueryImgCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryImgCell.swift; sourceTree = "<group>"; };
+		15C3EE7421685C4E00AC300F /* QueryTxtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryTxtCell.swift; sourceTree = "<group>"; };
+		15C3EE762168731700AC300F /* QueryHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryHeaderCell.swift; sourceTree = "<group>"; };
+		15C3EE7821697CDB00AC300F /* QueryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryService.swift; sourceTree = "<group>"; };
 		15C5664A211AA9BB001F5F6C /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		15C5664C211BDEF7001F5F6C /* UpdatePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordVC.swift; sourceTree = "<group>"; };
 		15C5664E211BFB46001F5F6C /* UpdateEmailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateEmailVC.swift; sourceTree = "<group>"; };
@@ -264,6 +274,7 @@
 				150F97942106A33A00C4D3C7 /* CurrentUser.swift */,
 				1508124D213A31B400A4D14A /* Enums.swift */,
 				1545AE2021643D3200F5148D /* GVar.swift */,
+				15C3EE7821697CDB00AC300F /* QueryService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -302,6 +313,9 @@
 				15BCA1732156A49E005EB0C2 /* CompletionTimeCell.swift */,
 				153753912165A1A400481B48 /* StatusCell.swift */,
 				15C350712166F3C500FEE557 /* StatusPopupCell.swift */,
+				15C3EE7221685C2700AC300F /* QueryImgCell.swift */,
+				15C3EE7421685C4E00AC300F /* QueryTxtCell.swift */,
+				15C3EE762168731700AC300F /* QueryHeaderCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -483,6 +497,7 @@
 				15C5664E211BFB46001F5F6C /* UpdateEmailVC.swift */,
 				151834682144727F009F74AB /* LargeImageVC.swift */,
 				15C3506F2166F31100FEE557 /* StatusVC.swift */,
+				15C3EE702168534500AC300F /* QueryVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -754,6 +769,7 @@
 				15BCDB4120E482E200E1B6A9 /* OnboardingPageVC.swift in Sources */,
 				1529D42D2117CD8800AC4829 /* ProfileVC.swift in Sources */,
 				1576E40720F96E220067341D /* MKPlacemark.swift in Sources */,
+				15C3EE7921697CDB00AC300F /* QueryService.swift in Sources */,
 				15E41EC8211F998A003AC82F /* UIColor.swift in Sources */,
 				1545AE2121643D3200F5148D /* GVar.swift in Sources */,
 				15BCDB4320E5BF9500E1B6A9 /* OnboardingImgVC.swift in Sources */,
@@ -773,6 +789,7 @@
 				150F97952106A33A00C4D3C7 /* CurrentUser.swift in Sources */,
 				158D1CEA21337CA600FD8BAD /* Friend.swift in Sources */,
 				1518346D2145EF61009F74AB /* UIImageView.swift in Sources */,
+				15C3EE7321685C2700AC300F /* QueryImgCell.swift in Sources */,
 				1507CA1C20F6E58700704426 /* AddBucketMapVC.swift in Sources */,
 				1507CA1E20F6E93900704426 /* NewBucketItem.swift in Sources */,
 				15E855252149E8D4006B9E52 /* ImgLblCell.swift in Sources */,
@@ -798,6 +815,7 @@
 				158D1CE22130F08D00FD8BAD /* SearchFriendsCell.swift in Sources */,
 				1555C2CC2140DA34002AF5C6 /* ImgAspectFitBtn.swift in Sources */,
 				15BCDB5220E994DA00E1B6A9 /* String.swift in Sources */,
+				15C3EE7521685C4E00AC300F /* QueryTxtCell.swift in Sources */,
 				15F723C52142049D00533017 /* ItemDataCell.swift in Sources */,
 				15C6633420F18D6B00C7DF5E /* VC.swift in Sources */,
 				15C5664F211BFB46001F5F6C /* UpdateEmailVC.swift in Sources */,
@@ -805,6 +823,7 @@
 				153753922165A1A400481B48 /* StatusCell.swift in Sources */,
 				1564D9CD214D872B002B04C1 /* LblArrowCell.swift in Sources */,
 				159CC7A22136169B00BEFAE3 /* ContactsCell.swift in Sources */,
+				15C3EE712168534500AC300F /* QueryVC.swift in Sources */,
 				15F5E049213DD11300D3903B /* ButtonCustom.swift in Sources */,
 				15C6633620F19CA300C7DF5E /* PasswordResetVC.swift in Sources */,
 				15623EF0213DDCD000F43372 /* ViewCustom.swift in Sources */,
@@ -818,6 +837,7 @@
 				15BCDB0A20E47B9A00E1B6A9 /* AppDelegate.swift in Sources */,
 				15C37E89210419F100ED0503 /* MKCoordinateRegion.swift in Sources */,
 				15970056215489D90030560C /* DetailsCell.swift in Sources */,
+				15C3EE772168731700AC300F /* QueryHeaderCell.swift in Sources */,
 				157FCA802141F94D0036EE3A /* CollectionViewCell.swift in Sources */,
 				15BCA1742156A49E005EB0C2 /* CompletionTimeCell.swift in Sources */,
 				1522B0C420F056A300C5CF9C /* LandingVC.swift in Sources */,

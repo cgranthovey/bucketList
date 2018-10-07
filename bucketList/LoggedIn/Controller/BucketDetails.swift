@@ -47,6 +47,9 @@ class BucketDetails: UIViewController {
         
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 20, right: 10)
         
+        
+
+        
         if let item = bucketItem{
             images = item.imgs
             if images.count > 0{
@@ -54,6 +57,8 @@ class BucketDetails: UIViewController {
             }
         }
     }
+    
+
     
     override func viewWillAppear(_ animated: Bool) {
         getImages()
@@ -373,26 +378,21 @@ extension BucketDetails: DetailsCellDelegate{
 
 extension BucketDetails: StatusCellDelegate{
     func statusBtnPress(btn: UIButton) {
-        print("status btn press")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "StatusVC") as? StatusVC{
-            print("status btn press2")
-
             vc.modalPresentationStyle = .popover
             vc.delegate = self
-            vc.preferredContentSize = CGSize(width: 200, height: 60)
-            
+            vc.preferredContentSize = CGSize(width: 200, height: 180)
+            if let bucketItem = bucketItem{
+                vc.bucketItem = bucketItem
+            }
             if let presentationController = vc.popoverPresentationController {
-//                presentationController.delegate = self
+                presentationController.delegate = self
                 presentationController.permittedArrowDirections = .right
-                presentationController.sourceView = self.collectionView
-                presentationController.sourceRect = CGRect(x: 0, y: 0, width: 50, height: 50)// CGRect(0, 0, 50, 50)
-                
-//                vc.popoverPresentationController?.sourceView = collectionView
+                presentationController.sourceView = btn
+                presentationController.sourceRect = CGRect(x: 0, y: 0, width: 50, height: 50)
                 present(vc, animated: true, completion: nil)
             }
-            
-
         }
     }
 }
@@ -400,11 +400,18 @@ extension BucketDetails: StatusCellDelegate{
 extension BucketDetails: StatusVCDelegate {
     func didSelectStatus(status: ItemStatus){
         print("status selected", status.rawValue)
+        if let cell = collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as? StatusCell{
+            cell.setBtnStatus(status: status)
+            
+            
+        }
     }
 }
 
 
-
+extension BucketDetails: UIPopoverPresentationControllerDelegate{
+    
+}
 
 
 

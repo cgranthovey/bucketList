@@ -83,6 +83,8 @@ class AddBucketLocationVC: UIViewController {
             btnNext.isHidden = false
         }
     }
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle { return UIModalPresentationStyle.none }
+    
 }
 
 extension AddBucketLocationVC: AddBucketMapDelegate {
@@ -102,3 +104,17 @@ extension AddBucketLocationVC: AddBucketMapDelegate {
 extension AddBucketLocationVC: UITextFieldDelegate{
 
 }
+
+extension AddBucketLocationVC: UIPopoverPresentationControllerDelegate{
+    
+}
+
+
+
+
+
+
+
+
+
+

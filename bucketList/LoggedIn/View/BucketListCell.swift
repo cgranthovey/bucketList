@@ -46,12 +46,21 @@ class BucketListCell: UITableViewCell {
         } else {
             lblAddress.isHidden = true
         }
-        if let price = item.price{
-            lblPrice.text = price
-            lblPrice.isHidden = false
+        
+        lblPrice.text = item.status.rawValue
+        if item.status == .complete{
+            lblPrice.textColor = UIColor().primaryGreen
+        } else if item.status == .inProgress {
+            lblPrice.textColor = UIColor().primaryColor
         } else{
-            lblPrice.isHidden = true
+            lblPrice.textColor = UIColor().primaryBlue
         }
+//        if let price = item.price{
+//            lblPrice.text = price
+//            lblPrice.isHidden = false
+//        } else{
+//            lblPrice.isHidden = true
+//        }
         
         print("item is sports", item.isSports)
         print("item is education", item.isEducation)

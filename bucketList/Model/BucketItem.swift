@@ -16,7 +16,7 @@ import FirebaseAuth
 enum ItemStatus: String{
     case toDo = "To Do"
     case inProgress = "In Progress"
-    case completed = "Completed"
+    case complete = "Complete"
 }
 
 class BucketItem{
@@ -33,7 +33,7 @@ class BucketItem{
     var id: String?
     var imgs: [String] = [String]()
     var completionTime: String?
-    var status: String?
+    var status: ItemStatus = .toDo
     
     var isTravel: Bool = false
     var isNature: Bool = false
@@ -121,7 +121,13 @@ class BucketItem{
                 isHistory = history
             }
             if let status = dict["status"] as? String{
-                self.status = status
+                if status == ItemStatus.inProgress.rawValue{
+                    self.status = .inProgress
+                } else if status == ItemStatus.complete.rawValue{
+                    self.status = .complete
+                } else{
+                    self.status = .toDo
+                }
             }
             completionTime = dict["completionTime"] as? String
         }
@@ -156,7 +162,7 @@ class BucketItem{
         isArt ? items["isArt"] = true : Void()
         isHistory ? items["isHistory"] = true: Void()
         
-        items["status"] = ItemStatus.toDo.rawValue
+        items["status"] = status.rawValue
         
         items["created"] = FieldValue.serverTimestamp()
         if let geoLoc = getGeoPoint(){

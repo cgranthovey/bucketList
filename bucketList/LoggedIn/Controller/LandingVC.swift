@@ -46,15 +46,20 @@ class LandingVC: UIViewController {
         
         getData(lastDoc: nil) {
         }
+        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
 //        let rightBarBtn = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(LandingVC.toggleTableHeader))
 //        self.navigationController?.navigationItem.rightBarButtonItems = [rightBarBtn]
-//
-//                let cameraBtn = UIBarButtonItem(image: #imageLiteral(resourceName: "camera-1"), landscapeImagePhone: #imageLiteral(resourceName: "camera-1"), style: .plain, target: self, action: #selector(LandingVC.toggleTableHeader))
-//                navigationItem.rightBarButtonItems = [cameraBtn]
 
+//            let cameraBtn = UIBarButtonItem(image: #imageLiteral(resourceName: "sort"), landscapeImagePhone: #imageLiteral(resourceName: "sort"), style: .plain, target: self, action: #selector(LandingVC.sortTapped))
+//            navigationItem.rightBarButtonItems = [cameraBtn]
+
+        
+        let sortBtn = UIBarButtonItem(image: #imageLiteral(resourceName: "sort"), style: .plain, target: self, action: #selector(LandingVC.sortTapped))
+        navigationItem.rightBarButtonItems = [sortBtn]
     }
     
     
@@ -71,7 +76,9 @@ class LandingVC: UIViewController {
         
     }
 
-
+    @objc func sortTapped(){
+        performSegue(withIdentifier: "QueryVC", sender: nil)
+    }
     var allItemsLoaded = false;
     var itemsReloaded = true;
     typealias Completion = () -> Void
